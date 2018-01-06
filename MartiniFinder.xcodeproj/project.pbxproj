@@ -15,6 +15,7 @@
 		37D3E2D020006A930058CE97 /* GCDSwift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2CF20006A930058CE97 /* GCDSwift.swift */; };
 		37D3E2D2200099270058CE97 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2D1200099270058CE97 /* MapViewController.swift */; };
 		37D3E2D42000A0EE0058CE97 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2D32000A0EE0058CE97 /* YelpClient.swift */; };
+		37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2D520015BAF0058CE97 /* YelpConstants.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		37D3E2CF20006A930058CE97 /* GCDSwift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GCDSwift.swift; sourceTree = "<group>"; };
 		37D3E2D1200099270058CE97 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		37D3E2D32000A0EE0058CE97 /* YelpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
+		37D3E2D520015BAF0058CE97 /* YelpConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConstants.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +71,7 @@
 				37D3E2C61FFF35DC0058CE97 /* LaunchScreen.storyboard */,
 				37D3E2C91FFF35DC0058CE97 /* Info.plist */,
 				37D3E2D32000A0EE0058CE97 /* YelpClient.swift */,
+				37D3E2D520015BAF0058CE97 /* YelpConstants.swift */,
 			);
 			path = MartiniFinder;
 			sourceTree = "<group>";
@@ -148,6 +151,7 @@
 				37D3E2D42000A0EE0058CE97 /* YelpClient.swift in Sources */,
 				37D3E2C01FFF35DC0058CE97 /* HomeViewController.swift in Sources */,
 				37D3E2D020006A930058CE97 /* GCDSwift.swift in Sources */,
+				37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */,
 				37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */,
 				37D3E2D2200099270058CE97 /* MapViewController.swift in Sources */,
 			);
