@@ -6,26 +6,28 @@
 //  Copyright © 2018 Tomas Sidenfaden. All rights reserved.
 //
 
+import UIKit
 import Foundation
 
 extension YelpClient {
     
     struct Constants {
-        let YelpBaseURL = "https://api.yelp.com/v3/"
+        static let Authorization = "Authorization: Bearer <8UOe63-UqKM8syYDjMXsdbJbMXWg1Hp6Tu0_kgQr_wUMP3Y2NEDXZE_Tdc_C_xSjihkl2PeM3n9sveqQ1bdXm2AQ1bviVEo1qpUbAk9m_3CmQv3wSlnYZ8qp5j5RWnYx>"
+        static let YelpBaseURL = "https://api.yelp.com/v3/"
     }
     
     struct Methods {
-        let Businesses = "businesses/"
-        let Search = "search/"
+        static let Businesses = "businesses/"
+        static let Search = "search/"
     }
     
     struct ParameterKeys {
-        let Term = "term"
-        let Latitude = "latitude"
-        let Longitude = "longitude"
-        let Radius = "radius"
-        let OpenNow = "open_now"
-        let Price = "price"
+        static let Term = "term"
+        static let Latitude = "latitude"
+        static let Longitude = "longitude"
+        static let Radius = "radius"
+        static let OpenNow = "open_now"
+        static let Price = "price"
     }
     
 }
