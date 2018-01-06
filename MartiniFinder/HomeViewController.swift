@@ -15,18 +15,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
+        
     }
-    
-//    @IBAction func findMartinisAction(_ sender: Any) {
-//        completeLogin()
-//    }
-//
-//
-//    func completeLogin() {
-//        performUIUpdatesOnMain {
-//            let controller = self.storyboard!.instantiateViewController(withIdentifier: "TabBarController") as! UITabBarController
-//            self.present(controller, animated: true, completion: nil)
-//        }
-//    }
 }
 
