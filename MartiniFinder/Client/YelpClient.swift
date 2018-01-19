@@ -13,13 +13,16 @@ class YelpClient {
     
     //let request = String("GET https://api.yelp.com/v3/businesses/search")
     
-    func taskForGetYelpSearchResults(method: String, parameters: [String:AnyObject], completionHandlerForGET: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
+    func taskForGetYelpSearchResults(method: String, parameters: [String:Any], completionHandlerForGET: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
         
         let session = URLSession.shared
-        let url = URL(string: YelpClient.Constants.YelpBaseURL + method)
-        let request = NSMutableURLRequest(url: url!)
+        let urlString = YelpClient.Constants.YelpBaseURL + method + escapedParameters(parameters as [String : AnyObject])
+        let url = URL(string: urlString)!
+        print("url is \(String(describing: url))")
+        let request = NSMutableURLRequest(url: url)
         request.httpMethod = "GET"
-        request.addValue(YelpClient.Constants.Authorization, forHTTPHeaderField: YelpClient.Constants.APIKey)
+        request.addValue(YelpClient.Constants.APIKey, forHTTPHeaderField: YelpClient.Constants.Authorization)
+        print("This is the request: \(request)")
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             
             /* GUARD: There is no error */
@@ -69,6 +72,30 @@ class YelpClient {
             completionHandlerForConvertData(nil, NSError(domain: "parseJSONObject", code: 0, userInfo: userInfo))
         }
         completionHandlerForConvertData(parsedResult, nil)
+    }
+    
+    private func escapedParameters(_ parameters: [String:AnyObject]) -> String {
+        
+        if parameters.isEmpty {
+            return ""
+        } else {
+            var keyValuePairs = [String]()
+            
+            for (key, value) in parameters {
+                
+                // make sure that it is a string value
+                let stringValue = "\(value)"
+                
+                // escape it
+                let escapedValue = stringValue.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+                
+                // append it
+                keyValuePairs.append(key + "=" + "\(escapedValue!)")
+                
+            }
+            
+            return "?\(keyValuePairs.joined(separator: "&"))"
+        }
     }
     
     class func sharedInstance() -> YelpClient {

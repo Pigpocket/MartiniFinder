@@ -17,7 +17,12 @@ class HomeViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func findMartinisAction(_ sender: Any) {
-        
+        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3", 34.151722199942853, -118.2860258849463) { (success, error) in
+            
+            if error != nil {
+                print("There was an error: \(String(describing: error))")
+            }
+            
         }
     }
     
