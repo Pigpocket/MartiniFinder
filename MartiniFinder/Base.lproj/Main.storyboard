@@ -34,6 +34,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
+                                            <action selector="findMartinisAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8gf-ix-7Mb"/>
                                             <segue destination="wXb-5f-ZeD" kind="show" id="jIG-f1-l92"/>
                                         </connections>
                                     </button>
@@ -164,6 +165,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="wXb-5f-ZeD" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="oGx-gO-7kW">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                     </tabBar>

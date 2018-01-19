@@ -10,7 +10,18 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    // MARK: Outlets
+    
     @IBOutlet weak var myMartiniBarsOutlet: UIButton!
+    
+    // MARK: Actions
+    
+    @IBAction func findMartinisAction(_ sender: Any) {
+        
+        }
+    }
+    
+    // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
