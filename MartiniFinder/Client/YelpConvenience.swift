@@ -31,8 +31,47 @@ extension YelpClient {
                 completionHandlerForSearchResults(false, "There was an error getting the images: \(error)")
             } else {
                 
-                print("These are the \(String(describing: results))")
+                if let results = results {
+                    
+                    if let businesses = results["businesses"] as? [[String:AnyObject]] {
+
+                        for business in businesses {
+                            
+                            guard let name = business[ParameterValues.Name] as? String else {
+                                completionHandlerForSearchResults(false, "Unable to find key 'name' in \(ParameterValues.Name) in \(business)")
+                                return
+                            }
+                            
+                            guard let rating = business[ParameterValues.Rating] as? Double else {
+                                completionHandlerForSearchResults(false, "Unable to find key 'name' in \(ParameterValues.Rating) in \(business)")
+                                return
+                            }
+                            
+                            guard let price = business[ParameterValues.Price] as? String else {
+                                completionHandlerForSearchResults(false, "Unable to find key 'price' in \(ParameterValues.Price) in \(business)")
+                                return
+                            }
+                            
+                            guard let isClosed = business[ParameterValues.IsClosed] as? Int else {
+                                completionHandlerForSearchResults(false, "Unable to find key 'isClosed' in \(ParameterValues.Price) in \(business)")
+                                return
+                            }
+                            
+                            guard let distance = business[ParameterValues.Distance] as? Double else {
+                                completionHandlerForSearchResults(false, "Unable to find key 'distance' in \(ParameterValues.Distance) in \(business)")
+                                return
+                            }
+                            
+                            print(name)
+                            print(rating)
+                            print(price)
+                            print(isClosed)
+                            print(distance)
+                            print("********")
+                        }
+                    }
                 
+                }
             }
         }
     }

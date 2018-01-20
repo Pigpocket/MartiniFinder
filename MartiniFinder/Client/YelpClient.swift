@@ -11,18 +11,14 @@ import Foundation
 
 class YelpClient {
     
-    //let request = String("GET https://api.yelp.com/v3/businesses/search")
-    
     func taskForGetYelpSearchResults(method: String, parameters: [String:Any], completionHandlerForGET: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
         
         let session = URLSession.shared
         let urlString = YelpClient.Constants.YelpBaseURL + method + escapedParameters(parameters as [String : AnyObject])
         let url = URL(string: urlString)!
-        print("url is \(String(describing: url))")
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue(YelpClient.Constants.APIKey, forHTTPHeaderField: YelpClient.Constants.Authorization)
-        print("This is the request: \(request)")
         let task = session.dataTask(with: request as URLRequest) { data, response, error in
             
             /* GUARD: There is no error */

@@ -31,4 +31,12 @@ extension YelpClient {
         static let Price = "price"
     }
     
+    struct ParameterValues {
+        static let Name = "name"
+        static let Rating = "rating"
+        static let Price = "price"
+        static let Distance = "distance"
+        static let IsClosed = "is_closed"
+    }
+    
 }
