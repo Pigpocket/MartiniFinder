@@ -40,6 +40,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         setMapRegion()
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(true)
+       
+        locationManager.stopUpdatingLocation()
+    }
+    
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
     {
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
@@ -70,7 +76,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let coordinates = CLLocationCoordinate2D(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
         print("Coordinates are: \(coordinates)")
         
-        let region = MKCoordinateRegionMake(coordinates, MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
+        let region = MKCoordinateRegionMake(coordinates, MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
         self.mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
     }
