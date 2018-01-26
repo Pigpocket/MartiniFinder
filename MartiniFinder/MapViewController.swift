@@ -17,6 +17,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     let annotation = MKPointAnnotation()
     let annotationArray: [MKPointAnnotation] = []
     var locationManager = CLLocationManager()
+    var locations = [Location]()
     
     // MARK: Outlets
     
@@ -24,6 +25,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3", 33.7064016, -116.397167) { (locations, error) in
+            
+            if error != nil {
+                print("There was an error: \(String(describing: error))")
+            }
+            
+            if let locations = locations {
+                self.locations = locations
+                print("These are locations in MapViewController: \(locations)")
+            }
+        }
         
         self.mapView.delegate = self
         self.locationManager.requestAlwaysAuthorization()

@@ -56,7 +56,6 @@ struct Location {
         for result in results {
             if let location = Location(dictionary: result) {
                 locations.append(location)
-                print("\(location.name) \n")
             }
         }
         return locations

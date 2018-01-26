@@ -10,6 +10,10 @@ import UIKit
 
 class HomeViewController: UIViewController {
 
+    // MARK: Properties
+    
+    var locations = [Location]()
+    
     // MARK: Outlets
     
     @IBOutlet weak var myMartiniBarsOutlet: UIButton!
@@ -17,22 +21,25 @@ class HomeViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func findMartinisAction(_ sender: Any) {
-        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3", 33.7064016, -116.397167) { (success, error) in
             
-            if error != nil {
-                print("There was an error: \(String(describing: error))")
-            }
-            
-        }
     }
     
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        
         
     }
+    
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        if segue.identifier == "findMartinisSegue" {
+//            let tabController = segue.destination as! UITabBarController
+//            let navController = tabController.viewControllers![0] as! UINavigationController
+//            let mapController = navController.viewControllers[0] as! MapViewController
+//            mapController.locations = self.locations
+//        }
+//    }
+
 }
 
