@@ -12,6 +12,7 @@
 		37B52154201A956C004393ED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37B52152201A956C004393ED /* Model.xcdatamodeld */; };
 		37B5215C201AC77A004393ED /* Favorite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5215A201AC77A004393ED /* Favorite+CoreDataClass.swift */; };
 		37B5215D201AC77A004393ED /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5215B201AC77A004393ED /* Favorite+CoreDataProperties.swift */; };
+		37B5215F201AF836004393ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5215E201AF836004393ED /* Location.swift */; };
 		37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */; };
 		37D3E2C01FFF35DC0058CE97 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2BF1FFF35DC0058CE97 /* HomeViewController.swift */; };
 		37D3E2C31FFF35DC0058CE97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37D3E2C11FFF35DC0058CE97 /* Main.storyboard */; };
@@ -29,6 +30,7 @@
 		37B52153201A956C004393ED /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		37B5215A201AC77A004393ED /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataClass.swift"; sourceTree = "<group>"; };
 		37B5215B201AC77A004393ED /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		37B5215E201AF836004393ED /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		37D3E2BA1FFF35DC0058CE97 /* MartiniFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MartiniFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37D3E2BF1FFF35DC0058CE97 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 		37D3E2BC1FFF35DC0058CE97 /* MartiniFinder */ = {
 			isa = PBXGroup;
 			children = (
+				37B5215E201AF836004393ED /* Location.swift */,
 				37B52155201AC51A004393ED /* Model */,
 				37D3E2CF20006A930058CE97 /* GCDSwift.swift */,
 				3771FE9C20127CC40001E075 /* Client */,
@@ -189,6 +192,7 @@
 				37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */,
 				37B5215C201AC77A004393ED /* Favorite+CoreDataClass.swift in Sources */,
 				37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */,
+				37B5215F201AF836004393ED /* Location.swift in Sources */,
 				37D3E2D2200099270058CE97 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -24,6 +24,7 @@ extension YelpClient {
     
     struct ParameterKeys {
         static let Term = "term"
+        static let Coordinates = "coordinates"
         static let Latitude = "latitude"
         static let Longitude = "longitude"
         static let Radius = "radius"
@@ -32,7 +33,10 @@ extension YelpClient {
     }
     
     struct ParameterValues {
+            
         static let Name = "name"
+        static let Latitude = "latitude"
+        static let Longitude = "longitude"
         static let Rating = "rating"
         static let Price = "price"
         static let Distance = "distance"
