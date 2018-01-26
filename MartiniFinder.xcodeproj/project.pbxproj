@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E21F7201420FC0084C3B2 /* CoreDataStack.swift */; };
 		3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3771FE9A20127CBF0001E075 /* YelpConvenience.swift */; };
+		37B52154201A956C004393ED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37B52152201A956C004393ED /* Model.xcdatamodeld */; };
 		37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */; };
 		37D3E2C01FFF35DC0058CE97 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2BF1FFF35DC0058CE97 /* HomeViewController.swift */; };
 		37D3E2C31FFF35DC0058CE97 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 37D3E2C11FFF35DC0058CE97 /* Main.storyboard */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		372E21F7201420FC0084C3B2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		3771FE9A20127CBF0001E075 /* YelpConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConvenience.swift; sourceTree = "<group>"; };
+		37B52153201A956C004393ED /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		37D3E2BA1FFF35DC0058CE97 /* MartiniFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MartiniFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		37D3E2BF1FFF35DC0058CE97 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
@@ -78,6 +80,7 @@
 			children = (
 				37D3E2CF20006A930058CE97 /* GCDSwift.swift */,
 				372E21F7201420FC0084C3B2 /* CoreDataStack.swift */,
+				37B52152201A956C004393ED /* Model.xcdatamodeld */,
 				3771FE9C20127CC40001E075 /* Client */,
 				37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */,
 				37D3E2BF1FFF35DC0058CE97 /* HomeViewController.swift */,
@@ -167,6 +170,7 @@
 				372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */,
 				3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */,
 				37D3E2D020006A930058CE97 /* GCDSwift.swift in Sources */,
+				37B52154201A956C004393ED /* Model.xcdatamodeld in Sources */,
 				37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */,
 				37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */,
 				37D3E2D2200099270058CE97 /* MapViewController.swift in Sources */,
@@ -354,6 +358,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		37B52152201A956C004393ED /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				37B52153201A956C004393ED /* Model.xcdatamodel */,
+			);
+			currentVersion = 37B52153201A956C004393ED /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 37D3E2B21FFF35DC0058CE97 /* Project object */;
 }
