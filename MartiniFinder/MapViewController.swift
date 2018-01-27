@@ -97,7 +97,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         
         setMapRegion()
-        //setAnnotations()
     }
     
     override func viewDidAppear(_ animated: Bool) {

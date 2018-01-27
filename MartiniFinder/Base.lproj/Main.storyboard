@@ -105,8 +105,15 @@
                                 <rect key="frame" x="16" y="492" width="343" height="110"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="55E-fb-lAt">
-                                        <rect key="frame" x="0.0" y="0.0" width="343" height="110"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="293" height="110"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="110" id="Vkn-xj-Js7"/>
+                                            <constraint firstAttribute="width" constant="293" id="nf0-4Z-rEE"/>
+                                        </constraints>
                                     </imageView>
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="Uc9-KB-Svt">
+                                        <rect key="frame" x="293" y="0.0" width="50" height="110"/>
+                                    </stackView>
                                 </subviews>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="110" id="XUk-Kr-H9t"/>

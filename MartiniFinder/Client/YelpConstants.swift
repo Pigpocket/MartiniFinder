@@ -41,6 +41,7 @@ extension YelpClient {
         static let Price = "price"
         static let Distance = "distance"
         static let IsClosed = "is_closed"
+        static let ImageUrl = "image_url"
     }
     
 }
