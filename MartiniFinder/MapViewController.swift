@@ -14,8 +14,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // MARK: Properties
     
-    let annotation = MKPointAnnotation()
-    let annotationArray: [MKPointAnnotation] = []
+    var annotation = MKPointAnnotation()
+    var annotationArray: [MKPointAnnotation] = []
     var locationManager = CLLocationManager()
     var locations = [Location]()
     
@@ -32,10 +32,36 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 print("There was an error: \(String(describing: error))")
             }
             
+            performUIUpdatesOnMain {
+                
             if let locations = locations {
                 self.locations = locations
                 print("These are locations in MapViewController: \(locations)")
             }
+            
+            var tempArray = [MKPointAnnotation]()
+            
+            for dictionary in self.locations {
+                
+                let lat = CLLocationDegrees(dictionary.latitude)
+                let long = CLLocationDegrees(dictionary.longitude)
+                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                
+                let name = dictionary.name
+                let rating = dictionary.rating
+                
+                let annotation = MKPointAnnotation()
+                annotation.coordinate = coordinate
+                annotation.title = "\(name)"
+                annotation.subtitle = "\(rating)"
+                tempArray.append(annotation)
+            }
+            
+            // Add the annotations to the annotations array
+            self.mapView.removeAnnotations(self.annotationArray)
+            self.annotationArray = tempArray
+            self.mapView.addAnnotations(self.annotationArray)
+        }
         }
         
         self.mapView.delegate = self
@@ -48,9 +74,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
+            print("My latitude is: \(String(describing: locationManager.location?.coordinate.latitude))")
+            print("My longitude is: \(String(describing: locationManager.location?.coordinate.longitude))")
         }
         
         setMapRegion()
+        //setAnnotations()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -68,19 +97,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func setAnnotations() {
         
         // Set the coordinates
-        let coordinates = CLLocationCoordinate2D(latitude: annotation.coordinate.latitude, longitude: annotation.coordinate.longitude)
+        for location in self.locations {
+            let annotation = MKPointAnnotation()
+            
+            let coordinates = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
+            annotation.coordinate = coordinates
+            mapView.addAnnotation(annotation)
+        }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        // Set the map region
-        let region = MKCoordinateRegionMake(coordinates, MKCoordinateSpan(latitudeDelta: 1, longitudeDelta: 1))
-        self.mapView.setRegion(region, animated: true)
-        self.mapView.delegate = self
+        let reuseId = "pin"
         
-        // Set the annotation
-        annotation.coordinate = coordinates
+        var pinView = mapView.dequeueReusableAnnotationView(withIdentifier: reuseId) as? MKPinAnnotationView
         
-        // Add the annotation
-        mapView.addAnnotation(self.annotation)
-        self.mapView.addAnnotation(self.annotation)
+        if pinView == nil {
+            pinView = MKPinAnnotationView(annotation: annotation, reuseIdentifier: reuseId)
+            pinView!.canShowCallout = true
+            pinView!.pinTintColor = .red
+            pinView!.rightCalloutAccessoryView = UIButton(type: .detailDisclosure)
+        } else {
+            pinView!.annotation = annotation
+        }
+        
+        return pinView
     }
     
     func setMapRegion() {
