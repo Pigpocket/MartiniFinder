@@ -101,12 +101,26 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7ma-dw-MQD">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
+                            <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JwS-jH-apa">
+                                <rect key="frame" x="16" y="492" width="343" height="110"/>
+                                <subviews>
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="55E-fb-lAt">
+                                        <rect key="frame" x="0.0" y="0.0" width="343" height="110"/>
+                                    </imageView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="110" id="XUk-Kr-H9t"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="top" secondItem="CYF-nt-46s" secondAttribute="top" constant="64" id="F6o-xh-OzV"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="leading" secondItem="9Sz-g2-H7d" secondAttribute="leading" id="LM6-MQ-Eqk"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="trailing" secondItem="9Sz-g2-H7d" secondAttribute="trailing" id="LOU-D5-eGF"/>
+                            <constraint firstItem="9Sz-g2-H7d" firstAttribute="trailing" secondItem="JwS-jH-apa" secondAttribute="trailing" constant="16" id="bmF-LA-3Lo"/>
+                            <constraint firstItem="9Sz-g2-H7d" firstAttribute="bottom" secondItem="JwS-jH-apa" secondAttribute="bottom" constant="16" id="kvR-Fw-oWa"/>
+                            <constraint firstItem="JwS-jH-apa" firstAttribute="leading" secondItem="9Sz-g2-H7d" secondAttribute="leading" constant="16" id="n9q-uT-Mhu"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="bottom" secondItem="9Sz-g2-H7d" secondAttribute="bottom" id="yt1-Kb-8vr"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Sz-g2-H7d"/>
@@ -115,12 +129,14 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" id="b4g-ub-Otb"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="horizontalStack" destination="JwS-jH-apa" id="Cwf-gs-Hba"/>
+                        <outlet property="imageView" destination="55E-fb-lAt" id="qPD-vX-bha"/>
                         <outlet property="mapView" destination="7ma-dw-MQD" id="HYF-Wn-YJ0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sb-g5-J8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3142" y="-343"/>
+            <point key="canvasLocation" x="3141.5999999999999" y="-343.17841079460271"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XO7-WU-XE4">

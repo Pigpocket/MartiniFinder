@@ -10,7 +10,7 @@ import MapKit
 import Foundation
 import CoreLocation
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate  {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate  {
     
     // MARK: Properties
     
@@ -18,13 +18,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var annotationArray: [MKPointAnnotation] = []
     var locationManager = CLLocationManager()
     var locations = [Location]()
+    let singleTap = UITapGestureRecognizer()
     
     // MARK: Outlets
     
     @IBOutlet weak var mapView: MKMapView!
+    @IBOutlet weak var horizontalStack: UIStackView!
+    @IBOutlet weak var imageView: UIImageView!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        horizontalStack.isHidden = true
+        imageView.backgroundColor = UIColor.red
+        
+        // 1. create a gesture recognizer (tap gesture)
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(sender:)))
+        
+        // 2. add the gesture recognizer to a view
+        mapView.addGestureRecognizer(tapGesture)
+    
+    
+    // 3. this method is called when a tap is recognized
+    func handleTap(sender: UITapGestureRecognizer) {
+        print("tap")
+    }
         
         YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3", 33.7064016, -116.397167) { (locations, error) in
             
@@ -106,6 +124,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
+        return !(touch.view is MKPinAnnotationView)
+    }
+    
+    @objc func handleSingleTap(sender: UIGestureRecognizer) {
+        print("Recognizing the single tap")
+        singleTap.numberOfTapsRequired = 1
+        horizontalStack.isHidden = true
+    }
+    
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
         let reuseId = "pin"
@@ -123,6 +151,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         return pinView
     }
+
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    
+        print("didSelect was pressed")
+        //view.annotation = annotation
+        horizontalStack.isHidden = false
+        
+    }
     
     func setMapRegion() {
         
@@ -133,6 +169,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let region = MKCoordinateRegionMake(coordinates, MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
         self.mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
+        
     }
     
     
