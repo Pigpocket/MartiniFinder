@@ -31,6 +31,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         horizontalStack.isHidden = true
         imageView.backgroundColor = UIColor.red
+        imageView.layer.cornerRadius = 10
+        horizontalStack.addBackground(color: UIColor.white)
         
         // 1. create a gesture recognizer (tap gesture)
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(sender:)))
@@ -64,6 +66,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 let lat = CLLocationDegrees(dictionary.latitude)
                 let long = CLLocationDegrees(dictionary.longitude)
                 let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                
+                // Set the image
+                let imageUrl = dictionary.imageUrl
+                let url = URL(fileURLWithPath: imageUrl)
+                if let imageData = try? Data(contentsOf: url) {
+                    let image = UIImage(data: imageData)
+                    self.imageView.image = image
+                }
                 
                 let name = dictionary.name
                 let rating = dictionary.rating
@@ -171,5 +181,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
+    
+}
+
+extension UIStackView {
+    
+    func addBackground(color: UIColor) {
+        let subView = UIView(frame: bounds)
+        subView.backgroundColor = color
+        subView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        subView.layer.cornerRadius = 10
+        insertSubview(subView, at: 0)
+    }
     
 }
