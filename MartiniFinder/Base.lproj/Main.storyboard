@@ -169,6 +169,10 @@
                         <outlet property="horizontalStack" destination="JwS-jH-apa" id="Cwf-gs-Hba"/>
                         <outlet property="imageView" destination="55E-fb-lAt" id="qPD-vX-bha"/>
                         <outlet property="mapView" destination="7ma-dw-MQD" id="HYF-Wn-YJ0"/>
+                        <outlet property="nameLabel" destination="Ovu-kw-fZX" id="WeC-Mw-GJh"/>
+                        <outlet property="openLabel" destination="ikQ-rs-wNp" id="Ilh-Sw-L74"/>
+                        <outlet property="priceLabel" destination="pyl-9B-nMt" id="y27-g1-Tc2"/>
+                        <outlet property="ratingLabel" destination="ZY5-JB-doR" id="iNm-sw-BkB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sb-g5-J8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
