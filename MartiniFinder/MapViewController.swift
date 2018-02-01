@@ -82,12 +82,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
                 
                 let name = dictionary.name
-                let rating = dictionary.rating
                 
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = coordinate
                 annotation.title = "\(name)"
-                annotation.subtitle = "\(rating)"
                 tempArray.append(annotation)
             }
             
@@ -154,7 +152,25 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         print("didSelect was pressed")
         //view.annotation = annotation
         horizontalStack.isHidden = false
+        populateStackViews(annotation: view.annotation as! MKPointAnnotation)
         
+    }
+    
+    func populateStackViews(annotation: MKPointAnnotation) {
+        for location in locations {
+            if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
+                nameLabel.text = location.name
+                ratingLabel.text = String(location.rating)
+                priceLabel.text = location.price
+                if location.isClosed == 0 {
+                    openLabel.text = "open"
+                } else {
+                    openLabel.text = "closed"
+                    openLabel.textColor = UIColor.red
+                }
+                
+            }
+        }
     }
     
     func setMapRegion() {
