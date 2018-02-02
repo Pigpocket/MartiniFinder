@@ -26,9 +26,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var horizontalStack: UIStackView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var ratingLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
+    @IBOutlet weak var ratingImage: UIImageView!
     
     // MARK: Lifecycle
     
@@ -37,6 +37,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         horizontalStack.isHidden = true
         imageView.backgroundColor = UIColor.red
+        ratingImage.backgroundColor = UIColor.red
         imageView.layer.cornerRadius = 10
         horizontalStack.addBackground(color: UIColor.white)
         
@@ -160,7 +161,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         for location in locations {
             if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
                 nameLabel.text = location.name
-                ratingLabel.text = String(location.rating)
                 priceLabel.text = location.price
                 if location.isClosed == 0 {
                     openLabel.text = "open"

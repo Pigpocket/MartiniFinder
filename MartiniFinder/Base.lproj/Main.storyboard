@@ -101,7 +101,7 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7ma-dw-MQD">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="JwS-jH-apa">
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="JwS-jH-apa">
                                 <rect key="frame" x="16" y="489" width="343" height="113"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DP2-De-J9c">
@@ -110,6 +110,7 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="55E-fb-lAt">
                                                 <rect key="frame" x="8" y="8" width="110" height="97"/>
                                                 <constraints>
+                                                    <constraint firstAttribute="height" constant="97" id="NaQ-sV-f5q"/>
                                                     <constraint firstAttribute="width" constant="110" id="i3k-w4-dkt"/>
                                                 </constraints>
                                             </imageView>
@@ -117,28 +118,28 @@
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </stackView>
                                     <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="Uc9-KB-Svt">
-                                        <rect key="frame" x="132" y="0.0" width="211" height="113"/>
+                                        <rect key="frame" x="118" y="0.0" width="225" height="113"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" text="The Name of Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ovu-kw-fZX" userLabel="Name Label">
-                                                <rect key="frame" x="8" y="8" width="195" height="20.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="The Name of Place" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ovu-kw-fZX" userLabel="Name Label">
+                                                <rect key="frame" x="8" y="8" width="209" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Rating Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZY5-JB-doR" userLabel="Rating Label">
-                                                <rect key="frame" x="8" y="33.5" width="195" height="20.5"/>
-                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                <nil key="textColor"/>
-                                                <nil key="highlightedColor"/>
-                                            </label>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyl-9B-nMt" userLabel="Price Label">
-                                                <rect key="frame" x="8" y="59" width="195" height="20.5"/>
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IdP-Q0-B52" userLabel="Rating Image">
+                                                <rect key="frame" x="8" y="33.5" width="209" height="24"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="24" id="KY7-Zo-gTo"/>
+                                                </constraints>
+                                            </imageView>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Price Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyl-9B-nMt" userLabel="Price Label">
+                                                <rect key="frame" x="8" y="62.5" width="209" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Open Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ikQ-rs-wNp" userLabel="Open Label">
-                                                <rect key="frame" x="8" y="84.5" width="195" height="20.5"/>
+                                                <rect key="frame" x="8" y="88" width="209" height="17"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
@@ -170,9 +171,9 @@
                         <outlet property="imageView" destination="55E-fb-lAt" id="qPD-vX-bha"/>
                         <outlet property="mapView" destination="7ma-dw-MQD" id="HYF-Wn-YJ0"/>
                         <outlet property="nameLabel" destination="Ovu-kw-fZX" id="WeC-Mw-GJh"/>
-                        <outlet property="openLabel" destination="ikQ-rs-wNp" id="Ilh-Sw-L74"/>
+                        <outlet property="openLabel" destination="ikQ-rs-wNp" id="AAg-qx-YEK"/>
                         <outlet property="priceLabel" destination="pyl-9B-nMt" id="y27-g1-Tc2"/>
-                        <outlet property="ratingLabel" destination="ZY5-JB-doR" id="iNm-sw-BkB"/>
+                        <outlet property="ratingImage" destination="IdP-Q0-B52" id="S9G-nm-5Ps"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sb-g5-J8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
