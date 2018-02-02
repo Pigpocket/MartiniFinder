@@ -44,8 +44,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.viewDidLoad()
         
         horizontalStack.isHidden = true
-        imageView.backgroundColor = UIColor.red
-        ratingImage.backgroundColor = UIColor.red
         imageView.layer.cornerRadius = 10
         horizontalStack.addBackground(color: UIColor.white)
         
@@ -134,7 +132,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             star5.image = UIImage(named: "emptyStar")
         } else if location.rating == 1.5 {
             star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "halfFilled")
+            star2.image = UIImage(named: "halfStar")
             star3.image = UIImage(named: "emptyStar")
             star4.image = UIImage(named: "emptyStar")
             star5.image = UIImage(named: "emptyStar")
@@ -147,7 +145,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         } else if location.rating == 2.5 {
             star1.image = UIImage(named: "filledStar")
             star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "halfFilled")
+            star3.image = UIImage(named: "halfStar")
             star4.image = UIImage(named: "emptyStar")
             star5.image = UIImage(named: "emptyStar")
         } else if location.rating == 3.0 {
@@ -160,7 +158,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             star1.image = UIImage(named: "filledStar")
             star2.image = UIImage(named: "filledStar")
             star3.image = UIImage(named: "filledStar")
-            star4.image = UIImage(named: "halfFilled")
+            star4.image = UIImage(named: "halfStar")
             star5.image = UIImage(named: "emptyStar")
         } else if location.rating == 4.0 {
             star1.image = UIImage(named: "filledStar")
@@ -173,7 +171,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             star2.image = UIImage(named: "filledStar")
             star3.image = UIImage(named: "filledStar")
             star4.image = UIImage(named: "filledStar")
-            star5.image = UIImage(named: "halfFilled")
+            star5.image = UIImage(named: "halfStar")
         } else if location.rating == 5.0 {
             star1.image = UIImage(named: "filledStar")
             star2.image = UIImage(named: "filledStar")
