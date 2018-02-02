@@ -40,60 +40,6 @@ extension YelpClient {
                 }
             }
         }
-        
-
-//                        for business in businesses {
-                        
-//                            guard let name = business[ParameterValues.Name] as? String else {
-//                                completionHandlerForSearchResults(false, "Unable to find key 'name'")
-//                                return
-//                            }
-//
-//                            guard let rating = business[ParameterValues.Rating] as? Double else {
-//                                completionHandlerForSearchResults(false, "Unable to find key 'rating")
-//                                return
-//                            }
-//
-//                            guard let price = business[ParameterValues.Price] as? String else {
-//                                completionHandlerForSearchResults(false, "Unable to find key 'price'")
-//                                return
-//                            }
-//
-//                            guard let isClosed = business[ParameterValues.IsClosed] as? Int else {
-//                                completionHandlerForSearchResults(false, "Unable to find key 'isClosed'")
-//                                return
-//                            }
-//
-//                            guard let distance = business[ParameterValues.Distance] as? Double else {
-//                                completionHandlerForSearchResults(false, "Unable to find key 'distance'")
-//                                return
-//                            }
-//
-//                            guard let coordinates = business[ParameterKeys.Coordinates] as? [String:Any] else {
-//                                completionHandlerForSearchResults(false, "Unable to find key 'coordinates'")
-//                                return
-//                            }
-//
-//                            guard let latitude = coordinates[ParameterValues.Latitude] as? Double else {
-//                                completionHandlerForSearchResults(false, "Unable to find key 'latitude'")
-//                                return
-//                            }
-//
-//                            guard let longitude = coordinates[ParameterValues.Longitude] as? Double else {
-//                                completionHandlerForSearchResults(false, "Unable to find key 'longitude'")
-//                                return
-//                            }
-                            
-//                            Location.shared.name = name
-//                            Location.shared.rating = rating
-//                            Location.shared.price = price
-//                            Location.shared.isClosed = isClosed
-//                            Location.shared.distance = distance
-//                            Location.shared.latitude = latitude
-//                            Location.shared.longitude = longitude
-//                            print(name)
-//                            print(rating)
-//                            print(price)
     }
 
 }

@@ -73,17 +73,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 let lat = CLLocationDegrees(dictionary.latitude)
                 let long = CLLocationDegrees(dictionary.longitude)
                 let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                
-                // Set the image
-                let imageUrl = dictionary.imageUrl
-                let url = URL(fileURLWithPath: imageUrl)
-                if let imageData = try? Data(contentsOf: url) {
-                    let image = UIImage(data: imageData)
-                    self.imageView.image = image
-                }
-                
                 let name = dictionary.name
-                
                 let annotation = MKPointAnnotation()
                 annotation.coordinate = coordinate
                 annotation.title = "\(name)"
@@ -143,15 +133,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @objc func handleSingleTap(sender: UIGestureRecognizer) {
-        print("Recognizing the single tap")
+    
         singleTap.numberOfTapsRequired = 1
         horizontalStack.isHidden = true
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-    
-        print("didSelect was pressed")
-        //view.annotation = annotation
+
         horizontalStack.isHidden = false
         populateStackViews(annotation: view.annotation as! MKPointAnnotation)
         
@@ -163,12 +151,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 nameLabel.text = location.name
                 priceLabel.text = location.price
                 if location.isClosed == 0 {
-                    openLabel.text = "open"
+                    openLabel.text = "Open"
                 } else {
-                    openLabel.text = "closed"
+                    openLabel.text = "Closed"
                     openLabel.textColor = UIColor.red
                 }
                 
+                // Set the image
+                if let url = URL(string: location.imageUrl) {
+                    if let imageData = try? Data(contentsOf: url) {
+                        let image = UIImage(data: imageData)
+                        self.imageView.layer.cornerRadius = 10
+                        self.imageView.clipsToBounds = true
+                        self.imageView.image = image
+                    }
+                }
             }
         }
     }
