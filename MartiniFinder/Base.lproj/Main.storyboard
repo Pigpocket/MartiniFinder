@@ -126,12 +126,32 @@
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="IdP-Q0-B52" userLabel="Rating Image">
+                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="W1y-fI-3Wt">
                                                 <rect key="frame" x="8" y="33.5" width="209" height="24"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="24" id="KY7-Zo-gTo"/>
-                                                </constraints>
-                                            </imageView>
+                                                <subviews>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="IdP-Q0-B52" userLabel="Star 1">
+                                                        <rect key="frame" x="0.0" y="0.0" width="35" height="24"/>
+                                                        <constraints>
+                                                            <constraint firstAttribute="height" constant="24" id="KY7-Zo-gTo"/>
+                                                        </constraints>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="gJD-QR-8xn" userLabel="Star 2">
+                                                        <rect key="frame" x="35" y="0.0" width="34.5" height="24"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="0FW-ay-J7d" userLabel="Star 3">
+                                                        <rect key="frame" x="69.5" y="0.0" width="35" height="24"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="xV0-17-rDR" userLabel="Star 4">
+                                                        <rect key="frame" x="104.5" y="0.0" width="35" height="24"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="cEM-fS-hDT" userLabel="Star 5">
+                                                        <rect key="frame" x="139.5" y="0.0" width="34.5" height="24"/>
+                                                    </imageView>
+                                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="zCE-Ll-yAA" userLabel="Blank">
+                                                        <rect key="frame" x="174" y="0.0" width="35" height="24"/>
+                                                    </imageView>
+                                                </subviews>
+                                            </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Price Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyl-9B-nMt" userLabel="Price Label">
                                                 <rect key="frame" x="8" y="62.5" width="209" height="20.5"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -167,6 +187,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" id="b4g-ub-Otb"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="blankView" destination="zCE-Ll-yAA" id="MtM-SW-JPO"/>
                         <outlet property="horizontalStack" destination="JwS-jH-apa" id="Cwf-gs-Hba"/>
                         <outlet property="imageView" destination="55E-fb-lAt" id="qPD-vX-bha"/>
                         <outlet property="mapView" destination="7ma-dw-MQD" id="HYF-Wn-YJ0"/>
@@ -174,6 +195,11 @@
                         <outlet property="openLabel" destination="ikQ-rs-wNp" id="AAg-qx-YEK"/>
                         <outlet property="priceLabel" destination="pyl-9B-nMt" id="y27-g1-Tc2"/>
                         <outlet property="ratingImage" destination="IdP-Q0-B52" id="S9G-nm-5Ps"/>
+                        <outlet property="star1" destination="IdP-Q0-B52" id="bvY-WU-n11"/>
+                        <outlet property="star2" destination="gJD-QR-8xn" id="Tj5-oB-Mzg"/>
+                        <outlet property="star3" destination="0FW-ay-J7d" id="o90-zg-9nH"/>
+                        <outlet property="star4" destination="xV0-17-rDR" id="e6q-BZ-RiB"/>
+                        <outlet property="star5" destination="cEM-fS-hDT" id="NRF-7a-EuB"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sb-g5-J8w" userLabel="First Responder" sceneMemberID="firstResponder"/>

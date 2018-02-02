@@ -24,11 +24,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var horizontalStack: UIStackView!
-    @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
+    
+    // imageViews
     @IBOutlet weak var ratingImage: UIImageView!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var star1: UIImageView!
+    @IBOutlet weak var star2: UIImageView!
+    @IBOutlet weak var star3: UIImageView!
+    @IBOutlet weak var star4: UIImageView!
+    @IBOutlet weak var star5: UIImageView!
+    @IBOutlet weak var blankView: UIImageView!
     
     // MARK: Lifecycle
     
@@ -116,6 +124,65 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
     
+    func displayRating(location: Location) {
+        
+        if location.rating == 1 {
+            star1.image = UIImage(named: "filledStar")
+            star2.image = UIImage(named: "emptyStar")
+            star3.image = UIImage(named: "emptyStar")
+            star4.image = UIImage(named: "emptyStar")
+            star5.image = UIImage(named: "emptyStar")
+        } else if location.rating == 1.5 {
+            star1.image = UIImage(named: "filledStar")
+            star2.image = UIImage(named: "halfFilled")
+            star3.image = UIImage(named: "emptyStar")
+            star4.image = UIImage(named: "emptyStar")
+            star5.image = UIImage(named: "emptyStar")
+        } else if location.rating == 2 {
+            star1.image = UIImage(named: "filledStar")
+            star2.image = UIImage(named: "filledStar")
+            star3.image = UIImage(named: "emptyStar")
+            star4.image = UIImage(named: "emptyStar")
+            star5.image = UIImage(named: "emptyStar")
+        } else if location.rating == 2.5 {
+            star1.image = UIImage(named: "filledStar")
+            star2.image = UIImage(named: "filledStar")
+            star3.image = UIImage(named: "halfFilled")
+            star4.image = UIImage(named: "emptyStar")
+            star5.image = UIImage(named: "emptyStar")
+        } else if location.rating == 3.0 {
+            star1.image = UIImage(named: "filledStar")
+            star2.image = UIImage(named: "filledStar")
+            star3.image = UIImage(named: "filledStar")
+            star4.image = UIImage(named: "emptyStar")
+            star5.image = UIImage(named: "emptyStar")
+        } else if location.rating == 3.5 {
+            star1.image = UIImage(named: "filledStar")
+            star2.image = UIImage(named: "filledStar")
+            star3.image = UIImage(named: "filledStar")
+            star4.image = UIImage(named: "halfFilled")
+            star5.image = UIImage(named: "emptyStar")
+        } else if location.rating == 4.0 {
+            star1.image = UIImage(named: "filledStar")
+            star2.image = UIImage(named: "filledStar")
+            star3.image = UIImage(named: "filledStar")
+            star4.image = UIImage(named: "filledStar")
+            star5.image = UIImage(named: "emptyStar")
+        } else if location.rating == 4.5 {
+            star1.image = UIImage(named: "filledStar")
+            star2.image = UIImage(named: "filledStar")
+            star3.image = UIImage(named: "filledStar")
+            star4.image = UIImage(named: "filledStar")
+            star5.image = UIImage(named: "halfFilled")
+        } else if location.rating == 5.0 {
+            star1.image = UIImage(named: "filledStar")
+            star2.image = UIImage(named: "filledStar")
+            star3.image = UIImage(named: "filledStar")
+            star4.image = UIImage(named: "filledStar")
+            star5.image = UIImage(named: "filledStar")
+        }
+    }
+
     func setAnnotations() {
         
         // Set the coordinates
@@ -148,14 +215,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func populateStackViews(annotation: MKPointAnnotation) {
         for location in locations {
             if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
+                
                 nameLabel.text = location.name
                 priceLabel.text = location.price
+                
                 if location.isClosed == 0 {
                     openLabel.text = "Open"
                 } else {
                     openLabel.text = "Closed"
                     openLabel.textColor = UIColor.red
                 }
+                
+                displayRating(location: location)
                 
                 // Set the image
                 if let url = URL(string: location.imageUrl) {
