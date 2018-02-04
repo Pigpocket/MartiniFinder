@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3704503C2026D54B004FECBD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3704503B2026D54B004FECBD /* TableViewController.swift */; };
+		3704503E2026E6B7004FECBD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3704503D2026E6B7004FECBD /* TableViewCell.swift */; };
 		372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E21F7201420FC0084C3B2 /* CoreDataStack.swift */; };
 		3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3771FE9A20127CBF0001E075 /* YelpConvenience.swift */; };
 		37B52154201A956C004393ED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37B52152201A956C004393ED /* Model.xcdatamodeld */; };
@@ -27,6 +28,7 @@
 
 /* Begin PBXFileReference section */
 		3704503B2026D54B004FECBD /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		3704503D2026E6B7004FECBD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		372E21F7201420FC0084C3B2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		3771FE9A20127CBF0001E075 /* YelpConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConvenience.swift; sourceTree = "<group>"; };
 		37B52153201A956C004393ED /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -105,6 +107,7 @@
 				37D3E2BF1FFF35DC0058CE97 /* HomeViewController.swift */,
 				37D3E2D1200099270058CE97 /* MapViewController.swift */,
 				3704503B2026D54B004FECBD /* TableViewController.swift */,
+				3704503D2026E6B7004FECBD /* TableViewCell.swift */,
 				37D3E2C11FFF35DC0058CE97 /* Main.storyboard */,
 				37D3E2C41FFF35DC0058CE97 /* Assets.xcassets */,
 				37D3E2C61FFF35DC0058CE97 /* LaunchScreen.storyboard */,
@@ -190,6 +193,7 @@
 				3704503C2026D54B004FECBD /* TableViewController.swift in Sources */,
 				37D3E2C01FFF35DC0058CE97 /* HomeViewController.swift in Sources */,
 				372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */,
+				3704503E2026E6B7004FECBD /* TableViewCell.swift in Sources */,
 				3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */,
 				37D3E2D020006A930058CE97 /* GCDSwift.swift in Sources */,
 				37B52154201A956C004393ED /* Model.xcdatamodeld in Sources */,
