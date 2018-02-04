@@ -52,12 +52,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         // 2. add the gesture recognizer to a view
         mapView.addGestureRecognizer(tapGesture)
-    
-    
-    // 3. this method is called when a tap is recognized
-    func handleTap(sender: UITapGestureRecognizer) {
-        print("tap")
-    }
         
         YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3", 33.7064016, -116.397167) { (locations, error) in
             
@@ -90,7 +84,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.mapView.removeAnnotations(self.annotationArray)
             self.annotationArray = tempArray
             self.mapView.addAnnotations(self.annotationArray)
-        }
+            }
         }
         
         self.mapView.delegate = self
