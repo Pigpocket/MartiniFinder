@@ -63,7 +63,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 
             if let locations = locations {
                 self.locations = locations
-                print("These are locations in MapViewController: \(locations)")
             }
             
             var tempArray = [MKPointAnnotation]()

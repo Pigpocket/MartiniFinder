@@ -7,3 +7,15 @@
 //
 
 import Foundation
+import UIKit
+
+class TableViewCell: UITableViewCell {
+    
+    // MARK: Outlets
+    
+    @IBOutlet weak var horizontalStackView: UIStackView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var openLabel: UILabel!
+    
+}
