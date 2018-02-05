@@ -23,8 +23,12 @@ class TableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
         
-        print("viewDidLoad in TVC called")
         YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3", 33.7064016, -116.397167) { (locations, error) in
             
             if error != nil {
@@ -36,7 +40,6 @@ class TableViewController: UITableViewController {
                 if let locations = locations {
                     self.locations = locations
                     self.locationsTableView.reloadData()
-                    print("locations assigned in TVC")
                 }
             }
         }
