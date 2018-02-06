@@ -13,6 +13,7 @@ class TableViewCell: UITableViewCell {
     
     // MARK: Outlets
     
+    @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var horizontalStackView: UIStackView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!

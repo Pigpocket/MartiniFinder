@@ -70,9 +70,9 @@ extension TableViewController {
         if let url = URL(string: location.imageUrl) {
             if let imageData = try? Data(contentsOf: url) {
                 let image = UIImage(data: imageData)
-                cell.imageView?.layer.cornerRadius = 10
-                cell.imageView?.clipsToBounds = true
-                cell.imageView?.image = image
+                cell.thumbnailImageView.layer.cornerRadius = 10
+                cell.thumbnailImageView.clipsToBounds = true
+                cell.thumbnailImageView.image = image
             }
         }
         }
