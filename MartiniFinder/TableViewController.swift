@@ -54,28 +54,26 @@ extension TableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
         let location = locations[indexPath.row]
         
-        performUIUpdatesOnMain {
-            
-        cell.nameLabel.text = location.name
-        cell.priceLabel.text = location.price
         
-        if location.isClosed == 0 {
-            cell.openLabel.text = "Open"
-        } else {
-            cell.openLabel.text = "Closed"
-            cell.openLabel.textColor = UIColor.red
-        }
         
-        if let url = URL(string: location.imageUrl) {
-            if let imageData = try? Data(contentsOf: url) {
-                let image = UIImage(data: imageData)
-                cell.thumbnailImageView.layer.cornerRadius = 10
-                cell.thumbnailImageView.clipsToBounds = true
-                cell.thumbnailImageView.image = image
-            }
-        }
-        }
-        
+            YelpClient.sharedInstance().loadImage(location.imageUrl, completionHandler: { (image) in
+                
+                performUIUpdatesOnMain {
+                    cell.thumbnailImageView.layer.cornerRadius = 10
+                    cell.thumbnailImageView.clipsToBounds = true
+                    cell.thumbnailImageView.image = image
+                    
+                    cell.nameLabel.text = location.name
+                    cell.priceLabel.text = location.price
+                    
+                    if location.isClosed == 0 {
+                        cell.openLabel.text = "Open"
+                    } else {
+                        cell.openLabel.text = "Closed"
+                        cell.openLabel.textColor = UIColor.red
+                    }
+                }
+            })
         return cell
     }
     

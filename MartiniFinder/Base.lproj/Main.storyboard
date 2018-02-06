@@ -149,13 +149,13 @@
                                                                 <constraint firstItem="v0F-XT-Ljl" firstAttribute="leading" secondItem="hCh-2G-CX9" secondAttribute="leading" id="vDH-0N-AlE"/>
                                                             </constraints>
                                                         </stackView>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Price Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSQ-1i-FCl">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Price Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="SSQ-1i-FCl">
                                                             <rect key="frame" x="8" y="46.5" width="216" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" verticalCompressionResistancePriority="751" text="Open Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AT-FJ-ynf">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Open Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AT-FJ-ynf">
                                                             <rect key="frame" x="8" y="67" width="216" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -165,12 +165,19 @@
                                                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 </stackView>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="uCZ-P1-haY" secondAttribute="trailing" id="XGV-aJ-gPh"/>
+                                            </constraints>
                                         </stackView>
                                     </subviews>
                                     <constraints>
+                                        <constraint firstItem="J7l-p6-i5Z" firstAttribute="top" secondItem="PKr-Vf-KQN" secondAttribute="top" id="AB5-6Z-UGp"/>
+                                        <constraint firstAttribute="trailing" secondItem="J7l-p6-i5Z" secondAttribute="trailing" id="J5t-qo-8ev"/>
                                         <constraint firstAttribute="bottom" secondItem="J7l-p6-i5Z" secondAttribute="bottom" id="P9i-vg-MeW"/>
+                                        <constraint firstItem="J7l-p6-i5Z" firstAttribute="leading" secondItem="PKr-Vf-KQN" secondAttribute="leading" id="nj2-Re-ESZ"/>
                                         <constraint firstItem="J7l-p6-i5Z" firstAttribute="top" secondItem="PKr-Vf-KQN" secondAttribute="top" id="qws-RX-u9t"/>
                                         <constraint firstItem="J7l-p6-i5Z" firstAttribute="leading" secondItem="PKr-Vf-KQN" secondAttribute="leading" id="t33-zJ-iM3"/>
+                                        <constraint firstAttribute="bottom" secondItem="J7l-p6-i5Z" secondAttribute="bottom" id="uxN-Qc-FGA"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
