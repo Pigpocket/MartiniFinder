@@ -50,8 +50,7 @@ class TableViewController: UITableViewController {
 extension TableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        print("cellForRowAt in TVC called")
+
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
         let location = locations[indexPath.row]
         
@@ -81,7 +80,6 @@ extension TableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        print("Number of rows in section called")
         return locations.count
     }
     
@@ -89,8 +87,19 @@ extension TableViewController {
         
         let location = locations[indexPath.row]
         
-        let app = UIApplication.shared
-        //app.open(URL(string: studentLocation.mediaURL)!, options: [:], completionHandler: nil)
-        
+        YelpClient.sharedInstance().getUrlFromLocationName(id: location.id) { (url, error) in
+
+            performUIUpdatesOnMain {
+
+                if error != nil {
+                    print("There was an error getting the URL")
+                }
+
+                if let url = url {
+                    let app = UIApplication.shared
+                    app.open(url, options: [:], completionHandler: nil)
+                }
+            }
+        }
     }
 }

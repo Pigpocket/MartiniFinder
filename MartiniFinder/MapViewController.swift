@@ -96,8 +96,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
-            print("My latitude is: \(String(describing: locationManager.location?.coordinate.latitude))")
-            print("My longitude is: \(String(describing: locationManager.location?.coordinate.longitude))")
         }
         
         setMapRegion()
@@ -236,7 +234,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         // Set the coordinates
         let coordinates = CLLocationCoordinate2D(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
-        print("Coordinates are: \(coordinates)")
         
         let region = MKCoordinateRegionMake(coordinates, MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
         self.mapView.setRegion(region, animated: true)

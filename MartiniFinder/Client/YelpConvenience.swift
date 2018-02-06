@@ -14,7 +14,6 @@ extension YelpClient {
     func getYelpSearchResults(_ term: String, _ price: String, _ latitude: Double, _ longitude: Double, completionHandlerForSearchResults: @escaping (_ locations: [Location]?, _ errorString: String?) -> Void) {
         
         let methods = Methods.Businesses + Methods.Search
-        print("Methods are: \(methods)")
         
         let methodParameters = [
             ParameterKeys.Latitude: latitude,
@@ -40,6 +39,22 @@ extension YelpClient {
                 }
             }
         }
+    }
+    
+    func getUrlFromLocationName(id: String, completionHandlerUrlFromLocationName: @escaping (_ url: URL?, _ errorString: String?) -> Void){
+        
+        let methods = Methods.Biz + id
+        
+        taskForGetBusinessInfo(method: methods) { (url, error) in
+            
+            if let error = error {
+                completionHandlerUrlFromLocationName(nil, "There was an error getting the URL Request: \(error)")
+            } else {
+                completionHandlerUrlFromLocationName(url, nil)
+                
+            }
+        }
+        
     }
 
 }

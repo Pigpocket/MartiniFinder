@@ -14,12 +14,15 @@ extension YelpClient {
     struct Constants {
         static let Authorization = "Authorization"
         static let YelpBaseURL = "https://api.yelp.com/v3/"
+        static let YelpWebURL = "https://www.yelp.com/"
         static let APIKey = "Bearer 8UOe63-UqKM8syYDjMXsdbJbMXWg1Hp6Tu0_kgQr_wUMP3Y2NEDXZE_Tdc_C_xSjihkl2PeM3n9sveqQ1bdXm2AQ1bviVEo1qpUbAk9m_3CmQv3wSlnYZ8qp5j5RWnYx"
     }
     
     struct Methods {
         static let Businesses = "businesses/"
+        static let Biz = "biz/"
         static let Search = "search"
+        static let Id = "id"
     }
     
     struct ParameterKeys {
@@ -33,7 +36,8 @@ extension YelpClient {
     }
     
     struct ParameterValues {
-            
+        
+        static let Id = "id"
         static let Name = "name"
         static let Latitude = "latitude"
         static let Longitude = "longitude"

@@ -16,6 +16,7 @@ class YelpClient {
         let session = URLSession.shared
         let urlString = YelpClient.Constants.YelpBaseURL + method + escapedParameters(parameters as [String : AnyObject])
         let url = URL(string: urlString)!
+
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue(YelpClient.Constants.APIKey, forHTTPHeaderField: YelpClient.Constants.Authorization)
@@ -52,7 +53,7 @@ class YelpClient {
             
             /* Parse the data */
             self.parseJSONObject(data, completionHandlerForConvertData: completionHandlerForGET)
-            
+
         }
         task.resume()
     }
@@ -92,6 +93,13 @@ class YelpClient {
             
             return "?\(keyValuePairs.joined(separator: "&"))"
         }
+    }
+    
+    func taskForGetBusinessInfo(method: String, completionHandlerForGETBusinessInfo: @escaping (_ url: URL, _ error: NSError?) -> Void) {
+        
+        let urlString = YelpClient.Constants.YelpWebURL + method
+        let url = URL(string: urlString)!
+        completionHandlerForGETBusinessInfo(url, nil)
     }
     
     class func sharedInstance() -> YelpClient {

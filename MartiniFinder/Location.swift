@@ -13,6 +13,7 @@ struct Location {
 
     // MARK: Properties
     
+    var id = ""
     var latitude = 0.0
     var longitude = 0.0
     var isClosed = 0
@@ -27,6 +28,7 @@ struct Location {
         
         // GUARD: Do all dictionaries have values?
         guard
+            let id = dictionary[YelpClient.ParameterValues.Id] as? String,
             let name = dictionary[YelpClient.ParameterValues.Name] as? String,
             let rating = dictionary[YelpClient.ParameterValues.Rating] as? Double,
             let price = dictionary[YelpClient.ParameterValues.Price] as? String,
@@ -41,6 +43,7 @@ struct Location {
             else { return nil }
         
             // Otherwise, initialize values
+            self.id = id
             self.name = name
             self.rating = rating
             self.price = price
