@@ -372,7 +372,7 @@
         <scene sceneID="3gK-dY-Yf1">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Sjs-zc-1vO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Map" id="32w-0t-1hD"/>
+                    <tabBarItem key="tabBarItem" title="Map" image="icon_mapview-deselected" id="32w-0t-1hD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vb6-DT-tXf">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -410,7 +410,7 @@
         <scene sceneID="Fme-bk-n4s">
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="IPQ-Zq-AeO" sceneMemberID="viewController">
-                    <tabBarItem key="tabBarItem" title="Table" id="U6K-br-jnj"/>
+                    <tabBarItem key="tabBarItem" title="Table" image="icon_listview-deselected" id="U6K-br-jnj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="d5V-lx-usY">
                         <rect key="frame" x="0.0" y="20" width="320" height="44"/>
@@ -428,5 +428,7 @@
     </scenes>
     <resources>
         <image name="Martini Cocktail Book Shot" width="4928" height="3264"/>
+        <image name="icon_listview-deselected" width="75" height="50"/>
+        <image name="icon_mapview-deselected" width="75" height="50"/>
     </resources>
 </document>
