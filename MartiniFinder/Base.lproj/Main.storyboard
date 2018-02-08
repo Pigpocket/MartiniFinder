@@ -310,6 +310,41 @@
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             </stackView>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="CqV-DK-zEJ">
+                                <rect key="frame" x="70" y="80" width="180" height="30"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9w-lr-GPF">
+                                        <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="9"/>
+                                        <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                        <size key="titleShadowOffset" width="2" height="2"/>
+                                        <state key="normal" title="Redo Search In This Area">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="redoSearch:" destination="SMO-Rv-JTJ" eventType="touchUpInside" id="Dh5-wl-I3V"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBz-Y8-aTR">
+                                        <rect key="frame" x="150" y="0.0" width="30" height="30"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="30" id="01Z-7h-6nL"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                        <state key="normal" image="icons8-near-me-filled-50"/>
+                                        <connections>
+                                            <action selector="redoSearch:" destination="SMO-Rv-JTJ" eventType="touchUpInside" id="Gj6-oF-xsQ"/>
+                                            <action selector="resetLocation:" destination="SMO-Rv-JTJ" eventType="touchUpInside" id="tbU-sQ-wv5"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="fIt-5f-pJV"/>
+                                    <constraint firstAttribute="width" constant="180" id="juZ-gR-YZ8"/>
+                                </constraints>
+                            </stackView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -319,10 +354,12 @@
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="top" secondItem="CYF-nt-46s" secondAttribute="top" constant="64" id="O8r-xZ-zDk"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="leading" secondItem="9Sz-g2-H7d" secondAttribute="leading" id="Sn3-zO-cj5"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="leading" secondItem="9Sz-g2-H7d" secondAttribute="leading" id="U28-3J-p35"/>
+                            <constraint firstItem="CqV-DK-zEJ" firstAttribute="top" secondItem="CYF-nt-46s" secondAttribute="top" constant="80" id="ZNS-Ky-Z39"/>
                             <constraint firstItem="9Sz-g2-H7d" firstAttribute="trailing" secondItem="JwS-jH-apa" secondAttribute="trailing" constant="16" id="bmF-LA-3Lo"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="bottom" secondItem="9Sz-g2-H7d" secondAttribute="bottom" id="hmW-AJ-rlN"/>
                             <constraint firstItem="9Sz-g2-H7d" firstAttribute="bottom" secondItem="JwS-jH-apa" secondAttribute="bottom" constant="16" id="kvR-Fw-oWa"/>
                             <constraint firstItem="JwS-jH-apa" firstAttribute="leading" secondItem="9Sz-g2-H7d" secondAttribute="leading" constant="16" id="n9q-uT-Mhu"/>
+                            <constraint firstItem="CqV-DK-zEJ" firstAttribute="centerX" secondItem="CYF-nt-46s" secondAttribute="centerX" id="oXB-Nd-5FJ"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="trailing" secondItem="9Sz-g2-H7d" secondAttribute="trailing" id="v7H-nS-Li9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Sz-g2-H7d"/>
@@ -339,6 +376,8 @@
                         <outlet property="openLabel" destination="ikQ-rs-wNp" id="AAg-qx-YEK"/>
                         <outlet property="priceLabel" destination="pyl-9B-nMt" id="y27-g1-Tc2"/>
                         <outlet property="ratingImage" destination="IdP-Q0-B52" id="S9G-nm-5Ps"/>
+                        <outlet property="redoSearchButton" destination="j9w-lr-GPF" id="lir-35-FPf"/>
+                        <outlet property="resetLocationButton" destination="OBz-Y8-aTR" id="beO-lo-gia"/>
                         <outlet property="star1" destination="IdP-Q0-B52" id="bvY-WU-n11"/>
                         <outlet property="star2" destination="gJD-QR-8xn" id="Tj5-oB-Mzg"/>
                         <outlet property="star3" destination="0FW-ay-J7d" id="o90-zg-9nH"/>
@@ -348,7 +387,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sb-g5-J8w" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3140" y="-344.07796101949026"/>
+            <point key="canvasLocation" x="3138.75" y="-344.36619718309862"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="XO7-WU-XE4">
@@ -430,5 +469,6 @@
         <image name="Martini Cocktail Book Shot" width="4928" height="3264"/>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
+        <image name="icons8-near-me-filled-50" width="50" height="50"/>
     </resources>
 </document>

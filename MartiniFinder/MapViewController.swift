@@ -27,6 +27,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
+    @IBOutlet weak var redoSearchButton: UIButton!
+    @IBOutlet weak var resetLocationButton: UIButton!
     
     // imageViews
     @IBOutlet weak var ratingImage: UIImageView!
@@ -47,13 +49,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         imageView.layer.cornerRadius = 10
         horizontalStack.addBackground(color: UIColor.white)
         
-        // 1. create a gesture recognizer (tap gesture)
+        // Configure resetLocationButton & redoSearchButtons
+        resetLocationButton.contentHorizontalAlignment = .fill
+        resetLocationButton.contentVerticalAlignment = .fill
+        resetLocationButton.contentMode = .scaleAspectFit
+        resetLocationButton.layer.cornerRadius = 10
+        resetLocationButton.isHidden = true
+        
+        redoSearchButton.layer.cornerRadius = 10
+        redoSearchButton.isHidden = true
+        
+        // Add gesture recognizers
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(sender:)))
+        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
+        panGesture.delegate = self
         
-        // 2. add the gesture recognizer to a view
+        // Add gesture recognizers to a view
         mapView.addGestureRecognizer(tapGesture)
+        mapView.addGestureRecognizer(panGesture)
         
-        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3", 33.7064016, -116.397167) { (locations, error) in
+        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", 33.7064016, -116.397167) { (locations, error) in
             
             if error != nil {
                 print("There was an error: \(String(describing: error))")
@@ -188,8 +203,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         return !(touch.view is MKPinAnnotationView)
     }
     
-    @objc func handleSingleTap(sender: UIGestureRecognizer) {
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
     
+    @objc func didDragMap(_ gestureRecognizer: UIPanGestureRecognizer) {
+        if (gestureRecognizer.state == UIGestureRecognizerState.ended) {
+            redoSearchButton.isHidden = false
+            resetLocationButton.isHidden = false
+        }
+    }
+    
+    @objc func handleSingleTap(sender: UIGestureRecognizer) {
         singleTap.numberOfTapsRequired = 1
         horizontalStack.isHidden = true
     }
@@ -241,6 +266,54 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
     }
     
+    @IBAction func resetLocation(_ sender: Any) {
+        setMapRegion()
+    }
+    
+    @IBAction func redoSearch(_ sender: Any) {
+       print("This shit is being called")
+        
+        let latitude = mapView.centerCoordinate.latitude
+        let longitude = mapView.centerCoordinate.longitude
+        print("latitude: \(String(describing: latitude))")
+         print("longitude: \(String(describing: longitude))")
+        
+        locations.removeAll()
+        print("Locations are: \(locations)")
+        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", latitude, longitude, completionHandlerForSearchResults: { (locations, error) in
+            
+            if error != nil {
+                print("There was an error: \(String(describing: error))")
+            }
+            
+            performUIUpdatesOnMain {
+                
+                if let locations = locations {
+                    print("Post function locations: \(locations)")
+                    self.locations = locations
+                }
+                
+                var tempArray = [MKPointAnnotation]()
+                
+                for dictionary in self.locations {
+                    
+                    let lat = CLLocationDegrees(dictionary.latitude)
+                    let long = CLLocationDegrees(dictionary.longitude)
+                    let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                    let name = dictionary.name
+                    let annotation = MKPointAnnotation()
+                    annotation.coordinate = coordinate
+                    annotation.title = "\(name)"
+                    tempArray.append(annotation)
+                }
+                
+                // Add the annotations to the annotations array
+                self.mapView.removeAnnotations(self.annotationArray)
+                self.annotationArray = tempArray
+                self.mapView.addAnnotations(self.annotationArray)
+            }
+        })
+    }
     
 }
 
