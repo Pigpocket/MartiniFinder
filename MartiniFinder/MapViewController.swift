@@ -271,12 +271,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @IBAction func redoSearch(_ sender: Any) {
-       print("This shit is being called")
         
         let latitude = mapView.centerCoordinate.latitude
         let longitude = mapView.centerCoordinate.longitude
-        print("latitude: \(String(describing: latitude))")
-         print("longitude: \(String(describing: longitude))")
         
         locations.removeAll()
         print("Locations are: \(locations)")
