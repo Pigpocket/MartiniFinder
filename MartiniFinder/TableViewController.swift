@@ -8,12 +8,14 @@
 
 import Foundation
 import UIKit
+import MapKit
 
-class TableViewController: UITableViewController {
+class TableViewController: UITableViewController, CLLocationManagerDelegate {
     
     // MARK: Properties
 
     var locations = [Location]()
+    var locationManager = CLLocationManager()
     
     // MARK: Outlets
     
@@ -29,7 +31,7 @@ class TableViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3", 33.7064016, -116.397167) { (locations, error) in
+        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3", MapCenter.shared.latitude, MapCenter.shared.longitude) { (locations, error) in
             
             if error != nil {
                 print("There was an error: \(String(describing: error))")

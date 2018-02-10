@@ -68,7 +68,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         mapView.addGestureRecognizer(tapGesture)
         mapView.addGestureRecognizer(panGesture)
         
-        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", 33.7064016, -116.397167) { (locations, error) in
+        // Get user position
+        MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
+        MapCenter.shared.longitude = (locationManager.location?.coordinate.longitude)!
+        
+        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", MapCenter.shared.latitude, MapCenter.shared.longitude) { (locations, error) in
             
             if error != nil {
                 print("There was an error: \(String(describing: error))")
@@ -260,7 +264,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // Set the coordinates
         let coordinates = CLLocationCoordinate2D(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
         
-        let region = MKCoordinateRegionMake(coordinates, MKCoordinateSpan(latitudeDelta: 0.15, longitudeDelta: 0.15))
+        let region = MKCoordinateRegionMake(coordinates, MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
         self.mapView.setRegion(region, animated: true)
         mapView.showsUserLocation = true
         
@@ -272,12 +276,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @IBAction func redoSearch(_ sender: Any) {
         
-        let latitude = mapView.centerCoordinate.latitude
-        let longitude = mapView.centerCoordinate.longitude
-        
         locations.removeAll()
-        print("Locations are: \(locations)")
-        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", latitude, longitude, completionHandlerForSearchResults: { (locations, error) in
+
+        MapCenter.shared.latitude = mapView.centerCoordinate.latitude
+        MapCenter.shared.longitude = mapView.centerCoordinate.longitude
+        
+        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", MapCenter.shared.latitude, MapCenter.shared.longitude, completionHandlerForSearchResults: { (locations, error) in
             
             if error != nil {
                 print("There was an error: \(String(describing: error))")
@@ -286,7 +290,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             performUIUpdatesOnMain {
                 
                 if let locations = locations {
-                    print("Post function locations: \(locations)")
                     self.locations = locations
                 }
                 

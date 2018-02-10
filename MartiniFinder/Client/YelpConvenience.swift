@@ -32,6 +32,7 @@ extension YelpClient {
                 if let results = results {
                     if let businesses = results["businesses"] as? [[String:AnyObject]] {
                         let locations = Location.locationFromResults(businesses)
+                        // Add user location
                         completionHandlerForSearchResults(locations, nil)
                     } else {
                         completionHandlerForSearchResults(nil, "Unable to get array of locations")

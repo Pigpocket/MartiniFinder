@@ -23,6 +23,7 @@ struct Location {
     var distance = 0.0
     var imageUrl = ""
     
+    
     // MARK: Initializer
     init?(dictionary: [String:AnyObject]) {
         
@@ -66,6 +67,7 @@ struct Location {
         }
         return locations
     }
+    
     
     
 }

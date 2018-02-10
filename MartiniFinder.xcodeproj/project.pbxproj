@@ -24,6 +24,7 @@
 		37D3E2D2200099270058CE97 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2D1200099270058CE97 /* MapViewController.swift */; };
 		37D3E2D42000A0EE0058CE97 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2D32000A0EE0058CE97 /* YelpClient.swift */; };
 		37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2D520015BAF0058CE97 /* YelpConstants.swift */; };
+		37E8231F202FAA880054A75D /* MapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8231E202FAA880054A75D /* MapCenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +47,7 @@
 		37D3E2D1200099270058CE97 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		37D3E2D32000A0EE0058CE97 /* YelpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		37D3E2D520015BAF0058CE97 /* YelpConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConstants.swift; sourceTree = "<group>"; };
+		37E8231E202FAA880054A75D /* MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				37B5215E201AF836004393ED /* Location.swift */,
+				37E8231E202FAA880054A75D /* MapCenter.swift */,
 				37B52155201AC51A004393ED /* Model */,
 				37D3E2CF20006A930058CE97 /* GCDSwift.swift */,
 				3771FE9C20127CC40001E075 /* Client */,
@@ -192,6 +195,7 @@
 				37B5215D201AC77A004393ED /* Favorite+CoreDataProperties.swift in Sources */,
 				3704503C2026D54B004FECBD /* TableViewController.swift in Sources */,
 				37D3E2C01FFF35DC0058CE97 /* HomeViewController.swift in Sources */,
+				37E8231F202FAA880054A75D /* MapCenter.swift in Sources */,
 				372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */,
 				3704503E2026E6B7004FECBD /* TableViewCell.swift in Sources */,
 				3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */,
