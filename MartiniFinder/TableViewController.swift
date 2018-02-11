@@ -56,8 +56,6 @@ extension TableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
         let location = locations[indexPath.row]
         
-        
-        
             YelpClient.sharedInstance().loadImage(location.imageUrl, completionHandler: { (image) in
                 
                 performUIUpdatesOnMain {
@@ -74,6 +72,8 @@ extension TableViewController {
                         cell.openLabel.text = "Closed"
                         cell.openLabel.textColor = UIColor.red
                     }
+                    
+                    cell.displayRating(location: location)
                 }
             })
         return cell
