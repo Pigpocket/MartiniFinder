@@ -48,6 +48,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         horizontalStack.isHidden = true
         imageView.layer.cornerRadius = 10
         horizontalStack.addBackground(color: UIColor.white)
+        self.tabBarController?.tabBar.tintColor = UIColor.black
         
         // Configure resetLocationButton & redoSearchButtons
         resetLocationButton.contentHorizontalAlignment = .fill

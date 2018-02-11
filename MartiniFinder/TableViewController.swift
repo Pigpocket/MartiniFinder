@@ -25,6 +25,8 @@ class TableViewController: UITableViewController, CLLocationManagerDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        self.tabBarController?.tabBar.tintColor = UIColor.black
 
     }
     

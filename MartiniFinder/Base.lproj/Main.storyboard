@@ -477,4 +477,5 @@
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icons8-near-me-filled-50" width="50" height="50"/>
     </resources>
+    <color key="tintColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
 </document>
