@@ -96,7 +96,7 @@
                                                 <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="uCZ-P1-haY" userLabel="Info Stack View">
                                                     <rect key="frame" x="88" y="0.0" width="232" height="95.5"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name of Place Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCg-To-pmD">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name of Place Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wCg-To-pmD">
                                                             <rect key="frame" x="8" y="8" width="216" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -162,6 +162,11 @@
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
+                                                    <constraints>
+                                                        <constraint firstItem="wCg-To-pmD" firstAttribute="leading" secondItem="uCZ-P1-haY" secondAttribute="leading" constant="8" id="NeY-0M-ctF"/>
+                                                        <constraint firstItem="wCg-To-pmD" firstAttribute="top" secondItem="uCZ-P1-haY" secondAttribute="top" constant="8" id="QBQ-Ag-MTv"/>
+                                                        <constraint firstAttribute="trailing" secondItem="wCg-To-pmD" secondAttribute="trailing" constant="8" id="Ykb-Gz-U0R"/>
+                                                    </constraints>
                                                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 </stackView>
                                             </subviews>
