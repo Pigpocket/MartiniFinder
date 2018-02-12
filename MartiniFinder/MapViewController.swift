@@ -9,6 +9,7 @@ import UIKit
 import MapKit
 import Foundation
 import CoreLocation
+import CoreData
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate  {
     

@@ -9,6 +9,7 @@
 import Foundation
 import UIKit
 import MapKit
+import CoreData
 
 class TableViewController: UITableViewController, CLLocationManagerDelegate {
     
