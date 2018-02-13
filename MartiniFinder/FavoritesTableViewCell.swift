@@ -26,7 +26,7 @@ class FavoritesTableViewCell: UITableViewCell {
     @IBOutlet weak var openLabel: UILabel!
     
     
-    func displayRating(location: Location) {
+    func displayRating(location: Favorites) {
         
         if location.rating == 1 {
             star1.image = UIImage(named: "filledStar")

@@ -14,7 +14,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     
     // Properties
     
-    var favorites: [Favorites]?
+    var favorites: [Favorites]!
     
     // Initialize FetchedResultsController
     
@@ -46,5 +46,33 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favorites!.count
     }
-    
+
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell") as! FavoritesTableViewCell
+        
+        let favorite = self.fetchedResultsController.object(at: indexPath)
+        
+        YelpClient.sharedInstance().loadImage(favorite.imageUrl, completionHandler: { (image) in
+            
+            performUIUpdatesOnMain {
+                cell.thumbnailImageView.layer.cornerRadius = 10
+                cell.thumbnailImageView.clipsToBounds = true
+                cell.thumbnailImageView.image = image
+                
+                cell.nameLabel.text = favorite.name
+                cell.priceLabel.text = favorite.price
+                
+//                if location.isClosed == 0 {
+//                    cell.openLabel.text = "Open"
+//                } else {
+//                    cell.openLabel.text = "Closed"
+//                    cell.openLabel.textColor = UIColor.red
+//                }
+                
+                cell.displayRating(location: favorite)
+            }
+        })
+        
+    }
 }
