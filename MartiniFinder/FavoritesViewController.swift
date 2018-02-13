@@ -14,13 +14,30 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     
     // Properties
     
-    var favorites: [Favorite]?
+    var favorites: [Favorites]?
     
+    
+    
+    // Initialize FetchedResultsController
+    
+    lazy var fetchedResultsController: NSFetchedResultsController<Favorites> = { () -> NSFetchedResultsController<Favorites> in
+        
+        let fetchRequest = NSFetchRequest<Favorites>(entityName: "Favorites")
+        fetchRequest.sortDescriptors = []
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
     
     
     // Outlets
     
     @IBOutlet var favoritesTableView: UITableView!
+    
+    
+    // Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,9 +54,27 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell")
         
-        return cell!
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell") as! FavoritesTableViewCell
+        
+        let favorite = self.fetchedResultsController.object(at: indexPath)
+        
+        YelpClient.sharedInstance().loadImage(favorite.imageUrl, completionHandler: { (image) in
+        
+            performUIUpdatesOnMain {
+                cell.thumbnailImageView.layer.cornerRadius = 10
+                cell.thumbnailImageView.clipsToBounds = true
+                cell.thumbnailImageView.image = image
+                
+                cell.nameLabel.text = favorite.name
+                cell.priceLabel.text = favorite.price
+                
+                cell.displayRating(location: favorite)
+            }
+        })
+        
+        return cell
+        
     }
     
     

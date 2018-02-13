@@ -16,7 +16,7 @@ class TableViewController: UITableViewController, CLLocationManagerDelegate {
     // MARK: Properties
 
     var locations = [Location]()
-    var favoriteLocation: Favorite?
+    var favoriteLocation: Favorites?
     var locationManager = CLLocationManager()
     
     // MARK: Outlets
@@ -100,8 +100,13 @@ extension TableViewController {
         let location = locations[indexPath.row]
         
         // Initialize NSManagedObject 'Location' with properties
-        favoriteLocation = Favorite(context: CoreDataStack.sharedInstance().context)
+        favoriteLocation = Favorites(context: CoreDataStack.sharedInstance().context)
         favoriteLocation?.name = location.name
+        favoriteLocation?.isFavorite = true
+        favoriteLocation?.rating = location.rating
+        favoriteLocation?.price = location.price
+        favoriteLocation?.imageUrl = location.imageUrl
+        favoriteLocation?.id = location.id
         favoriteLocation?.isFavorite = true
         
         YelpClient.sharedInstance().getUrlFromLocationName(id: location.id) { (url, error) in
