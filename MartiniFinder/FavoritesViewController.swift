@@ -14,9 +14,20 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     
     // Properties
     
-    var favorites: [Favorite]?
+    var favorites: [Favorites]?
     
+    // Initialize FetchedResultsController
     
+    lazy var fetchedResultsController: NSFetchedResultsController<Favorites> = { () -> NSFetchedResultsController<Favorites> in
+        
+        let fetchRequest = NSFetchRequest<Favorites>(entityName: "Favorites")
+        fetchRequest.sortDescriptors = []
+        
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
+        fetchedResultsController.delegate = self
+        
+        return fetchedResultsController
+    }()
     
     // Outlets
     
@@ -35,7 +46,5 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return favorites!.count
     }
-    
-    
     
 }
