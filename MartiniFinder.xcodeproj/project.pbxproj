@@ -25,6 +25,8 @@
 		37D3E2D42000A0EE0058CE97 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2D32000A0EE0058CE97 /* YelpClient.swift */; };
 		37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2D520015BAF0058CE97 /* YelpConstants.swift */; };
 		37E8231F202FAA880054A75D /* MapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8231E202FAA880054A75D /* MapCenter.swift */; };
+		37E82339203273E40054A75D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E82338203273E40054A75D /* FavoritesViewController.swift */; };
+		37E8233B203276F90054A75D /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +50,8 @@
 		37D3E2D32000A0EE0058CE97 /* YelpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		37D3E2D520015BAF0058CE97 /* YelpConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConstants.swift; sourceTree = "<group>"; };
 		37E8231E202FAA880054A75D /* MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCenter.swift; sourceTree = "<group>"; };
+		37E82338203273E40054A75D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
+		37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,6 +115,8 @@
 				37D3E2D1200099270058CE97 /* MapViewController.swift */,
 				3704503B2026D54B004FECBD /* TableViewController.swift */,
 				3704503D2026E6B7004FECBD /* TableViewCell.swift */,
+				37E82338203273E40054A75D /* FavoritesViewController.swift */,
+				37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */,
 				37D3E2C11FFF35DC0058CE97 /* Main.storyboard */,
 				37D3E2C41FFF35DC0058CE97 /* Assets.xcassets */,
 				37D3E2C61FFF35DC0058CE97 /* LaunchScreen.storyboard */,
@@ -201,9 +207,11 @@
 				3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */,
 				37D3E2D020006A930058CE97 /* GCDSwift.swift in Sources */,
 				37B52154201A956C004393ED /* Model.xcdatamodeld in Sources */,
+				37E82339203273E40054A75D /* FavoritesViewController.swift in Sources */,
 				37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */,
 				37B5215C201AC77A004393ED /* Favorite+CoreDataClass.swift in Sources */,
 				37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */,
+				37E8233B203276F90054A75D /* FavoritesTableViewCell.swift in Sources */,
 				37B5215F201AF836004393ED /* Location.swift in Sources */,
 				37D3E2D2200099270058CE97 /* MapViewController.swift in Sources */,
 			);
