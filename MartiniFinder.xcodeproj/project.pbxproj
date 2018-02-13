@@ -11,9 +11,6 @@
 		3704503E2026E6B7004FECBD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3704503D2026E6B7004FECBD /* TableViewCell.swift */; };
 		372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E21F7201420FC0084C3B2 /* CoreDataStack.swift */; };
 		3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3771FE9A20127CBF0001E075 /* YelpConvenience.swift */; };
-		37B52154201A956C004393ED /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37B52152201A956C004393ED /* Model.xcdatamodeld */; };
-		37B5215C201AC77A004393ED /* Favorite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5215A201AC77A004393ED /* Favorite+CoreDataClass.swift */; };
-		37B5215D201AC77A004393ED /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5215B201AC77A004393ED /* Favorite+CoreDataProperties.swift */; };
 		37B5215F201AF836004393ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5215E201AF836004393ED /* Location.swift */; };
 		37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */; };
 		37D3E2C01FFF35DC0058CE97 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2BF1FFF35DC0058CE97 /* HomeViewController.swift */; };
@@ -27,6 +24,9 @@
 		37E8231F202FAA880054A75D /* MapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8231E202FAA880054A75D /* MapCenter.swift */; };
 		37E82339203273E40054A75D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E82338203273E40054A75D /* FavoritesViewController.swift */; };
 		37E8233B203276F90054A75D /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */; };
+		37E8234020328DC20054A75D /* Modelv1.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37E8233E20328DC20054A75D /* Modelv1.xcdatamodeld */; };
+		37E8234320328E3B0054A75D /* Favorite+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8234120328E3B0054A75D /* Favorite+CoreDataClass.swift */; };
+		37E8234420328E3B0054A75D /* Favorite+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8234220328E3B0054A75D /* Favorite+CoreDataProperties.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -34,9 +34,6 @@
 		3704503D2026E6B7004FECBD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		372E21F7201420FC0084C3B2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		3771FE9A20127CBF0001E075 /* YelpConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConvenience.swift; sourceTree = "<group>"; };
-		37B52153201A956C004393ED /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		37B5215A201AC77A004393ED /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataClass.swift"; sourceTree = "<group>"; };
-		37B5215B201AC77A004393ED /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		37B5215E201AF836004393ED /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		37D3E2BA1FFF35DC0058CE97 /* MartiniFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MartiniFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -52,6 +49,9 @@
 		37E8231E202FAA880054A75D /* MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCenter.swift; sourceTree = "<group>"; };
 		37E82338203273E40054A75D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
+		37E8233F20328DC20054A75D /* Modelv1.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Modelv1.xcdatamodel; sourceTree = "<group>"; };
+		37E8234120328E3B0054A75D /* Favorite+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorite+CoreDataClass.swift"; path = "../../Favorite+CoreDataClass.swift"; sourceTree = "<group>"; };
+		37E8234220328E3B0054A75D /* Favorite+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorite+CoreDataProperties.swift"; path = "../../Favorite+CoreDataProperties.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,9 +79,9 @@
 			isa = PBXGroup;
 			children = (
 				372E21F7201420FC0084C3B2 /* CoreDataStack.swift */,
-				37B52152201A956C004393ED /* Model.xcdatamodeld */,
-				37B5215A201AC77A004393ED /* Favorite+CoreDataClass.swift */,
-				37B5215B201AC77A004393ED /* Favorite+CoreDataProperties.swift */,
+				37E8233E20328DC20054A75D /* Modelv1.xcdatamodeld */,
+				37E8234120328E3B0054A75D /* Favorite+CoreDataClass.swift */,
+				37E8234220328E3B0054A75D /* Favorite+CoreDataProperties.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -198,7 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				37D3E2D42000A0EE0058CE97 /* YelpClient.swift in Sources */,
-				37B5215D201AC77A004393ED /* Favorite+CoreDataProperties.swift in Sources */,
+				37E8234420328E3B0054A75D /* Favorite+CoreDataProperties.swift in Sources */,
 				3704503C2026D54B004FECBD /* TableViewController.swift in Sources */,
 				37D3E2C01FFF35DC0058CE97 /* HomeViewController.swift in Sources */,
 				37E8231F202FAA880054A75D /* MapCenter.swift in Sources */,
@@ -206,13 +206,13 @@
 				3704503E2026E6B7004FECBD /* TableViewCell.swift in Sources */,
 				3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */,
 				37D3E2D020006A930058CE97 /* GCDSwift.swift in Sources */,
-				37B52154201A956C004393ED /* Model.xcdatamodeld in Sources */,
 				37E82339203273E40054A75D /* FavoritesViewController.swift in Sources */,
 				37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */,
-				37B5215C201AC77A004393ED /* Favorite+CoreDataClass.swift in Sources */,
 				37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */,
+				37E8234320328E3B0054A75D /* Favorite+CoreDataClass.swift in Sources */,
 				37E8233B203276F90054A75D /* FavoritesTableViewCell.swift in Sources */,
 				37B5215F201AF836004393ED /* Location.swift in Sources */,
+				37E8234020328DC20054A75D /* Modelv1.xcdatamodeld in Sources */,
 				37D3E2D2200099270058CE97 /* MapViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -400,13 +400,13 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		37B52152201A956C004393ED /* Model.xcdatamodeld */ = {
+		37E8233E20328DC20054A75D /* Modelv1.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				37B52153201A956C004393ED /* Model.xcdatamodel */,
+				37E8233F20328DC20054A75D /* Modelv1.xcdatamodel */,
 			);
-			currentVersion = 37B52153201A956C004393ED /* Model.xcdatamodel */;
-			path = Model.xcdatamodeld;
+			currentVersion = 37E8233F20328DC20054A75D /* Modelv1.xcdatamodel */;
+			path = Modelv1.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

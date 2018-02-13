@@ -13,7 +13,7 @@ import CoreData
 @objc(Favorite)
 public class Favorite: NSManagedObject {
 
-    convenience init(name: String, isFavorite: Bool, context: NSManagedObjectContext) {
+    convenience init(name: String, id: String, price: String, rating: Double, latitude: Double, longitude: Double, imageUrl: String, isFavorite: Bool, context: NSManagedObjectContext) {
         if let entity = NSEntityDescription.entity(forEntityName: "Location", in: context) {
             self.init(entity: entity, insertInto: context)
             self.name = name
