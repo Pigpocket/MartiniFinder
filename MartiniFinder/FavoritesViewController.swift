@@ -74,5 +74,6 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
             }
         })
         
+        return cell
     }
 }

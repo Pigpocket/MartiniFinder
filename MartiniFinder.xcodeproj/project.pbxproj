@@ -25,8 +25,8 @@
 		37E82339203273E40054A75D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E82338203273E40054A75D /* FavoritesViewController.swift */; };
 		37E8233B203276F90054A75D /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */; };
 		37E8234E2032AB6C0054A75D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37E8234C2032AB6C0054A75D /* Model.xcdatamodeld */; };
-		37E823512032AC0E0054A75D /* Favorites+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8234F2032AC0E0054A75D /* Favorites+CoreDataClass.swift */; };
-		37E823522032AC0E0054A75D /* Favorites+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E823502032AC0E0054A75D /* Favorites+CoreDataProperties.swift */; };
+		37E823512032AC0E0054A75D /* FavoritesClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8234F2032AC0E0054A75D /* FavoritesClass.swift */; };
+		37E823522032AC0E0054A75D /* FavoritesExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E823502032AC0E0054A75D /* FavoritesExtension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,8 +50,8 @@
 		37E82338203273E40054A75D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		37E8234D2032AB6C0054A75D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		37E8234F2032AC0E0054A75D /* Favorites+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+CoreDataClass.swift"; sourceTree = "<group>"; };
-		37E823502032AC0E0054A75D /* Favorites+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		37E8234F2032AC0E0054A75D /* FavoritesClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesClass.swift; sourceTree = "<group>"; };
+		37E823502032AC0E0054A75D /* FavoritesExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesExtension.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -80,8 +80,8 @@
 			children = (
 				372E21F7201420FC0084C3B2 /* CoreDataStack.swift */,
 				37E8234C2032AB6C0054A75D /* Model.xcdatamodeld */,
-				37E8234F2032AC0E0054A75D /* Favorites+CoreDataClass.swift */,
-				37E823502032AC0E0054A75D /* Favorites+CoreDataProperties.swift */,
+				37E8234F2032AC0E0054A75D /* FavoritesClass.swift */,
+				37E823502032AC0E0054A75D /* FavoritesExtension.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -199,7 +199,8 @@
 			files = (
 				37D3E2D42000A0EE0058CE97 /* YelpClient.swift in Sources */,
 				3704503C2026D54B004FECBD /* TableViewController.swift in Sources */,
-				37E823522032AC0E0054A75D /* Favorites+CoreDataProperties.swift in Sources */,
+				37E823522032AC0E0054A75D /* FavoritesExtension.swift in Sources */,
+				37E823512032AC0E0054A75D /* FavoritesClass.swift in Sources */,
 				37E8234E2032AB6C0054A75D /* Model.xcdatamodeld in Sources */,
 				37D3E2C01FFF35DC0058CE97 /* HomeViewController.swift in Sources */,
 				37E8231F202FAA880054A75D /* MapCenter.swift in Sources */,
@@ -213,7 +214,6 @@
 				37E8233B203276F90054A75D /* FavoritesTableViewCell.swift in Sources */,
 				37B5215F201AF836004393ED /* Location.swift in Sources */,
 				37D3E2D2200099270058CE97 /* MapViewController.swift in Sources */,
-				37E823512032AC0E0054A75D /* Favorites+CoreDataClass.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -21,7 +21,7 @@ class HomeViewController: UIViewController {
     // MARK: Actions
     
     @IBAction func findMartinisAction(_ sender: Any) {
-            
+            print("Find martinis pressed")
     }
     
     // MARK: Lifecycle

@@ -38,7 +38,7 @@
                                         </state>
                                         <connections>
                                             <action selector="findMartinisAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8gf-ix-7Mb"/>
-                                            <segue destination="wXb-5f-ZeD" kind="show" identifier="findMartinisSegue" id="jIG-f1-l92"/>
+                                            <segue destination="wXb-5f-ZeD" kind="show" id="ASW-Sj-coX"/>
                                         </connections>
                                     </button>
                                 </subviews>
