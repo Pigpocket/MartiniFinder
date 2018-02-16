@@ -111,6 +111,7 @@ extension TableViewController {
         favoriteLocation?.imageUrl = location.imageUrl
         print("Changes to context: \(CoreDataStack.sharedInstance().context.hasChanges)")
         CoreDataStack.sharedInstance().saveContext()
+        CoreDataStack.sharedInstance().save()
 
         
         // Get the Yelp URL of the location and segue to that in browser

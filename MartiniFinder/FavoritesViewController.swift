@@ -14,7 +14,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     
     // Properties
     
-    var favorites: [Favorites]!
+    var favorites: [Favorites]?
     
     // Initialize FetchedResultsController
     
@@ -44,15 +44,48 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return favorites!.count
+        
+        let count = fetchCountFor(entityName: "Favorites", onMoc: CoreDataStack.sharedInstance().context)
+        print("Count is \(count)")
+        
+        return count
+    }
+    
+    func fetchCountFor(entityName: String, onMoc moc: NSManagedObjectContext) -> Int {
+        
+        var count: Int = 0
+        
+        moc.performAndWait {
+            
+            let fetchRequest: NSFetchRequest<NSFetchRequestResult> = NSFetchRequest(entityName: entityName)
+            fetchRequest.resultType = NSFetchRequestResultType.countResultType
+            
+            do {
+                count = try moc.count(for: fetchRequest)
+            } catch {
+                print("Error counting NSManagedObjects")
+            }
+        }
+        return count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell") as! FavoritesTableViewCell
         
-        let favorite = self.fetchedResultsController.object(at: indexPath)
+        // Get favorites from Core Data
+        let favoritesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
         
+        do {
+            let fetchedFavorites = try CoreDataStack.sharedInstance().context.fetch(favoritesFetch) as! [Favorites]
+            favorites = fetchedFavorites
+        } catch {
+            fatalError("Failed to fetch favorites: \(error)")
+        }
+
+        let favorite = favorites![indexPath.row]
+
+        // Asynchronously load object data
         YelpClient.sharedInstance().loadImage(favorite.imageUrl, completionHandler: { (image) in
             
             performUIUpdatesOnMain {
@@ -62,6 +95,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
                 
                 cell.nameLabel.text = favorite.name
                 cell.priceLabel.text = favorite.price
+                cell.thumbnailImageView.image = image
                 
 //                if location.isClosed == 0 {
 //                    cell.openLabel.text = "Open"
