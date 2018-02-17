@@ -15,6 +15,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     // Properties
     
     var favorites: [Favorites]?
+    var favorite: Favorites!
     
     // Initialize FetchedResultsController
     
@@ -24,6 +25,12 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         fetchRequest.sortDescriptors = []
         
         let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
+        do {
+            try fetchedResultsController.performFetch()
+        } catch {
+            fatalError("Failed to fetch entities: \(error)")
+        }
+        
         fetchedResultsController.delegate = self
         
         return fetchedResultsController
@@ -33,9 +40,12 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     
     @IBOutlet var favoritesTableView: UITableView!
     
+    // MARK : Lifecycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        //self.tableView.allowsMultipleSelectionDuringEditing = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -44,11 +54,50 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+
+        guard let sections = self.fetchedResultsController.sections else {
+            fatalError("No sections in fetchedResultsController")
+        }
+        let sectionInfo = sections[section]
+        return sectionInfo.numberOfObjects
         
-        let count = fetchCountFor(entityName: "Favorites", onMoc: CoreDataStack.sharedInstance().context)
-        print("Count is \(count)")
+//        let count = fetchCountFor(entityName: "Favorites", onMoc: CoreDataStack.sharedInstance().context)
+//        print("Count is \(count)")
         
-        return count
+        //return count
+    }
+    
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            print("Deleted")
+            
+
+        }
+    }
+    
+    override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
+        let delete = UITableViewRowAction(style: .destructive, title: "delete") { (action, indexPath) in
+            // delete item at indexPath
+            print("Swipe to delete")
+            
+            self.tableView.beginUpdates()
+            
+            // Get favorites from Core Data
+            let favorite = self.fetchedResultsController.object(at: indexPath)
+            
+            self.favorites?.remove(at: indexPath.row)
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            CoreDataStack.sharedInstance().context.delete(favorite)
+            print("CoreDataStack has changes: \(CoreDataStack.sharedInstance().context.hasChanges)")
+            CoreDataStack.sharedInstance().saveContext()
+            self.tableView.endUpdates()
+            
+        }
+        return [delete]
     }
     
     func fetchCountFor(entityName: String, onMoc moc: NSManagedObjectContext) -> Int {
@@ -74,17 +123,19 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell") as! FavoritesTableViewCell
         
         // Get favorites from Core Data
-        let favoritesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
+//        let favoritesFetch = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
+//
+//        do {
+//            let fetchedFavorites = try CoreDataStack.sharedInstance().context.fetch(favoritesFetch) as! [Favorites]
+//            favorites = fetchedFavorites
+//        } catch {
+//            fatalError("Failed to fetch favorites: \(error)")
+//        }
+//
+//        let favorite = favorites![indexPath.row]
+
+        let favorite = self.fetchedResultsController.object(at: indexPath)
         
-        do {
-            let fetchedFavorites = try CoreDataStack.sharedInstance().context.fetch(favoritesFetch) as! [Favorites]
-            favorites = fetchedFavorites
-        } catch {
-            fatalError("Failed to fetch favorites: \(error)")
-        }
-
-        let favorite = favorites![indexPath.row]
-
         // Asynchronously load object data
         YelpClient.sharedInstance().loadImage(favorite.imageUrl, completionHandler: { (image) in
             
