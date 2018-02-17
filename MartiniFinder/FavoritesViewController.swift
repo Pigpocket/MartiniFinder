@@ -12,11 +12,6 @@ import CoreData
 
 class FavoritesViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
-    // Properties
-    
-    var favorites: [Favorites]?
-    var favorite: Favorites!
-    
     // Initialize FetchedResultsController
     
     lazy var fetchedResultsController: NSFetchedResultsController<Favorites> = { () -> NSFetchedResultsController<Favorites> in
@@ -59,7 +54,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
             fatalError("No sections in fetchedResultsController")
         }
         let sectionInfo = sections[section]
-        print("***THIS IS THE NUMBER OF ROWS IN SECTIONS: \(sectionInfo.numberOfObjects)")
+
         return sectionInfo.numberOfObjects
     }
     
@@ -78,7 +73,6 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
             let favorite = self.fetchedResultsController.object(at: indexPath)
 
             CoreDataStack.sharedInstance().context.delete(favorite)
-            print("CoreDataStack has changes: \(CoreDataStack.sharedInstance().context.hasChanges)")
             CoreDataStack.sharedInstance().saveContext()
             self.tableView.deleteRows(at: [indexPath], with: .automatic)
 

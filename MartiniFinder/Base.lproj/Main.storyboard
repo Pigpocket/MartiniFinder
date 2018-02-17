@@ -616,7 +616,7 @@
                             <outlet property="delegate" destination="pnw-FO-pbM" id="Qsm-Ph-IPk"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="cT8-49-xzj"/>
+                    <navigationItem key="navigationItem" title="Favorites" id="cT8-49-xzj"/>
                     <connections>
                         <outlet property="favoritesTableView" destination="MOH-dm-FDa" id="xeu-qt-dEs"/>
                     </connections>
