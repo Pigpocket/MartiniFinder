@@ -31,7 +31,7 @@ extension YelpClient {
         static let Latitude = "latitude"
         static let Longitude = "longitude"
         static let Radius = "radius"
-        static let OpenNow = "open_now"
+        static let OpenAt = "open_at"
         static let Price = "price"
     }
     
@@ -44,7 +44,7 @@ extension YelpClient {
         static let Rating = "rating"
         static let Price = "price"
         static let Distance = "distance"
-        static let IsClosed = "is_closed"
+        static let isOpenNow = "is_open_now"
         static let ImageUrl = "image_url"
     }
     

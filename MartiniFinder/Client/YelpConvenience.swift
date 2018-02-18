@@ -18,7 +18,6 @@ extension YelpClient {
         let methodParameters = [
             ParameterKeys.Latitude: latitude,
             ParameterKeys.Longitude: longitude,
-            ParameterKeys.OpenNow: true,
             ParameterKeys.Price: price,
             ParameterKeys.Radius: 16000,
             ParameterKeys.Term: term
@@ -42,7 +41,34 @@ extension YelpClient {
         }
     }
     
-    func getUrlFromLocationName(id: String, completionHandlerUrlFromLocationName: @escaping (_ url: URL?, _ errorString: String?) -> Void){
+    func getOpeningHoursFromID(id: String, completionHandlerForOpeningHours: @escaping (_ openNow: Bool?, _ errorString: String?) -> Void) {
+        
+        let methods = Methods.Businesses + id
+        
+        taskForGetYelpSearchResults(method: methods, parameters: [:]) { (results, error) in
+ 
+            if let error = error {
+                completionHandlerForOpeningHours(nil, "There was an error getting business info: \(error)")
+            } else {
+                if let results = results {
+                    if let hours = results["hours"] as? [[String:AnyObject]] {
+                        //print("These are the hours: \(hours)")
+                        if let isOpenDict = hours[0] as? [String:AnyObject] {
+                            if let isOpenNow = isOpenDict["is_open_now"] as? Bool {
+                                print("Restaurant open: \(isOpenNow)")
+                                completionHandlerForOpeningHours(isOpenNow, nil)
+                            } else {
+                                completionHandlerForOpeningHours(nil, "Could not find opening hours: \(String(describing: error))")
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+        
+    
+    func getUrlFromLocationName(id: String, completionHandlerUrlFromLocationName: @escaping (_ url: URL?, _ errorString: String?) -> Void) {
         
         let methods = Methods.Biz + id
         

@@ -68,8 +68,8 @@
 		3771FE9C20127CC40001E075 /* Client */ = {
 			isa = PBXGroup;
 			children = (
-				37D3E2D32000A0EE0058CE97 /* YelpClient.swift */,
 				37D3E2D520015BAF0058CE97 /* YelpConstants.swift */,
+				37D3E2D32000A0EE0058CE97 /* YelpClient.swift */,
 				3771FE9A20127CBF0001E075 /* YelpConvenience.swift */,
 			);
 			path = Client;

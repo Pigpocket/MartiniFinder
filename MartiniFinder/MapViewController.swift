@@ -226,10 +226,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-
         horizontalStack.isHidden = false
         populateStackViews(annotation: view.annotation as! MKPointAnnotation)
-        
     }
     
     func populateStackViews(annotation: MKPointAnnotation) {
@@ -238,13 +236,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 
                 nameLabel.text = location.name
                 priceLabel.text = location.price
-                
-                if location.isClosed == 0 {
-                    openLabel.text = "Open"
-                } else {
-                    openLabel.text = "Closed"
-                    openLabel.textColor = UIColor.red
-                }
                 
                 displayRating(location: location)
                 

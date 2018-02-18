@@ -29,7 +29,7 @@ class TableViewController: UITableViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.tintColor = UIColor.black
-
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -67,18 +67,32 @@ extension TableViewController {
                     cell.thumbnailImageView.clipsToBounds = true
                     cell.thumbnailImageView.image = image
                     
+                    //cell.nameLabel.sizeToFit()
                     cell.nameLabel.text = location.name
                     cell.priceLabel.text = location.price
-                    
-                    if location.isClosed == 0 {
-                        cell.openLabel.text = "Open"
-                    } else {
-                        cell.openLabel.text = "Closed"
-                        cell.openLabel.textColor = UIColor.red
-                    }
-                    
                     cell.displayRating(location: location)
                 }
+                
+                YelpClient.sharedInstance().getOpeningHoursFromID(id: location.id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+                    
+                    if let error = error {
+                        print("There was an error: \(String(describing: error))")
+                    }
+                    
+                    if let isOpenNow = isOpenNow {
+                    
+                        performUIUpdatesOnMain {
+                        
+                        if isOpenNow {
+                            cell.openLabel.text = "Open"
+                            cell.openLabel.textColor = UIColor.black
+                        } else {
+                            cell.openLabel.text = "Closed"
+                            cell.openLabel.textColor = UIColor.red
+                            }
+                        }                        
+                    }
+                })
             })
         return cell
     }

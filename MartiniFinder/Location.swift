@@ -16,7 +16,7 @@ struct Location {
     var id = ""
     var latitude = 0.0
     var longitude = 0.0
-    var isClosed = 0
+    var isOpenNow = false
     var price = ""
     var name = ""
     var rating = 0.0
@@ -33,7 +33,7 @@ struct Location {
             let name = dictionary[YelpClient.ParameterValues.Name] as? String,
             let rating = dictionary[YelpClient.ParameterValues.Rating] as? Double,
             let price = dictionary[YelpClient.ParameterValues.Price] as? String,
-            let isClosed = dictionary[YelpClient.ParameterValues.IsClosed] as? Int,
+            //let isOpenNow = dictionary[YelpClient.ParameterValues.isOpenNow] as? Bool,
             let distance = dictionary[YelpClient.ParameterValues.Distance] as? Double,
             let coordinates = dictionary[YelpClient.ParameterKeys.Coordinates] as? [String:Any],
             let latitude = coordinates[YelpClient.ParameterValues.Latitude] as? Double,
@@ -48,7 +48,7 @@ struct Location {
             self.name = name
             self.rating = rating
             self.price = price
-            self.isClosed = isClosed
+            //self.isOpenNow = isOpenNow
             self.distance = distance
             self.latitude = latitude
             self.longitude = longitude
@@ -57,6 +57,7 @@ struct Location {
     
     static func locationFromResults(_ results: [[String:AnyObject]]) -> [Location] {
         
+        print("LocationFromResults running")
         var locations = [Location]()
         
         // iterate through array of dictionaries, each Movie is a dictionary
@@ -67,9 +68,7 @@ struct Location {
         }
         return locations
     }
-    
-    
-    
+
 }
     
 
