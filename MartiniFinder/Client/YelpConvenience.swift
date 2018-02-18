@@ -45,17 +45,15 @@ extension YelpClient {
         
         let methods = Methods.Businesses + id
         
-        taskForGetYelpSearchResults(method: methods, parameters: [:]) { (results, error) in
+            self.taskForGetYelpSearchResults(method: methods, parameters: [:]) { (results, error) in
  
             if let error = error {
                 completionHandlerForOpeningHours(nil, "There was an error getting business info: \(error)")
             } else {
                 if let results = results {
                     if let hours = results["hours"] as? [[String:AnyObject]] {
-                        //print("These are the hours: \(hours)")
                         if let isOpenDict = hours[0] as? [String:AnyObject] {
                             if let isOpenNow = isOpenDict["is_open_now"] as? Bool {
-                                print("Restaurant open: \(isOpenNow)")
                                 completionHandlerForOpeningHours(isOpenNow, nil)
                             } else {
                                 completionHandlerForOpeningHours(nil, "Could not find opening hours: \(String(describing: error))")
@@ -66,6 +64,7 @@ extension YelpClient {
             }
         }
     }
+    
         
     
     func getUrlFromLocationName(id: String, completionHandlerUrlFromLocationName: @escaping (_ url: URL?, _ errorString: String?) -> Void) {

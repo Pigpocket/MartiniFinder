@@ -239,15 +239,35 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 
                 displayRating(location: location)
                 
-                // Set the image
-                if let url = URL(string: location.imageUrl) {
-                    if let imageData = try? Data(contentsOf: url) {
-                        let image = UIImage(data: imageData)
-                        self.imageView.layer.cornerRadius = 10
-                        self.imageView.clipsToBounds = true
-                        self.imageView.image = image
+                // Set isOpenNow
+                YelpClient.sharedInstance().getOpeningHoursFromID(id: location.id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+                    
+                    if let error = error {
+                        print("There was an error: \(String(describing: error))")
                     }
-                }
+                    
+                    if let isOpenNow = isOpenNow {
+                        
+                        performUIUpdatesOnMain {
+                            
+                            if isOpenNow {
+                                self.openLabel.text = "Open"
+                                self.openLabel.textColor = UIColor.black
+                            } else {
+                                self.openLabel.text = "Closed"
+                                self.openLabel.textColor = UIColor.red
+                            }
+                        }
+                    }
+                })
+                
+                // Set image
+                YelpClient.sharedInstance().loadImage(location.imageUrl, completionHandler: { (image) in
+                    self.imageView.image = image
+                    self.imageView.clipsToBounds = true
+                    self.imageView.layer.cornerRadius = 10
+                })
+
             }
         }
     }

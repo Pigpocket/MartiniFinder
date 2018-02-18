@@ -119,19 +119,30 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
                 
                 cell.nameLabel.text = favorite.name
                 cell.priceLabel.text = favorite.price
-                cell.thumbnailImageView.image = image
-                
-//                if location.isClosed == 0 {
-//                    cell.openLabel.text = "Open"
-//                } else {
-//                    cell.openLabel.text = "Closed"
-//                    cell.openLabel.textColor = UIColor.red
-//                }
-                
                 cell.displayRating(location: favorite)
+                cell.thumbnailImageView.image = image
             }
         })
         
+        // Set isOpenNow
+        YelpClient.sharedInstance().getOpeningHoursFromID(id: favorite.id!, completionHandlerForOpeningHours: { (isOpenNow, error) in
+            
+            if let error = error {
+                print("There was an error: \(String(describing: error))")
+            }
+            if let isOpenNow = isOpenNow {
+                
+                performUIUpdatesOnMain {
+                    if isOpenNow {
+                        cell.openLabel.text = "Open"
+                        cell.openLabel.textColor = UIColor.black
+                    } else {
+                        cell.openLabel.text = "Closed"
+                        cell.openLabel.textColor = UIColor.red
+                    }
+                }
+            }
+        })
         return cell
     }
 }
