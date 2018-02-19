@@ -166,15 +166,29 @@
                                                         </label>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstAttribute="trailing" secondItem="1AT-FJ-ynf" secondAttribute="trailing" constant="8" id="EV0-ly-vTr"/>
                                                         <constraint firstItem="wCg-To-pmD" firstAttribute="leading" secondItem="uCZ-P1-haY" secondAttribute="leading" constant="8" id="NeY-0M-ctF"/>
                                                         <constraint firstItem="wCg-To-pmD" firstAttribute="top" secondItem="uCZ-P1-haY" secondAttribute="top" constant="8" id="QBQ-Ag-MTv"/>
+                                                        <constraint firstAttribute="trailing" secondItem="SSQ-1i-FCl" secondAttribute="trailing" constant="8" id="Vw0-jb-2Vw"/>
+                                                        <constraint firstItem="SSQ-1i-FCl" firstAttribute="leading" secondItem="uCZ-P1-haY" secondAttribute="leading" constant="8" id="W5f-tc-NVL"/>
+                                                        <constraint firstItem="SSQ-1i-FCl" firstAttribute="top" secondItem="wCg-To-pmD" secondAttribute="bottom" constant="18" id="YNR-Lo-88C"/>
                                                         <constraint firstAttribute="trailing" secondItem="wCg-To-pmD" secondAttribute="trailing" constant="8" id="Ykb-Gz-U0R"/>
+                                                        <constraint firstItem="hCh-2G-CX9" firstAttribute="top" secondItem="wCg-To-pmD" secondAttribute="bottom" id="eJC-wn-vI5"/>
+                                                        <constraint firstItem="1AT-FJ-ynf" firstAttribute="leading" secondItem="uCZ-P1-haY" secondAttribute="leading" constant="8" id="jIh-Ec-10g"/>
+                                                        <constraint firstItem="1AT-FJ-ynf" firstAttribute="top" secondItem="SSQ-1i-FCl" secondAttribute="bottom" id="wgr-vC-QOS"/>
+                                                        <constraint firstAttribute="bottom" secondItem="1AT-FJ-ynf" secondAttribute="bottom" constant="8" id="ykw-PL-qcj"/>
                                                     </constraints>
                                                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 </stackView>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="uCZ-P1-haY" firstAttribute="leading" secondItem="J7l-p6-i5Z" secondAttribute="leading" constant="88" id="HGV-aC-RDg"/>
+                                                <constraint firstItem="dMY-t7-1pu" firstAttribute="top" secondItem="J7l-p6-i5Z" secondAttribute="top" id="ONs-Mm-z19"/>
+                                                <constraint firstAttribute="trailing" secondItem="dMY-t7-1pu" secondAttribute="trailing" constant="318" id="PVd-xN-gGH"/>
+                                                <constraint firstItem="dMY-t7-1pu" firstAttribute="leading" secondItem="J7l-p6-i5Z" secondAttribute="leading" id="RZf-dN-VQD"/>
                                                 <constraint firstAttribute="trailing" secondItem="uCZ-P1-haY" secondAttribute="trailing" id="XGV-aJ-gPh"/>
+                                                <constraint firstAttribute="bottom" secondItem="uCZ-P1-haY" secondAttribute="bottom" id="cZ3-cO-3UQ"/>
+                                                <constraint firstItem="uCZ-P1-haY" firstAttribute="top" secondItem="J7l-p6-i5Z" secondAttribute="top" id="rMi-lE-U7b"/>
                                             </constraints>
                                         </stackView>
                                     </subviews>

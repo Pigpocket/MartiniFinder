@@ -63,6 +63,7 @@ extension TableViewController {
             YelpClient.sharedInstance().loadImage(location.imageUrl, completionHandler: { (image) in
                 
                 performUIUpdatesOnMain {
+                    
                     cell.thumbnailImageView.layer.cornerRadius = 10
                     cell.thumbnailImageView.clipsToBounds = true
                     cell.thumbnailImageView.image = image
@@ -97,16 +98,31 @@ extension TableViewController {
         return cell
     }
     
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
+        cell.horizontalStackView.layoutIfNeeded()
+        cell.horizontalStackView.sizeToFit()
+        
+    }
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        return 96
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableViewAutomaticDimension
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
+        let cellSize = cell.horizontalStackView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
+        let cellHeight = cellSize.height
+        print("cellHeight is: \(cellHeight)")
+        
+        return cellHeight
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
