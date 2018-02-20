@@ -15,6 +15,7 @@ class TableViewCell: UITableViewCell {
     
     @IBOutlet weak var thumbnailImageView: UIImageView!
     @IBOutlet weak var horizontalStackView: UIStackView!
+    @IBOutlet weak var infoStackView: UIStackView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!

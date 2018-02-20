@@ -202,6 +202,7 @@
                                 <connections>
                                     <outlet property="blankView" destination="6eY-FM-Tch" id="8uz-Nx-Zum"/>
                                     <outlet property="horizontalStackView" destination="J7l-p6-i5Z" id="xje-G3-UFN"/>
+                                    <outlet property="infoStackView" destination="uCZ-P1-haY" id="9qE-kp-EkL"/>
                                     <outlet property="nameLabel" destination="wCg-To-pmD" id="rrE-dO-ppc"/>
                                     <outlet property="openLabel" destination="1AT-FJ-ynf" id="3vR-kq-6Dt"/>
                                     <outlet property="priceLabel" destination="SSQ-1i-FCl" id="Kj0-kz-cL7"/>
@@ -417,7 +418,6 @@
         <!--Navigation Controller-->
         <scene sceneID="XO7-WU-XE4">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="7jd-RV-e9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Du0-kg-AQF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eOA-Vx-fHC">
@@ -429,6 +429,7 @@
                         <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="j2a-az-pQl"/>
                     </connections>
                 </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7jd-RV-e9c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-326" y="27"/>
         </scene>

@@ -41,6 +41,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         super.viewDidLoad()
         
         //self.tableView.allowsMultipleSelectionDuringEditing = true
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -91,8 +92,10 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         case NSFetchedResultsChangeType.insert:
             tableView.insertRows(at: [newIndexPath!], with: UITableViewRowAnimation.automatic)
         case NSFetchedResultsChangeType.delete:
+            print("trying to delete")
             tableView.deleteRows(at: [indexPath!], with: UITableViewRowAnimation.automatic)
         case NSFetchedResultsChangeType.update:
+            print("trying to update")
             tableView.reloadRows(at: [indexPath!], with: UITableViewRowAnimation.automatic)
         default:
             break

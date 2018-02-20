@@ -67,8 +67,6 @@ extension TableViewController {
                     cell.thumbnailImageView.layer.cornerRadius = 10
                     cell.thumbnailImageView.clipsToBounds = true
                     cell.thumbnailImageView.image = image
-                    
-                    //cell.nameLabel.sizeToFit()
                     cell.nameLabel.text = location.name
                     cell.priceLabel.text = location.price
                     cell.displayRating(location: location)
@@ -98,15 +96,6 @@ extension TableViewController {
         return cell
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
-        cell.horizontalStackView.layoutIfNeeded()
-        cell.horizontalStackView.sizeToFit()
-        
-    }
-    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return locations.count
     }
@@ -117,12 +106,29 @@ extension TableViewController {
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
+        // Get each cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
-        let cellSize = cell.horizontalStackView.systemLayoutSizeFitting(UILayoutFittingCompressedSize)
-        let cellHeight = cellSize.height
-        print("cellHeight is: \(cellHeight)")
         
-        return cellHeight
+        let nameText = locations[indexPath.row].name
+        
+        var size = CGSize()
+        
+        if let font = UIFont(name: ".SFUIText", size: 17.0) {
+            let fontAttributes = [NSAttributedStringKey.font: font]
+            size = (nameText as NSString).size(withAttributes: fontAttributes)
+        }
+        
+        let normalCellHeight = CGFloat(96)
+        let extraLargeCellHeight = CGFloat(normalCellHeight + 20.33)
+        
+        let textWidth = ceil(size.width)
+        let cellWidth = ceil(cell.nameLabel.frame.width)
+        
+        if textWidth > cellWidth {
+            return extraLargeCellHeight
+        } else {
+            return normalCellHeight
+        }
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -139,7 +145,6 @@ extension TableViewController {
         favoriteLocation?.price = location.price
         favoriteLocation?.rating = location.rating
         favoriteLocation?.imageUrl = location.imageUrl
-        print("Changes to context: \(CoreDataStack.sharedInstance().context.hasChanges)")
         CoreDataStack.sharedInstance().saveContext()
         CoreDataStack.sharedInstance().save()
 
@@ -159,5 +164,14 @@ extension TableViewController {
                 }
             }
         }
+    }
+}
+
+extension String {
+    
+    func widthOfString(usingFont font: UIFont) -> CGFloat {
+        let fontAttributes = [NSAttributedStringKey.font: font]
+        let size = self.size(withAttributes: fontAttributes)
+        return size.width
     }
 }
