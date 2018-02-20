@@ -63,6 +63,35 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         return true
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        // Get each cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell") as! FavoritesTableViewCell
+
+        // Get location NSManagedObject
+        let location = self.fetchedResultsController.object(at: indexPath)
+        let nameText = location.name!
+        
+        var size = CGSize()
+        
+        if let font = UIFont(name: ".SFUIText", size: 17.0) {
+            let fontAttributes = [NSAttributedStringKey.font: font]
+            size = (nameText).size(withAttributes: fontAttributes)
+        }
+        
+        let normalCellHeight = CGFloat(96)
+        let extraLargeCellHeight = CGFloat(normalCellHeight + 20.33)
+        
+        let textWidth = ceil(size.width)
+        let cellWidth = ceil(cell.nameLabel.frame.width)
+        
+        if textWidth > cellWidth {
+            return extraLargeCellHeight
+        } else {
+            return normalCellHeight
+        }
+    }
+    
     
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
