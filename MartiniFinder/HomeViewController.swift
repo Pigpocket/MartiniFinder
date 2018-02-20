@@ -28,18 +28,8 @@ class HomeViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        if segue.identifier == "findMartinisSegue" {
-//            let tabController = segue.destination as! UITabBarController
-//            let navController = tabController.viewControllers![0] as! UINavigationController
-//            let mapController = navController.viewControllers[0] as! MapViewController
-//            mapController.locations = self.locations
-//        }
-//    }
-
 }
 

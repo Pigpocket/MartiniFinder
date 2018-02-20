@@ -18,56 +18,48 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="p2w-JX-Lsm">
-                                <rect key="frame" x="48" y="112" width="318" height="576"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="foD-i8-55t">
-                                        <rect key="frame" x="0.0" y="0.0" width="318" height="191.33333333333334"/>
-                                        <color key="backgroundColor" red="0.054901960784313725" green="0.050980392156862744" blue="0.074509803921568626" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                        <state key="normal" title="MY MARTINI BARS">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <segue destination="pnw-FO-pbM" kind="show" id="72o-lY-GBp"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="248" verticalHuggingPriority="248" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KRP-kQ-mCL">
-                                        <rect key="frame" x="0.0" y="192.33333333333331" width="318" height="191.33333333333331"/>
-                                        <state key="normal" title="FIND MARTINIS" backgroundImage="Martini Cocktail Book Shot">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="findMartinisAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="8gf-ix-7Mb"/>
-                                            <segue destination="wXb-5f-ZeD" kind="show" id="ASW-Sj-coX"/>
-                                        </connections>
-                                    </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Yelp_trademark_RGB_outline" translatesAutoresizingMaskIntoConstraints="NO" id="nJc-wM-PaC">
-                                        <rect key="frame" x="0.0" y="384.66666666666669" width="318" height="191.33333333333331"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                    </imageView>
-                                </subviews>
-                                <constraints>
-                                    <constraint firstAttribute="bottom" secondItem="nJc-wM-PaC" secondAttribute="bottom" id="USV-WB-Vg5"/>
-                                    <constraint firstItem="KRP-kQ-mCL" firstAttribute="leading" secondItem="p2w-JX-Lsm" secondAttribute="leading" id="ad1-YB-bmZ"/>
-                                    <constraint firstItem="nJc-wM-PaC" firstAttribute="leading" secondItem="p2w-JX-Lsm" secondAttribute="leading" id="d7a-uN-SsE"/>
-                                    <constraint firstAttribute="trailing" secondItem="nJc-wM-PaC" secondAttribute="trailing" id="ztD-CO-Jd7"/>
-                                </constraints>
-                            </stackView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Martini Cocktail Book Shot_Edited" translatesAutoresizingMaskIntoConstraints="NO" id="te8-rs-xRY">
+                                <rect key="frame" x="0.0" y="64" width="414" height="672"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQ9-BF-JFG">
+                                <rect key="frame" x="267" y="397" width="102" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Find Martinis">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="findMartinisAction:" destination="BYZ-38-t0r" eventType="touchUpInside" id="XnZ-Ti-FZg"/>
+                                    <segue destination="wXb-5f-ZeD" kind="show" id="iF3-3y-UfQ"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLC-Rk-pHR" userLabel="My Martinis">
+                                <rect key="frame" x="52" y="397" width="102" height="84"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="My Martinis">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <segue destination="pnw-FO-pbM" kind="show" id="Ic6-Ek-JFZ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="p2w-JX-Lsm" firstAttribute="top" secondItem="bjZ-Lm-d0s" secondAttribute="top" constant="48" id="AOL-d1-7ww"/>
-                            <constraint firstItem="p2w-JX-Lsm" firstAttribute="leading" secondItem="bjZ-Lm-d0s" secondAttribute="leading" constant="48" id="UUF-Vm-I3i"/>
-                            <constraint firstItem="bjZ-Lm-d0s" firstAttribute="trailing" secondItem="p2w-JX-Lsm" secondAttribute="trailing" constant="48" id="bWH-QO-NVE"/>
-                            <constraint firstItem="bjZ-Lm-d0s" firstAttribute="bottom" secondItem="p2w-JX-Lsm" secondAttribute="bottom" constant="48" id="uCo-Ja-WDw"/>
+                            <constraint firstItem="te8-rs-xRY" firstAttribute="leading" secondItem="bjZ-Lm-d0s" secondAttribute="leading" id="4ns-DH-rIA"/>
+                            <constraint firstItem="bjZ-Lm-d0s" firstAttribute="bottom" secondItem="te8-rs-xRY" secondAttribute="bottom" id="Akj-82-fT7"/>
+                            <constraint firstItem="bjZ-Lm-d0s" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="te8-rs-xRY" secondAttribute="trailing" id="TIs-gN-Sfv"/>
+                            <constraint firstItem="te8-rs-xRY" firstAttribute="top" secondItem="bjZ-Lm-d0s" secondAttribute="top" id="VJ3-kO-1sD"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bjZ-Lm-d0s"/>
                     </view>
                     <navigationItem key="navigationItem" id="HZl-NV-Cbh"/>
+                    <connections>
+                        <outlet property="myMartiniBarsOutlet" destination="RLC-Rk-pHR" id="YOe-C1-JY2"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="407.19999999999999" y="26.53673163418291"/>
+            <point key="canvasLocation" x="405.79710144927537" y="26.086956521739133"/>
         </scene>
         <!--TableViewController-->
         <scene sceneID="r5X-qc-7PV">
@@ -647,8 +639,7 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Martini Cocktail Book Shot" width="4928" height="3264"/>
-        <image name="Yelp_trademark_RGB_outline" width="1000" height="640"/>
+        <image name="Martini Cocktail Book Shot_Edited" width="2451" height="3261"/>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icons8-near-me-filled-50" width="50" height="50"/>
