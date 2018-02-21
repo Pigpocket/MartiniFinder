@@ -239,7 +239,7 @@
                             <stackView opaque="NO" contentMode="scaleToFill" spacing="-8" translatesAutoresizingMaskIntoConstraints="NO" id="JwS-jH-apa">
                                 <rect key="frame" x="16" y="390" width="288" height="113"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DP2-De-J9c">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DP2-De-J9c" userLabel="Image Stack View">
                                         <rect key="frame" x="0.0" y="0.0" width="126" height="113"/>
                                         <subviews>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="55E-fb-lAt">
@@ -252,7 +252,7 @@
                                         </subviews>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                     </stackView>
-                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Uc9-KB-Svt">
+                                    <stackView opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="751" axis="vertical" spacing="4" translatesAutoresizingMaskIntoConstraints="NO" id="Uc9-KB-Svt" userLabel="Info Stack View">
                                         <rect key="frame" x="118" y="0.0" width="170" height="113"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" placeholderIntrinsicWidth="248" placeholderIntrinsicHeight="24.333333333333329" text="The Name of Place" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" minimumFontSize="9" translatesAutoresizingMaskIntoConstraints="NO" id="Ovu-kw-fZX" userLabel="Name Label">
@@ -393,6 +393,7 @@
                         <outlet property="blankView" destination="zCE-Ll-yAA" id="MtM-SW-JPO"/>
                         <outlet property="horizontalStack" destination="JwS-jH-apa" id="Cwf-gs-Hba"/>
                         <outlet property="imageView" destination="55E-fb-lAt" id="qPD-vX-bha"/>
+                        <outlet property="infoStackView" destination="Uc9-KB-Svt" id="xYT-QU-quf"/>
                         <outlet property="mapView" destination="7ma-dw-MQD" id="HYF-Wn-YJ0"/>
                         <outlet property="nameLabel" destination="Ovu-kw-fZX" id="WeC-Mw-GJh"/>
                         <outlet property="openLabel" destination="ikQ-rs-wNp" id="AAg-qx-YEK"/>

@@ -25,6 +25,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var horizontalStack: UIStackView!
+    @IBOutlet weak var infoStackView: UIStackView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
@@ -227,6 +228,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         horizontalStack.isHidden = false
+        
         populateStackViews(annotation: view.annotation as! MKPointAnnotation)
     }
     
@@ -236,6 +238,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 
                 nameLabel.text = location.name
                 priceLabel.text = location.price
+                
+                horizontalStack.frame.size.height = setStackViewHeight(heightForCellWithLocationName: location.name)
+                
+                if horizontalStack.frame.height == 116.33 {
+                    infoStackView.frame.size.height += 20.33
+                }
                 
                 displayRating(location: location)
                 
@@ -271,6 +279,31 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             }
         }
     }
+    
+    func setStackViewHeight(heightForCellWithLocationName name: String) -> CGFloat {
+        
+        var size = CGSize()
+        
+        if let font = UIFont(name: ".SFUIText", size: 17.0) {
+            let fontAttributes = [NSAttributedStringKey.font: font]
+            size = (name as NSString).size(withAttributes: fontAttributes)
+        }
+        
+        let normalCellHeight = CGFloat(96)
+        let extraLargeCellHeight = CGFloat(normalCellHeight + 20.33)
+        
+        let textWidth = ceil(size.width)
+        let labelWidth = ceil(nameLabel.frame.width)
+        
+        if textWidth > labelWidth {
+            print("***********EXTRA LARGE CELL HEIGHT****************")
+            return extraLargeCellHeight
+        } else {
+            print("***************NORMAL CELL HEIGHT*****************")
+        return normalCellHeight
+        }
+    }
+    
     
     func setMapRegion() {
         
