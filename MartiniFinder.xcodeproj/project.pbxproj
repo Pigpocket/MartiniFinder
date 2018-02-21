@@ -21,6 +21,7 @@
 		37D3E2D2200099270058CE97 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2D1200099270058CE97 /* MapViewController.swift */; };
 		37D3E2D42000A0EE0058CE97 /* YelpClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2D32000A0EE0058CE97 /* YelpClient.swift */; };
 		37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2D520015BAF0058CE97 /* YelpConstants.swift */; };
+		37DE41BE203D45AB00C8AA5A /* MapTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37DE41BD203D45AB00C8AA5A /* MapTableViewCell.swift */; };
 		37E8231F202FAA880054A75D /* MapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8231E202FAA880054A75D /* MapCenter.swift */; };
 		37E82339203273E40054A75D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E82338203273E40054A75D /* FavoritesViewController.swift */; };
 		37E8233B203276F90054A75D /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */; };
@@ -46,6 +47,7 @@
 		37D3E2D1200099270058CE97 /* MapViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		37D3E2D32000A0EE0058CE97 /* YelpClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpClient.swift; sourceTree = "<group>"; };
 		37D3E2D520015BAF0058CE97 /* YelpConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConstants.swift; sourceTree = "<group>"; };
+		37DE41BD203D45AB00C8AA5A /* MapTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapTableViewCell.swift; sourceTree = "<group>"; };
 		37E8231E202FAA880054A75D /* MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCenter.swift; sourceTree = "<group>"; };
 		37E82338203273E40054A75D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
@@ -113,6 +115,7 @@
 				37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */,
 				37D3E2BF1FFF35DC0058CE97 /* HomeViewController.swift */,
 				37D3E2D1200099270058CE97 /* MapViewController.swift */,
+				37DE41BD203D45AB00C8AA5A /* MapTableViewCell.swift */,
 				3704503B2026D54B004FECBD /* TableViewController.swift */,
 				3704503D2026E6B7004FECBD /* TableViewCell.swift */,
 				37E82338203273E40054A75D /* FavoritesViewController.swift */,
@@ -199,6 +202,7 @@
 			files = (
 				37D3E2D42000A0EE0058CE97 /* YelpClient.swift in Sources */,
 				3704503C2026D54B004FECBD /* TableViewController.swift in Sources */,
+				37DE41BE203D45AB00C8AA5A /* MapTableViewCell.swift in Sources */,
 				37E823522032AC0E0054A75D /* FavoritesExtension.swift in Sources */,
 				37E823512032AC0E0054A75D /* FavoritesClass.swift in Sources */,
 				37E8234E2032AB6C0054A75D /* Model.xcdatamodeld in Sources */,

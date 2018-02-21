@@ -24,32 +24,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // MARK: Outlets
     
     @IBOutlet weak var mapView: MKMapView!
-    @IBOutlet weak var horizontalStack: UIStackView!
-    @IBOutlet weak var infoStackView: UIStackView!
-    @IBOutlet weak var nameLabel: UILabel!
-    @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var openLabel: UILabel!
     @IBOutlet weak var redoSearchButton: UIButton!
     @IBOutlet weak var resetLocationButton: UIButton!
-    
-    // imageViews
-    @IBOutlet weak var ratingImage: UIImageView!
-    @IBOutlet weak var imageView: UIImageView!
-    @IBOutlet weak var star1: UIImageView!
-    @IBOutlet weak var star2: UIImageView!
-    @IBOutlet weak var star3: UIImageView!
-    @IBOutlet weak var star4: UIImageView!
-    @IBOutlet weak var star5: UIImageView!
-    @IBOutlet weak var blankView: UIImageView!
+    @IBOutlet weak var mapTableViewCell: MapTableViewCell!
     
     // MARK: Lifecycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        horizontalStack.isHidden = true
-        imageView.layer.cornerRadius = 10
-        horizontalStack.addBackground(color: UIColor.white)
         self.tabBarController?.tabBar.tintColor = UIColor.black
         
         // Configure resetLocationButton & redoSearchButtons
@@ -134,65 +117,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
-    
-    func displayRating(location: Location) {
-        
-        if location.rating == 1 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "emptyStar")
-            star3.image = UIImage(named: "emptyStar")
-            star4.image = UIImage(named: "emptyStar")
-            star5.image = UIImage(named: "emptyStar")
-        } else if location.rating == 1.5 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "halfStar")
-            star3.image = UIImage(named: "emptyStar")
-            star4.image = UIImage(named: "emptyStar")
-            star5.image = UIImage(named: "emptyStar")
-        } else if location.rating == 2 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "emptyStar")
-            star4.image = UIImage(named: "emptyStar")
-            star5.image = UIImage(named: "emptyStar")
-        } else if location.rating == 2.5 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "halfStar")
-            star4.image = UIImage(named: "emptyStar")
-            star5.image = UIImage(named: "emptyStar")
-        } else if location.rating == 3.0 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "filledStar")
-            star4.image = UIImage(named: "emptyStar")
-            star5.image = UIImage(named: "emptyStar")
-        } else if location.rating == 3.5 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "filledStar")
-            star4.image = UIImage(named: "halfStar")
-            star5.image = UIImage(named: "emptyStar")
-        } else if location.rating == 4.0 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "filledStar")
-            star4.image = UIImage(named: "filledStar")
-            star5.image = UIImage(named: "emptyStar")
-        } else if location.rating == 4.5 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "filledStar")
-            star4.image = UIImage(named: "filledStar")
-            star5.image = UIImage(named: "halfStar")
-        } else if location.rating == 5.0 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "filledStar")
-            star4.image = UIImage(named: "filledStar")
-            star5.image = UIImage(named: "filledStar")
-        }
-    }
+ 
 
     func setAnnotations() {
         
@@ -221,89 +146,97 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
-    @objc func handleSingleTap(sender: UIGestureRecognizer) {
-        singleTap.numberOfTapsRequired = 1
-        horizontalStack.isHidden = true
-    }
-    
-    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        horizontalStack.isHidden = false
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        populateStackViews(annotation: view.annotation as! MKPointAnnotation)
-    }
-    
-    func populateStackViews(annotation: MKPointAnnotation) {
-        for location in locations {
-            if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
+        // Configure cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
+        //cell.horizontalStackView.isHidden = true
+        cell.thumbnailImageView.layer.cornerRadius = 10
+        cell.horizontalStackView.addBackground(color: UIColor.white)
+        
+        // Get data
+        let location = locations[indexPath.row]
+        
+        YelpClient.sharedInstance().loadImage(location.imageUrl, completionHandler: { (image) in
+            
+            performUIUpdatesOnMain {
                 
-                nameLabel.text = location.name
-                priceLabel.text = location.price
+                cell.thumbnailImageView.layer.cornerRadius = 10
+                cell.thumbnailImageView.clipsToBounds = true
+                cell.thumbnailImageView.image = image
+                cell.nameLabel.text = location.name
+                cell.priceLabel.text = location.price
+                cell.displayRating(location: location)
+            }
+            
+            YelpClient.sharedInstance().getOpeningHoursFromID(id: location.id, completionHandlerForOpeningHours: { (isOpenNow, error) in
                 
-                horizontalStack.frame.size.height = setStackViewHeight(heightForCellWithLocationName: location.name)
-                
-                if horizontalStack.frame.height == 116.33 {
-                    infoStackView.frame.size.height += 20.33
+                if let error = error {
+                    print("There was an error: \(String(describing: error))")
                 }
                 
-                displayRating(location: location)
-                
-                // Set isOpenNow
-                YelpClient.sharedInstance().getOpeningHoursFromID(id: location.id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+                if let isOpenNow = isOpenNow {
                     
-                    if let error = error {
-                        print("There was an error: \(String(describing: error))")
-                    }
-                    
-                    if let isOpenNow = isOpenNow {
+                    performUIUpdatesOnMain {
                         
-                        performUIUpdatesOnMain {
-                            
-                            if isOpenNow {
-                                self.openLabel.text = "Open"
-                                self.openLabel.textColor = UIColor.black
-                            } else {
-                                self.openLabel.text = "Closed"
-                                self.openLabel.textColor = UIColor.red
-                            }
+                        if isOpenNow {
+                            cell.openLabel.text = "Open"
+                            cell.openLabel.textColor = UIColor.black
+                        } else {
+                            cell.openLabel.text = "Closed"
+                            cell.openLabel.textColor = UIColor.red
                         }
                     }
-                })
-                
-                // Set image
-                YelpClient.sharedInstance().loadImage(location.imageUrl, completionHandler: { (image) in
-                    self.imageView.image = image
-                    self.imageView.clipsToBounds = true
-                    self.imageView.layer.cornerRadius = 10
-                })
-
-            }
-        }
+                }
+            })
+        })
+        return cell
     }
     
-    func setStackViewHeight(heightForCellWithLocationName name: String) -> CGFloat {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return locations.count
+    }
+    
+    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 96
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        
+        // Get each cell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MapTableViewCell") as! MapTableViewCell
+        
+        let nameText = locations[indexPath.row].name
         
         var size = CGSize()
         
         if let font = UIFont(name: ".SFUIText", size: 17.0) {
             let fontAttributes = [NSAttributedStringKey.font: font]
-            size = (name as NSString).size(withAttributes: fontAttributes)
+            size = (nameText as NSString).size(withAttributes: fontAttributes)
         }
         
         let normalCellHeight = CGFloat(96)
         let extraLargeCellHeight = CGFloat(normalCellHeight + 20.33)
         
         let textWidth = ceil(size.width)
-        let labelWidth = ceil(nameLabel.frame.width)
+        let cellWidth = ceil(cell.nameLabel.frame.width)
         
-        if textWidth > labelWidth {
-            print("***********EXTRA LARGE CELL HEIGHT****************")
+        if textWidth > cellWidth {
             return extraLargeCellHeight
         } else {
-            print("***************NORMAL CELL HEIGHT*****************")
-        return normalCellHeight
+            return normalCellHeight
         }
     }
     
+    @objc func handleSingleTap(sender: UIGestureRecognizer) {
+        singleTap.numberOfTapsRequired = 1
+        mapTableViewCell.isHidden = true
+    }
+    
+    func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        mapTableViewCell.isHidden = false
+        
+    }
     
     func setMapRegion() {
         
