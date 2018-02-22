@@ -34,6 +34,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.tintColor = UIColor.black
+        self.mapTableView.isHidden = true
         self.mapTableView.delegate = self
         
         // Configure resetLocationButton & redoSearchButtons
@@ -154,21 +155,26 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         cell.horizontalStackView.addBackground(color: UIColor.white)
         
         // Get data
-        let location = locations[indexPath.row]
+        var cellLocation: Location
         
-        YelpClient.sharedInstance().loadImage(location.imageUrl, completionHandler: { (image) in
+        for location in locations {
+            if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
+                cellLocation = location
+
+        
+        YelpClient.sharedInstance().loadImage(cellLocation.imageUrl, completionHandler: { (image) in
             
             performUIUpdatesOnMain {
                 
                 cell.thumbnailImageView.layer.cornerRadius = 10
                 cell.thumbnailImageView.clipsToBounds = true
                 cell.thumbnailImageView.image = image
-                cell.nameLabel.text = location.name
-                cell.priceLabel.text = location.price
-                cell.displayRating(location: location)
+                cell.nameLabel.text = cellLocation.name
+                cell.priceLabel.text = cellLocation.price
+                cell.displayRating(location: cellLocation)
             }
             
-            YelpClient.sharedInstance().getOpeningHoursFromID(id: location.id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+            YelpClient.sharedInstance().getOpeningHoursFromID(id: cellLocation.id, completionHandlerForOpeningHours: { (isOpenNow, error) in
                 
                 if let error = error {
                     print("There was an error: \(String(describing: error))")
@@ -189,6 +195,8 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             })
         })
+            }
+        }
         return cell
     }
     
@@ -234,6 +242,9 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         mapTableView.isHidden = false
+        
+        annotation = view.annotation as! MKPointAnnotation
+        
         mapTableView.reloadData()
     }
     
