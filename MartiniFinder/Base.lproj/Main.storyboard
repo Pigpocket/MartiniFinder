@@ -22,9 +22,8 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Martini Cocktail Book Shot_Edited" translatesAutoresizingMaskIntoConstraints="NO" id="te8-rs-xRY">
                                 <rect key="frame" x="0.0" y="64" width="320" height="504"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQ9-BF-JFG">
-                                <rect key="frame" x="267" y="397" width="102" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQ9-BF-JFG">
+                                <rect key="frame" x="199" y="328" width="89" height="30"/>
                                 <state key="normal" title="Find Martinis">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -33,9 +32,8 @@
                                     <segue destination="wXb-5f-ZeD" kind="show" id="iF3-3y-UfQ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLC-Rk-pHR" userLabel="My Martinis">
-                                <rect key="frame" x="52" y="397" width="102" height="84"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLC-Rk-pHR" userLabel="My Martinis">
+                                <rect key="frame" x="32" y="328" width="80" height="30"/>
                                 <state key="normal" title="My Martinis">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -47,9 +45,15 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="te8-rs-xRY" firstAttribute="leading" secondItem="bjZ-Lm-d0s" secondAttribute="leading" id="4ns-DH-rIA"/>
+                            <constraint firstItem="bjZ-Lm-d0s" firstAttribute="bottom" secondItem="mQ9-BF-JFG" secondAttribute="bottom" constant="210" id="5qU-vz-3OW"/>
                             <constraint firstItem="bjZ-Lm-d0s" firstAttribute="bottom" secondItem="te8-rs-xRY" secondAttribute="bottom" id="Akj-82-fT7"/>
                             <constraint firstItem="bjZ-Lm-d0s" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="te8-rs-xRY" secondAttribute="trailing" id="TIs-gN-Sfv"/>
                             <constraint firstItem="te8-rs-xRY" firstAttribute="top" secondItem="bjZ-Lm-d0s" secondAttribute="top" id="VJ3-kO-1sD"/>
+                            <constraint firstItem="mQ9-BF-JFG" firstAttribute="top" secondItem="bjZ-Lm-d0s" secondAttribute="top" constant="264" id="VXP-tO-rQB"/>
+                            <constraint firstItem="bjZ-Lm-d0s" firstAttribute="trailing" secondItem="mQ9-BF-JFG" secondAttribute="trailing" constant="32" id="ZSt-N3-G1Q"/>
+                            <constraint firstItem="bjZ-Lm-d0s" firstAttribute="bottom" secondItem="RLC-Rk-pHR" secondAttribute="bottom" constant="210" id="iQE-UE-vbn"/>
+                            <constraint firstItem="RLC-Rk-pHR" firstAttribute="leading" secondItem="bjZ-Lm-d0s" secondAttribute="leading" constant="32" id="kea-3u-ojN"/>
+                            <constraint firstItem="RLC-Rk-pHR" firstAttribute="top" secondItem="bjZ-Lm-d0s" secondAttribute="top" constant="264" id="qDM-go-G5v"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="bjZ-Lm-d0s"/>
                     </view>
@@ -277,7 +281,7 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapTableViewCell" rowHeight="96" id="ZIf-qD-eSn" customClass="MapTableViewCell" customModule="MartiniFinder" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="MapTableViewCell" rowHeight="96" id="ZIf-qD-eSn" customClass="MapTableViewCell" customModule="MartiniFinder" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="288" height="96"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ZIf-qD-eSn" id="3i9-wI-Dbw">
