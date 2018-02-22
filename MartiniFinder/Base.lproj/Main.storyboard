@@ -346,8 +346,14 @@
                                                                                 <constraint firstAttribute="width" constant="18" id="YuQ-wd-Oow"/>
                                                                             </constraints>
                                                                         </imageView>
+                                                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="9zx-Nj-HuE" userLabel="Star5">
+                                                                            <rect key="frame" x="72" y="0.0" width="18" height="18"/>
+                                                                            <constraints>
+                                                                                <constraint firstAttribute="width" constant="18" id="laD-24-WcQ"/>
+                                                                            </constraints>
+                                                                        </imageView>
                                                                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="37Y-qe-lo6" userLabel="Blank View">
-                                                                            <rect key="frame" x="72" y="0.0" width="112" height="18"/>
+                                                                            <rect key="frame" x="90" y="0.0" width="94" height="18"/>
                                                                         </imageView>
                                                                     </subviews>
                                                                     <constraints>
@@ -387,8 +393,26 @@
                                                 <constraint firstAttribute="bottom" secondItem="CQm-6p-VIu" secondAttribute="bottom" id="r7n-gz-geY"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="blankView" destination="37Y-qe-lo6" id="eFV-cf-nKo"/>
+                                            <outlet property="horizontalStackView" destination="CQm-6p-VIu" id="qFl-OA-idz"/>
+                                            <outlet property="infoStackView" destination="0xq-y8-e64" id="ej7-Ro-8pm"/>
+                                            <outlet property="nameLabel" destination="Zzl-6E-ejc" id="y3q-GH-pub"/>
+                                            <outlet property="openLabel" destination="bLW-7c-R03" id="Xmw-EB-zY0"/>
+                                            <outlet property="priceLabel" destination="vmy-5d-ov8" id="5nO-eB-gR8"/>
+                                            <outlet property="star1" destination="CdW-f6-Aup" id="XvU-VF-JjG"/>
+                                            <outlet property="star2" destination="7fj-ET-b23" id="VeF-P8-X8p"/>
+                                            <outlet property="star3" destination="ihe-HH-sc4" id="imo-dT-Xux"/>
+                                            <outlet property="star4" destination="YPF-hu-MRY" id="a9i-Ku-61Y"/>
+                                            <outlet property="star5" destination="9zx-Nj-HuE" id="Mni-cB-0QR"/>
+                                            <outlet property="thumbnailImageView" destination="3oj-hk-376" id="t5F-fM-ncM"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
+                                <connections>
+                                    <outlet property="dataSource" destination="SMO-Rv-JTJ" id="ZzF-fe-sba"/>
+                                    <outlet property="delegate" destination="SMO-Rv-JTJ" id="pjH-N4-BmQ"/>
+                                </connections>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -407,6 +431,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" id="b4g-ub-Otb"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="mapTableView" destination="XBZ-yR-EeX" id="TXR-uc-dDb"/>
                         <outlet property="mapView" destination="7ma-dw-MQD" id="HYF-Wn-YJ0"/>
                         <outlet property="redoSearchButton" destination="j9w-lr-GPF" id="lir-35-FPf"/>
                         <outlet property="resetLocationButton" destination="OBz-Y8-aTR" id="beO-lo-gia"/>

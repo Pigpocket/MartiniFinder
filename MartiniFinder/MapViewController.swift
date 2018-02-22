@@ -11,7 +11,7 @@ import Foundation
 import CoreLocation
 import CoreData
 
-class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate  {
+class MapViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate  {
     
     // MARK: Properties
     
@@ -26,7 +26,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var redoSearchButton: UIButton!
     @IBOutlet weak var resetLocationButton: UIButton!
-    @IBOutlet weak var mapTableViewCell: MapTableViewCell!
+    @IBOutlet weak var mapTableView: UITableView!
     
     // MARK: Lifecycle
     
@@ -34,6 +34,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.viewDidLoad()
         
         self.tabBarController?.tabBar.tintColor = UIColor.black
+        self.mapTableView.delegate = self
         
         // Configure resetLocationButton & redoSearchButtons
         resetLocationButton.contentHorizontalAlignment = .fill
@@ -41,7 +42,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         resetLocationButton.contentMode = .scaleAspectFit
         resetLocationButton.layer.cornerRadius = 10
         resetLocationButton.isHidden = true
-        
         redoSearchButton.layer.cornerRadius = 10
         redoSearchButton.isHidden = true
         
@@ -118,7 +118,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
  
-
     func setAnnotations() {
         
         // Set the coordinates
@@ -149,7 +148,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         // Configure cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: "MapTableViewCell") as! MapTableViewCell
         //cell.horizontalStackView.isHidden = true
         cell.thumbnailImageView.layer.cornerRadius = 10
         cell.horizontalStackView.addBackground(color: UIColor.white)
@@ -230,12 +229,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @objc func handleSingleTap(sender: UIGestureRecognizer) {
         singleTap.numberOfTapsRequired = 1
-        mapTableViewCell.isHidden = true
+        mapTableView.isHidden = true
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        mapTableViewCell.isHidden = false
-        
+        mapTableView.isHidden = false
+        mapTableView.reloadData()
     }
     
     func setMapRegion() {
