@@ -41,12 +41,21 @@
                                     <segue destination="pnw-FO-pbM" kind="show" id="Ic6-Ek-JFZ"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Yelp_trademark_RGB_outline" translatesAutoresizingMaskIntoConstraints="NO" id="nqY-1c-9Op">
+                                <rect key="frame" x="20" y="507" width="57" height="41"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="57" id="5cy-f7-aMd"/>
+                                    <constraint firstAttribute="height" constant="41" id="x7e-4V-zrt"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="te8-rs-xRY" firstAttribute="leading" secondItem="bjZ-Lm-d0s" secondAttribute="leading" id="4ns-DH-rIA"/>
                             <constraint firstItem="bjZ-Lm-d0s" firstAttribute="bottom" secondItem="mQ9-BF-JFG" secondAttribute="bottom" constant="210" id="5qU-vz-3OW"/>
+                            <constraint firstItem="bjZ-Lm-d0s" firstAttribute="bottom" secondItem="nqY-1c-9Op" secondAttribute="bottom" constant="20" id="6sa-xg-vkk"/>
                             <constraint firstItem="bjZ-Lm-d0s" firstAttribute="bottom" secondItem="te8-rs-xRY" secondAttribute="bottom" id="Akj-82-fT7"/>
+                            <constraint firstItem="nqY-1c-9Op" firstAttribute="leading" secondItem="bjZ-Lm-d0s" secondAttribute="leading" constant="20" id="S9Y-GE-bVU"/>
                             <constraint firstItem="bjZ-Lm-d0s" firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="te8-rs-xRY" secondAttribute="trailing" id="TIs-gN-Sfv"/>
                             <constraint firstItem="te8-rs-xRY" firstAttribute="top" secondItem="bjZ-Lm-d0s" secondAttribute="top" id="VJ3-kO-1sD"/>
                             <constraint firstItem="mQ9-BF-JFG" firstAttribute="top" secondItem="bjZ-Lm-d0s" secondAttribute="top" constant="264" id="VXP-tO-rQB"/>
@@ -64,7 +73,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="405.79710144927537" y="26.086956521739133"/>
+            <point key="canvasLocation" x="405" y="25.35211267605634"/>
         </scene>
         <!--TableViewController-->
         <scene sceneID="r5X-qc-7PV">
@@ -624,6 +633,7 @@
     </scenes>
     <resources>
         <image name="Martini Cocktail Book Shot_Edited" width="2451" height="3261"/>
+        <image name="Yelp_trademark_RGB_outline" width="1000" height="640"/>
         <image name="icon_listview-deselected" width="75" height="50"/>
         <image name="icon_mapview-deselected" width="75" height="50"/>
         <image name="icons8-near-me-filled-50" width="50" height="50"/>
