@@ -20,68 +20,28 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
     @IBOutlet weak var star1: UIImageView!
-    @IBOutlet weak var star2: UIImageView!
-    @IBOutlet weak var star3: UIImageView!
-    @IBOutlet weak var star4: UIImageView!
-    @IBOutlet weak var star5: UIImageView!
     @IBOutlet weak var blankView: UIImageView!
     
     func displayRating(location: Location) {
         
         if location.rating == 1 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "emptyStar")
-            star3.image = UIImage(named: "emptyStar")
-            star4.image = UIImage(named: "emptyStar")
-            star5.image = UIImage(named: "emptyStar")
+            star1.image = UIImage(named: "regular_1")
         } else if location.rating == 1.5 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "halfStar")
-            star3.image = UIImage(named: "emptyStar")
-            star4.image = UIImage(named: "emptyStar")
-            star5.image = UIImage(named: "emptyStar")
+            star1.image = UIImage(named: "regular_1_half")
         } else if location.rating == 2 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "emptyStar")
-            star4.image = UIImage(named: "emptyStar")
-            star5.image = UIImage(named: "emptyStar")
+            star1.image = UIImage(named: "regular_2")
         } else if location.rating == 2.5 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "halfStar")
-            star4.image = UIImage(named: "emptyStar")
-            star5.image = UIImage(named: "emptyStar")
+            star1.image = UIImage(named: "regular_2_half")
         } else if location.rating == 3.0 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "filledStar")
-            star4.image = UIImage(named: "emptyStar")
-            star5.image = UIImage(named: "emptyStar")
+            star1.image = UIImage(named: "regular_3")
         } else if location.rating == 3.5 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "filledStar")
-            star4.image = UIImage(named: "halfStar")
-            star5.image = UIImage(named: "emptyStar")
+            star1.image = UIImage(named: "regular_3_half")
         } else if location.rating == 4.0 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "filledStar")
-            star4.image = UIImage(named: "filledStar")
-            star5.image = UIImage(named: "emptyStar")
+            star1.image = UIImage(named: "regular_4")
         } else if location.rating == 4.5 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "filledStar")
-            star4.image = UIImage(named: "filledStar")
-            star5.image = UIImage(named: "halfStar")
+            star1.image = UIImage(named: "regular_4_half")
         } else if location.rating == 5.0 {
-            star1.image = UIImage(named: "filledStar")
-            star2.image = UIImage(named: "filledStar")
-            star3.image = UIImage(named: "filledStar")
-            star4.image = UIImage(named: "filledStar")
-            star5.image = UIImage(named: "filledStar")
+            star1.image = UIImage(named: "regular_5")
         }
     }
 }

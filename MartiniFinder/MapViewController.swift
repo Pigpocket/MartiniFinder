@@ -192,7 +192,8 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
                             cell.openLabel.textColor = UIColor.black
                         } else {
                             cell.openLabel.text = "Closed"
-                            cell.openLabel.textColor = UIColor.red
+                            cell.openLabel.textColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0)
+                            cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
                         }
                     }
                 }

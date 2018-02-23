@@ -160,7 +160,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
                 cell.priceLabel.text = favorite.price
                 cell.priceLabel.textColor = UIColor.white
                 
-                cell.displayRating(location: favorite)
+                cell.displayRating(rating: favorite.rating)
             }
         })
         
@@ -178,7 +178,8 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
                         cell.openLabel.textColor = UIColor.white
                     } else {
                         cell.openLabel.text = "Closed"
-                        cell.openLabel.textColor = UIColor.red
+                        cell.openLabel.textColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0)
+                        cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
                     }
                 }
             }

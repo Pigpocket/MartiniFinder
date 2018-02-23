@@ -33,7 +33,6 @@ struct Location {
             let name = dictionary[YelpClient.ParameterValues.Name] as? String,
             let rating = dictionary[YelpClient.ParameterValues.Rating] as? Double,
             let price = dictionary[YelpClient.ParameterValues.Price] as? String,
-            //let isOpenNow = dictionary[YelpClient.ParameterValues.isOpenNow] as? Bool,
             let distance = dictionary[YelpClient.ParameterValues.Distance] as? Double,
             let coordinates = dictionary[YelpClient.ParameterKeys.Coordinates] as? [String:Any],
             let latitude = coordinates[YelpClient.ParameterValues.Latitude] as? Double,
