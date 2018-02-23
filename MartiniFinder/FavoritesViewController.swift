@@ -40,7 +40,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //self.tableView.allowsMultipleSelectionDuringEditing = true
+        self.view.backgroundColor = UIColor.black
         
     }
     
@@ -145,14 +145,22 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         YelpClient.sharedInstance().loadImage(favorite.imageUrl, completionHandler: { (image) in
             
             performUIUpdatesOnMain {
+                
+                cell.backgroundColor = UIColor.black
+                
                 cell.thumbnailImageView.layer.cornerRadius = 10
                 cell.thumbnailImageView.clipsToBounds = true
+                cell.thumbnailImageView.layer.borderColor = UIColor.white.cgColor
+                cell.thumbnailImageView.layer.borderWidth = 1
                 cell.thumbnailImageView.image = image
                 
                 cell.nameLabel.text = favorite.name
+                cell.nameLabel.textColor = UIColor.white
+                
                 cell.priceLabel.text = favorite.price
+                cell.priceLabel.textColor = UIColor.white
+                
                 cell.displayRating(location: favorite)
-                cell.thumbnailImageView.image = image
             }
         })
         
@@ -167,7 +175,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
                 performUIUpdatesOnMain {
                     if isOpenNow {
                         cell.openLabel.text = "Open"
-                        cell.openLabel.textColor = UIColor.black
+                        cell.openLabel.textColor = UIColor.white
                     } else {
                         cell.openLabel.text = "Closed"
                         cell.openLabel.textColor = UIColor.red

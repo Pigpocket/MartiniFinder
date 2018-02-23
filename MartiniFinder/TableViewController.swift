@@ -28,7 +28,10 @@ class TableViewController: UITableViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarController?.tabBar.tintColor = UIColor.black
+        self.view.backgroundColor = UIColor.black
+        self.tabBarController?.tabBar.tintColor = UIColor.white
+        self.tabBarController?.tabBar.barTintColor = UIColor.black
+        self.tabBarController?.tabBar.isTranslucent = false
         
     }
     
@@ -64,11 +67,20 @@ extension TableViewController {
                 
                 performUIUpdatesOnMain {
                     
+                    cell.backgroundColor = UIColor.black
+                    
                     cell.thumbnailImageView.layer.cornerRadius = 10
                     cell.thumbnailImageView.clipsToBounds = true
+                    cell.thumbnailImageView.layer.borderColor = UIColor.white.cgColor
+                    cell.thumbnailImageView.layer.borderWidth = 1
                     cell.thumbnailImageView.image = image
+                    
                     cell.nameLabel.text = location.name
+                    cell.nameLabel.textColor = UIColor.white
+                    
                     cell.priceLabel.text = location.price
+                    cell.priceLabel.textColor = UIColor.white
+                    
                     cell.displayRating(location: location)
                 }
                 
@@ -84,7 +96,7 @@ extension TableViewController {
                         
                         if isOpenNow {
                             cell.openLabel.text = "Open"
-                            cell.openLabel.textColor = UIColor.black
+                            cell.openLabel.textColor = UIColor.white
                         } else {
                             cell.openLabel.text = "Closed"
                             cell.openLabel.textColor = UIColor.red
