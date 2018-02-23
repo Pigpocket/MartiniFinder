@@ -153,6 +153,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         //cell.horizontalStackView.isHidden = true
         cell.thumbnailImageView.layer.cornerRadius = 10
         cell.horizontalStackView.addBackground(color: UIColor.white)
+        //cell.frame.size.width = tableView.frame.width
         
         // Get data
         var cellLocation: Location
