@@ -33,7 +33,9 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.tabBarController?.tabBar.tintColor = UIColor.black
+        self.tabBarController?.tabBar.tintColor = UIColor.white
+        self.tabBarController?.tabBar.barTintColor = UIColor.black
+        self.tabBarController?.tabBar.isTranslucent = false
         self.mapTableView.isHidden = true
         self.mapTableView.delegate = self
         
