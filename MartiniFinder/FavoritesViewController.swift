@@ -104,7 +104,6 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
 
             CoreDataStack.sharedInstance().context.delete(favorite)
             CoreDataStack.sharedInstance().saveContext()
-            self.tableView.deleteRows(at: [indexPath], with: .automatic)
 
         }
         return [delete]
