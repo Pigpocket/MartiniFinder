@@ -58,14 +58,33 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationView.layer.shadowOpacity = 0.9
         locationView.layer.masksToBounds = false
         
-        // Configure resetLocationButton & redoSearchButtons
+        // Configure resetLocationButton
+        resetLocationButton.isHidden = true
         resetLocationButton.contentHorizontalAlignment = .fill
         resetLocationButton.contentVerticalAlignment = .fill
         resetLocationButton.contentMode = .scaleAspectFit
-        resetLocationButton.layer.cornerRadius = 10
-        resetLocationButton.isHidden = true
-        redoSearchButton.layer.cornerRadius = 10
+        //resetLocationButton.layer.backgroundColor = UIColor.black.cgColor
+//        resetLocationButton.layer.cornerRadius = 10
+//        resetLocationButton.layer.borderColor = UIColor.black.cgColor
+//        resetLocationButton.layer.borderWidth = 1
+//        resetLocationButton.layer.shadowRadius = 1.5
+//        resetLocationButton.layer.shadowColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0).cgColor
+//        resetLocationButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+//        resetLocationButton.layer.shadowOpacity = 0.9
+//        resetLocationButton.layer.masksToBounds = false
+        
+        // Configure redoSearchButton
         redoSearchButton.isHidden = true
+        redoSearchButton.layer.cornerRadius = 10
+        redoSearchButton.layer.cornerRadius = 10
+        redoSearchButton.layer.borderColor = UIColor.black.cgColor
+        redoSearchButton.layer.borderWidth = 1
+        redoSearchButton.layer.shadowRadius = 1.5
+        redoSearchButton.layer.shadowColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0).cgColor
+        redoSearchButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        redoSearchButton.layer.shadowOpacity = 0.9
+        redoSearchButton.layer.masksToBounds = false
+        
         
         // Declare gesture recognizers
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(sender:)))
