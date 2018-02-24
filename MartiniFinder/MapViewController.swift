@@ -42,14 +42,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Stylize tabBar
         self.tabBarController?.tabBar.tintColor = UIColor.white
         self.tabBarController?.tabBar.barTintColor = UIColor.black
         self.tabBarController?.tabBar.isTranslucent = false
-        self.locationView.isHidden = true
-        self.locationView.layer.cornerRadius = 10
-        self.locationView.layer.borderColor = UIColor.black.cgColor
-        self.locationView.layer.borderWidth = 1
-        //self.locationView.delegate = self
+        
+        // Stylize locationView
+        locationView.isHidden = true
+        locationView.layer.cornerRadius = 10
+        locationView.layer.borderColor = UIColor.black.cgColor
+        locationView.layer.borderWidth = 1
+        locationView.layer.shadowRadius = 1.5
+        locationView.layer.shadowColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0).cgColor
+        locationView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        locationView.layer.shadowOpacity = 0.9
+        locationView.layer.masksToBounds = false
         
         // Configure resetLocationButton & redoSearchButtons
         resetLocationButton.contentHorizontalAlignment = .fill
@@ -60,7 +67,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         redoSearchButton.layer.cornerRadius = 10
         redoSearchButton.isHidden = true
         
-        // Add gesture recognizers
+        // Declare gesture recognizers
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(sender:)))
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
         panGesture.delegate = self
@@ -73,6 +80,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
         MapCenter.shared.longitude = (locationManager.location?.coordinate.longitude)!
         
+        // Get locations
         YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", MapCenter.shared.latitude, MapCenter.shared.longitude) { (locations, error) in
             
             if error != nil {
@@ -123,7 +131,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(true)
-       
         locationManager.stopUpdatingLocation()
     }
     
@@ -193,12 +200,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationView.isHidden = true
     }
     
+    func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+        print("deselect being called")
+        tappedLocation.removeAll()
+//        thumbnailImageView.image = nil
+//        nameLabel.text = ""
+//        priceLabel.text = ""
+//        openLabel.text = ""
+    }
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         annotation = view.annotation as! MKPointAnnotation
-        
-        tappedLocation.removeAll()
-        
+    
         locationView.isHidden = false
         
         horizontalStackView.addBackground(color: UIColor.black)
