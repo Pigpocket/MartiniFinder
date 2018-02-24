@@ -361,9 +361,17 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" id="b4g-ub-Otb"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="blankView" destination="D0u-vp-DOf" id="Dgo-iX-DCO"/>
+                        <outlet property="horizontalStackView" destination="fDM-m0-7bZ" id="C83-E5-BQI"/>
+                        <outlet property="locationView" destination="Rxk-mg-thC" id="q1z-pK-JfR"/>
                         <outlet property="mapView" destination="7ma-dw-MQD" id="HYF-Wn-YJ0"/>
+                        <outlet property="nameLabel" destination="zM3-Jt-SdS" id="PI0-Gi-Eg6"/>
+                        <outlet property="openLabel" destination="wuz-gR-LgO" id="utU-lh-6bd"/>
+                        <outlet property="priceLabel" destination="aEN-sq-xj6" id="mTS-BQ-ZTi"/>
                         <outlet property="redoSearchButton" destination="j9w-lr-GPF" id="lir-35-FPf"/>
                         <outlet property="resetLocationButton" destination="OBz-Y8-aTR" id="beO-lo-gia"/>
+                        <outlet property="star1" destination="CZs-TP-rnX" id="12h-ig-eyJ"/>
+                        <outlet property="thumbnailImageView" destination="akc-IP-3AC" id="OZ8-uQ-SoO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sb-g5-J8w" userLabel="First Responder" sceneMemberID="firstResponder"/>

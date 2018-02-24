@@ -11,7 +11,7 @@ import Foundation
 import CoreLocation
 import CoreData
 
-class MapViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate  {
+class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate  {
     
     // MARK: Properties
     
@@ -21,13 +21,21 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var locations = [Location]()
     let singleTap = UITapGestureRecognizer()
     var tappedLocation = [Location]()
-    
+
     // MARK: Outlets
     
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var redoSearchButton: UIButton!
     @IBOutlet weak var resetLocationButton: UIButton!
-    @IBOutlet weak var mapTableView: UITableView!
+    @IBOutlet weak var locationView: UIView!
+    
+    @IBOutlet weak var horizontalStackView: UIStackView!
+    @IBOutlet weak var thumbnailImageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var star1: UIImageView!
+    @IBOutlet weak var blankView: UIImageView!
+    @IBOutlet weak var priceLabel: UILabel!
+    @IBOutlet weak var openLabel: UILabel!
     
     // MARK: Lifecycle
     
@@ -37,8 +45,11 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         self.tabBarController?.tabBar.tintColor = UIColor.white
         self.tabBarController?.tabBar.barTintColor = UIColor.black
         self.tabBarController?.tabBar.isTranslucent = false
-        self.mapTableView.isHidden = true
-        self.mapTableView.delegate = self
+        self.locationView.isHidden = true
+        self.locationView.layer.cornerRadius = 10
+        self.locationView.layer.borderColor = UIColor.black.cgColor
+        self.locationView.layer.borderWidth = 1
+        //self.locationView.delegate = self
         
         // Configure resetLocationButton & redoSearchButtons
         resetLocationButton.contentHorizontalAlignment = .fill
@@ -149,67 +160,6 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         }
     }
     
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        // Configure cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MapTableViewCell") as! MapTableViewCell
-        cell.thumbnailImageView.layer.cornerRadius = 10
-        cell.horizontalStackView.addBackground(color: UIColor.white)
-        
-//        // Get data
-//        var cellLocation: Location
-//
-//
-//
-//        for location in locations {
-//            if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
-//                cellLocation = location
-
-        YelpClient.sharedInstance().loadImage(tappedLocation[0].imageUrl, completionHandler: { (image) in
-            
-            performUIUpdatesOnMain {
-                
-                cell.thumbnailImageView.layer.cornerRadius = 10
-                cell.thumbnailImageView.clipsToBounds = true
-                cell.thumbnailImageView.image = image
-                cell.nameLabel.text = self.tappedLocation[0].name
-                cell.priceLabel.text = self.tappedLocation[0].price
-                cell.displayRating(location: self.tappedLocation[0])
-            }
-            
-            YelpClient.sharedInstance().getOpeningHoursFromID(id: self.tappedLocation[0].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
-                
-                if let error = error {
-                    print("There was an error: \(String(describing: error))")
-                }
-                
-                if let isOpenNow = isOpenNow {
-                    
-                    performUIUpdatesOnMain {
-                        
-                        if isOpenNow {
-                            cell.openLabel.text = "Open"
-                            cell.openLabel.textColor = UIColor.black
-                        } else {
-                            cell.openLabel.text = "Closed"
-                            cell.openLabel.textColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0)
-                            cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-                        }
-                    }
-                }
-            })
-        })
-        return cell
-    }
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return tappedLocation.count
-    }
-    
-    func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
-        return 96
-    }
-    
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         // Get each cell
@@ -240,14 +190,18 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     @objc func handleSingleTap(sender: UIGestureRecognizer) {
         tappedLocation.removeAll()
         singleTap.numberOfTapsRequired = 1
-        mapTableView.isHidden = true
+        locationView.isHidden = true
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
-        tappedLocation.removeAll()
-        mapTableView.isHidden = false
         
         annotation = view.annotation as! MKPointAnnotation
+        
+        tappedLocation.removeAll()
+        
+        locationView.isHidden = false
+        
+        horizontalStackView.addBackground(color: UIColor.black)
         
         // Add the tapped location to the tappedLocation array
         for location in locations {
@@ -256,9 +210,49 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
             }
         }
         
-        mapTableView.reloadData()
+        YelpClient.sharedInstance().loadImage(tappedLocation[0].imageUrl, completionHandler: { (image) in
+            
+            performUIUpdatesOnMain {
+                
+                self.thumbnailImageView.layer.cornerRadius = 10
+                self.thumbnailImageView.clipsToBounds = true
+                self.thumbnailImageView.layer.borderColor = UIColor.white.cgColor
+                self.thumbnailImageView.layer.borderWidth = 1
+                self.thumbnailImageView.image = image
+                
+                self.nameLabel.text = self.tappedLocation[0].name
+                self.nameLabel.textColor = UIColor.white
+                
+                self.priceLabel.text = self.tappedLocation[0].price
+                self.priceLabel.textColor = UIColor.white
+                
+                self.displayRating(location: self.tappedLocation[0])
+            }
+            
+            YelpClient.sharedInstance().getOpeningHoursFromID(id: self.tappedLocation[0].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+                
+                if let error = error {
+                    print("There was an error: \(String(describing: error))")
+                }
+                
+                if let isOpenNow = isOpenNow {
+                    
+                    performUIUpdatesOnMain {
+                        
+                        if isOpenNow {
+                            self.openLabel.text = "Open"
+                            self.openLabel.textColor = UIColor.white
+                        } else {
+                            self.openLabel.text = "Closed"
+                            self.openLabel.textColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0)
+                            self.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
+                        }
+                    }
+                }
+            })
+        })
     }
-    
+   
     func setMapRegion() {
         
         // Set the coordinates
@@ -314,6 +308,29 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
             }
         })
     }
+
+func displayRating(location: Location) {
+    
+    if location.rating == 1 {
+        star1.image = UIImage(named: "regular_1")
+    } else if location.rating == 1.5 {
+        star1.image = UIImage(named: "regular_1_half")
+    } else if location.rating == 2 {
+        star1.image = UIImage(named: "regular_2")
+    } else if location.rating == 2.5 {
+        star1.image = UIImage(named: "regular_2_half")
+    } else if location.rating == 3.0 {
+        star1.image = UIImage(named: "regular_3")
+    } else if location.rating == 3.5 {
+        star1.image = UIImage(named: "regular_3_half")
+    } else if location.rating == 4.0 {
+        star1.image = UIImage(named: "regular_4")
+    } else if location.rating == 4.5 {
+        star1.image = UIImage(named: "regular_4_half")
+    } else if location.rating == 5.0 {
+        star1.image = UIImage(named: "regular_5")
+    }
+}
     
 }
 
