@@ -380,6 +380,7 @@
                         <outlet property="resetLocationButton" destination="OBz-Y8-aTR" id="beO-lo-gia"/>
                         <outlet property="star1" destination="CZs-TP-rnX" id="12h-ig-eyJ"/>
                         <outlet property="thumbnailImageView" destination="akc-IP-3AC" id="OZ8-uQ-SoO"/>
+                        <outlet property="viewHeightConstraint" destination="gGi-ZR-YbE" id="f6w-Mw-WPy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sb-g5-J8w" userLabel="First Responder" sceneMemberID="firstResponder"/>

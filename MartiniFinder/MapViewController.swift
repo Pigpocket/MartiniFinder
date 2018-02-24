@@ -37,6 +37,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
     
+    @IBOutlet weak var viewHeightConstraint: NSLayoutConstraint!
+    
     // MARK: Lifecycle
     
     override func viewDidLoad() {
@@ -188,15 +190,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             size = (locationName as NSString).size(withAttributes: fontAttributes)
         }
         
-        let normalCellHeight = CGFloat(96)
-        let extraLargeCellHeight = CGFloat(normalCellHeight + 20.33)
+        let normalCellHeight = viewHeightConstraint.constant
+        let extraLargeCellHeight = viewHeightConstraint.constant + 20.33
         
         let textWidth = ceil(size.width)
         let cellWidth = ceil(nameLabel.frame.width)
         
+        
+        
         if textWidth > cellWidth {
+            print("Extra large cell")
             return extraLargeCellHeight
         } else {
+            print("Normal cell")
             return normalCellHeight
         }
     }
@@ -210,6 +216,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         print("deselect being called")
         tappedLocation.removeAll()
+        viewHeightConstraint.constant = 96
 //        thumbnailImageView.image = nil
 //        nameLabel.text = ""
 //        priceLabel.text = ""
@@ -229,13 +236,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             }
         }
         
-        locationView.frame.size.height = viewHeight(tappedLocation[0].name)
+        print("viewHeightConstraint pre-setting: \(viewHeightConstraint.constant)")
+        viewHeightConstraint.constant = viewHeight(tappedLocation[0].name)
+        print("viewHeighConstraint post-setting: \(viewHeightConstraint.constant)")
         print("locationView height = \(locationView.frame.height)")
-        print("locationView x = \(locationView.frame.origin.x)")
         print("locationView y = \(locationView.frame.origin.y)")
-        
-        print("Frame height: \(locationView.frame.size.height)")
-        print("Frame widthL \(locationView.frame.size.width)")
         
         YelpClient.sharedInstance().loadImage(tappedLocation[0].imageUrl, completionHandler: { (image) in
             
