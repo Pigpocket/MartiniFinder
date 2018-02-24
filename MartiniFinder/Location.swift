@@ -53,7 +53,7 @@ struct Location {
             self.longitude = longitude
             self.imageUrl = imageUrl
         }
-    
+
     static func locationFromResults(_ results: [[String:AnyObject]]) -> [Location] {
         
         print("LocationFromResults running")

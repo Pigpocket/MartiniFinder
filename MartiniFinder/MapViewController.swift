@@ -20,6 +20,7 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     var locationManager = CLLocationManager()
     var locations = [Location]()
     let singleTap = UITapGestureRecognizer()
+    var tappedLocation = [Location]()
     
     // MARK: Outlets
     
@@ -152,32 +153,31 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
         
         // Configure cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "MapTableViewCell") as! MapTableViewCell
-        //cell.horizontalStackView.isHidden = true
         cell.thumbnailImageView.layer.cornerRadius = 10
         cell.horizontalStackView.addBackground(color: UIColor.white)
-        //cell.frame.size.width = tableView.frame.width
         
-        // Get data
-        var cellLocation: Location
-        
-        for location in locations {
-            if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
-                cellLocation = location
+//        // Get data
+//        var cellLocation: Location
+//
+//
+//
+//        for location in locations {
+//            if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
+//                cellLocation = location
 
-        
-        YelpClient.sharedInstance().loadImage(cellLocation.imageUrl, completionHandler: { (image) in
+        YelpClient.sharedInstance().loadImage(tappedLocation[0].imageUrl, completionHandler: { (image) in
             
             performUIUpdatesOnMain {
                 
                 cell.thumbnailImageView.layer.cornerRadius = 10
                 cell.thumbnailImageView.clipsToBounds = true
                 cell.thumbnailImageView.image = image
-                cell.nameLabel.text = cellLocation.name
-                cell.priceLabel.text = cellLocation.price
-                cell.displayRating(location: cellLocation)
+                cell.nameLabel.text = self.tappedLocation[0].name
+                cell.priceLabel.text = self.tappedLocation[0].price
+                cell.displayRating(location: self.tappedLocation[0])
             }
             
-            YelpClient.sharedInstance().getOpeningHoursFromID(id: cellLocation.id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+            YelpClient.sharedInstance().getOpeningHoursFromID(id: self.tappedLocation[0].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
                 
                 if let error = error {
                     print("There was an error: \(String(describing: error))")
@@ -199,13 +199,11 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
                 }
             })
         })
-            }
-        }
         return cell
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
+        return tappedLocation.count
     }
     
     func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -240,14 +238,23 @@ class MapViewController: UIViewController, UITableViewDataSource, UITableViewDel
     }
     
     @objc func handleSingleTap(sender: UIGestureRecognizer) {
+        tappedLocation.removeAll()
         singleTap.numberOfTapsRequired = 1
         mapTableView.isHidden = true
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+        tappedLocation.removeAll()
         mapTableView.isHidden = false
         
         annotation = view.annotation as! MKPointAnnotation
+        
+        // Add the tapped location to the tappedLocation array
+        for location in locations {
+            if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
+                tappedLocation.append(location)
+            }
+        }
         
         mapTableView.reloadData()
     }
