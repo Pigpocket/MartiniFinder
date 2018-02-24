@@ -63,15 +63,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         resetLocationButton.contentHorizontalAlignment = .fill
         resetLocationButton.contentVerticalAlignment = .fill
         resetLocationButton.contentMode = .scaleAspectFit
-        //resetLocationButton.layer.backgroundColor = UIColor.black.cgColor
-//        resetLocationButton.layer.cornerRadius = 10
-//        resetLocationButton.layer.borderColor = UIColor.black.cgColor
-//        resetLocationButton.layer.borderWidth = 1
-//        resetLocationButton.layer.shadowRadius = 1.5
-//        resetLocationButton.layer.shadowColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0).cgColor
-//        resetLocationButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-//        resetLocationButton.layer.shadowOpacity = 0.9
-//        resetLocationButton.layer.masksToBounds = false
         
         // Configure redoSearchButton
         redoSearchButton.isHidden = true
@@ -186,25 +177,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
-    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+    func viewHeight(_ locationName: String) -> CGFloat {
         
-        // Get each cell
-        let cell = tableView.dequeueReusableCell(withIdentifier: "MapTableViewCell") as! MapTableViewCell
-        
-        let nameText = locations[indexPath.row].name
+        let locationName = tappedLocation[0].name
         
         var size = CGSize()
         
         if let font = UIFont(name: ".SFUIText", size: 17.0) {
             let fontAttributes = [NSAttributedStringKey.font: font]
-            size = (nameText as NSString).size(withAttributes: fontAttributes)
+            size = (locationName as NSString).size(withAttributes: fontAttributes)
         }
         
         let normalCellHeight = CGFloat(96)
         let extraLargeCellHeight = CGFloat(normalCellHeight + 20.33)
         
         let textWidth = ceil(size.width)
-        let cellWidth = ceil(cell.nameLabel.frame.width)
+        let cellWidth = ceil(nameLabel.frame.width)
         
         if textWidth > cellWidth {
             return extraLargeCellHeight
@@ -231,8 +219,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
         annotation = view.annotation as! MKPointAnnotation
-    
-        locationView.isHidden = false
         
         horizontalStackView.addBackground(color: UIColor.black)
         
@@ -242,6 +228,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 tappedLocation.append(location)
             }
         }
+        
+        locationView.frame.size.height = viewHeight(tappedLocation[0].name)
+        print("locationView height = \(locationView.frame.height)")
+        print("locationView x = \(locationView.frame.origin.x)")
+        print("locationView y = \(locationView.frame.origin.y)")
+        
+        print("Frame height: \(locationView.frame.size.height)")
+        print("Frame widthL \(locationView.frame.size.width)")
         
         YelpClient.sharedInstance().loadImage(tappedLocation[0].imageUrl, completionHandler: { (image) in
             
@@ -284,6 +278,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
             })
         })
+        locationView.isHidden = false
     }
    
     func setMapRegion() {

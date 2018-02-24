@@ -282,7 +282,7 @@
                                             <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="DHl-n0-eGK" userLabel="Info Stack View">
                                                 <rect key="frame" x="88" y="0.0" width="200" height="96"/>
                                                 <subviews>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name of Place Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zM3-Jt-SdS" userLabel="Name Label">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalCompressionResistancePriority="751" text="Name of Place Label" textAlignment="natural" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zM3-Jt-SdS" userLabel="Name Label">
                                                         <rect key="frame" x="8" y="8" width="184" height="21"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
@@ -311,13 +311,22 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Open Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuz-gR-LgO" userLabel="Open Label">
+                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Open Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuz-gR-LgO" userLabel="Open Label">
                                                         <rect key="frame" x="8" y="67.5" width="184" height="20.5"/>
                                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
                                                 </subviews>
+                                                <constraints>
+                                                    <constraint firstItem="zM3-Jt-SdS" firstAttribute="leading" secondItem="DHl-n0-eGK" secondAttribute="leading" constant="8" id="9z8-g5-9PU"/>
+                                                    <constraint firstItem="wuz-gR-LgO" firstAttribute="top" secondItem="aEN-sq-xj6" secondAttribute="bottom" id="GWO-J3-845"/>
+                                                    <constraint firstAttribute="trailing" secondItem="wuz-gR-LgO" secondAttribute="trailing" constant="8" id="Tt7-x2-7Iv"/>
+                                                    <constraint firstAttribute="trailing" secondItem="zM3-Jt-SdS" secondAttribute="trailing" constant="8" id="WGM-Ee-v9N"/>
+                                                    <constraint firstItem="wuz-gR-LgO" firstAttribute="leading" secondItem="DHl-n0-eGK" secondAttribute="leading" constant="8" id="fik-US-j8i"/>
+                                                    <constraint firstItem="zM3-Jt-SdS" firstAttribute="top" secondItem="DHl-n0-eGK" secondAttribute="top" constant="8" id="mbh-22-HZO"/>
+                                                    <constraint firstAttribute="bottom" secondItem="wuz-gR-LgO" secondAttribute="bottom" constant="8" id="qd6-gu-xYS"/>
+                                                </constraints>
                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                             </stackView>
                                         </subviews>
@@ -328,7 +337,6 @@
                                             <constraint firstAttribute="bottom" secondItem="fDJ-rE-ITs" secondAttribute="bottom" id="F1I-ua-GTA"/>
                                             <constraint firstItem="DHl-n0-eGK" firstAttribute="top" secondItem="fDM-m0-7bZ" secondAttribute="top" id="u1H-sC-Kfo"/>
                                             <constraint firstAttribute="bottom" secondItem="DHl-n0-eGK" secondAttribute="bottom" id="xCU-cu-5r8"/>
-                                            <constraint firstAttribute="trailing" secondItem="DHl-n0-eGK" secondAttribute="trailing" id="yce-Jy-fOZ"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
