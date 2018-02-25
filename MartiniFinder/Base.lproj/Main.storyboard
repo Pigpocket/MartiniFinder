@@ -274,7 +274,6 @@
                                                     </imageView>
                                                 </subviews>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="96" id="hs3-Dj-eVv"/>
                                                     <constraint firstAttribute="width" constant="96" id="qhk-XN-t5g"/>
                                                 </constraints>
                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
@@ -335,6 +334,7 @@
                                             <constraint firstItem="fDJ-rE-ITs" firstAttribute="leading" secondItem="fDM-m0-7bZ" secondAttribute="leading" id="Av6-Pp-oEF"/>
                                             <constraint firstAttribute="trailing" secondItem="fDJ-rE-ITs" secondAttribute="trailing" constant="192" id="CDQ-pR-9W7"/>
                                             <constraint firstAttribute="bottom" secondItem="fDJ-rE-ITs" secondAttribute="bottom" id="F1I-ua-GTA"/>
+                                            <constraint firstAttribute="height" constant="96" id="bRg-kD-pdQ"/>
                                             <constraint firstItem="DHl-n0-eGK" firstAttribute="top" secondItem="fDM-m0-7bZ" secondAttribute="top" id="u1H-sC-Kfo"/>
                                             <constraint firstAttribute="bottom" secondItem="DHl-n0-eGK" secondAttribute="bottom" id="xCU-cu-5r8"/>
                                         </constraints>
@@ -347,7 +347,6 @@
                                     <constraint firstAttribute="trailing" secondItem="fDM-m0-7bZ" secondAttribute="trailing" id="RGr-DU-2Fo"/>
                                     <constraint firstItem="fDM-m0-7bZ" firstAttribute="top" secondItem="Rxk-mg-thC" secondAttribute="top" id="a1J-5m-Lxm"/>
                                     <constraint firstAttribute="width" constant="288" id="b8V-fb-4o5"/>
-                                    <constraint firstAttribute="height" constant="96" id="gGi-ZR-YbE"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -371,6 +370,7 @@
                     <connections>
                         <outlet property="blankView" destination="D0u-vp-DOf" id="Dgo-iX-DCO"/>
                         <outlet property="horizontalStackView" destination="fDM-m0-7bZ" id="C83-E5-BQI"/>
+                        <outlet property="horizontalStackViewHeightConstraint" destination="bRg-kD-pdQ" id="LX3-mF-poO"/>
                         <outlet property="locationView" destination="Rxk-mg-thC" id="q1z-pK-JfR"/>
                         <outlet property="mapView" destination="7ma-dw-MQD" id="HYF-Wn-YJ0"/>
                         <outlet property="nameLabel" destination="zM3-Jt-SdS" id="PI0-Gi-Eg6"/>
@@ -380,7 +380,6 @@
                         <outlet property="resetLocationButton" destination="OBz-Y8-aTR" id="beO-lo-gia"/>
                         <outlet property="star1" destination="CZs-TP-rnX" id="12h-ig-eyJ"/>
                         <outlet property="thumbnailImageView" destination="akc-IP-3AC" id="OZ8-uQ-SoO"/>
-                        <outlet property="viewHeightConstraint" destination="gGi-ZR-YbE" id="f6w-Mw-WPy"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0Sb-g5-J8w" userLabel="First Responder" sceneMemberID="firstResponder"/>

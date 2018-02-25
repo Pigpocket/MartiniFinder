@@ -36,8 +36,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var blankView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
-    
-    @IBOutlet weak var viewHeightConstraint: NSLayoutConstraint!
+
+    @IBOutlet weak var horizontalStackViewHeightConstraint: NSLayoutConstraint!
     
     // MARK: Lifecycle
     
@@ -190,8 +190,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             size = (locationName as NSString).size(withAttributes: fontAttributes)
         }
         
-        let normalCellHeight = viewHeightConstraint.constant
-        let extraLargeCellHeight = viewHeightConstraint.constant + 20.33
+        let normalCellHeight = horizontalStackViewHeightConstraint.constant
+        let extraLargeCellHeight = horizontalStackViewHeightConstraint.constant + 20.33
         
         let textWidth = ceil(size.width)
         let cellWidth = ceil(nameLabel.frame.width)
@@ -216,7 +216,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         print("deselect being called")
         tappedLocation.removeAll()
-        viewHeightConstraint.constant = 96
+        horizontalStackViewHeightConstraint.constant = 96
 //        thumbnailImageView.image = nil
 //        nameLabel.text = ""
 //        priceLabel.text = ""
@@ -236,9 +236,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             }
         }
         
-        print("viewHeightConstraint pre-setting: \(viewHeightConstraint.constant)")
-        viewHeightConstraint.constant = viewHeight(tappedLocation[0].name)
-        print("viewHeighConstraint post-setting: \(viewHeightConstraint.constant)")
+        print("viewHeightConstraint pre-setting: \(horizontalStackViewHeightConstraint.constant)")
+        horizontalStackViewHeightConstraint.constant = viewHeight(tappedLocation[0].name)
+        print("viewHeighConstraint post-setting: \(horizontalStackViewHeightConstraint.constant)")
         print("locationView height = \(locationView.frame.height)")
         print("locationView y = \(locationView.frame.origin.y)")
         
@@ -252,13 +252,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 self.thumbnailImageView.layer.borderWidth = 1
                 self.thumbnailImageView.image = image
                 
-                self.nameLabel.text = self.tappedLocation[0].name
-                self.nameLabel.textColor = UIColor.white
-                
-                self.priceLabel.text = self.tappedLocation[0].price
-                self.priceLabel.textColor = UIColor.white
-                
-                self.displayRating(location: self.tappedLocation[0])
             }
             
             YelpClient.sharedInstance().getOpeningHoursFromID(id: self.tappedLocation[0].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
@@ -270,6 +263,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 if let isOpenNow = isOpenNow {
                     
                     performUIUpdatesOnMain {
+                        
+                        self.nameLabel.text = self.tappedLocation[0].name
+                        self.nameLabel.textColor = UIColor.white
+                        
+                        self.priceLabel.text = self.tappedLocation[0].price
+                        self.priceLabel.textColor = UIColor.white
+                        
+                        self.displayRating(location: self.tappedLocation[0])
                         
                         if isOpenNow {
                             self.openLabel.text = "Open"
