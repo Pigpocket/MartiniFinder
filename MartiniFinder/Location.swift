@@ -22,7 +22,7 @@ struct Location {
     var rating = 0.0
     var distance = 0.0
     var imageUrl = ""
-    
+    var image: UIImage? = nil
     
     // MARK: Initializer
     init?(dictionary: [String:AnyObject]) {

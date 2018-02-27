@@ -59,6 +59,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         locationView.layer.shadowOpacity = 0.9
         locationView.layer.masksToBounds = false
+        thumbnailImageView.layer.cornerRadius = 10
+        thumbnailImageView.clipsToBounds = true
+        thumbnailImageView.layer.borderColor = UIColor.white.cgColor
+        thumbnailImageView.layer.borderWidth = 1
         
         // Configure resetLocationButton
         resetLocationButton.isHidden = true
@@ -103,6 +107,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 
             if let locations = locations {
                 self.locations = locations
+                
+                for location in locations {
+                    YelpClient.sharedInstance().loadImage(location.imageUrl, completionHandler: { (image) in
+                        
+                        // Cannot assign to property: 'location' is a 'let' constant
+                        // location.image = image
+                    })
+                }
             }
             
             var tempArray = [MKPointAnnotation]()
@@ -117,6 +129,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 annotation.coordinate = coordinate
                 annotation.title = "\(name)"
                 tempArray.append(annotation)
+                
             }
             
             // Add the annotations to the annotations array
@@ -236,18 +249,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             }
         }
 
+        self.nameLabel.text = self.tappedLocation[0].name
+        self.nameLabel.textColor = UIColor.white
+        
+        self.priceLabel.text = self.tappedLocation[0].price
+        self.priceLabel.textColor = UIColor.white
+        
+        self.displayRating(location: self.tappedLocation[0])
+        
         horizontalStackViewHeightConstraint.constant = viewHeight(tappedLocation[0].name)
         
         YelpClient.sharedInstance().loadImage(tappedLocation[0].imageUrl, completionHandler: { (image) in
             
             performUIUpdatesOnMain {
                 
-                self.thumbnailImageView.layer.cornerRadius = 10
-                self.thumbnailImageView.clipsToBounds = true
-                self.thumbnailImageView.layer.borderColor = UIColor.white.cgColor
-                self.thumbnailImageView.layer.borderWidth = 1
                 self.thumbnailImageView.image = image
-                
             }
             
             YelpClient.sharedInstance().getOpeningHoursFromID(id: self.tappedLocation[0].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
@@ -259,14 +275,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 if let isOpenNow = isOpenNow {
                     
                     performUIUpdatesOnMain {
-                        
-                        self.nameLabel.text = self.tappedLocation[0].name
-                        self.nameLabel.textColor = UIColor.white
-                        
-                        self.priceLabel.text = self.tappedLocation[0].price
-                        self.priceLabel.textColor = UIColor.white
-                        
-                        self.displayRating(location: self.tappedLocation[0])
                         
                         if isOpenNow {
                             self.openLabel.text = "Open"
