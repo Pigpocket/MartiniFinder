@@ -217,10 +217,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         print("deselect being called")
         tappedLocation.removeAll()
         horizontalStackViewHeightConstraint.constant = 96
-//        thumbnailImageView.image = nil
-//        nameLabel.text = ""
-//        priceLabel.text = ""
-//        openLabel.text = ""
+        thumbnailImageView.image = nil
+        nameLabel.text = ""
+        priceLabel.text = ""
+        openLabel.text = ""
     }
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -235,12 +235,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 tappedLocation.append(location)
             }
         }
-        
-        print("viewHeightConstraint pre-setting: \(horizontalStackViewHeightConstraint.constant)")
+
         horizontalStackViewHeightConstraint.constant = viewHeight(tappedLocation[0].name)
-        print("viewHeighConstraint post-setting: \(horizontalStackViewHeightConstraint.constant)")
-        print("locationView height = \(locationView.frame.height)")
-        print("locationView y = \(locationView.frame.origin.y)")
         
         YelpClient.sharedInstance().loadImage(tappedLocation[0].imageUrl, completionHandler: { (image) in
             
