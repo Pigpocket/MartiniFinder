@@ -48,6 +48,7 @@ class TableViewController: UITableViewController, CLLocationManagerDelegate {
                 
                 if let locations = locations {
                     self.locations = locations
+                    
                     self.locationsTableView.reloadData()
                 }
             }

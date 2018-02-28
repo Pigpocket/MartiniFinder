@@ -10,6 +10,8 @@ import Foundation
 import UIKit
 
 struct Location {
+    
+    static var sharedInstance: [Location] = [Location]()
 
     // MARK: Properties
     

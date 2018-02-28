@@ -200,7 +200,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         annotation = view.annotation as! MKPointAnnotation
         
         // Add the tapped location to the tappedLocation array
-        for location in locations {
+        for location in Location.sharedInstance {
             if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
                 tappedLocation.append(location)
             }
@@ -269,14 +269,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             performUIUpdatesOnMain {
                 
                 if let locations = locations {
-                    self.locations = locations
+                    Location.sharedInstance = locations
                     
-                    for i in 0..<self.locations.count {
-                        YelpClient.sharedInstance().loadImage(self.locations[i].imageUrl, completionHandler: { (image) in
+                    for i in 0..<Location.sharedInstance.count {
+                        YelpClient.sharedInstance().loadImage(Location.sharedInstance[i].imageUrl, completionHandler: { (image) in
                             
-                            self.locations[i].image = image
+                            Location.sharedInstance[i].image = image
                             
-                            YelpClient.sharedInstance().getOpeningHoursFromID(id: self.locations[i].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+                            YelpClient.sharedInstance().getOpeningHoursFromID(id: Location.sharedInstance[i].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
                                 
                                 if error != nil {
                                     print("There was an error getting business hours: \(String(describing: error))")
@@ -284,7 +284,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                 
                                 if isOpenNow {
                                     
-                                    self.locations[i].isOpenNow = isOpenNow
+                                    Location.sharedInstance[i].isOpenNow = isOpenNow
                                 }
                             })
                         })
@@ -294,7 +294,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 // Create the annotations
                 var tempArray = [MKPointAnnotation]()
                 
-                for dictionary in self.locations {
+                for dictionary in Location.sharedInstance {
                     
                     let lat = CLLocationDegrees(dictionary.latitude)
                     let long = CLLocationDegrees(dictionary.longitude)
