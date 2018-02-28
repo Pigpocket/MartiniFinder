@@ -98,59 +98,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         MapCenter.shared.longitude = (locationManager.location?.coordinate.longitude)!
         
         // Get locations
-        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", MapCenter.shared.latitude, MapCenter.shared.longitude) { (locations, error) in
-            
-            if error != nil {
-                print("There was an error: \(String(describing: error))")
-            }
-            
-            performUIUpdatesOnMain {
-                
-            if let locations = locations {
-                self.locations = locations
-                
-                for i in 0..<self.locations.count {
-                    YelpClient.sharedInstance().loadImage(self.locations[i].imageUrl, completionHandler: { (image) in
-                        
-                        self.locations[i].image = image
-                        
-                        YelpClient.sharedInstance().getOpeningHoursFromID(id: self.locations[i].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
-                            
-                            if error != nil {
-                                print("There was an error getting business hours: \(String(describing: error))")
-                            }
-                            
-                            if isOpenNow {
-                                
-                                self.locations[i].isOpenNow = isOpenNow
-                            }
-                        })
-                    })
-                }
-            }
-            
-            // Create the annotations
-            var tempArray = [MKPointAnnotation]()
-            
-            for dictionary in self.locations {
-                
-                let lat = CLLocationDegrees(dictionary.latitude)
-                let long = CLLocationDegrees(dictionary.longitude)
-                let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                let name = dictionary.name
-                let annotation = MKPointAnnotation()
-                annotation.coordinate = coordinate
-                annotation.title = "\(name)"
-                tempArray.append(annotation)
-                
-            }
-            
-            // Add the annotations to the annotations array
-            self.mapView.removeAnnotations(self.annotationArray)
-            self.annotationArray = tempArray
-            self.mapView.addAnnotations(self.annotationArray)
-            }
-        }
+        getLocations()
         
         self.mapView.delegate = self
         self.locationManager.requestAlwaysAuthorization()
@@ -304,7 +252,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         MapCenter.shared.latitude = mapView.centerCoordinate.latitude
         MapCenter.shared.longitude = mapView.centerCoordinate.longitude
         
-        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", MapCenter.shared.latitude, MapCenter.shared.longitude, completionHandlerForSearchResults: { (locations, error) in
+        // Get locations
+        getLocations()
+
+    }
+    
+    func getLocations() {
+        
+        // Get locations
+        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", MapCenter.shared.latitude, MapCenter.shared.longitude) { (locations, error) in
             
             if error != nil {
                 print("There was an error: \(String(describing: error))")
@@ -314,8 +270,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 
                 if let locations = locations {
                     self.locations = locations
+                    
+                    for i in 0..<self.locations.count {
+                        YelpClient.sharedInstance().loadImage(self.locations[i].imageUrl, completionHandler: { (image) in
+                            
+                            self.locations[i].image = image
+                            
+                            YelpClient.sharedInstance().getOpeningHoursFromID(id: self.locations[i].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+                                
+                                if error != nil {
+                                    print("There was an error getting business hours: \(String(describing: error))")
+                                }
+                                
+                                if isOpenNow {
+                                    
+                                    self.locations[i].isOpenNow = isOpenNow
+                                }
+                            })
+                        })
+                    }
                 }
                 
+                // Create the annotations
                 var tempArray = [MKPointAnnotation]()
                 
                 for dictionary in self.locations {
@@ -328,6 +304,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     annotation.coordinate = coordinate
                     annotation.title = "\(name)"
                     tempArray.append(annotation)
+                    
                 }
                 
                 // Add the annotations to the annotations array
@@ -335,7 +312,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 self.annotationArray = tempArray
                 self.mapView.addAnnotations(self.annotationArray)
             }
-        })
+        }
     }
 
     func displayRating(location: Location) {
