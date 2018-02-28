@@ -108,11 +108,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             if let locations = locations {
                 self.locations = locations
                 
-                for location in locations {
-                    YelpClient.sharedInstance().loadImage(location.imageUrl, completionHandler: { (image) in
+                for i in 0..<self.locations.count {
+                    YelpClient.sharedInstance().loadImage(self.locations[i].imageUrl, completionHandler: { (image) in
                         
-                        // Cannot assign to property: 'location' is a 'let' constant
-                        // location.image = image
+                        self.locations[i].image = image
+                        
+                        YelpClient.sharedInstance().getOpeningHoursFromID(id: self.locations[i].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+                            
+                            if error != nil {
+                                print("There was an error getting business hours: \(String(describing: error))")
+                            }
+                            
+                            if isOpenNow {
+                                
+                                self.locations[i].isOpenNow = isOpenNow
+                            }
+                        })
                     })
                 }
             }
@@ -240,8 +251,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         annotation = view.annotation as! MKPointAnnotation
         
-        horizontalStackView.addBackground(color: UIColor.black)
-        
         // Add the tapped location to the tappedLocation array
         for location in locations {
             if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
@@ -256,23 +265,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.priceLabel.textColor = UIColor.white
         
         self.displayRating(location: self.tappedLocation[0])
+        self.thumbnailImageView.image = self.tappedLocation[0].image
         
+        horizontalStackView.addBackground(color: UIColor.black)
         horizontalStackViewHeightConstraint.constant = viewHeight(tappedLocation[0].name)
         
-        YelpClient.sharedInstance().loadImage(tappedLocation[0].imageUrl, completionHandler: { (image) in
-            
-            performUIUpdatesOnMain {
-                
-                self.thumbnailImageView.image = image
-            }
-            
             YelpClient.sharedInstance().getOpeningHoursFromID(id: self.tappedLocation[0].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
                 
                 if let error = error {
                     print("There was an error: \(String(describing: error))")
                 }
                 
-                if let isOpenNow = isOpenNow {
+                if isOpenNow {
                     
                     performUIUpdatesOnMain {
                         
@@ -287,7 +291,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     }
                 }
             })
-        })
+        //})
         locationView.isHidden = false
     }
    

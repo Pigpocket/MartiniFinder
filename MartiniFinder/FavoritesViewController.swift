@@ -42,6 +42,13 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         
         self.view.backgroundColor = UIColor.black
         
+        let yelpIcon = UIBarButtonItem(image: UIImage(named: "Yelp_trademark_RGB_outline"), style: .plain, target: self, action: Selector(("nil")))
+        self.navigationItem.rightBarButtonItem = yelpIcon
+
+    }
+    
+    func nilAction() {
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -169,7 +176,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
             if let error = error {
                 print("There was an error: \(String(describing: error))")
             }
-            if let isOpenNow = isOpenNow {
+            if isOpenNow {
                 
                 performUIUpdatesOnMain {
                     if isOpenNow {

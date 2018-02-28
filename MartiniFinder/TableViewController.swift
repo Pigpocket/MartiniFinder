@@ -90,9 +90,7 @@ extension TableViewController {
                         print("There was an error: \(String(describing: error))")
                     }
                     
-                    if let isOpenNow = isOpenNow {
-                    
-                        performUIUpdatesOnMain {
+                    if isOpenNow {
                         
                         if isOpenNow {
                             cell.openLabel.text = "Open"
@@ -102,7 +100,6 @@ extension TableViewController {
                             cell.openLabel.textColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0)
                             cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
                             }
-                        }                        
                     }
                 })
             })
