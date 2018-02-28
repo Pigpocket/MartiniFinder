@@ -44,6 +44,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.setNavigationItem()
+        
         // Stylize tabBar
         self.tabBarController?.tabBar.tintColor = UIColor.white
         self.tabBarController?.tabBar.barTintColor = UIColor.black
@@ -371,4 +373,13 @@ extension UIStackView {
         insertSubview(subView, at: 0)
     }
     
+}
+
+extension UIViewController {
+    func setNavigationItem() {
+        print("setNavigationItem called")
+        let imageView = UIImageView(image: UIImage(named: "yelp"))
+        let item = UIBarButtonItem(customView: imageView)
+        self.navigationItem.rightBarButtonItem = item
+    }
 }
