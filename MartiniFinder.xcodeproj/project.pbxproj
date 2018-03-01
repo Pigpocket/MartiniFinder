@@ -32,6 +32,7 @@
 /* Begin PBXFileReference section */
 		3704503B2026D54B004FECBD /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		3704503D2026E6B7004FECBD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		370F1838204796FE00EA0ADA /* Model_02-28-18-Images.IsOpenNow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_02-28-18-Images.IsOpenNow.xcdatamodel"; sourceTree = "<group>"; };
 		372E21F7201420FC0084C3B2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		3771FE9A20127CBF0001E075 /* YelpConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConvenience.swift; sourceTree = "<group>"; };
 		37B5215E201AF836004393ED /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -407,9 +408,10 @@
 		37E8234C2032AB6C0054A75D /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				370F1838204796FE00EA0ADA /* Model_02-28-18-Images.IsOpenNow.xcdatamodel */,
 				37E8234D2032AB6C0054A75D /* Model.xcdatamodel */,
 			);
-			currentVersion = 37E8234D2032AB6C0054A75D /* Model.xcdatamodel */;
+			currentVersion = 370F1838204796FE00EA0ADA /* Model_02-28-18-Images.IsOpenNow.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
