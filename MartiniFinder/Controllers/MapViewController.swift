@@ -171,8 +171,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let cellWidth = ceil(nameLabel.frame.width)
         
         if textWidth > cellWidth {
+            print("XL cell. Width: \(nameLabel.frame.width)")
+            print("Text width: \(textWidth)")
             return extraLargeCellHeight
         } else {
+            print("Normal cell. Width: \(nameLabel.frame.width)")
+            print("Text width: \(textWidth)")
             return normalCellHeight
         }
     }
