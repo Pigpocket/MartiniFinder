@@ -171,10 +171,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let cellWidth = ceil(nameLabel.frame.width)
         
         if textWidth > cellWidth {
-            print("Extra large cell")
             return extraLargeCellHeight
         } else {
-            print("Normal cell")
             return normalCellHeight
         }
     }
@@ -186,7 +184,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        print("deselect being called")
         tappedLocation.removeAll()
         horizontalStackViewHeightConstraint.constant = 96
         thumbnailImageView.image = nil
