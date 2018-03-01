@@ -19,10 +19,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Martini Cocktail Book Shot_Edited" translatesAutoresizingMaskIntoConstraints="NO" id="te8-rs-xRY">
-                                <rect key="frame" x="0.0" y="64" width="320" height="504"/>
+                                <rect key="frame" x="0.0" y="20" width="320" height="548"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mQ9-BF-JFG">
-                                <rect key="frame" x="199" y="328" width="89" height="30"/>
+                                <rect key="frame" x="199" y="284" width="89" height="74"/>
                                 <state key="normal" title="Find Martinis">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -32,10 +32,7 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" showsTouchWhenHighlighted="YES" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RLC-Rk-pHR" userLabel="My Martinis">
-                                <rect key="frame" x="32" y="328" width="80" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="dOV-nQ-EjL"/>
-                                </constraints>
+                                <rect key="frame" x="32" y="284" width="80" height="74"/>
                                 <state key="normal" title="My Martinis">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
@@ -213,6 +210,22 @@
             </objects>
             <point key="canvasLocation" x="3140.625" y="402.46478873239437"/>
         </scene>
+        <!--Third View Controller-->
+        <scene sceneID="Gcs-i2-ERx">
+            <objects>
+                <viewController id="jmV-8f-v1T" customClass="ThirdViewController" customModule="MartiniFinder" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="5La-ct-D6b">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="BYv-Bo-s3s"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="2bx-FQ-gdg"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Z5L-4H-FfC" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3137" y="1141"/>
+        </scene>
         <!--MapViewController-->
         <scene sceneID="ehr-Pl-ujH">
             <objects>
@@ -363,9 +376,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Sz-g2-H7d"/>
                     </view>
-                    <navigationItem key="navigationItem" id="wu5-0D-SCf">
-                        <barButtonItem key="leftBarButtonItem" title="Item" id="b4g-ub-Otb"/>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="wu5-0D-SCf"/>
                     <connections>
                         <outlet property="blankView" destination="D0u-vp-DOf" id="Dgo-iX-DCO"/>
                         <outlet property="horizontalStackView" destination="fDM-m0-7bZ" id="C83-E5-BQI"/>
@@ -388,10 +399,9 @@
         <!--Navigation Controller-->
         <scene sceneID="XO7-WU-XE4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Du0-kg-AQF" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="Du0-kg-AQF" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="eOA-Vx-fHC">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -410,7 +420,6 @@
                     <tabBarItem key="tabBarItem" title="Map" image="icon_mapview-deselected" id="32w-0t-1hD"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Vb6-DT-tXf">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
@@ -448,7 +457,6 @@
                     <tabBarItem key="tabBarItem" title="Table" image="icon_listview-deselected" id="U6K-br-jnj"/>
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="d5V-lx-usY">
-                        <rect key="frame" x="0.0" y="20" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>

@@ -33,12 +33,21 @@ class TableViewController: UITableViewController, CLLocationManagerDelegate {
         self.tabBarController?.tabBar.barTintColor = UIColor.black
         self.tabBarController?.tabBar.isTranslucent = false
         
+        self.navigationController?.navigationBar.isHidden = false
+        self.setNavigationItem()
+        let backItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
+        self.navigationItem.leftBarButtonItem = backItem
+        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
         locationsTableView.reloadData()
+    }
+    
+    @objc func backTapped() {
+        self.tabBarController?.navigationController?.popViewController(animated: true)
     }
 
 }

@@ -46,6 +46,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         self.setNavigationItem()
         
+        let backItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(backTapped))
+        self.navigationItem.leftBarButtonItem = backItem
+        
         // Stylize tabBar
         self.tabBarController?.tabBar.tintColor = UIColor.white
         self.tabBarController?.tabBar.barTintColor = UIColor.black
@@ -151,6 +154,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             redoSearchButton.isHidden = false
             resetLocationButton.isHidden = false
         }
+    }
+    
+    @objc func backTapped() {
+        self.tabBarController?.navigationController?.popViewController(animated: true)
     }
     
     func viewHeight(_ locationName: String) -> CGFloat {
