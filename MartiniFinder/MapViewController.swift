@@ -129,7 +129,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func setAnnotations() {
         
         // Set the coordinates
-        for location in self.locations {
+        for location in Location.sharedInstance {
             let annotation = MKPointAnnotation()
             
             let coordinates = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
@@ -247,7 +247,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @IBAction func redoSearch(_ sender: Any) {
         
-        locations.removeAll()
+        Location.sharedInstance.removeAll()
 
         MapCenter.shared.latitude = mapView.centerCoordinate.latitude
         MapCenter.shared.longitude = mapView.centerCoordinate.longitude

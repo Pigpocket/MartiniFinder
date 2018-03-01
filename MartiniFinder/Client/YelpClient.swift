@@ -15,6 +15,7 @@ class YelpClient {
         
         let session = URLSession.shared
         let urlString = YelpClient.Constants.YelpBaseURL + method + escapedParameters(parameters as [String : AnyObject])
+        print("This is the urlString: \(urlString)")
         let url = URL(string: urlString)!
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "GET"

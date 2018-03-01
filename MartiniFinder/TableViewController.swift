@@ -38,21 +38,7 @@ class TableViewController: UITableViewController, CLLocationManagerDelegate {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
-        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3", MapCenter.shared.latitude, MapCenter.shared.longitude) { (locations, error) in
-            
-            if error != nil {
-                print("There was an error: \(String(describing: error))")
-            }
-            
-            performUIUpdatesOnMain {
-                
-                if let locations = locations {
-                    self.locations = locations
-                    
-                    self.locationsTableView.reloadData()
-                }
-            }
-        }
+        locationsTableView.reloadData()
     }
 
 }
@@ -62,53 +48,41 @@ extension TableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
-        let location = locations[indexPath.row]
-        
-            YelpClient.sharedInstance().loadImage(location.imageUrl, completionHandler: { (image) in
+        let location = Location.sharedInstance[indexPath.row]
                 
-                performUIUpdatesOnMain {
-                    
-                    cell.backgroundColor = UIColor.black
-                    
-                    cell.thumbnailImageView.layer.cornerRadius = 10
-                    cell.thumbnailImageView.clipsToBounds = true
-                    cell.thumbnailImageView.layer.borderColor = UIColor.white.cgColor
-                    cell.thumbnailImageView.layer.borderWidth = 1
-                    cell.thumbnailImageView.image = image
-                    
-                    cell.nameLabel.text = location.name
-                    cell.nameLabel.textColor = UIColor.white
-                    
-                    cell.priceLabel.text = location.price
-                    cell.priceLabel.textColor = UIColor.white
-                    
-                    cell.displayRating(location: location)
+        performUIUpdatesOnMain {
+            
+            cell.backgroundColor = UIColor.black
+            
+            cell.thumbnailImageView.layer.cornerRadius = 10
+            cell.thumbnailImageView.clipsToBounds = true
+            cell.thumbnailImageView.layer.borderColor = UIColor.white.cgColor
+            cell.thumbnailImageView.layer.borderWidth = 1
+            cell.thumbnailImageView.image = location.image
+            
+            cell.nameLabel.text = location.name
+            cell.nameLabel.textColor = UIColor.white
+            
+            cell.priceLabel.text = location.price
+            cell.priceLabel.textColor = UIColor.white
+            
+            cell.displayRating(location: location)
+            
+            if location.isOpenNow {
+                
+                    cell.openLabel.text = "Open"
+                    cell.openLabel.textColor = UIColor.white
+                } else {
+                    cell.openLabel.text = "Closed"
+                    cell.openLabel.textColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0)
+                    cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
+                    }
                 }
-                
-                YelpClient.sharedInstance().getOpeningHoursFromID(id: location.id, completionHandlerForOpeningHours: { (isOpenNow, error) in
-                    
-                    if let error = error {
-                        print("There was an error: \(String(describing: error))")
-                    }
-                    
-                    if isOpenNow {
-                        
-                        if isOpenNow {
-                            cell.openLabel.text = "Open"
-                            cell.openLabel.textColor = UIColor.white
-                        } else {
-                            cell.openLabel.text = "Closed"
-                            cell.openLabel.textColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0)
-                            cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-                            }
-                    }
-                })
-            })
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return locations.count
+        return Location.sharedInstance.count
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -120,7 +94,7 @@ extension TableViewController {
         // Get each cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
         
-        let nameText = locations[indexPath.row].name
+        let nameText = Location.sharedInstance[indexPath.row].name
         
         var size = CGSize()
         
@@ -144,7 +118,7 @@ extension TableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        let location = locations[indexPath.row]
+        let location = Location.sharedInstance[indexPath.row]
         
         // Initialize NSManagedObject 'Location' with properties
         favoriteLocation = Favorites(context: CoreDataStack.sharedInstance().context)
