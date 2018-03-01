@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		3704503C2026D54B004FECBD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3704503B2026D54B004FECBD /* TableViewController.swift */; };
 		3704503E2026E6B7004FECBD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3704503D2026E6B7004FECBD /* TableViewCell.swift */; };
+		370F183C20479DFD00EA0ADA /* Favorites+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F183A20479DFD00EA0ADA /* Favorites+CoreDataClass.swift */; };
+		370F183D20479DFD00EA0ADA /* Favorites+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F183B20479DFD00EA0ADA /* Favorites+CoreDataProperties.swift */; };
 		372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E21F7201420FC0084C3B2 /* CoreDataStack.swift */; };
 		3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3771FE9A20127CBF0001E075 /* YelpConvenience.swift */; };
 		37B5215F201AF836004393ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5215E201AF836004393ED /* Location.swift */; };
@@ -32,6 +34,9 @@
 /* Begin PBXFileReference section */
 		3704503B2026D54B004FECBD /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		3704503D2026E6B7004FECBD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		370F183920479B4900EA0ADA /* Model_02-28-18.Image.IsOpenNow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_02-28-18.Image.IsOpenNow.xcdatamodel"; sourceTree = "<group>"; };
+		370F183A20479DFD00EA0ADA /* Favorites+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+CoreDataClass.swift"; sourceTree = "<group>"; };
+		370F183B20479DFD00EA0ADA /* Favorites+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		372E21F7201420FC0084C3B2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		3771FE9A20127CBF0001E075 /* YelpConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConvenience.swift; sourceTree = "<group>"; };
 		37B5215E201AF836004393ED /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -80,6 +85,8 @@
 			children = (
 				372E21F7201420FC0084C3B2 /* CoreDataStack.swift */,
 				37E8234C2032AB6C0054A75D /* Model.xcdatamodeld */,
+				370F183A20479DFD00EA0ADA /* Favorites+CoreDataClass.swift */,
+				370F183B20479DFD00EA0ADA /* Favorites+CoreDataProperties.swift */,
 				37E8234F2032AC0E0054A75D /* FavoritesClass.swift */,
 				37E823502032AC0E0054A75D /* FavoritesExtension.swift */,
 			);
@@ -202,11 +209,13 @@
 				37E823522032AC0E0054A75D /* FavoritesExtension.swift in Sources */,
 				37E823512032AC0E0054A75D /* FavoritesClass.swift in Sources */,
 				37E8234E2032AB6C0054A75D /* Model.xcdatamodeld in Sources */,
+				370F183C20479DFD00EA0ADA /* Favorites+CoreDataClass.swift in Sources */,
 				37D3E2C01FFF35DC0058CE97 /* HomeViewController.swift in Sources */,
 				37E8231F202FAA880054A75D /* MapCenter.swift in Sources */,
 				372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */,
 				3704503E2026E6B7004FECBD /* TableViewCell.swift in Sources */,
 				3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */,
+				370F183D20479DFD00EA0ADA /* Favorites+CoreDataProperties.swift in Sources */,
 				37D3E2D020006A930058CE97 /* GCDSwift.swift in Sources */,
 				37E82339203273E40054A75D /* FavoritesViewController.swift in Sources */,
 				37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */,
@@ -407,9 +416,10 @@
 		37E8234C2032AB6C0054A75D /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
+				370F183920479B4900EA0ADA /* Model_02-28-18.Image.IsOpenNow.xcdatamodel */,
 				37E8234D2032AB6C0054A75D /* Model.xcdatamodel */,
 			);
-			currentVersion = 37E8234D2032AB6C0054A75D /* Model.xcdatamodel */;
+			currentVersion = 370F183920479B4900EA0ADA /* Model_02-28-18.Image.IsOpenNow.xcdatamodel */;
 			path = Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;

@@ -146,50 +146,35 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         let cell = tableView.dequeueReusableCell(withIdentifier: "FavoritesCell") as! FavoritesTableViewCell
 
         let favorite = self.fetchedResultsController.object(at: indexPath)
-        
-        // Asynchronously load object data
-        YelpClient.sharedInstance().loadImage(favorite.imageUrl, completionHandler: { (image) in
             
-            performUIUpdatesOnMain {
-                
-                cell.backgroundColor = UIColor.black
-                
-                cell.thumbnailImageView.layer.cornerRadius = 10
-                cell.thumbnailImageView.clipsToBounds = true
-                cell.thumbnailImageView.layer.borderColor = UIColor.white.cgColor
-                cell.thumbnailImageView.layer.borderWidth = 1
-                cell.thumbnailImageView.image = image
-                
-                cell.nameLabel.text = favorite.name
-                cell.nameLabel.textColor = UIColor.white
-                
-                cell.priceLabel.text = favorite.price
-                cell.priceLabel.textColor = UIColor.white
-                
-                cell.displayRating(rating: favorite.rating)
-            }
-        })
-        
-        // Set isOpenNow
-        YelpClient.sharedInstance().getOpeningHoursFromID(id: favorite.id!, completionHandlerForOpeningHours: { (isOpenNow, error) in
+        performUIUpdatesOnMain {
             
-            if let error = error {
-                print("There was an error: \(String(describing: error))")
+            cell.backgroundColor = UIColor.black
+            
+            cell.thumbnailImageView.layer.cornerRadius = 10
+            cell.thumbnailImageView.clipsToBounds = true
+            cell.thumbnailImageView.layer.borderColor = UIColor.white.cgColor
+            cell.thumbnailImageView.layer.borderWidth = 1
+            cell.thumbnailImageView.image = UIImage(data: favorite.image! as Data)
+            
+            cell.nameLabel.text = favorite.name
+            cell.nameLabel.textColor = UIColor.white
+            
+            cell.priceLabel.text = favorite.price
+            cell.priceLabel.textColor = UIColor.white
+            
+            cell.displayRating(rating: favorite.rating)
+        
+            if favorite.isOpenNow {
+                cell.openLabel.text = "Open"
+                cell.openLabel.textColor = UIColor.white
+            } else {
+                cell.openLabel.text = "Closed"
+                cell.openLabel.textColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0)
+                cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
             }
-            if isOpenNow {
-                
-                performUIUpdatesOnMain {
-                    if isOpenNow {
-                        cell.openLabel.text = "Open"
-                        cell.openLabel.textColor = UIColor.white
-                    } else {
-                        cell.openLabel.text = "Closed"
-                        cell.openLabel.textColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0)
-                        cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-                    }
-                }
-            }
-        })
+        }
         return cell
     }
+    
 }
