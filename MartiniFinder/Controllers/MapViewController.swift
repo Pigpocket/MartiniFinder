@@ -44,6 +44,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        nameLabel.backgroundColor = UIColor.cyan
+        
         self.setNavigationItem()
         
         // Stylize tabBar
@@ -106,7 +108,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.locationManager.requestWhenInUseAuthorization()
         
         if (CLLocationManager.locationServicesEnabled()) {
-            locationManager = CLLocationManager()
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
             locationManager.startUpdatingLocation()
@@ -171,10 +172,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let cellWidth = ceil(nameLabel.frame.width)
         
         if textWidth > cellWidth {
+            print("***\(locationName)***")
             print("XL cell. Width: \(nameLabel.frame.width)")
             print("Text width: \(textWidth)")
             return extraLargeCellHeight
         } else {
+            print("***\(locationName)***")
             print("Normal cell. Width: \(nameLabel.frame.width)")
             print("Text width: \(textWidth)")
             return normalCellHeight
@@ -216,7 +219,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
         }
         
-        self.nameLabel.text = self.tappedLocation[0].name
+        let locationNameStripped = self.tappedLocation[0].name.replacingOccurrences(of: " ", with: "")
+        self.nameLabel.text = locationNameStripped //self.tappedLocation[0].name
         self.nameLabel.textColor = UIColor.white
         
         self.priceLabel.text = self.tappedLocation[0].price

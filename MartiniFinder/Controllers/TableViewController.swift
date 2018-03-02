@@ -106,12 +106,18 @@ extension TableViewController {
         let normalCellHeight = CGFloat(96)
         let extraLargeCellHeight = CGFloat(normalCellHeight + 20.33)
         
-        let textWidth = ceil(size.width)
+        let textWidth = ceil(size.width - 48)
         let cellWidth = ceil(cell.nameLabel.frame.width)
         
         if textWidth > cellWidth {
+            print(nameText)
+            print("XL cell. Width: \(cell.nameLabel.frame.width)")
+            print("Text width: \(textWidth)")
             return extraLargeCellHeight
         } else {
+            print(nameText)
+            print("Normal cell. Width: \(cell.nameLabel.frame.width)")
+            print("Text width: \(textWidth)")
             return normalCellHeight
         }
     }
