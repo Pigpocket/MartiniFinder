@@ -15,8 +15,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // MARK: Properties
     
-    var annotation = MKPointAnnotation()
-    var annotationArray: [MKPointAnnotation] = []
+    var annotation: CustomPointAnnotation!
+    var pinAnnotationView: MKPinAnnotationView!
+    var annotationArray: [CustomPointAnnotation] = []
     var locationManager = CLLocationManager()
     var locations = [Location]()
     let singleTap = UITapGestureRecognizer()
@@ -201,11 +202,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        annotation = view.annotation as! MKPointAnnotation
+        annotation = view.annotation as! CustomPointAnnotation
         
         // Add the tapped location to the tappedLocation array
         for location in Location.sharedInstance {
-            if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
+            if location.latitude == annotation?.coordinate.latitude && location.longitude == annotation?.coordinate.longitude {
                 tappedLocation.append(location)
             }
         }
@@ -297,7 +298,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
                 
                 // Create the annotations
-                var tempArray = [MKPointAnnotation]()
+                var tempArray = [CustomPointAnnotation]()
                 
                 for dictionary in Location.sharedInstance {
                     
@@ -305,11 +306,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     let long = CLLocationDegrees(dictionary.longitude)
                     let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
                     let name = dictionary.name
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = coordinate
-                    annotation.title = "\(name)"
+                    let annotation = CustomPointAnnotation(coordinate: coordinate, title: name, pinCustomImageName: "star1")
+//                    annotation.coordinate = coordinate
+//                    annotation.title = "\(name)"
+            
                     tempArray.append(annotation)
-                    
                 }
                 
                 // Add the annotations to the annotations array
@@ -318,6 +319,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 self.mapView.addAnnotations(self.annotationArray)
             }
         }
+    }
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        if !(annotation is MKPointAnnotation) {
+            return nil
+        }
+        
+        let annotationIdentifier = "AnnotationIdentifier"
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier)
+        
+        if annotationView == nil {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+            annotationView!.canShowCallout = true
+        }
+        else {
+            annotationView!.annotation = annotation
+        }
+        
+        let customPointAnnotation = annotation as! CustomPointAnnotation
+        annotationView?.image = UIImage(named: customPointAnnotation.pinCustomImageName)
+
+        return annotationView
     }
 
     func displayRating(location: Location) {
