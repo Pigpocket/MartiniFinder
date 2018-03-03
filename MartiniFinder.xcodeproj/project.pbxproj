@@ -12,6 +12,7 @@
 		370F183C20479DFD00EA0ADA /* Favorites+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F183A20479DFD00EA0ADA /* Favorites+CoreDataClass.swift */; };
 		370F183D20479DFD00EA0ADA /* Favorites+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F183B20479DFD00EA0ADA /* Favorites+CoreDataProperties.swift */; };
 		370F18422049E55900EA0ADA /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F18412049E55900EA0ADA /* CustomAnnotationView.swift */; };
+		370F1846204A89FC00EA0ADA /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F1845204A89FC00EA0ADA /* Common.swift */; };
 		372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E21F7201420FC0084C3B2 /* CoreDataStack.swift */; };
 		3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3771FE9A20127CBF0001E075 /* YelpConvenience.swift */; };
 		37B5215F201AF836004393ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5215E201AF836004393ED /* Location.swift */; };
@@ -37,6 +38,7 @@
 		370F183A20479DFD00EA0ADA /* Favorites+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+CoreDataClass.swift"; sourceTree = "<group>"; };
 		370F183B20479DFD00EA0ADA /* Favorites+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Favorites+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		370F18412049E55900EA0ADA /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
+		370F1845204A89FC00EA0ADA /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
 		372E21F7201420FC0084C3B2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		3771FE9A20127CBF0001E075 /* YelpConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConvenience.swift; sourceTree = "<group>"; };
 		37B5215E201AF836004393ED /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
@@ -134,6 +136,7 @@
 				37D3E2C11FFF35DC0058CE97 /* Main.storyboard */,
 				37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */,
 				37D3E2CF20006A930058CE97 /* GCDSwift.swift */,
+				370F1845204A89FC00EA0ADA /* Common.swift */,
 				370F183E2047B5A200EA0ADA /* Structs */,
 				37B52155201AC51A004393ED /* Model */,
 				3771FE9C20127CC40001E075 /* Client */,
@@ -232,6 +235,7 @@
 				37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */,
 				37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */,
 				37E8233B203276F90054A75D /* FavoritesTableViewCell.swift in Sources */,
+				370F1846204A89FC00EA0ADA /* Common.swift in Sources */,
 				37B5215F201AF836004393ED /* Location.swift in Sources */,
 				370F18422049E55900EA0ADA /* CustomAnnotationView.swift in Sources */,
 				37D3E2D2200099270058CE97 /* MapViewController.swift in Sources */,

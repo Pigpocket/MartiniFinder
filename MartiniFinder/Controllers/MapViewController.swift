@@ -128,18 +128,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let locValue:CLLocationCoordinate2D = manager.location!.coordinate
         print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
- 
-//    func setAnnotations() {
-//
-//        print("Set Annotation called")
-//        // Set the coordinates
-//        for location in Location.sharedInstance {
-//            let annotation = Annotation(coordinates: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), title: location.name, image: UIImage(named: "icons8-cocktail-24")!)
-//            print(annotation)
-//            //annotation.coordinate = coordinates
-//            mapView.addAnnotation(annotation)
-//        }
-//    }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return !(touch.view is MKPinAnnotationView)
@@ -155,6 +143,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             resetLocationButton.isHidden = false
         }
     }
+    
+//    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
+//        redoSearchButton.isHidden = false
+//        resetLocationButton.isHidden = false
+//    }
     
     func viewHeight(_ locationName: String) -> CGFloat {
         
@@ -208,7 +201,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             return nil
         }
         
-        // Better to make this class property
         let annotationIdentifier = "AnnotationIdentifier"
         
         var annotationView: MKAnnotationView?
@@ -222,7 +214,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         
         if let annotationView = annotationView {
-            //annotationView.image = UIImage(named: "4star")
             
             for location in Location.sharedInstance {
                 if annotationView.annotation?.coordinate.latitude == location.latitude && annotationView.annotation?.coordinate.longitude == location.longitude {
@@ -269,7 +260,19 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.openLabel.textColor = UIColor.white
         } else {
             self.openLabel.text = "Closed"
-            self.openLabel.textColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0)
+            self.openLabel.isEnabled = true
+            let rating = self.tappedLocation[0].rating
+            if rating <= 1.5 {
+                openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
+            } else if rating > 1.5 && rating <= 2.5 {
+                openLabel.textColor = UIColor(red: 254/255.0, green: 192/255.0, blue: 15/255.0, alpha: 1)
+            } else if rating > 2.5 && rating <= 3.5 {
+                openLabel.textColor = UIColor(red: 255/255.0, green: 146/255.0, blue: 65/255.0, alpha: 1)
+            } else if rating > 3.5 && rating <= 4.5 {
+                openLabel.textColor = UIColor(red: 241/255.0, green: 92/255.0, blue: 79/255.0, alpha: 1)
+            } else if rating > 4.5 {
+                openLabel.textColor = UIColor(red: 211/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1)
+            }
             self.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
         }
         
@@ -288,6 +291,30 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.horizontalStackViewHeightConstraint.constant = self.viewHeight(self.tappedLocation[0].name)
 
         locationView.isHidden = false
+    }
+    
+    func configureTextColor(_ rating: Double) -> UIColor {
+        
+        var color = UIColor()
+        
+        if rating <= 1.5 {
+            //color = UIColor(displayP3Red: 242, green: 189, blue: 121, alpha: 1)
+            color = UIColor(red: 242, green: 189, blue: 121, alpha: 1)
+        } else if rating > 1.5 && rating <= 2.5 {
+            //color = UIColor(displayP3Red: 254, green: 192, blue: 15, alpha: 1)
+            color = UIColor(red: 254, green: 192, blue: 15, alpha: 1)
+        } else if rating > 2.5 && rating <= 3.5 {
+            //color = UIColor(displayP3Red: 255, green: 146, blue: 65, alpha: 1)
+            color = UIColor(red: 255, green: 146, blue: 65, alpha: 1)
+        } else if rating > 3.5 && rating <= 4.5 {
+            //color = UIColor(displayP3Red: 241, green: 92, blue: 79, alpha: 1)
+            color = UIColor(red: 241, green: 92, blue: 79, alpha: 1)
+        } else if rating > 4.5 {
+            //color = UIColor(displayP3Red: 211, green: 36, blue: 34, alpha: 1)
+            color = UIColor(red: 211, green: 36, blue: 34, alpha: 1)
+        }
+        
+        return color
     }
    
     func setMapRegion() {
@@ -360,10 +387,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     let long = CLLocationDegrees(dictionary.longitude)
                     let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
                     let name = dictionary.name
-                    //let image = UIImage(named: "icons8-cocktail-24")!
                     let annotation = CustomAnnotation(coordinates: coordinates, title: name)
-                    //annotation.coordinate = coordinate
-                    //annotation.title = "\(name)"
                     tempArray.append(annotation)
                    
                 }
