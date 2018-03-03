@@ -15,8 +15,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // MARK: Properties
     
-    var annotation: Annotation?
-    var annotationArray: [Annotation] = []
+    //var annotation: Annotation?
+    var annotationArray: [CustomAnnotation] = []
     var locationManager = CLLocationManager()
     var locations = [Location]()
     let singleTap = UITapGestureRecognizer()
@@ -129,17 +129,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         print("locations = \(locValue.latitude) \(locValue.longitude)")
     }
  
-    func setAnnotations() {
-        
-        print("Set Annotation called")
-        // Set the coordinates
-        for location in Location.sharedInstance {
-            let annotation = Annotation(coordinates: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), title: location.name, image: UIImage(named: "icons8-cocktail-24")!)
-            print(annotation)
-            //annotation.coordinate = coordinates
-            mapView.addAnnotation(annotation)
-        }
-    }
+//    func setAnnotations() {
+//
+//        print("Set Annotation called")
+//        // Set the coordinates
+//        for location in Location.sharedInstance {
+//            let annotation = Annotation(coordinates: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), title: location.name, image: UIImage(named: "icons8-cocktail-24")!)
+//            print(annotation)
+//            //annotation.coordinate = coordinates
+//            mapView.addAnnotation(annotation)
+//        }
+//    }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
         return !(touch.view is MKPinAnnotationView)
@@ -194,7 +194,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         tappedLocation.removeAll()
-        print("tappedLocation array count: \(tappedLocation.count)")
         horizontalStackViewHeightConstraint.constant = 96
         thumbnailImageView.image = nil
         nameLabel.text = ""
@@ -204,7 +203,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
         
-        print("viewFor annotation being called")
         // Don't want to show a custom image if the annotation is the user's location.
         guard !(annotation is MKUserLocation) else {
             return nil
@@ -254,12 +252,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        annotation = view.annotation as? Annotation
+        tappedLocation.removeAll()
+        let annotation = view.annotation as? CustomAnnotation
         
         // Add the tapped location to the tappedLocation array
         for location in Location.sharedInstance {
             if location.latitude == annotation?.coordinate.latitude && location.longitude == annotation?.coordinate.longitude {
                 tappedLocation.append(location)
+                print("Added location: \(location) \n")
+                print("tappedLocation count: \(tappedLocation.count)")
             }
         }
                         
@@ -351,7 +352,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
                 
                 // Create the annotations
-                var tempArray = [Annotation]()
+                var tempArray = [CustomAnnotation]()
                 
                 for dictionary in Location.sharedInstance {
                     
@@ -359,13 +360,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     let long = CLLocationDegrees(dictionary.longitude)
                     let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
                     let name = dictionary.name
-                    let image = UIImage(named: "icons8-cocktail-24")!
-                    let annotation = Annotation(coordinates: coordinates, title: name, image: image)
+                    //let image = UIImage(named: "icons8-cocktail-24")!
+                    let annotation = CustomAnnotation(coordinates: coordinates, title: name)
                     //annotation.coordinate = coordinate
                     //annotation.title = "\(name)"
                     tempArray.append(annotation)
-                    print("This the count in tempArray: \(tempArray.count)")
-                    
+                   
                 }
                 
                 // Add the annotations to the annotations array

@@ -58,7 +58,6 @@ struct Location {
 
     static func locationFromResults(_ results: [[String:AnyObject]]) -> [Location] {
         
-        print("LocationFromResults running")
         var locations = [Location]()
         
         // iterate through array of dictionaries, each Movie is a dictionary

@@ -10,18 +10,16 @@ import UIKit
 import MapKit
 import CoreLocation
 
-class Annotation: NSObject, MKAnnotation {
+class CustomAnnotation: NSObject, MKAnnotation {
     
     var coordinate: CLLocationCoordinate2D = CLLocationCoordinate2D()
     var title: String?
-    var image: UIImage?
     
-    init(coordinates location: CLLocationCoordinate2D, title: String, image: UIImage) {
+    init(coordinates location: CLLocationCoordinate2D, title: String) {
         super.init()
         
         self.coordinate = location
         self.title = title
-        self.image = image
 
     }
 }
