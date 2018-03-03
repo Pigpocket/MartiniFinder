@@ -44,7 +44,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        //nameLabel.backgroundColor = UIColor.cyan
+        // Truncate name label at 2 rows
+        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width * 2
         
         self.setNavigationItem()
         
@@ -65,6 +66,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationView.layer.masksToBounds = false
         thumbnailImageView.layer.cornerRadius = 10
         thumbnailImageView.clipsToBounds = true
+        thumbnailImageView.contentMode = .scaleAspectFill
         thumbnailImageView.layer.borderColor = UIColor.white.cgColor
         thumbnailImageView.layer.borderWidth = 1
         
@@ -192,6 +194,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
         tappedLocation.removeAll()
+        print("tappedLocation array count: \(tappedLocation.count)")
         horizontalStackViewHeightConstraint.constant = 96
         thumbnailImageView.image = nil
         nameLabel.text = ""
@@ -207,11 +210,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             return nil
         }
         
-        let textForThisItem = annotation.title
         // Better to make this class property
         let annotationIdentifier = "AnnotationIdentifier"
         
         var annotationView: MKAnnotationView?
+        
         if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
             annotationView = dequeuedAnnotationView
             annotationView?.annotation = annotation
@@ -221,9 +224,29 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
         
         if let annotationView = annotationView {
-            //annotation.title = "Donkey"
+            //annotationView.image = UIImage(named: "4star")
             
-            annotationView.image = UIImage(named: "4star")
+            for location in Location.sharedInstance {
+                if annotationView.annotation?.coordinate.latitude == location.latitude && annotationView.annotation?.coordinate.longitude == location.longitude {
+                    if location.rating < 2 {
+                        annotationView.image = UIImage(named: "1star")
+                    } else if location.rating == 2 {
+                        annotationView.image = UIImage(named: "2star")
+                    } else if location.rating == 2.5 {
+                        annotationView.image = UIImage(named: "2star")
+                    } else if location.rating == 3.0 {
+                        annotationView.image = UIImage(named: "3star")
+                    } else if location.rating == 3.5 {
+                        annotationView.image = UIImage(named: "3star")
+                    } else if location.rating == 4.0 {
+                        annotationView.image = UIImage(named: "4star")
+                    } else if location.rating == 4.5 {
+                        annotationView.image = UIImage(named: "4star")
+                    } else if location.rating > 4.5 {
+                        annotationView.image = UIImage(named: "5star")
+                    }
+                }
+            }
         }
         
         return annotationView
@@ -257,6 +280,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.priceLabel.textColor = UIColor.white
         
         self.displayRating(location: self.tappedLocation[0])
+        print("Rating: \(self.tappedLocation[0].rating)")
         self.thumbnailImageView.image = self.tappedLocation[0].image
         
         self.horizontalStackView.addBackground(color: UIColor.black)
@@ -336,10 +360,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
                     let name = dictionary.name
                     let image = UIImage(named: "icons8-cocktail-24")!
-                    let annotation = Annotation(coordinates: coordinates, title: "Dicktease", image: image)
+                    let annotation = Annotation(coordinates: coordinates, title: name, image: image)
                     //annotation.coordinate = coordinate
                     //annotation.title = "\(name)"
                     tempArray.append(annotation)
+                    print("This the count in tempArray: \(tempArray.count)")
                     
                 }
                 
