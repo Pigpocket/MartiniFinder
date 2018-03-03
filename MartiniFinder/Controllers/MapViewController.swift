@@ -15,8 +15,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // MARK: Properties
     
-    var annotation = MKPointAnnotation()
-    var annotationArray: [MKPointAnnotation] = []
+    var annotation: Annotation?
+    var annotationArray: [Annotation] = []
     var locationManager = CLLocationManager()
     var locations = [Location]()
     let singleTap = UITapGestureRecognizer()
@@ -44,7 +44,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        nameLabel.backgroundColor = UIColor.cyan
+        //nameLabel.backgroundColor = UIColor.cyan
         
         self.setNavigationItem()
         
@@ -129,12 +129,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
  
     func setAnnotations() {
         
+        print("Set Annotation called")
         // Set the coordinates
         for location in Location.sharedInstance {
-            let annotation = MKPointAnnotation()
-            
-            let coordinates = CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude)
-            annotation.coordinate = coordinates
+            let annotation = Annotation(coordinates: CLLocationCoordinate2D(latitude: location.latitude, longitude: location.longitude), title: location.name, image: UIImage(named: "icons8-cocktail-24")!)
+            print(annotation)
+            //annotation.coordinate = coordinates
             mapView.addAnnotation(annotation)
         }
     }
@@ -199,13 +199,43 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         openLabel.text = ""
     }
     
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        print("viewFor annotation being called")
+        // Don't want to show a custom image if the annotation is the user's location.
+        guard !(annotation is MKUserLocation) else {
+            return nil
+        }
+        
+        let textForThisItem = annotation.title
+        // Better to make this class property
+        let annotationIdentifier = "AnnotationIdentifier"
+        
+        var annotationView: MKAnnotationView?
+        if let dequeuedAnnotationView = mapView.dequeueReusableAnnotationView(withIdentifier: annotationIdentifier) {
+            annotationView = dequeuedAnnotationView
+            annotationView?.annotation = annotation
+        }
+        else {
+            annotationView = MKAnnotationView(annotation: annotation, reuseIdentifier: annotationIdentifier)
+        }
+        
+        if let annotationView = annotationView {
+            //annotation.title = "Donkey"
+            
+            annotationView.image = UIImage(named: "4star")
+        }
+        
+        return annotationView
+    }
+    
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        annotation = view.annotation as! MKPointAnnotation
+        annotation = view.annotation as? Annotation
         
         // Add the tapped location to the tappedLocation array
         for location in Location.sharedInstance {
-            if location.latitude == annotation.coordinate.latitude && location.longitude == annotation.coordinate.longitude {
+            if location.latitude == annotation?.coordinate.latitude && location.longitude == annotation?.coordinate.longitude {
                 tappedLocation.append(location)
             }
         }
@@ -297,17 +327,18 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 }
                 
                 // Create the annotations
-                var tempArray = [MKPointAnnotation]()
+                var tempArray = [Annotation]()
                 
                 for dictionary in Location.sharedInstance {
                     
                     let lat = CLLocationDegrees(dictionary.latitude)
                     let long = CLLocationDegrees(dictionary.longitude)
-                    let coordinate = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                    let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
                     let name = dictionary.name
-                    let annotation = MKPointAnnotation()
-                    annotation.coordinate = coordinate
-                    annotation.title = "\(name)"
+                    let image = UIImage(named: "icons8-cocktail-24")!
+                    let annotation = Annotation(coordinates: coordinates, title: "Dicktease", image: image)
+                    //annotation.coordinate = coordinate
+                    //annotation.title = "\(name)"
                     tempArray.append(annotation)
                     
                 }
