@@ -42,8 +42,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         
         self.view.backgroundColor = UIColor.black
         
-        let yelpIcon = UIBarButtonItem(image: UIImage(named: "Yelp_trademark_RGB_outline"), style: .plain, target: self, action: Selector(("nil")))
-        self.navigationItem.rightBarButtonItem = yelpIcon
+        self.setNavigationItem()
 
     }
     

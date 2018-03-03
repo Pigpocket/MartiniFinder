@@ -47,7 +47,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // Truncate name label at 2 rows
         nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width * 2
         
-        self.setNavigationItem()
+        self.tabBarController?.setNavigationItem()
         
         // Stylize tabBar
         self.tabBarController?.tabBar.tintColor = UIColor.white
@@ -417,6 +417,7 @@ extension UIViewController {
     func setNavigationItem() {
         print("setNavigationItem called")
         let imageView = UIImageView(image: UIImage(named: "yelp"))
+        imageView.contentMode = .scaleAspectFit
         let item = UIBarButtonItem(customView: imageView)
         self.navigationItem.rightBarButtonItem = item
     }
