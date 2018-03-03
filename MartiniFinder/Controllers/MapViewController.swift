@@ -54,7 +54,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.tabBarController?.tabBar.barTintColor = UIColor.black
         self.tabBarController?.tabBar.isTranslucent = false
         
-        // Stylize locationView
+        // Configure locationView
         locationView.isHidden = true
         locationView.layer.cornerRadius = 10
         locationView.layer.borderColor = UIColor.black.cgColor
@@ -64,6 +64,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
         locationView.layer.shadowOpacity = 0.9
         locationView.layer.masksToBounds = false
+        locationView.isUserInteractionEnabled = true
         thumbnailImageView.layer.cornerRadius = 10
         thumbnailImageView.clipsToBounds = true
         thumbnailImageView.contentMode = .scaleAspectFill
@@ -91,11 +92,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // Declare gesture recognizers
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(sender:)))
         let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
+        let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTap(_:)))
+        
         panGesture.delegate = self
+        //self.view.addSubview(view)
         
         // Add gesture recognizers to view
         mapView.addGestureRecognizer(tapGesture)
         mapView.addGestureRecognizer(panGesture)
+        locationView.addGestureRecognizer(viewTap)
         
         // Get user position
         MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
@@ -135,6 +140,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
         return true
+    }
+    
+    @objc func viewTap(_ send: UITapGestureRecognizer) {
+        print("locationView tapped")
+        
+        // Get the Yelp URL of the location and segue to that in browser
+        YelpClient.sharedInstance().getUrlFromLocationName(id: tappedLocation[0].id) { (url, error) in
+            
+            performUIUpdatesOnMain {
+                
+                if error != nil {
+                    print("There was an error getting the URL")
+                }
+                
+                if let url = url {
+                    let app = UIApplication.shared
+                    app.open(url, options: [:], completionHandler: nil)
+                }
+            }
+        }
     }
     
     @objc func didDragMap(_ gestureRecognizer: UIPanGestureRecognizer) {
