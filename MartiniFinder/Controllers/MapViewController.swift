@@ -108,16 +108,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationView.addGestureRecognizer(viewTap)
         
         self.mapView.delegate = self
+        
+        // Request location access
         self.locationManager.requestAlwaysAuthorization()
-        
         self.locationManager.requestWhenInUseAuthorization()
-        
-        // Get user position
-        MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
-        MapCenter.shared.longitude = (locationManager.location?.coordinate.longitude)!
-        
-        // Get locations
-        getLocations()
         
         if (CLLocationManager.locationServicesEnabled()) {
             locationManager.delegate = self
@@ -125,6 +119,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             locationManager.startUpdatingLocation()
         }
         
+        // Get user position
+        MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
+        MapCenter.shared.longitude = (locationManager.location?.coordinate.longitude)!
+        
+        getLocations()
         setMapRegion()
     }
     
