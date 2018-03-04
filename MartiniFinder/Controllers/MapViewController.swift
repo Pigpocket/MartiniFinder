@@ -169,6 +169,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if (gestureRecognizer.state == UIGestureRecognizerState.began) {
             redoSearchButton.isHidden = true
             resetLocationButton.isHidden = true
+            locationView.isHidden = true
         }
     }
     
