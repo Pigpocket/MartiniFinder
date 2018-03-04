@@ -339,19 +339,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         var color = UIColor()
         
         if rating <= 1.5 {
-            //color = UIColor(displayP3Red: 242, green: 189, blue: 121, alpha: 1)
             color = UIColor(red: 242, green: 189, blue: 121, alpha: 1)
         } else if rating > 1.5 && rating <= 2.5 {
-            //color = UIColor(displayP3Red: 254, green: 192, blue: 15, alpha: 1)
             color = UIColor(red: 254, green: 192, blue: 15, alpha: 1)
         } else if rating > 2.5 && rating <= 3.5 {
-            //color = UIColor(displayP3Red: 255, green: 146, blue: 65, alpha: 1)
             color = UIColor(red: 255, green: 146, blue: 65, alpha: 1)
         } else if rating > 3.5 && rating <= 4.5 {
-            //color = UIColor(displayP3Red: 241, green: 92, blue: 79, alpha: 1)
             color = UIColor(red: 241, green: 92, blue: 79, alpha: 1)
         } else if rating > 4.5 {
-            //color = UIColor(displayP3Red: 211, green: 36, blue: 34, alpha: 1)
             color = UIColor(red: 211, green: 36, blue: 34, alpha: 1)
         }
         
@@ -383,8 +378,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         MapCenter.shared.latitude = mapView.centerCoordinate.latitude
         MapCenter.shared.longitude = mapView.centerCoordinate.longitude
-        
-        // Get locations
+
         getLocations()
 
     }
