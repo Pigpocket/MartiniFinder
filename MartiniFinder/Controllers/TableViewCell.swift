@@ -21,6 +21,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var openLabel: UILabel!
     @IBOutlet weak var star1: UIImageView!
     @IBOutlet weak var blankView: UIImageView!
+    @IBOutlet weak var distanceLabel: UILabel!
     
     func displayRating(location: Location) {
         

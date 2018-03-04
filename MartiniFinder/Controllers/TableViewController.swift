@@ -66,6 +66,10 @@ extension TableViewController {
             cell.priceLabel.text = location.price
             cell.priceLabel.textColor = UIColor.white
             
+            let distance = Double(location.distance/1609).rounded(toPlaces: 1)
+            cell.distanceLabel.text = String("\(distance) miles")
+            cell.distanceLabel.textColor = UIColor.white
+            
             cell.displayRating(location: location)
             
             if location.isOpenNow {
@@ -178,5 +182,13 @@ extension String {
         let fontAttributes = [NSAttributedStringKey.font: font]
         let size = self.size(withAttributes: fontAttributes)
         return size.width
+    }
+}
+
+extension Double {
+    /// Rounds the double to decimal places value
+    func rounded(toPlaces places:Int) -> Double {
+        let divisor = pow(10.0, Double(places))
+        return (self * divisor).rounded() / divisor
     }
 }

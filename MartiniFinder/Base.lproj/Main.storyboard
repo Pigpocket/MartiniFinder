@@ -145,15 +145,29 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Open Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AT-FJ-ynf">
+                                                        <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Pl-X0-c5c">
                                                             <rect key="frame" x="8" y="67.5" width="271" height="20.5"/>
-                                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                            <nil key="textColor"/>
-                                                            <nil key="highlightedColor"/>
-                                                        </label>
+                                                            <subviews>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Open Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AT-FJ-ynf">
+                                                                    <rect key="frame" x="0.0" y="0.0" width="87.5" height="20.5"/>
+                                                                    <constraints>
+                                                                        <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87.5" id="YEF-Qu-ecs"/>
+                                                                    </constraints>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nf8-T6-upm">
+                                                                    <rect key="frame" x="87.5" y="0.0" width="183.5" height="20.5"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                    <nil key="textColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
+                                                            </subviews>
+                                                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                                        </stackView>
                                                     </subviews>
                                                     <constraints>
-                                                        <constraint firstAttribute="trailing" secondItem="1AT-FJ-ynf" secondAttribute="trailing" constant="8" id="EV0-ly-vTr"/>
                                                         <constraint firstItem="wCg-To-pmD" firstAttribute="leading" secondItem="uCZ-P1-haY" secondAttribute="leading" constant="8" id="NeY-0M-ctF"/>
                                                         <constraint firstItem="wCg-To-pmD" firstAttribute="top" secondItem="uCZ-P1-haY" secondAttribute="top" constant="8" id="QBQ-Ag-MTv"/>
                                                         <constraint firstAttribute="trailing" secondItem="SSQ-1i-FCl" secondAttribute="trailing" constant="8" id="Vw0-jb-2Vw"/>
@@ -161,9 +175,6 @@
                                                         <constraint firstItem="SSQ-1i-FCl" firstAttribute="top" secondItem="wCg-To-pmD" secondAttribute="bottom" constant="18" id="YNR-Lo-88C"/>
                                                         <constraint firstAttribute="trailing" secondItem="wCg-To-pmD" secondAttribute="trailing" constant="8" id="Ykb-Gz-U0R"/>
                                                         <constraint firstItem="hCh-2G-CX9" firstAttribute="top" secondItem="wCg-To-pmD" secondAttribute="bottom" id="eJC-wn-vI5"/>
-                                                        <constraint firstItem="1AT-FJ-ynf" firstAttribute="leading" secondItem="uCZ-P1-haY" secondAttribute="leading" constant="8" id="jIh-Ec-10g"/>
-                                                        <constraint firstItem="1AT-FJ-ynf" firstAttribute="top" secondItem="SSQ-1i-FCl" secondAttribute="bottom" id="wgr-vC-QOS"/>
-                                                        <constraint firstAttribute="bottom" secondItem="1AT-FJ-ynf" secondAttribute="bottom" constant="8" id="ykw-PL-qcj"/>
                                                     </constraints>
                                                     <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                                 </stackView>
@@ -188,6 +199,7 @@
                                 <inset key="separatorInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 <connections>
                                     <outlet property="blankView" destination="6eY-FM-Tch" id="8uz-Nx-Zum"/>
+                                    <outlet property="distanceLabel" destination="nf8-T6-upm" id="HqW-YI-EwS"/>
                                     <outlet property="horizontalStackView" destination="J7l-p6-i5Z" id="xje-G3-UFN"/>
                                     <outlet property="infoStackView" destination="uCZ-P1-haY" id="9qE-kp-EkL"/>
                                     <outlet property="nameLabel" destination="wCg-To-pmD" id="rrE-dO-ppc"/>
