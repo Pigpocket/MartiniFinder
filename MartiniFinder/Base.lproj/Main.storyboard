@@ -224,41 +224,23 @@
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="7ma-dw-MQD">
                                 <rect key="frame" x="0.0" y="64" width="375" height="554"/>
                             </mapView>
-                            <stackView opaque="NO" contentMode="scaleToFill" spacing="12" translatesAutoresizingMaskIntoConstraints="NO" id="CqV-DK-zEJ">
-                                <rect key="frame" x="97.5" y="80" width="180" height="30"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9w-lr-GPF">
-                                        <rect key="frame" x="0.0" y="0.0" width="138" height="30"/>
-                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="9"/>
-                                        <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
-                                        <size key="titleShadowOffset" width="2" height="2"/>
-                                        <state key="normal" title="Redo Search In This Area">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="redoSearch:" destination="SMO-Rv-JTJ" eventType="touchUpInside" id="Dh5-wl-I3V"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBz-Y8-aTR">
-                                        <rect key="frame" x="150" y="0.0" width="30" height="30"/>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="30" id="01Z-7h-6nL"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="1"/>
-                                        <state key="normal" image="icons8-near-me-filled-50"/>
-                                        <connections>
-                                            <action selector="redoSearch:" destination="SMO-Rv-JTJ" eventType="touchUpInside" id="Gj6-oF-xsQ"/>
-                                            <action selector="resetLocation:" destination="SMO-Rv-JTJ" eventType="touchUpInside" id="tbU-sQ-wv5"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="j9w-lr-GPF">
+                                <rect key="frame" x="100" y="83" width="138" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="fIt-5f-pJV"/>
-                                    <constraint firstAttribute="width" constant="180" id="juZ-gR-YZ8"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="138" id="3So-XF-ikn"/>
+                                    <constraint firstAttribute="height" constant="30" id="fDB-u7-BdH"/>
                                 </constraints>
-                            </stackView>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="9"/>
+                                <inset key="titleEdgeInsets" minX="8" minY="0.0" maxX="8" maxY="0.0"/>
+                                <size key="titleShadowOffset" width="2" height="2"/>
+                                <state key="normal" title="Redo Search In This Area">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="redoSearch:" destination="SMO-Rv-JTJ" eventType="touchUpInside" id="Dh5-wl-I3V"/>
+                                </connections>
+                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rxk-mg-thC" userLabel="Location View">
                                 <rect key="frame" x="43.5" y="506" width="288" height="96"/>
                                 <subviews>
@@ -348,17 +330,33 @@
                                     <constraint firstAttribute="width" constant="288" id="b8V-fb-4o5"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="OBz-Y8-aTR">
+                                <rect key="frame" x="256" y="83" width="30" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="30" id="01Z-7h-6nL"/>
+                                    <constraint firstAttribute="height" constant="30" id="xoQ-ly-6GD"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="1"/>
+                                <state key="normal" image="icons8-near-me-filled-50"/>
+                                <connections>
+                                    <action selector="redoSearch:" destination="SMO-Rv-JTJ" eventType="touchUpInside" id="Gj6-oF-xsQ"/>
+                                    <action selector="resetLocation:" destination="SMO-Rv-JTJ" eventType="touchUpInside" id="tbU-sQ-wv5"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="top" secondItem="CYF-nt-46s" secondAttribute="top" constant="64" id="4rX-ip-L9C"/>
+                            <constraint firstItem="OBz-Y8-aTR" firstAttribute="leading" secondItem="j9w-lr-GPF" secondAttribute="trailing" constant="18" id="8mV-Yk-Vs1"/>
+                            <constraint firstItem="OBz-Y8-aTR" firstAttribute="top" secondItem="9Sz-g2-H7d" secondAttribute="top" constant="19" id="EKu-4Y-SOb"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="trailing" secondItem="9Sz-g2-H7d" secondAttribute="trailing" id="IMj-YY-hNl"/>
+                            <constraint firstItem="j9w-lr-GPF" firstAttribute="centerX" secondItem="CYF-nt-46s" secondAttribute="centerX" constant="-18.5" id="RRf-xi-LiT"/>
                             <constraint firstItem="9Sz-g2-H7d" firstAttribute="bottom" secondItem="Rxk-mg-thC" secondAttribute="bottom" constant="16" id="RpL-2Z-6A5"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="leading" secondItem="9Sz-g2-H7d" secondAttribute="leading" id="Sn3-zO-cj5"/>
-                            <constraint firstItem="CqV-DK-zEJ" firstAttribute="top" secondItem="CYF-nt-46s" secondAttribute="top" constant="80" id="ZNS-Ky-Z39"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="bottom" secondItem="9Sz-g2-H7d" secondAttribute="bottom" id="bGx-pO-INT"/>
-                            <constraint firstItem="CqV-DK-zEJ" firstAttribute="centerX" secondItem="CYF-nt-46s" secondAttribute="centerX" id="oXB-Nd-5FJ"/>
-                            <constraint firstItem="Rxk-mg-thC" firstAttribute="centerX" secondItem="CYF-nt-46s" secondAttribute="centerX" id="pTQ-ag-FjY"/>
+                            <constraint firstItem="Rxk-mg-thC" firstAttribute="centerX" secondItem="CYF-nt-46s" secondAttribute="centerX" id="pTQ-ag-FjY" userLabel="Location View.centerX = centerX + 20"/>
+                            <constraint firstItem="j9w-lr-GPF" firstAttribute="top" secondItem="9Sz-g2-H7d" secondAttribute="top" constant="19" id="s3t-jT-3cn"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="trailing" secondItem="9Sz-g2-H7d" secondAttribute="trailing" id="v7H-nS-Li9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Sz-g2-H7d"/>

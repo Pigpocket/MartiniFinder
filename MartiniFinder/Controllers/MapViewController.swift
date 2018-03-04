@@ -21,6 +21,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var locations = [Location]()
     let singleTap = UITapGestureRecognizer()
     var tappedLocation = [Location]()
+    var timer: Timer?
 
     // MARK: Outlets
     
@@ -91,16 +92,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         // Declare gesture recognizers
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(sender:)))
-        let panGesture = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
+        let didPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
+        let willPanGesture = UIPanGestureRecognizer(target: self, action: #selector(willDragMap(_:)))
         let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTap(_:)))
         
-        panGesture.delegate = self
-        //self.view.addSubview(view)
+        didPanGesture.delegate = self
+        willPanGesture.delegate = self
         
         // Add gesture recognizers to view
         mapView.addGestureRecognizer(tapGesture)
-        mapView.addGestureRecognizer(panGesture)
+        mapView.addGestureRecognizer(didPanGesture)
+        mapView.addGestureRecognizer(willPanGesture)
         locationView.addGestureRecognizer(viewTap)
+        
+        self.mapView.delegate = self
+        self.locationManager.requestAlwaysAuthorization()
+        
+        self.locationManager.requestWhenInUseAuthorization()
         
         // Get user position
         MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
@@ -108,11 +116,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         // Get locations
         getLocations()
-        
-        self.mapView.delegate = self
-        self.locationManager.requestAlwaysAuthorization()
-        
-        self.locationManager.requestWhenInUseAuthorization()
         
         if (CLLocationManager.locationServicesEnabled()) {
             locationManager.delegate = self
@@ -162,10 +165,22 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
+    @objc func willDragMap(_ gestureRecognizer: UIPanGestureRecognizer) {
+        if (gestureRecognizer.state == UIGestureRecognizerState.began) {
+            redoSearchButton.isHidden = true
+            resetLocationButton.isHidden = true
+        }
+    }
+    
     @objc func didDragMap(_ gestureRecognizer: UIPanGestureRecognizer) {
         if (gestureRecognizer.state == UIGestureRecognizerState.ended) {
-            redoSearchButton.isHidden = false
-            resetLocationButton.isHidden = false
+            
+            DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
+            
+                self.redoSearchButton.isHidden = false
+                self.redoSearchButton.backgroundColor = UIColor.black
+                self.resetLocationButton.isHidden = false
+            }
         }
     }
     
@@ -355,10 +370,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @IBAction func resetLocation(_ sender: Any) {
         setMapRegion()
+        resetLocationButton.isHidden = true
+        redoSearchButton.isHidden = false
     }
     
     @IBAction func redoSearch(_ sender: Any) {
         
+        locationView.isHidden = true
+        redoSearchButton.isHidden = true
         Location.sharedInstance.removeAll()
 
         MapCenter.shared.latitude = mapView.centerCoordinate.latitude
