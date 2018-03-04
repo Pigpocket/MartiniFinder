@@ -46,13 +46,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Truncate name label at 2 rows
-        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width * 2
-        
-        self.tabBarController?.setNavigationItem()
         navigationController?.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         
         // Stylize tabBar
+        self.tabBarController?.setNavigationItem()
         self.tabBarController?.tabBar.tintColor = UIColor.white
         self.tabBarController?.tabBar.barTintColor = UIColor.black
         self.tabBarController?.tabBar.isTranslucent = false
@@ -73,6 +70,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         thumbnailImageView.contentMode = .scaleAspectFill
         thumbnailImageView.layer.borderColor = UIColor.white.cgColor
         thumbnailImageView.layer.borderWidth = 1
+        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width * 2
         
         // Configure resetLocationButton
         resetLocationButton.isHidden = true
@@ -98,16 +96,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let willPanGesture = UIPanGestureRecognizer(target: self, action: #selector(willDragMap(_:)))
         let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTap(_:)))
         
+        // Assign delegates
         didPanGesture.delegate = self
         willPanGesture.delegate = self
+        mapView.delegate = self
         
         // Add gesture recognizers to view
         mapView.addGestureRecognizer(tapGesture)
         mapView.addGestureRecognizer(didPanGesture)
         mapView.addGestureRecognizer(willPanGesture)
         locationView.addGestureRecognizer(viewTap)
-        
-        self.mapView.delegate = self
         
         // Request location access
         self.locationManager.requestAlwaysAuthorization()
