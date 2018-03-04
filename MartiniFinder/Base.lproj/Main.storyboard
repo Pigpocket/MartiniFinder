@@ -303,21 +303,31 @@
                                                         <nil key="textColor"/>
                                                         <nil key="highlightedColor"/>
                                                     </label>
-                                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Open Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuz-gR-LgO" userLabel="Open Label">
+                                                    <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Kwf-68-bau">
                                                         <rect key="frame" x="8" y="67.5" width="184" height="20.5"/>
-                                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                        <nil key="textColor"/>
-                                                        <nil key="highlightedColor"/>
-                                                    </label>
+                                                        <subviews>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Open Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuz-gR-LgO" userLabel="Open Label">
+                                                                <rect key="frame" x="0.0" y="0.0" width="87.5" height="20.5"/>
+                                                                <constraints>
+                                                                    <constraint firstAttribute="width" constant="87.5" id="uz9-r7-xOp"/>
+                                                                </constraints>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g09-3Y-Shf" userLabel="Distance Label">
+                                                                <rect key="frame" x="87.5" y="0.0" width="96.5" height="20.5"/>
+                                                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                                <nil key="textColor"/>
+                                                                <nil key="highlightedColor"/>
+                                                            </label>
+                                                        </subviews>
+                                                    </stackView>
                                                 </subviews>
                                                 <constraints>
                                                     <constraint firstItem="zM3-Jt-SdS" firstAttribute="leading" secondItem="DHl-n0-eGK" secondAttribute="leading" constant="8" id="9z8-g5-9PU"/>
-                                                    <constraint firstItem="wuz-gR-LgO" firstAttribute="top" secondItem="aEN-sq-xj6" secondAttribute="bottom" id="GWO-J3-845"/>
-                                                    <constraint firstAttribute="trailing" secondItem="wuz-gR-LgO" secondAttribute="trailing" constant="8" id="Tt7-x2-7Iv"/>
                                                     <constraint firstAttribute="trailing" secondItem="zM3-Jt-SdS" secondAttribute="trailing" constant="8" id="WGM-Ee-v9N"/>
-                                                    <constraint firstItem="wuz-gR-LgO" firstAttribute="leading" secondItem="DHl-n0-eGK" secondAttribute="leading" constant="8" id="fik-US-j8i"/>
                                                     <constraint firstItem="zM3-Jt-SdS" firstAttribute="top" secondItem="DHl-n0-eGK" secondAttribute="top" constant="8" id="mbh-22-HZO"/>
-                                                    <constraint firstAttribute="bottom" secondItem="wuz-gR-LgO" secondAttribute="bottom" constant="8" id="qd6-gu-xYS"/>
                                                 </constraints>
                                                 <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                             </stackView>
@@ -379,6 +389,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="blankView" destination="D0u-vp-DOf" id="Dgo-iX-DCO"/>
+                        <outlet property="distanceLabel" destination="g09-3Y-Shf" id="QJp-Sv-cTN"/>
                         <outlet property="horizontalStackView" destination="fDM-m0-7bZ" id="C83-E5-BQI"/>
                         <outlet property="horizontalStackViewHeightConstraint" destination="bRg-kD-pdQ" id="LX3-mF-poO"/>
                         <outlet property="locationView" destination="Rxk-mg-thC" id="q1z-pK-JfR"/>

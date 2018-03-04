@@ -37,7 +37,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var blankView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
-
+    @IBOutlet weak var distanceLabel: UILabel!
+    
     @IBOutlet weak var horizontalStackViewHeightConstraint: NSLayoutConstraint!
     
     // MARK: Lifecycle
@@ -234,6 +235,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         nameLabel.text = ""
         priceLabel.text = ""
         openLabel.text = ""
+        distanceLabel.text = ""
     }
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
@@ -331,6 +333,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         self.horizontalStackView.addBackground(color: UIColor.black)
         self.horizontalStackViewHeightConstraint.constant = self.viewHeight(self.tappedLocation[0].name)
+        
+        let distance = Double(tappedLocation[0].distance/1609).rounded(toPlaces: 1)
+        self.distanceLabel.text = String("\(distance) miles")
+        self.distanceLabel.textColor = UIColor.white
 
         locationView.isHidden = false
     }
