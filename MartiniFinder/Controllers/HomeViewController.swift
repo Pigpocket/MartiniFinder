@@ -28,7 +28,8 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         //self.navigationController?.navigationBar.isHidden = true
-        
+        navigationController?.additionalSafeAreaInsets = UIEdgeInsetsMake(-20, 0, 0, 0)
+        //UIScrollView().contentInsetAdjustmentBehavior = .automatic
     }
     
     override func viewWillDisappear(_ animated: Bool) {

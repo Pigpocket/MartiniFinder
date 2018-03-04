@@ -49,6 +49,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width * 2
         
         self.tabBarController?.setNavigationItem()
+        navigationController?.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         
         // Stylize tabBar
         self.tabBarController?.tabBar.tintColor = UIColor.white
