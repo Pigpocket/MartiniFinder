@@ -184,11 +184,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         }
     }
     
-//    func mapView(_ mapView: MKMapView, regionDidChangeAnimated animated: Bool) {
-//        redoSearchButton.isHidden = false
-//        resetLocationButton.isHidden = false
-//    }
-    
     func viewHeight(_ locationName: String) -> CGFloat {
         
         let locationName = tappedLocation[0].name
