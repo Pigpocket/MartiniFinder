@@ -25,6 +25,7 @@ extension Favorites {
     @NSManaged public var name: String?
     @NSManaged public var price: String?
     @NSManaged public var rating: Double
+    //Might want to call this imageData for clarity
     @NSManaged public var image: NSData?
     @NSManaged public var isOpenNow: Bool
 

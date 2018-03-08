@@ -11,8 +11,10 @@ import UIKit
 
 struct MapCenter {
     
-    static var shared: MapCenter = MapCenter()
+    //Don't need the type here
+    static var shared = MapCenter()
     
-    var latitude: Double = 0.0
-    var longitude: Double = 0.0
+    //or here (b/c its inferred)
+    var latitude = 0.0
+    var longitude = 0.0
 }

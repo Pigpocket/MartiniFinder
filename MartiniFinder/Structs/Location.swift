@@ -15,7 +15,8 @@ struct Location {
 
     // MARK: Properties
     
-    var id = ""
+    //Better to make things let constants (same for all these)
+    let id: String
     var latitude = 0.0
     var longitude = 0.0
     var isOpenNow = false
@@ -27,6 +28,7 @@ struct Location {
     var image: UIImage? = nil
     
     // MARK: Initializer
+    //This could also throw an exception instead of returning nil (I think that form is slightly preferred these days)
     init?(dictionary: [String:AnyObject]) {
         
         // GUARD: Do all dictionaries have values?
@@ -57,16 +59,17 @@ struct Location {
         }
 
     static func locationFromResults(_ results: [[String:AnyObject]]) -> [Location] {
-        
-        var locations = [Location]()
-        
-        // iterate through array of dictionaries, each Movie is a dictionary
-        for result in results {
-            if let location = Location(dictionary: result) {
-                locations.append(location)
-            }
-        }
-        return locations
+        //This is a really compact way of writing the below
+        return results.flatMap(Location.init)
+//        var locations = [Location]()
+//
+//        // iterate through array of dictionaries, each Movie is a dictionary
+//        for result in results {
+//            if let location = Location(dictionary: result) {
+//                locations.append(location)
+//            }
+//        }
+//        return locations
     }
 
 }

@@ -11,6 +11,11 @@ import Foundation
 import CoreLocation
 import CoreData
 
+/*Probably not a big deal for this size app, but this view controller is starting to get a little big
+there's something iOS call the Massive View Controller problem where all your functionality (app logic, business logic, view setup, delegates of everything etc)
+ all gets dumped into the view controller and they get really hard to understand or modify. The solution is to look at some
+ application architectures. They all have acronyms but all try to address this problem (MVVM, MVP and VIPER are some of the more popular).
+ */
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate  {
     
     // MARK: Properties
@@ -55,6 +60,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.tabBarController?.tabBar.isTranslucent = false
         
         // Configure locationView
+        //You could make locationView a custom subclass of UIVIew and put this stuff there
         locationView.isHidden = true
         locationView.layer.cornerRadius = 10
         locationView.layer.borderColor = UIColor.black.cgColor
@@ -73,6 +79,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width * 2
         
         // Configure resetLocationButton
+        //A lot of this can also be configured in Interface Builder
         resetLocationButton.isHidden = true
         resetLocationButton.contentHorizontalAlignment = .fill
         resetLocationButton.contentVerticalAlignment = .fill
@@ -253,15 +260,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             
             for location in Location.sharedInstance {
                 if annotationView.annotation?.coordinate.latitude == location.latitude && annotationView.annotation?.coordinate.longitude == location.longitude {
+                    //Could remove a few lines here with an ||
                     if location.rating < 2 {
                         annotationView.image = UIImage(named: "1star")
-                    } else if location.rating == 2 {
+                    } else if location.rating == 2 || location.rating == 2.5 {
                         annotationView.image = UIImage(named: "2star")
-                    } else if location.rating == 2.5 {
-                        annotationView.image = UIImage(named: "2star")
-                    } else if location.rating == 3.0 {
-                        annotationView.image = UIImage(named: "3star")
-                    } else if location.rating == 3.5 {
+                    } else if location.rating == 3.0 || location.rating == 3.5 {
                         annotationView.image = UIImage(named: "3star")
                     } else if location.rating == 4.0 {
                         annotationView.image = UIImage(named: "4star")
@@ -298,6 +302,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.openLabel.text = "Closed"
             self.openLabel.isEnabled = true
             let rating = self.tappedLocation[0].rating
+            /*
+             //Can use switch statments and the range matching for this type of thing
+             //switch statements are pretty powerful in swift
+            let openLabelColor: UIColor
+             switch (rating) {
+             case 1.5..<2.5:
+                openLabelColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
+            }
+ */
             if rating <= 1.5 {
                 openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
             } else if rating > 1.5 && rating <= 2.5 {
@@ -439,6 +452,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
 
     func displayRating(location: Location) {
+        //Could do something like this to cut down the repeated code
+        let ratingStarImageNameMap: [Double: String] = [1: "regular_1", 1.5: "regular_1_half"]
+        guard let imageName = ratingStarImageNameMap[location.rating] else {
+            return
+        }
+        star1.image = UIImage(named: imageName)
         
         if location.rating == 1 {
             star1.image = UIImage(named: "regular_1")

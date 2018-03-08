@@ -10,18 +10,21 @@ import CoreData
 
 struct CoreDataStack {
     
-    static func sharedInstance() -> CoreDataStack {
-        struct Static {
-            static let instance = CoreDataStack(modelName: "Model")
-        }
-        return Static.instance!
-    }
+    //That is sort of the swift 1.0 way of creating a singlton before there were static properties
+    static let sharedInstance = CoreDataStack(modelName: "Model")!
+//    static func sharedInstance() -> CoreDataStack {
+//        struct Static {
+//            static let instance = CoreDataStack(modelName: "Model")
+//        }
+//        return Static.instance!
+//    }
     
     // MARK: Properties
     
     private let model: NSManagedObjectModel
     internal let coordinator: NSPersistentStoreCoordinator
     private let modelURL: URL
+    //internal is the default so its not needed (it means that its only visible inside the module)
     internal let dbURL: URL
     let context: NSManagedObjectContext
     let persistingContext: NSManagedObjectContext
@@ -124,6 +127,7 @@ extension CoreDataStack {
                 do {
                     try self.context.save()
                 } catch {
+                    //I wouldn't put these in production code unless you're sure they wont get hit
                     fatalError("Fatal error while saving main context: \(error)")
                 }
                 

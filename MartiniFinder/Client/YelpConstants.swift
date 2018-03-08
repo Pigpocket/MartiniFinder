@@ -11,6 +11,7 @@ import Foundation
 
 extension YelpClient {
     
+    //in swift any kind of property starts with a lower case 'let authorization '
     struct Constants {
         static let Authorization = "Authorization"
         static let YelpBaseURL = "https://api.yelp.com/v3/"

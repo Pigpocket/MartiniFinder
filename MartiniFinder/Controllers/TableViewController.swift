@@ -142,7 +142,7 @@ extension TableViewController {
         let location = Location.sharedInstance[indexPath.row]
         
         // Initialize NSManagedObject 'Location' with properties
-        favoriteLocation = Favorites(context: CoreDataStack.sharedInstance().context)
+        favoriteLocation = Favorites(context: CoreDataStack.sharedInstance.context)
         favoriteLocation?.name = location.name
         favoriteLocation?.isFavorite = true
         favoriteLocation?.id = location.id
@@ -154,8 +154,8 @@ extension TableViewController {
         favoriteLocation?.isOpenNow = location.isOpenNow
         favoriteLocation?.image = UIImagePNGRepresentation(location.image!)! as NSData
         
-        CoreDataStack.sharedInstance().saveContext()
-        CoreDataStack.sharedInstance().save()
+        CoreDataStack.sharedInstance.saveContext()
+        CoreDataStack.sharedInstance.save()
 
         
         // Get the Yelp URL of the location and segue to that in browser

@@ -25,6 +25,7 @@ class TableViewCell: UITableViewCell {
     
     func displayRating(location: Location) {
         
+        //Looks like some duplicate code, could put this in some shared method somewhere
         if location.rating == 1 {
             star1.image = UIImage(named: "regular_1")
         } else if location.rating == 1.5 {

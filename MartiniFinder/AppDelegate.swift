@@ -8,6 +8,18 @@
 
 import UIKit
 
+/*
+ Ok, I've reviewed everything. For the most part it looks good. Most of my comments are on small swift convention
+ type things.
+ Architecturally I'd say watch out for your ViewControllers getting too big, they end up being a dumping
+ ground for code that doesn't fit elsewhere.
+ Also try to avoid duplicating code because it will become a hassle to maintain.
+ I kept my comments pretty short so if there's anything that doesn't make sense just shoot me an email.
+
+ Tips:
+ Usually good to set "treat warnings as errors" in the project settings, it forces developers to fix warnings too
+ Check out Cocoapods once you start integrating 3rd party libraries and code into your projects. It makes adding that stuff super easy.
+*/
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -18,7 +30,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Override point for customization after application launch.
         UIApplication.shared.statusBarStyle = .lightContent
         
-        UINavigationBar.appearance().barTintColor = UIColor.black
+//        UINavigationBar.appearance().barTintColor = UIColor.black
+        // No need for the UIColor part
+        UINavigationBar.appearance().barTintColor = .black
         UINavigationBar.appearance().tintColor = UIColor.white
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedStringKey.foregroundColor : UIColor.white]
         

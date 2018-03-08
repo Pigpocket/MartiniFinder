@@ -71,7 +71,10 @@ class YelpClient {
     }
     
     private func escapedParameters(_ parameters: [String:AnyObject]) -> String {
-        
+        //better to use guard than if to validate input
+        guard !parameters.isEmpty else {
+            return ""
+        }
         if parameters.isEmpty {
             return ""
         } else {

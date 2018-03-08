@@ -16,6 +16,7 @@ class HomeViewController: UIViewController {
     
     // MARK: Outlets
     
+    //IBOutlets don't really need to be weak    `````````````````````````````````````
     @IBOutlet weak var myMartiniBarsOutlet: UIButton!
     
     // MARK: Actions

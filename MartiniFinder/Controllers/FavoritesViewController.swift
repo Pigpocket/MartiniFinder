@@ -19,7 +19,7 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         let fetchRequest = NSFetchRequest<Favorites>(entityName: "Favorites")
         fetchRequest.sortDescriptors = []
         
-        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance().context, sectionNameKeyPath: nil, cacheName: nil)
+        let fetchedResultsController = NSFetchedResultsController(fetchRequest: fetchRequest, managedObjectContext: CoreDataStack.sharedInstance.context, sectionNameKeyPath: nil, cacheName: nil)
         do {
             try fetchedResultsController.performFetch()
         } catch {
@@ -108,8 +108,8 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
             // Get favorites from Core Data
             let favorite = self.fetchedResultsController.object(at: indexPath)
 
-            CoreDataStack.sharedInstance().context.delete(favorite)
-            CoreDataStack.sharedInstance().saveContext()
+            CoreDataStack.sharedInstance.context.delete(favorite)
+            CoreDataStack.sharedInstance.saveContext()
 
         }
         return [delete]
