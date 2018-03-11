@@ -10,12 +10,7 @@ import CoreData
 
 struct CoreDataStack {
     
-    static func sharedInstance() -> CoreDataStack {
-        struct Static {
-            static let instance = CoreDataStack(modelName: "Model")
-        }
-        return Static.instance!
-    }
+    static let sharedInstance = CoreDataStack(modelName: "Model")!
     
     // MARK: Properties
     
