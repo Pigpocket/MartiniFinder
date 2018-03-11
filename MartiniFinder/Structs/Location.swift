@@ -31,15 +31,15 @@ struct Location {
         
         // GUARD: Do all dictionaries have values?
         guard
-            let id = dictionary[YelpClient.ParameterValues.Id] as? String,
-            let name = dictionary[YelpClient.ParameterValues.Name] as? String,
-            let rating = dictionary[YelpClient.ParameterValues.Rating] as? Double,
-            let price = dictionary[YelpClient.ParameterValues.Price] as? String,
-            let distance = dictionary[YelpClient.ParameterValues.Distance] as? Double,
-            let coordinates = dictionary[YelpClient.ParameterKeys.Coordinates] as? [String:Any],
-            let latitude = coordinates[YelpClient.ParameterValues.Latitude] as? Double,
-            let longitude = coordinates[YelpClient.ParameterValues.Longitude] as? Double,
-            let imageUrl = dictionary[YelpClient.ParameterValues.ImageUrl] as? String
+            let id = dictionary[YelpClient.ParameterValues.id] as? String,
+            let name = dictionary[YelpClient.ParameterValues.name] as? String,
+            let rating = dictionary[YelpClient.ParameterValues.rating] as? Double,
+            let price = dictionary[YelpClient.ParameterValues.price] as? String,
+            let distance = dictionary[YelpClient.ParameterValues.distance] as? Double,
+            let coordinates = dictionary[YelpClient.ParameterKeys.coordinates] as? [String:Any],
+            let latitude = coordinates[YelpClient.ParameterValues.latitude] as? Double,
+            let longitude = coordinates[YelpClient.ParameterValues.longitude] as? Double,
+            let imageUrl = dictionary[YelpClient.ParameterValues.imageUrl] as? String
             
             // If not, return nil
             else { return nil }

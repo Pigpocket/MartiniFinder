@@ -13,14 +13,14 @@ extension YelpClient {
     
     func getYelpSearchResults(_ term: String, _ price: String, _ latitude: Double, _ longitude: Double, completionHandlerForSearchResults: @escaping (_ locations: [Location]?, _ errorString: String?) -> Void) {
         
-        let methods = Methods.Businesses + Methods.Search
+        let methods = Methods.businesses + Methods.search
         
         let methodParameters = [
-            ParameterKeys.Latitude: latitude,
-            ParameterKeys.Longitude: longitude,
-            ParameterKeys.Price: price,
-            ParameterKeys.Radius: 16000,
-            ParameterKeys.Term: term
+            ParameterKeys.latitude: latitude,
+            ParameterKeys.longitude: longitude,
+            ParameterKeys.price: price,
+            ParameterKeys.radius: 16000,
+            ParameterKeys.term: term
             ] as [String : Any]
         
         taskForGetYelpSearchResults(method: methods, parameters: methodParameters as [String : AnyObject]) { (results, error) in
@@ -43,7 +43,7 @@ extension YelpClient {
     
     func getOpeningHoursFromID(id: String, completionHandlerForOpeningHours: @escaping (_ openNow: Bool, _ errorString: String?) -> Void) {
         
-        let methods = Methods.Businesses + id
+        let methods = Methods.businesses + id
         
             self.taskForGetYelpSearchResults(method: methods, parameters: [:]) { (results, error) in
  
@@ -67,7 +67,7 @@ extension YelpClient {
     
     func getUrlFromLocationName(id: String, completionHandlerUrlFromLocationName: @escaping (_ url: URL?, _ errorString: String?) -> Void) {
         
-        let methods = Methods.Biz + id
+        let methods = Methods.biz + id
         
         taskForGetBusinessInfo(method: methods) { (url, error) in
             

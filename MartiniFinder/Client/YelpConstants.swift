@@ -12,40 +12,40 @@ import Foundation
 extension YelpClient {
     
     struct Constants {
-        static let Authorization = "Authorization"
-        static let YelpBaseURL = "https://api.yelp.com/v3/"
-        static let YelpWebURL = "https://www.yelp.com/"
-        static let APIKey = "Bearer 8UOe63-UqKM8syYDjMXsdbJbMXWg1Hp6Tu0_kgQr_wUMP3Y2NEDXZE_Tdc_C_xSjihkl2PeM3n9sveqQ1bdXm2AQ1bviVEo1qpUbAk9m_3CmQv3wSlnYZ8qp5j5RWnYx"
+        static let authorization = "Authorization"
+        static let yelpBaseURL = "https://api.yelp.com/v3/"
+        static let yelpWebURL = "https://www.yelp.com/"
+        static let apiKey = "Bearer 8UOe63-UqKM8syYDjMXsdbJbMXWg1Hp6Tu0_kgQr_wUMP3Y2NEDXZE_Tdc_C_xSjihkl2PeM3n9sveqQ1bdXm2AQ1bviVEo1qpUbAk9m_3CmQv3wSlnYZ8qp5j5RWnYx"
     }
     
     struct Methods {
-        static let Businesses = "businesses/"
-        static let Biz = "biz/"
-        static let Search = "search"
-        static let Id = "id"
+        static let businesses = "businesses/"
+        static let biz = "biz/"
+        static let search = "search"
+        static let id = "id"
     }
     
     struct ParameterKeys {
-        static let Term = "term"
-        static let Coordinates = "coordinates"
-        static let Latitude = "latitude"
-        static let Longitude = "longitude"
-        static let Radius = "radius"
-        static let OpenAt = "open_at"
-        static let Price = "price"
+        static let term = "term"
+        static let coordinates = "coordinates"
+        static let latitude = "latitude"
+        static let longitude = "longitude"
+        static let radius = "radius"
+        static let openAt = "open_at"
+        static let price = "price"
     }
     
     struct ParameterValues {
         
-        static let Id = "id"
-        static let Name = "name"
-        static let Latitude = "latitude"
-        static let Longitude = "longitude"
-        static let Rating = "rating"
-        static let Price = "price"
-        static let Distance = "distance"
+        static let id = "id"
+        static let name = "name"
+        static let latitude = "latitude"
+        static let longitude = "longitude"
+        static let rating = "rating"
+        static let price = "price"
+        static let distance = "distance"
         static let isOpenNow = "is_open_now"
-        static let ImageUrl = "image_url"
+        static let imageUrl = "image_url"
     }
     
 }
