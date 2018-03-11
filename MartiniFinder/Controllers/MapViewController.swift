@@ -18,7 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     //var annotation: Annotation?
     var annotationArray: [CustomAnnotation] = []
     var locationManager = CLLocationManager()
-    var locations = [Location]()
+    //var locations = [Location]()
     let singleTap = UITapGestureRecognizer()
     var tappedLocation = [Location]()
     var timer: Timer?
@@ -28,13 +28,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var redoSearchButton: UIButton!
     @IBOutlet weak var resetLocationButton: UIButton!
-    @IBOutlet weak var locationView: UIView!
     
+    @IBOutlet weak var locationView: UIView!
     @IBOutlet weak var horizontalStackView: UIStackView!
     @IBOutlet weak var thumbnailImageView: UIImageView!
-    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var star1: UIImageView!
     @IBOutlet weak var blankView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
     @IBOutlet weak var openLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
@@ -145,7 +145,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @objc func viewTap(_ send: UITapGestureRecognizer) {
-        print("locationView tapped")
         
         // Get the Yelp URL of the location and segue to that in browser
         YelpClient.sharedInstance().getUrlFromLocationName(id: tappedLocation[0].id) { (url, error) in
@@ -312,6 +311,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             self.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
         }
         
+        // Remove non-breaking space in attempt to have nameLabel word wrap correctly
         let locationNameStripped = self.tappedLocation[0].name.replacingOccurrences(of: " ", with: "")
         self.nameLabel.text = locationNameStripped //self.tappedLocation[0].name
         self.nameLabel.textColor = UIColor.white
@@ -320,7 +320,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.priceLabel.textColor = UIColor.white
         
         self.displayRating(location: self.tappedLocation[0])
-        print("Rating: \(self.tappedLocation[0].rating)")
+        
         self.thumbnailImageView.image = self.tappedLocation[0].image
         
         self.horizontalStackView.addBackground(color: UIColor.black)
@@ -333,6 +333,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationView.isHidden = false
     }
     
+    // Non-working function to return UIColor to refactor open/closed label coloring
     func configureTextColor(_ rating: Double) -> UIColor {
         
         var color = UIColor()
@@ -472,12 +473,10 @@ extension UIStackView {
         subView.layer.cornerRadius = 10
         insertSubview(subView, at: 0)
     }
-    
 }
 
 extension UIViewController {
     func setNavigationItem() {
-        print("setNavigationItem called")
         let imageView = UIImageView(image: UIImage(named: "yelp"))
         imageView.contentMode = .scaleAspectFit
         let item = UIBarButtonItem(customView: imageView)

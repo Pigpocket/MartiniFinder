@@ -41,18 +41,14 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         super.viewDidLoad()
         
         self.view.backgroundColor = UIColor.black
-        
         self.setNavigationItem()
-
     }
     
     func nilAction() {
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
-        
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -102,8 +98,6 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         let delete = UITableViewRowAction(style: .destructive, title: "delete") { (action, indexPath) in
-            // delete item at indexPath
-            print("Swipe to delete")
             
             // Get favorites from Core Data
             let favorite = self.fetchedResultsController.object(at: indexPath)
@@ -169,7 +163,18 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
                 cell.openLabel.textColor = UIColor.white
             } else {
                 cell.openLabel.text = "Closed"
-                cell.openLabel.textColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0)
+                let rating = favorite.rating
+                if rating <= 1.5 {
+                    cell.openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
+                } else if rating > 1.5 && rating <= 2.5 {
+                    cell.openLabel.textColor = UIColor(red: 254/255.0, green: 192/255.0, blue: 15/255.0, alpha: 1)
+                } else if rating > 2.5 && rating <= 3.5 {
+                    cell.openLabel.textColor = UIColor(red: 255/255.0, green: 146/255.0, blue: 65/255.0, alpha: 1)
+                } else if rating > 3.5 && rating <= 4.5 {
+                    cell.openLabel.textColor = UIColor(red: 241/255.0, green: 92/255.0, blue: 79/255.0, alpha: 1)
+                } else if rating > 4.5 {
+                    cell.openLabel.textColor = UIColor(red: 211/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1)
+                }
                 cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
             }
         }

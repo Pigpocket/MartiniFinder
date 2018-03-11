@@ -15,7 +15,7 @@ class TableViewController: UITableViewController, CLLocationManagerDelegate {
     
     // MARK: Properties
 
-    var locations = [Location]()
+    //var locations = [Location]()
     var favoriteLocation: Favorites?
     var locationManager = CLLocationManager()
     
@@ -49,7 +49,12 @@ extension TableViewController {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
         let location = Location.sharedInstance[indexPath.row]
-                
+        
+        print("Cell name: \(location.name)")
+        print("Cell height is: \(cell.frame.height)")
+        cell.nameLabel.text = location.name
+        cell.nameLabel.textColor = UIColor.white
+        
         performUIUpdatesOnMain {
             
             cell.backgroundColor = UIColor.black
@@ -121,17 +126,18 @@ extension TableViewController {
         let normalCellHeight = CGFloat(96)
         let extraLargeCellHeight = CGFloat(normalCellHeight + 20.33)
         
-        let textWidth = ceil(size.width - 48)
+        let textWidth = ceil(size.width)
         let cellWidth = ceil(cell.nameLabel.frame.width)
+        let infoStackViewWidth = ceil(cell.infoStackView.frame.width - 20)
         
-        if textWidth > cellWidth {
-            print(nameText)
-            print("XL cell. Width: \(cell.nameLabel.frame.width)")
+        if textWidth > infoStackViewWidth {
+            print("\n\(nameText)")
+            print("stackView width: \(infoStackViewWidth)")
             print("Text width: \(textWidth)")
             return extraLargeCellHeight
         } else {
-            print(nameText)
-            print("Normal cell. Width: \(cell.nameLabel.frame.width)")
+            print("\n\(nameText)")
+            print("stackView width: \(infoStackViewWidth)")
             print("Text width: \(textWidth)")
             return normalCellHeight
         }
@@ -157,7 +163,6 @@ extension TableViewController {
         CoreDataStack.sharedInstance().saveContext()
         CoreDataStack.sharedInstance().save()
 
-        
         // Get the Yelp URL of the location and segue to that in browser
         YelpClient.sharedInstance().getUrlFromLocationName(id: location.id) { (url, error) in
 

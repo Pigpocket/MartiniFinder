@@ -201,7 +201,7 @@
                                     <outlet property="blankView" destination="6eY-FM-Tch" id="8uz-Nx-Zum"/>
                                     <outlet property="distanceLabel" destination="nf8-T6-upm" id="HqW-YI-EwS"/>
                                     <outlet property="horizontalStackView" destination="J7l-p6-i5Z" id="xje-G3-UFN"/>
-                                    <outlet property="infoStackView" destination="uCZ-P1-haY" id="9qE-kp-EkL"/>
+                                    <outlet property="infoStackView" destination="uCZ-P1-haY" id="jGl-6f-CCO"/>
                                     <outlet property="nameLabel" destination="wCg-To-pmD" id="rrE-dO-ppc"/>
                                     <outlet property="openLabel" destination="1AT-FJ-ynf" id="3vR-kq-6Dt"/>
                                     <outlet property="priceLabel" destination="SSQ-1i-FCl" id="Kj0-kz-cL7"/>
@@ -309,13 +309,13 @@
                                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Open Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wuz-gR-LgO" userLabel="Open Label">
                                                                 <rect key="frame" x="0.0" y="0.0" width="87.5" height="20.5"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="87.5" id="uz9-r7-xOp"/>
+                                                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87.5" id="uz9-r7-xOp"/>
                                                                 </constraints>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>
                                                                 <nil key="highlightedColor"/>
                                                             </label>
-                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g09-3Y-Shf" userLabel="Distance Label">
+                                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g09-3Y-Shf" userLabel="Distance Label">
                                                                 <rect key="frame" x="87.5" y="0.0" width="96.5" height="20.5"/>
                                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                 <nil key="textColor"/>

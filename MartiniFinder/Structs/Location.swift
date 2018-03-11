@@ -49,7 +49,6 @@ struct Location {
             self.name = name
             self.rating = rating
             self.price = price
-            //self.isOpenNow = isOpenNow
             self.distance = distance
             self.latitude = latitude
             self.longitude = longitude

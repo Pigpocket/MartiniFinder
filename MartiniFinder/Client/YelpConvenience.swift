@@ -65,8 +65,6 @@ extension YelpClient {
         }
     }
     
-        
-    
     func getUrlFromLocationName(id: String, completionHandlerUrlFromLocationName: @escaping (_ url: URL?, _ errorString: String?) -> Void) {
         
         let methods = Methods.Biz + id
@@ -89,7 +87,6 @@ extension YelpClient {
             if let url = URL(string: urlString!) {
                 if let imgData = try? Data(contentsOf: url) {
                     if let img = UIImage(data: imgData) {
-                        
                         
                         performUIUpdatesOnMain {
                             handler(img)
