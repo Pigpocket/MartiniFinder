@@ -72,9 +72,9 @@ class YelpClient {
     
     private func escapedParameters(_ parameters: [String:AnyObject]) -> String {
         
-        if parameters.isEmpty {
+        guard !parameters.isEmpty else {
             return ""
-        } else {
+        }
             var keyValuePairs = [String]()
             
             for (key, value) in parameters {
@@ -89,9 +89,7 @@ class YelpClient {
                 keyValuePairs.append(key + "=" + "\(escapedValue!)")
                 
             }
-            
-            return "?\(keyValuePairs.joined(separator: "&"))"
-        }
+        return "?\(keyValuePairs.joined(separator: "&"))"
     }
     
     func taskForGetBusinessInfo(method: String, completionHandlerForGETBusinessInfo: @escaping (_ url: URL, _ error: NSError?) -> Void) {
