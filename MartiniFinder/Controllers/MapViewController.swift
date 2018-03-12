@@ -254,17 +254,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 if annotationView.annotation?.coordinate.latitude == location.latitude && annotationView.annotation?.coordinate.longitude == location.longitude {
                     if location.rating < 2 {
                         annotationView.image = UIImage(named: "1star")
-                    } else if location.rating == 2 {
+                    } else if location.rating == 2 || location.rating == 2.5 {
                         annotationView.image = UIImage(named: "2star")
-                    } else if location.rating == 2.5 {
-                        annotationView.image = UIImage(named: "2star")
-                    } else if location.rating == 3.0 {
+                    } else if location.rating == 3.0 || location.rating == 3.5 {
                         annotationView.image = UIImage(named: "3star")
-                    } else if location.rating == 3.5 {
-                        annotationView.image = UIImage(named: "3star")
-                    } else if location.rating == 4.0 {
-                        annotationView.image = UIImage(named: "4star")
-                    } else if location.rating == 4.5 {
+                    } else if location.rating == 4.0 || location.rating == 4.5 {
                         annotationView.image = UIImage(named: "4star")
                     } else if location.rating > 4.5 {
                         annotationView.image = UIImage(named: "5star")
@@ -333,26 +327,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationView.isHidden = false
     }
     
-    // Non-working function to return UIColor to refactor open/closed label coloring
-    func configureTextColor(_ rating: Double) -> UIColor {
-        
-        var color = UIColor()
-        
-        if rating <= 1.5 {
-            color = UIColor(red: 242, green: 189, blue: 121, alpha: 1)
-        } else if rating > 1.5 && rating <= 2.5 {
-            color = UIColor(red: 254, green: 192, blue: 15, alpha: 1)
-        } else if rating > 2.5 && rating <= 3.5 {
-            color = UIColor(red: 255, green: 146, blue: 65, alpha: 1)
-        } else if rating > 3.5 && rating <= 4.5 {
-            color = UIColor(red: 241, green: 92, blue: 79, alpha: 1)
-        } else if rating > 4.5 {
-            color = UIColor(red: 211, green: 36, blue: 34, alpha: 1)
-        }
-        
-        return color
-    }
-   
     func setMapRegion() {
         
         // Set the coordinates
