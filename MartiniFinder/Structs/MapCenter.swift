@@ -11,8 +11,8 @@ import UIKit
 
 struct MapCenter {
     
-    static var shared: MapCenter = MapCenter()
+    static var shared = MapCenter()
     
-    var latitude: Double = 0.0
-    var longitude: Double = 0.0
+    var latitude = 0.0
+    var longitude = 0.0
 }
