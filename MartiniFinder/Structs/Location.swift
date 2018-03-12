@@ -56,16 +56,8 @@ struct Location {
         }
 
     static func locationFromResults(_ results: [[String:AnyObject]]) -> [Location] {
-        
-        var locations = [Location]()
-        
-        // iterate through array of dictionaries, each Movie is a dictionary
-        for result in results {
-            if let location = Location(dictionary: result) {
-                locations.append(location)
-            }
-        }
-        return locations
+
+        return results.flatMap(Location.init)
     }
 
 }
