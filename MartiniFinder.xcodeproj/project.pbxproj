@@ -28,6 +28,7 @@
 		37E82339203273E40054A75D /* FavoritesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E82338203273E40054A75D /* FavoritesViewController.swift */; };
 		37E8233B203276F90054A75D /* FavoritesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */; };
 		37E8234E2032AB6C0054A75D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37E8234C2032AB6C0054A75D /* Model.xcdatamodeld */; };
+		50378E49A9DE94C08098BA3C /* Pods_MartiniFinder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2F24A876C416B7132CD7308 /* Pods_MartiniFinder.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,9 @@
 		37E82338203273E40054A75D /* FavoritesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesViewController.swift; sourceTree = "<group>"; };
 		37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FavoritesTableViewCell.swift; sourceTree = "<group>"; };
 		37E8234D2032AB6C0054A75D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		4A12752E53FBE120411E2B8B /* Pods-MartiniFinder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MartiniFinder.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MartiniFinder/Pods-MartiniFinder.debug.xcconfig"; sourceTree = "<group>"; };
+		9A3380A2D71AF720066874C5 /* Pods-MartiniFinder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MartiniFinder.release.xcconfig"; path = "Pods/Target Support Files/Pods-MartiniFinder/Pods-MartiniFinder.release.xcconfig"; sourceTree = "<group>"; };
+		D2F24A876C416B7132CD7308 /* Pods_MartiniFinder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MartiniFinder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				50378E49A9DE94C08098BA3C /* Pods_MartiniFinder.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -117,6 +122,8 @@
 			children = (
 				37D3E2BC1FFF35DC0058CE97 /* MartiniFinder */,
 				37D3E2BB1FFF35DC0058CE97 /* Products */,
+				8B46FCE8BF9D914CB19452B8 /* Pods */,
+				6E5E64B889E36273776987CF /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,6 +152,23 @@
 			path = MartiniFinder;
 			sourceTree = "<group>";
 		};
+		6E5E64B889E36273776987CF /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D2F24A876C416B7132CD7308 /* Pods_MartiniFinder.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8B46FCE8BF9D914CB19452B8 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4A12752E53FBE120411E2B8B /* Pods-MartiniFinder.debug.xcconfig */,
+				9A3380A2D71AF720066874C5 /* Pods-MartiniFinder.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -152,9 +176,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 37D3E2CC1FFF35DC0058CE97 /* Build configuration list for PBXNativeTarget "MartiniFinder" */;
 			buildPhases = (
+				A7F2663A5CF423284D74F992 /* [CP] Check Pods Manifest.lock */,
 				37D3E2B61FFF35DC0058CE97 /* Sources */,
 				37D3E2B71FFF35DC0058CE97 /* Frameworks */,
 				37D3E2B81FFF35DC0058CE97 /* Resources */,
+				DA15B6A0D81853E122A9358F /* [CP] Embed Pods Frameworks */,
+				07F85D6F86EF2435517C0A21 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -211,6 +238,66 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		07F85D6F86EF2435517C0A21 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MartiniFinder/Pods-MartiniFinder-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		A7F2663A5CF423284D74F992 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-MartiniFinder-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		DA15B6A0D81853E122A9358F /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-MartiniFinder/Pods-MartiniFinder-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/AlamofireObjectMapper/AlamofireObjectMapper.framework",
+				"${BUILT_PRODUCTS_DIR}/CDYelpFusionKit/CDYelpFusionKit.framework",
+				"${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AlamofireObjectMapper.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/CDYelpFusionKit.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ObjectMapper.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MartiniFinder/Pods-MartiniFinder-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		37D3E2B61FFF35DC0058CE97 /* Sources */ = {
@@ -369,6 +456,7 @@
 		};
 		37D3E2CD1FFF35DC0058CE97 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4A12752E53FBE120411E2B8B /* Pods-MartiniFinder.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -386,6 +474,7 @@
 		};
 		37D3E2CE1FFF35DC0058CE97 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9A3380A2D71AF720066874C5 /* Pods-MartiniFinder.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
