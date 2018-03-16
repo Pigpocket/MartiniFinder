@@ -374,6 +374,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     for i in 0..<Location.sharedInstance.count {
                         YelpClient.sharedInstance().loadImage(Location.sharedInstance[i].imageUrl, completionHandler: { (image) in
                             
+                            print("This is the location instance: \(i)")
+                            
                             Location.sharedInstance[i].image = image
                             
                             YelpClient.sharedInstance().getOpeningHoursFromID(id: Location.sharedInstance[i].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
