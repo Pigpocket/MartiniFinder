@@ -12,6 +12,8 @@ import CDYelpFusionKit
 
 class YelpClient {
     
+    let yelpAPIClient = CDYelpAPIClient(apiKey: "Bearer 8UOe63-UqKM8syYDjMXsdbJbMXWg1Hp6Tu0_kgQr_wUMP3Y2NEDXZE_Tdc_C_xSjihkl2PeM3n9sveqQ1bdXm2AQ1bviVEo1qpUbAk9m_3CmQv3wSlnYZ8qp5j5RWnYx")
+    
     func taskForGetYelpSearchResults(method: String, parameters: [String:Any], completionHandlerForGET: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
         
         let session = URLSession.shared

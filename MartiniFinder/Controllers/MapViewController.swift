@@ -10,6 +10,7 @@ import MapKit
 import Foundation
 import CoreLocation
 import CoreData
+import CDYelpFusionKit
 
 class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerDelegate, UIGestureRecognizerDelegate  {
     
@@ -120,6 +121,17 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         // Get user position
         MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
         MapCenter.shared.longitude = (locationManager.location?.coordinate.longitude)!
+        
+        let yelpAPIClient = CDYelpAPIClient(apiKey: "Bearer 8UOe63-UqKM8syYDjMXsdbJbMXWg1Hp6Tu0_kgQr_wUMP3Y2NEDXZE_Tdc_C_xSjihkl2PeM3n9sveqQ1bdXm2AQ1bviVEo1qpUbAk9m_3CmQv3wSlnYZ8qp5j5RWnYx")
+        
+        yelpAPIClient.searchBusinesses(byTerm: "martini", location: nil, latitude: MapCenter.shared.latitude, longitude: MapCenter.shared.longitude, radius: 16000, categories: nil, locale: nil, limit: 20, offset: nil, sortBy: nil, priceTiers: nil, openNow: true, openAt: nil, attributes: nil) { (response) in
+            
+            if let response = response,
+                let businesses = response.businesses,
+                businesses.count > 0 {
+                print("***These are the yelpAPIClient businesses printed: \(businesses)")
+            }
+        }
         
         getLocations()
         setMapRegion()
