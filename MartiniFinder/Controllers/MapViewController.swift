@@ -122,17 +122,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
         MapCenter.shared.longitude = (locationManager.location?.coordinate.longitude)!
         
-        let yelpAPIClient = CDYelpAPIClient(apiKey: "Bearer 8UOe63-UqKM8syYDjMXsdbJbMXWg1Hp6Tu0_kgQr_wUMP3Y2NEDXZE_Tdc_C_xSjihkl2PeM3n9sveqQ1bdXm2AQ1bviVEo1qpUbAk9m_3CmQv3wSlnYZ8qp5j5RWnYx")
-        
-        yelpAPIClient.searchBusinesses(byTerm: "martini", location: nil, latitude: MapCenter.shared.latitude, longitude: MapCenter.shared.longitude, radius: 16000, categories: nil, locale: nil, limit: 20, offset: nil, sortBy: nil, priceTiers: nil, openNow: true, openAt: nil, attributes: nil) { (response) in
-            
-            if let response = response,
-                let businesses = response.businesses,
-                businesses.count > 0 {
-                print("***These are the yelpAPIClient businesses printed: \(businesses)")
-            }
-        }
-        
         getLocations()
         setMapRegion()
     }
@@ -372,59 +361,69 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func getLocations() {
         
         // Get locations
-        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", MapCenter.shared.latitude, MapCenter.shared.longitude) { (locations, error) in
+        YelpClient.Constants.yelpAPIClient.searchBusinesses(byTerm: "martini", location: nil, latitude: MapCenter.shared.latitude, longitude: MapCenter.shared.longitude, radius: 16000, categories: nil, locale: nil, limit: 20, offset: nil, sortBy: nil, priceTiers: nil, openNow: true, openAt: nil, attributes: nil) { (response) in
             
-            if error != nil {
-                print("There was an error: \(String(describing: error))")
-            }
-            
-            performUIUpdatesOnMain {
-                
-                if let locations = locations {
-                    Location.sharedInstance = locations
-                    
-                    for i in 0..<Location.sharedInstance.count {
-                        YelpClient.sharedInstance().loadImage(Location.sharedInstance[i].imageUrl, completionHandler: { (image) in
-                            
-                            print("This is the location instance: \(i)")
-                            
-                            Location.sharedInstance[i].image = image
-                            
-                            YelpClient.sharedInstance().getOpeningHoursFromID(id: Location.sharedInstance[i].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
-                                
-                                if error != nil {
-                                    print("There was an error getting business hours: \(String(describing: error))")
-                                }
-                                
-                                if isOpenNow {
-                                    
-                                    Location.sharedInstance[i].isOpenNow = isOpenNow
-                                }
-                            })
-                        })
-                    }
-                }
-                
-                // Create the annotations
-                var tempArray = [CustomAnnotation]()
-                
-                for dictionary in Location.sharedInstance {
-                    
-                    let lat = CLLocationDegrees(dictionary.latitude)
-                    let long = CLLocationDegrees(dictionary.longitude)
-                    let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
-                    let name = dictionary.name
-                    let annotation = CustomAnnotation(coordinates: coordinates, title: name)
-                    tempArray.append(annotation)
-                   
-                }
-                
-                // Add the annotations to the annotations array
-                self.mapView.removeAnnotations(self.annotationArray)
-                self.annotationArray = tempArray
-                self.mapView.addAnnotations(self.annotationArray)
+            if let response = response,
+                let businesses = response.businesses,
+                businesses.count > 0 {
+                print("***These are the yelpAPIClient businesses: \(businesses)")
             }
         }
+        
+        
+//        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", MapCenter.shared.latitude, MapCenter.shared.longitude) { (locations, error) in
+//
+//            if error != nil {
+//                print("There was an error: \(String(describing: error))")
+//            }
+//
+//            performUIUpdatesOnMain {
+//
+//                if let locations = locations {
+//                    Location.sharedInstance = locations
+//
+//                    for i in 0..<Location.sharedInstance.count {
+//                        YelpClient.sharedInstance().loadImage(Location.sharedInstance[i].imageUrl, completionHandler: { (image) in
+//
+//                            print("This is the location instance: \(i)")
+//
+//                            Location.sharedInstance[i].image = image
+//
+//                            YelpClient.sharedInstance().getOpeningHoursFromID(id: Location.sharedInstance[i].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+//
+//                                if error != nil {
+//                                    print("There was an error getting business hours: \(String(describing: error))")
+//                                }
+//
+//                                if isOpenNow {
+//
+//                                    Location.sharedInstance[i].isOpenNow = isOpenNow
+//                                }
+//                            })
+//                        })
+//                    }
+//                }
+//
+//                // Create the annotations
+//                var tempArray = [CustomAnnotation]()
+//
+//                for dictionary in Location.sharedInstance {
+//
+//                    let lat = CLLocationDegrees(dictionary.latitude)
+//                    let long = CLLocationDegrees(dictionary.longitude)
+//                    let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
+//                    let name = dictionary.name
+//                    let annotation = CustomAnnotation(coordinates: coordinates, title: name)
+//                    tempArray.append(annotation)
+//
+//                }
+//
+//                // Add the annotations to the annotations array
+//                self.mapView.removeAnnotations(self.annotationArray)
+//                self.annotationArray = tempArray
+//                self.mapView.addAnnotations(self.annotationArray)
+//            }
+//        }
     }
 
     func displayRating(location: Location) {
