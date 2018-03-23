@@ -282,6 +282,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         for location in Location.businesses {
             if location.coordinates?.latitude == annotation?.coordinate.latitude && location.coordinates?.longitude == annotation?.coordinate.longitude {
                 tappedLocation.append(location)
+                
+                
                 print("Added location: \(location) \n")
                 print("tappedLocation count: \(tappedLocation.count)")
             }
@@ -318,8 +320,16 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         self.displayRating(location: self.tappedLocation[0])
         
-        //self.thumbnailImageView.image = self.tappedLocation[0].imageUrl
+        // Asynchronously load the image
+        let urlString = self.tappedLocation[0].imageUrl?.absoluteString
+        print(urlString)
+        //var locationImage = UIImage()
         
+//        YelpClient.sharedInstance().loadImage(urlString) { (image) in
+//            self.thumbnailImageView.image = image
+//        }
+        
+        self.thumbnailImageView.image = Location.locationImages[0]
         self.horizontalStackView.addBackground(color: UIColor.black)
         self.horizontalStackViewHeightConstraint.constant = self.viewHeight(self.tappedLocation[0].name!)
         
@@ -387,6 +397,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                             
                                             for business in businesses {
                                             Location.businesses.append(business)
+                                                
+                                                
+                                                let imageString = business.imageUrl?.absoluteString
+                                                
+                                                YelpClient.sharedInstance().loadImage(imageString, completionHandler: { (image) in
+                                                    Location.locationImages.append(image)
+                                                })
                                             }
                                             
                                         }
@@ -407,7 +424,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             // Add the annotations to the annotations array
             self.mapView.removeAnnotations(self.annotationArray)
             self.annotationArray = tempArray
-                                        print("Annotations: \(self.annotationArray)")
+            print("Annotations: \(self.annotationArray)")
             self.mapView.addAnnotations(self.annotationArray)
         }
     }

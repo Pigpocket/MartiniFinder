@@ -15,6 +15,7 @@ struct Location {
     static var sharedInstance: [Location] = [Location]()
 
     static var businesses: [CDYelpBusiness] = [CDYelpBusiness]()
+    static var locationImages: [UIImage] = []
     
     // MARK: Properties
     
