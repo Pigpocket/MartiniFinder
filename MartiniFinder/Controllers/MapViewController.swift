@@ -16,12 +16,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // MARK: Properties
     
+    let yelpAPIClient = CDYelpAPIClient(apiKey: "8UOe63-UqKM8syYDjMXsdbJbMXWg1Hp6Tu0_kgQr_wUMP3Y2NEDXZE_Tdc_C_xSjihkl2PeM3n9sveqQ1bdXm2AQ1bviVEo1qpUbAk9m_3CmQv3wSlnYZ8qp5j5RWnYx")
+    
     //var annotation: Annotation?
     var annotationArray: [CustomAnnotation] = []
     var locationManager = CLLocationManager()
     //var locations = [Location]()
     let singleTap = UITapGestureRecognizer()
-    var tappedLocation = [Location]()
+    var tappedLocation = [CDYelpBusiness]()
     var timer: Timer?
 
     // MARK: Outlets
@@ -148,7 +150,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @objc func viewTap(_ send: UITapGestureRecognizer) {
         
         // Get the Yelp URL of the location and segue to that in browser
-        YelpClient.sharedInstance().getUrlFromLocationName(id: tappedLocation[0].id) { (url, error) in
+        YelpClient.sharedInstance().getUrlFromLocationName(id: tappedLocation[0].id!) { (url, error) in
             
             performUIUpdatesOnMain {
                 
@@ -192,7 +194,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         if let font = UIFont(name: ".SFUIText", size: 17.0) {
             let fontAttributes = [NSAttributedStringKey.font: font]
-            size = (locationName as NSString).size(withAttributes: fontAttributes)
+            size = (locationName! as NSString).size(withAttributes: fontAttributes)
         }
         
         let normalCellHeight = horizontalStackViewHeightConstraint.constant
@@ -202,12 +204,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let cellWidth = ceil(nameLabel.frame.width)
         
         if textWidth > cellWidth {
-            print("***\(locationName)***")
+            print("***\(String(describing: locationName))***")
             print("XL cell. Width: \(nameLabel.frame.width)")
             print("Text width: \(textWidth)")
             return extraLargeCellHeight
         } else {
-            print("***\(locationName)***")
+            print("***\(String(describing: locationName))***")
             print("Normal cell. Width: \(nameLabel.frame.width)")
             print("Text width: \(textWidth)")
             return normalCellHeight
@@ -251,9 +253,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         if let annotationView = annotationView {
             
-            for location in Location.sharedInstance {
-                if annotationView.annotation?.coordinate.latitude == location.latitude && annotationView.annotation?.coordinate.longitude == location.longitude {
-                    if location.rating < 2 {
+            for location in Location.businesses {
+                if annotationView.annotation?.coordinate.latitude == location.coordinates?.latitude && annotationView.annotation?.coordinate.longitude == location.coordinates?.longitude {
+                    if location.rating! < 2 {
                         annotationView.image = UIImage(named: "1star")
                     } else if location.rating == 2 || location.rating == 2.5 {
                         annotationView.image = UIImage(named: "2star")
@@ -261,7 +263,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                         annotationView.image = UIImage(named: "3star")
                     } else if location.rating == 4.0 || location.rating == 4.5 {
                         annotationView.image = UIImage(named: "4star")
-                    } else if location.rating > 4.5 {
+                    } else if location.rating! > 4.5 {
                         annotationView.image = UIImage(named: "5star")
                     }
                 }
@@ -277,37 +279,37 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let annotation = view.annotation as? CustomAnnotation
         
         // Add the tapped location to the tappedLocation array
-        for location in Location.sharedInstance {
-            if location.latitude == annotation?.coordinate.latitude && location.longitude == annotation?.coordinate.longitude {
+        for location in Location.businesses {
+            if location.coordinates?.latitude == annotation?.coordinate.latitude && location.coordinates?.longitude == annotation?.coordinate.longitude {
                 tappedLocation.append(location)
                 print("Added location: \(location) \n")
                 print("tappedLocation count: \(tappedLocation.count)")
             }
         }
                         
-        if tappedLocation[0].isOpenNow {
+        if (tappedLocation[0].hours?[0].isOpenNow!)! {
             self.openLabel.text = "Open"
             self.openLabel.textColor = UIColor.white
         } else {
             self.openLabel.text = "Closed"
             self.openLabel.isEnabled = true
             let rating = self.tappedLocation[0].rating
-            if rating <= 1.5 {
+            if rating! <= 1.5 {
                 openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
-            } else if rating > 1.5 && rating <= 2.5 {
+            } else if rating! > 1.5 && rating! <= 2.5 {
                 openLabel.textColor = UIColor(red: 254/255.0, green: 192/255.0, blue: 15/255.0, alpha: 1)
-            } else if rating > 2.5 && rating <= 3.5 {
+            } else if rating! > 2.5 && rating! <= 3.5 {
                 openLabel.textColor = UIColor(red: 255/255.0, green: 146/255.0, blue: 65/255.0, alpha: 1)
-            } else if rating > 3.5 && rating <= 4.5 {
+            } else if rating! > 3.5 && rating! <= 4.5 {
                 openLabel.textColor = UIColor(red: 241/255.0, green: 92/255.0, blue: 79/255.0, alpha: 1)
-            } else if rating > 4.5 {
+            } else if rating! > 4.5 {
                 openLabel.textColor = UIColor(red: 211/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1)
             }
             self.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
         }
         
         // Remove non-breaking space in attempt to have nameLabel word wrap correctly
-        let locationNameStripped = self.tappedLocation[0].name.replacingOccurrences(of: " ", with: "")
+        let locationNameStripped = self.tappedLocation[0].name?.replacingOccurrences(of: " ", with: "")
         self.nameLabel.text = locationNameStripped //self.tappedLocation[0].name
         self.nameLabel.textColor = UIColor.white
         
@@ -316,12 +318,12 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         self.displayRating(location: self.tappedLocation[0])
         
-        self.thumbnailImageView.image = self.tappedLocation[0].image
+        //self.thumbnailImageView.image = self.tappedLocation[0].imageUrl
         
         self.horizontalStackView.addBackground(color: UIColor.black)
-        self.horizontalStackViewHeightConstraint.constant = self.viewHeight(self.tappedLocation[0].name)
+        self.horizontalStackViewHeightConstraint.constant = self.viewHeight(self.tappedLocation[0].name!)
         
-        let distance = Double(tappedLocation[0].distance/1609).rounded(toPlaces: 1)
+        let distance = Double(tappedLocation[0].distance!/1609).rounded(toPlaces: 1)
         self.distanceLabel.text = String("\(distance) miles")
         self.distanceLabel.textColor = UIColor.white
 
@@ -361,72 +363,61 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func getLocations() {
         
         // Get locations
-        YelpClient.Constants.yelpAPIClient.searchBusinesses(byTerm: "martini", location: nil, latitude: MapCenter.shared.latitude, longitude: MapCenter.shared.longitude, radius: 16000, categories: nil, locale: nil, limit: 20, offset: nil, sortBy: nil, priceTiers: nil, openNow: true, openAt: nil, attributes: nil) { (response) in
-            
-            if let response = response,
-                let businesses = response.businesses,
-                businesses.count > 0 {
-                print("***These are the yelpAPIClient businesses: \(businesses)")
+        yelpAPIClient.cancelAllPendingAPIRequests()
+        yelpAPIClient.searchBusinesses(byTerm: "Martinis",
+                                     location: nil,
+                                     latitude: MapCenter.shared.latitude,
+                                    longitude: MapCenter.shared.longitude,
+                                       radius: 16000,
+                                   categories: nil,
+                                       locale: nil,
+                                        limit: 20,
+                                       offset: 0,
+                                       sortBy: nil,
+                                   priceTiers: nil,
+                                      openNow: true,
+                                       openAt: nil,
+                                   attributes: nil) { (response) in
+                                    
+                                    performUIUpdatesOnMain {
+                                    
+                                        if let response = response,
+                                            let businesses = response.businesses,
+                                            businesses.count > 0 {
+                                            
+                                            for business in businesses {
+                                            Location.businesses.append(business)
+                                                print(business.name!)
+                                            }
+                                            
+                                        }
+        
+            var tempArray = [CustomAnnotation]()
+
+                                        print("This is Locations.businesses: \(Location.businesses)")
+                                        
+            for dictionary in Location.businesses {
+
+                let lat = CLLocationDegrees((dictionary.coordinates?.latitude)!)
+                print("This is lat: \(lat)")
+                let long = CLLocationDegrees((dictionary.coordinates?.longitude)!)
+                let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
+                let name = dictionary.name
+                let annotation = CustomAnnotation(coordinates: coordinates, title: name!)
+                tempArray.append(annotation)
+
             }
+
+            // Add the annotations to the annotations array
+            self.mapView.removeAnnotations(self.annotationArray)
+            self.annotationArray = tempArray
+                                        print("Annotations: \(self.annotationArray)")
+            self.mapView.addAnnotations(self.annotationArray)
         }
-        
-        
-//        YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", MapCenter.shared.latitude, MapCenter.shared.longitude) { (locations, error) in
-//
-//            if error != nil {
-//                print("There was an error: \(String(describing: error))")
-//            }
-//
-//            performUIUpdatesOnMain {
-//
-//                if let locations = locations {
-//                    Location.sharedInstance = locations
-//
-//                    for i in 0..<Location.sharedInstance.count {
-//                        YelpClient.sharedInstance().loadImage(Location.sharedInstance[i].imageUrl, completionHandler: { (image) in
-//
-//                            print("This is the location instance: \(i)")
-//
-//                            Location.sharedInstance[i].image = image
-//
-//                            YelpClient.sharedInstance().getOpeningHoursFromID(id: Location.sharedInstance[i].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
-//
-//                                if error != nil {
-//                                    print("There was an error getting business hours: \(String(describing: error))")
-//                                }
-//
-//                                if isOpenNow {
-//
-//                                    Location.sharedInstance[i].isOpenNow = isOpenNow
-//                                }
-//                            })
-//                        })
-//                    }
-//                }
-//
-//                // Create the annotations
-//                var tempArray = [CustomAnnotation]()
-//
-//                for dictionary in Location.sharedInstance {
-//
-//                    let lat = CLLocationDegrees(dictionary.latitude)
-//                    let long = CLLocationDegrees(dictionary.longitude)
-//                    let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
-//                    let name = dictionary.name
-//                    let annotation = CustomAnnotation(coordinates: coordinates, title: name)
-//                    tempArray.append(annotation)
-//
-//                }
-//
-//                // Add the annotations to the annotations array
-//                self.mapView.removeAnnotations(self.annotationArray)
-//                self.annotationArray = tempArray
-//                self.mapView.addAnnotations(self.annotationArray)
-//            }
-//        }
+    }
     }
 
-    func displayRating(location: Location) {
+    func displayRating(location: CDYelpBusiness) {
         
         if location.rating == 1 {
             star1.image = UIImage(named: "regular_1")

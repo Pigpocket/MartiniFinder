@@ -14,6 +14,7 @@
 		370F18422049E55900EA0ADA /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F18412049E55900EA0ADA /* CustomAnnotationView.swift */; };
 		372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E21F7201420FC0084C3B2 /* CoreDataStack.swift */; };
 		3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3771FE9A20127CBF0001E075 /* YelpConvenience.swift */; };
+		3775C66720643BA400EFD2AE /* CDYelpFusionKitManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3775C66620643BA400EFD2AE /* CDYelpFusionKitManager.swift */; };
 		37B5215F201AF836004393ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5215E201AF836004393ED /* Location.swift */; };
 		37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */; };
 		37D3E2C01FFF35DC0058CE97 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2BF1FFF35DC0058CE97 /* HomeViewController.swift */; };
@@ -40,6 +41,7 @@
 		370F18412049E55900EA0ADA /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		372E21F7201420FC0084C3B2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
 		3771FE9A20127CBF0001E075 /* YelpConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConvenience.swift; sourceTree = "<group>"; };
+		3775C66620643BA400EFD2AE /* CDYelpFusionKitManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CDYelpFusionKitManager.swift; sourceTree = "<group>"; };
 		37B5215E201AF836004393ED /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		37D3E2BA1FFF35DC0058CE97 /* MartiniFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MartiniFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 				37D3E2D520015BAF0058CE97 /* YelpConstants.swift */,
 				37D3E2D32000A0EE0058CE97 /* YelpClient.swift */,
 				3771FE9A20127CBF0001E075 /* YelpConvenience.swift */,
+				3775C66620643BA400EFD2AE /* CDYelpFusionKitManager.swift */,
 			);
 			path = Client;
 			sourceTree = "<group>";
@@ -312,6 +315,7 @@
 				37E8231F202FAA880054A75D /* MapCenter.swift in Sources */,
 				372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */,
 				3704503E2026E6B7004FECBD /* TableViewCell.swift in Sources */,
+				3775C66720643BA400EFD2AE /* CDYelpFusionKitManager.swift in Sources */,
 				3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */,
 				370F183D20479DFD00EA0ADA /* Favorites+CoreDataProperties.swift in Sources */,
 				37D3E2D020006A930058CE97 /* GCDSwift.swift in Sources */,

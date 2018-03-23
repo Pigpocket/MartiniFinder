@@ -100,7 +100,7 @@ enum CDYelpRouter: URLRequestConvertible {
              .featuredEvent(let parameters):
             urlRequest = try URLEncoding.default.encode(urlRequest, with: parameters)
         }
-        
+        print("This is the urlRequest: \(String(describing: urlRequest.value(forHTTPHeaderField: "Authorization")))")
         return urlRequest
     }
 }

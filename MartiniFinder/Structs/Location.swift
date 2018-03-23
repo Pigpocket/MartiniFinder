@@ -8,11 +8,14 @@
 
 import Foundation
 import UIKit
+import CDYelpFusionKit
 
 struct Location {
     
     static var sharedInstance: [Location] = [Location]()
 
+    static var businesses: [CDYelpBusiness] = [CDYelpBusiness]()
+    
     // MARK: Properties
     
     var id = ""
