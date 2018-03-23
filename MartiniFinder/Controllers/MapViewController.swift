@@ -320,16 +320,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         self.displayRating(location: self.tappedLocation[0])
         
-        // Asynchronously load the image
-        let urlString = self.tappedLocation[0].imageUrl?.absoluteString
-        print(urlString)
-        //var locationImage = UIImage()
+        // Load the image
+        if let imgData = try? Data(contentsOf: (self.tappedLocation[0].imageUrl)!) {
+            if let img = UIImage(data: imgData) {
+                self.thumbnailImageView.image = img
+            }
+        }
         
-//        YelpClient.sharedInstance().loadImage(urlString) { (image) in
-//            self.thumbnailImageView.image = image
-//        }
-        
-        self.thumbnailImageView.image = Location.locationImages[0]
         self.horizontalStackView.addBackground(color: UIColor.black)
         self.horizontalStackViewHeightConstraint.constant = self.viewHeight(self.tappedLocation[0].name!)
         
