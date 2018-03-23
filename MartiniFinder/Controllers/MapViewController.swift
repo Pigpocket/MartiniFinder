@@ -286,8 +286,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 print("tappedLocation count: \(tappedLocation.count)")
             }
         }
-                        
-        if (tappedLocation[0].hours?[0].isOpenNow!)! {
+        
+        if (tappedLocation[0].hours?[0].isOpenNow == true) {
             self.openLabel.text = "Open"
             self.openLabel.textColor = UIColor.white
         } else {
@@ -387,19 +387,15 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                             
                                             for business in businesses {
                                             Location.businesses.append(business)
-                                                print(business.name!)
                                             }
                                             
                                         }
         
             var tempArray = [CustomAnnotation]()
-
-                                        print("This is Locations.businesses: \(Location.businesses)")
                                         
             for dictionary in Location.businesses {
 
                 let lat = CLLocationDegrees((dictionary.coordinates?.latitude)!)
-                print("This is lat: \(lat)")
                 let long = CLLocationDegrees((dictionary.coordinates?.longitude)!)
                 let coordinates = CLLocationCoordinate2D(latitude: lat, longitude: long)
                 let name = dictionary.name
