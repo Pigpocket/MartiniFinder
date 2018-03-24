@@ -354,7 +354,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         
         locationView.isHidden = true
         redoSearchButton.isHidden = true
-        Location.sharedInstance.removeAll()
+        Location.businesses.removeAll()
 
         MapCenter.shared.latitude = mapView.centerCoordinate.latitude
         MapCenter.shared.longitude = mapView.centerCoordinate.longitude
@@ -389,7 +389,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                             businesses.count > 0 {
                                             for business in businesses {
                                             Location.businesses.append(business)
-                                                print(business.hours?[0].isOpenNow)
+                                                print(business.hours?[2])
                                                 let imageString = business.imageUrl?.absoluteString
                                                 
                                                 YelpClient.sharedInstance().loadImage(imageString, completionHandler: { (image) in
