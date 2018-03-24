@@ -17,11 +17,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     // MARK: Properties
     
     let yelpAPIClient = CDYelpAPIClient(apiKey: "8UOe63-UqKM8syYDjMXsdbJbMXWg1Hp6Tu0_kgQr_wUMP3Y2NEDXZE_Tdc_C_xSjihkl2PeM3n9sveqQ1bdXm2AQ1bviVEo1qpUbAk9m_3CmQv3wSlnYZ8qp5j5RWnYx")
-    
-    //var annotation: Annotation?
+
     var annotationArray: [CustomAnnotation] = []
     var locationManager = CLLocationManager()
-    //var locations = [Location]()
     let singleTap = UITapGestureRecognizer()
     var tappedLocation = [CDYelpBusiness]()
     var timer: Timer?
@@ -282,12 +280,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         for location in Location.businesses {
             if location.coordinates?.latitude == annotation?.coordinate.latitude && location.coordinates?.longitude == annotation?.coordinate.longitude {
                 tappedLocation.append(location)
-                
-                
-                print("Added location: \(location) \n")
-                print("tappedLocation count: \(tappedLocation.count)")
+                print("Added location: \(String(describing: location.name)) \n")
             }
         }
+        print("Hours are: \(String(describing: tappedLocation[0].hours))")
         
         if (tappedLocation[0].hours?[0].isOpenNow == true) {
             self.openLabel.text = "Open"
@@ -382,7 +378,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                        offset: 0,
                                        sortBy: nil,
                                    priceTiers: nil,
-                                      openNow: true,
+                                      openNow: false,
                                        openAt: nil,
                                    attributes: nil) { (response) in
                                     
@@ -391,11 +387,9 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                                         if let response = response,
                                             let businesses = response.businesses,
                                             businesses.count > 0 {
-                                            
                                             for business in businesses {
                                             Location.businesses.append(business)
-                                                
-                                                
+                                                print(business.hours?[0].isOpenNow)
                                                 let imageString = business.imageUrl?.absoluteString
                                                 
                                                 YelpClient.sharedInstance().loadImage(imageString, completionHandler: { (image) in
@@ -421,7 +415,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             // Add the annotations to the annotations array
             self.mapView.removeAnnotations(self.annotationArray)
             self.annotationArray = tempArray
-            print("Annotations: \(self.annotationArray)")
             self.mapView.addAnnotations(self.annotationArray)
         }
     }

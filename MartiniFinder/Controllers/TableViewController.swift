@@ -15,7 +15,6 @@ class TableViewController: UITableViewController, CLLocationManagerDelegate {
     
     // MARK: Properties
 
-    //var locations = [Location]()
     var favoriteLocation: Favorites?
     var locationManager = CLLocationManager()
     
@@ -48,9 +47,9 @@ extension TableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
-        let location = Location.sharedInstance[indexPath.row]
+        let location = Location.businesses[indexPath.row]
         
-        print("Cell name: \(location.name)")
+        print("Cell name: \(String(describing: location.name))")
         print("Cell height is: \(cell.frame.height)")
         cell.nameLabel.text = location.name
         cell.nameLabel.textColor = UIColor.white
@@ -63,7 +62,13 @@ extension TableViewController {
             cell.thumbnailImageView.clipsToBounds = true
             cell.thumbnailImageView.layer.borderColor = UIColor.white.cgColor
             cell.thumbnailImageView.layer.borderWidth = 1
-            cell.thumbnailImageView.image = location.image
+            
+            // Load the image
+            
+            let imageString = location.imageUrl?.absoluteString
+            YelpClient.sharedInstance().loadImage(imageString, completionHandler: { (image) in
+                cell.thumbnailImageView.image = image
+            })
             
             cell.nameLabel.text = location.name
             cell.nameLabel.textColor = UIColor.white
@@ -71,38 +76,39 @@ extension TableViewController {
             cell.priceLabel.text = location.price
             cell.priceLabel.textColor = UIColor.white
             
-            let distance = Double(location.distance/1609).rounded(toPlaces: 1)
+            let distance = Double(location.distance!/1609).rounded(toPlaces: 1)
             cell.distanceLabel.text = String("\(distance) miles")
             cell.distanceLabel.textColor = UIColor.white
             
             cell.displayRating(location: location)
             
-            if location.isOpenNow {
-                
-                    cell.openLabel.text = "Open"
-                    cell.openLabel.textColor = UIColor.white
-                } else {
-                    cell.openLabel.text = "Closed"
-                    let rating = location.rating
-                    if rating <= 1.5 {
-                        cell.openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
-                    } else if rating > 1.5 && rating <= 2.5 {
-                        cell.openLabel.textColor = UIColor(red: 254/255.0, green: 192/255.0, blue: 15/255.0, alpha: 1)
-                    } else if rating > 2.5 && rating <= 3.5 {
-                        cell.openLabel.textColor = UIColor(red: 255/255.0, green: 146/255.0, blue: 65/255.0, alpha: 1)
-                    } else if rating > 3.5 && rating <= 4.5 {
-                        cell.openLabel.textColor = UIColor(red: 241/255.0, green: 92/255.0, blue: 79/255.0, alpha: 1)
-                    } else if rating > 4.5 {
-                        cell.openLabel.textColor = UIColor(red: 211/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1)
-                    }
-                    cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-                    }
-                }
+//            if location.hours![0].isOpenNow! {
+//
+//                    cell.openLabel.text = "Open"
+//                    cell.openLabel.textColor = UIColor.white
+//                } else {
+//                    cell.openLabel.text = "Closed"
+//                    let rating = location.rating!
+//                    if rating <= 1.5 {
+//                        cell.openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
+//                    } else if rating > 1.5 && rating <= 2.5 {
+//                        cell.openLabel.textColor = UIColor(red: 254/255.0, green: 192/255.0, blue: 15/255.0, alpha: 1)
+//                    } else if rating > 2.5 && rating <= 3.5 {
+//                        cell.openLabel.textColor = UIColor(red: 255/255.0, green: 146/255.0, blue: 65/255.0, alpha: 1)
+//                    } else if rating > 3.5 && rating <= 4.5 {
+//                        cell.openLabel.textColor = UIColor(red: 241/255.0, green: 92/255.0, blue: 79/255.0, alpha: 1)
+//                    } else if rating > 4.5 {
+//                        cell.openLabel.textColor = UIColor(red: 211/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1)
+//                    }
+//                    cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
+//                    }
+//                }
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Location.sharedInstance.count
+        return Location.businesses.count
     }
     
     override func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -114,13 +120,13 @@ extension TableViewController {
         // Get each cell
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
         
-        let nameText = Location.sharedInstance[indexPath.row].name
+        let nameText = Location.businesses[indexPath.row].name
         
         var size = CGSize()
         
         if let font = UIFont(name: ".SFUIText", size: 17.0) {
             let fontAttributes = [NSAttributedStringKey.font: font]
-            size = (nameText as NSString).size(withAttributes: fontAttributes)
+            size = (nameText! as NSString).size(withAttributes: fontAttributes)
         }
         
         let normalCellHeight = CGFloat(96)
@@ -131,12 +137,12 @@ extension TableViewController {
         let infoStackViewWidth = ceil(cell.infoStackView.frame.width - 20)
         
         if textWidth > infoStackViewWidth {
-            print("\n\(nameText)")
+            print("\n\(String(describing: nameText))")
             print("stackView width: \(infoStackViewWidth)")
             print("Text width: \(textWidth)")
             return extraLargeCellHeight
         } else {
-            print("\n\(nameText)")
+            print("\n\(String(describing: nameText))")
             print("stackView width: \(infoStackViewWidth)")
             print("Text width: \(textWidth)")
             return normalCellHeight

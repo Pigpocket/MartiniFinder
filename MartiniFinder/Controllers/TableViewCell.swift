@@ -8,6 +8,7 @@
 
 import Foundation
 import UIKit
+import CDYelpFusionKit
 
 class TableViewCell: UITableViewCell {
     
@@ -23,7 +24,7 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var blankView: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
     
-    func displayRating(location: Location) {
+    func displayRating(location: CDYelpBusiness) {
         
         if location.rating == 1 {
             star1.image = UIImage(named: "regular_1")
