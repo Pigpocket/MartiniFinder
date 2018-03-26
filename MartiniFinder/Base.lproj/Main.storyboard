@@ -513,7 +513,7 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Open Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8l-fv-TZs">
+                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="252" text="Review Count Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q8l-fv-TZs">
                                                             <rect key="frame" x="8" y="67" width="271" height="20.5"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                             <nil key="textColor"/>
@@ -545,8 +545,8 @@
                                     <outlet property="blankView" destination="TUH-lF-wsA" id="UJy-3A-fUa"/>
                                     <outlet property="horizontalStackView" destination="7HL-qi-nIT" id="CQ3-vW-xgL"/>
                                     <outlet property="nameLabel" destination="mqC-Yc-j7h" id="Blu-H3-o3f"/>
-                                    <outlet property="openLabel" destination="Q8l-fv-TZs" id="fQ6-yX-38H"/>
                                     <outlet property="priceLabel" destination="643-uQ-haY" id="9iJ-EQ-FuM"/>
+                                    <outlet property="reviewCountLabel" destination="Q8l-fv-TZs" id="onG-Vv-YNl"/>
                                     <outlet property="star1" destination="ino-89-aaK" id="IK0-Ow-BzV"/>
                                     <outlet property="thumbnailImageView" destination="pnp-jf-dRE" id="4pS-gW-s9D"/>
                                 </connections>

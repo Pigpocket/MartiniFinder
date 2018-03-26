@@ -150,7 +150,7 @@ extension TableViewController {
         favoriteLocation?.price = location.price
         favoriteLocation?.rating = location.rating
         favoriteLocation?.imageUrl = location.imageUrl
-        favoriteLocation?.isOpenNow = location.isOpenNow
+        favoriteLocation?.reviewCount = Int16(location.reviewCount)
         favoriteLocation?.image = UIImagePNGRepresentation(location.image!)! as NSData
         
         CoreDataStack.sharedInstance.saveContext()

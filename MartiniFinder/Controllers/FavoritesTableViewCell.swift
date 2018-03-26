@@ -21,8 +21,7 @@ class FavoritesTableViewCell: UITableViewCell {
     @IBOutlet weak var star1: UIImageView!
     @IBOutlet weak var blankView: UIImageView!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var openLabel: UILabel!
-    
+    @IBOutlet weak var reviewCountLabel: UILabel!
     
     func displayRating(rating: Double) {
         
