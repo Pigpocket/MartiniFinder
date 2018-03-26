@@ -11,8 +11,6 @@ import UIKit
 
 class FavoritesTableViewCell: UITableViewCell {
     
-    
-    
     // MARK: Outlets
     
     @IBOutlet weak var thumbnailImageView: UIImageView!

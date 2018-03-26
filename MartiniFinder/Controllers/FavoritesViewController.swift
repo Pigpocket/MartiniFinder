@@ -12,6 +12,10 @@ import CoreData
 
 class FavoritesViewController: UITableViewController, NSFetchedResultsControllerDelegate {
     
+    // Outlets
+    
+    @IBOutlet var favoritesTableView: UITableView!
+    
     // Initialize FetchedResultsController
     
     lazy var fetchedResultsController: NSFetchedResultsController<Favorites> = { () -> NSFetchedResultsController<Favorites> in
@@ -31,9 +35,6 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
         return fetchedResultsController
     }()
     
-    // Outlets
-    
-    @IBOutlet var favoritesTableView: UITableView!
     
     // MARK : Lifecycle
     

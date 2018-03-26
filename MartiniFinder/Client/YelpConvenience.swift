@@ -59,7 +59,6 @@ extension YelpClient {
                 if let results = results {
                     if let hours = results["hours"] as? [[String:AnyObject]] {
                         if let isOpenDict = hours[0] as [String:AnyObject]? {
-                            print("isOpenDict: \(isOpenDict)")
                             if let isOpenNow = isOpenDict["is_open_now"] as? Bool {
                                 completionHandlerForOpeningHours(isOpenNow, nil)
                             } else {
