@@ -15,10 +15,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     // MARK: Properties
     
-    //var annotation: Annotation?
     var annotationArray: [CustomAnnotation] = []
     var locationManager = CLLocationManager()
-    //var locations = [Location]()
     let singleTap = UITapGestureRecognizer()
     var tappedLocation = [Location]()
     var timer: Timer?
@@ -296,7 +294,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     self.openLabel.textColor = UIColor.white
                 } else {
                     self.openLabel.text = "Closed"
-                    self.openLabel.isEnabled = true
                     let rating = self.tappedLocation[0].rating
                     if rating <= 1.5 {
                         self.openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
@@ -363,7 +360,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         MapCenter.shared.longitude = mapView.centerCoordinate.longitude
 
         getLocations()
-
     }
     
     func getLocations() {

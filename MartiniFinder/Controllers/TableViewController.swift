@@ -15,7 +15,6 @@ class TableViewController: UITableViewController, CLLocationManagerDelegate {
     
     // MARK: Properties
 
-    //var locations = [Location]()
     var favoriteLocation: Favorites?
     var locationManager = CLLocationManager()
     
