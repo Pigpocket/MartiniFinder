@@ -46,6 +46,7 @@ extension YelpClient {
         static let distance = "distance"
         static let isOpenNow = "is_open_now"
         static let imageUrl = "image_url"
+        static let reviewCount = "review_count"
     }
     
 }

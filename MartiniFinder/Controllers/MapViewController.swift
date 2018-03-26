@@ -283,27 +283,37 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 print("tappedLocation count: \(tappedLocation.count)")
             }
         }
-                        
-        if tappedLocation[0].isOpenNow {
-            self.openLabel.text = "Open"
-            self.openLabel.textColor = UIColor.white
-        } else {
-            self.openLabel.text = "Closed"
-            self.openLabel.isEnabled = true
-            let rating = self.tappedLocation[0].rating
-            if rating <= 1.5 {
-                openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
-            } else if rating > 1.5 && rating <= 2.5 {
-                openLabel.textColor = UIColor(red: 254/255.0, green: 192/255.0, blue: 15/255.0, alpha: 1)
-            } else if rating > 2.5 && rating <= 3.5 {
-                openLabel.textColor = UIColor(red: 255/255.0, green: 146/255.0, blue: 65/255.0, alpha: 1)
-            } else if rating > 3.5 && rating <= 4.5 {
-                openLabel.textColor = UIColor(red: 241/255.0, green: 92/255.0, blue: 79/255.0, alpha: 1)
-            } else if rating > 4.5 {
-                openLabel.textColor = UIColor(red: 211/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1)
+        
+        YelpClient.sharedInstance().getOpeningHoursFromID(id: tappedLocation[0].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+            
+            if error != nil {
+                print("There was an error getting business hours: \(String(describing: error))")
             }
-            self.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-        }
+            
+            performUIUpdatesOnMain {
+                if isOpenNow == true {
+                    self.openLabel.text = "Open"
+                    self.openLabel.textColor = UIColor.white
+                } else {
+                    self.openLabel.text = "Closed"
+                    self.openLabel.isEnabled = true
+                    let rating = self.tappedLocation[0].rating
+                    if rating <= 1.5 {
+                        self.openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
+                    } else if rating > 1.5 && rating <= 2.5 {
+                        self.openLabel.textColor = UIColor(red: 254/255.0, green: 192/255.0, blue: 15/255.0, alpha: 1)
+                    } else if rating > 2.5 && rating <= 3.5 {
+                        self.openLabel.textColor = UIColor(red: 255/255.0, green: 146/255.0, blue: 65/255.0, alpha: 1)
+                    } else if rating > 3.5 && rating <= 4.5 {
+                        self.openLabel.textColor = UIColor(red: 241/255.0, green: 92/255.0, blue: 79/255.0, alpha: 1)
+                    } else if rating > 4.5 {
+                        self.openLabel.textColor = UIColor(red: 211/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1)
+                    }
+                    self.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
+                }
+                self.locationView.isHidden = false
+            }
+        })
         
         // Remove non-breaking space in attempt to have nameLabel word wrap correctly
         let locationNameStripped = self.tappedLocation[0].name.replacingOccurrences(of: " ", with: "")
@@ -324,7 +334,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.distanceLabel.text = String("\(distance) miles")
         self.distanceLabel.textColor = UIColor.white
 
-        locationView.isHidden = false
     }
     
     func setMapRegion() {
@@ -372,21 +381,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     Location.sharedInstance = locations
                     
                     for i in 0..<Location.sharedInstance.count {
+                        print("\(Location.sharedInstance[i].reviewCount) reviews")
                         YelpClient.sharedInstance().loadImage(Location.sharedInstance[i].imageUrl, completionHandler: { (image) in
                             
                             Location.sharedInstance[i].image = image
                             
-                            YelpClient.sharedInstance().getOpeningHoursFromID(id: Location.sharedInstance[i].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
-                                
-                                if error != nil {
-                                    print("There was an error getting business hours: \(String(describing: error))")
-                                }
-                                
-                                if isOpenNow {
-                                    
-                                    Location.sharedInstance[i].isOpenNow = isOpenNow
-                                }
-                            })
                         })
                     }
                 }

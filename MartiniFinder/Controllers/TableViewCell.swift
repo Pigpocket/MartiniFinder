@@ -18,10 +18,10 @@ class TableViewCell: UITableViewCell {
     @IBOutlet weak var infoStackView: UIStackView!
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var priceLabel: UILabel!
-    @IBOutlet weak var openLabel: UILabel!
     @IBOutlet weak var star1: UIImageView!
     @IBOutlet weak var blankView: UIImageView!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var reviewCountLabel: UILabel!
     
     func displayRating(location: Location) {
         

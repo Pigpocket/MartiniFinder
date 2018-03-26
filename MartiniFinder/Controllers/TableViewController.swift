@@ -77,27 +77,21 @@ extension TableViewController {
             
             cell.displayRating(location: location)
             
-            if location.isOpenNow {
-                
-                    cell.openLabel.text = "Open"
-                    cell.openLabel.textColor = UIColor.white
-                } else {
-                    cell.openLabel.text = "Closed"
-                    let rating = location.rating
-                    if rating <= 1.5 {
-                        cell.openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
-                    } else if rating > 1.5 && rating <= 2.5 {
-                        cell.openLabel.textColor = UIColor(red: 254/255.0, green: 192/255.0, blue: 15/255.0, alpha: 1)
-                    } else if rating > 2.5 && rating <= 3.5 {
-                        cell.openLabel.textColor = UIColor(red: 255/255.0, green: 146/255.0, blue: 65/255.0, alpha: 1)
-                    } else if rating > 3.5 && rating <= 4.5 {
-                        cell.openLabel.textColor = UIColor(red: 241/255.0, green: 92/255.0, blue: 79/255.0, alpha: 1)
-                    } else if rating > 4.5 {
-                        cell.openLabel.textColor = UIColor(red: 211/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1)
-                    }
-                    cell.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
-                    }
-                }
+            cell.reviewCountLabel.text = ("\(location.reviewCount) reviews")
+            let rating = location.rating
+            if rating <= 1.5 {
+                cell.reviewCountLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
+            } else if rating > 1.5 && rating <= 2.5 {
+                cell.reviewCountLabel.textColor = UIColor(red: 254/255.0, green: 192/255.0, blue: 15/255.0, alpha: 1)
+            } else if rating > 2.5 && rating <= 3.5 {
+                cell.reviewCountLabel.textColor = UIColor(red: 255/255.0, green: 146/255.0, blue: 65/255.0, alpha: 1)
+            } else if rating > 3.5 && rating <= 4.5 {
+                cell.reviewCountLabel.textColor = UIColor(red: 241/255.0, green: 92/255.0, blue: 79/255.0, alpha: 1)
+            } else if rating > 4.5 {
+                cell.reviewCountLabel.textColor = UIColor(red: 211/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1)
+            }
+            cell.reviewCountLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
+        }
         return cell
     }
     

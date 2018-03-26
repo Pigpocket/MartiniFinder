@@ -25,6 +25,7 @@ struct Location {
     var distance = 0.0
     var imageUrl = ""
     var image: UIImage? = nil
+    var reviewCount: Int = 0
     
     // MARK: Initializer
     init?(dictionary: [String:AnyObject]) {
@@ -39,7 +40,8 @@ struct Location {
             let coordinates = dictionary[YelpClient.ParameterKeys.coordinates] as? [String:Any],
             let latitude = coordinates[YelpClient.ParameterValues.latitude] as? Double,
             let longitude = coordinates[YelpClient.ParameterValues.longitude] as? Double,
-            let imageUrl = dictionary[YelpClient.ParameterValues.imageUrl] as? String
+            let imageUrl = dictionary[YelpClient.ParameterValues.imageUrl] as? String,
+            let reviewCount = dictionary[YelpClient.ParameterValues.reviewCount] as? Int
             
             // If not, return nil
             else { return nil }
@@ -53,6 +55,7 @@ struct Location {
             self.latitude = latitude
             self.longitude = longitude
             self.imageUrl = imageUrl
+            self.reviewCount = reviewCount
         }
 
     static func locationFromResults(_ results: [[String:AnyObject]]) -> [Location] {

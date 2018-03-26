@@ -23,6 +23,11 @@ extension YelpClient {
             ParameterKeys.term: term
             ] as [String : Any]
         
+        print("latitude: \(latitude)")
+        print("longitude: \(longitude)")
+        print("price: \(price)")
+        print("term: \(term)")
+        
         taskForGetYelpSearchResults(method: methods, parameters: methodParameters as [String : AnyObject]) { (results, error) in
             
             if let error = error {
