@@ -18,7 +18,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     var annotationArray: [CustomAnnotation] = []
     var locationManager = CLLocationManager()
     let singleTap = UITapGestureRecognizer()
-    var tappedLocation = [Location]()
+    var tappedLocation: Location?
     var timer: Timer?
 
     // MARK: Outlets
@@ -144,18 +144,21 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     @objc func viewTap(_ send: UITapGestureRecognizer) {
         
-        // Get the Yelp URL of the location and segue to that in browser
-        YelpClient.sharedInstance().getUrlFromLocationName(id: tappedLocation[0].id) { (url, error) in
+        if let tappedLocation = tappedLocation {
             
-            performUIUpdatesOnMain {
+            // Get the Yelp URL of the location and segue to that in browser
+            YelpClient.sharedInstance().getUrlFromLocationName(id: tappedLocation.id) { (url, error) in
                 
-                if error != nil {
-                    print("There was an error getting the URL")
-                }
-                
-                if let url = url {
-                    let app = UIApplication.shared
-                    app.open(url, options: [:], completionHandler: nil)
+                performUIUpdatesOnMain {
+                    
+                    if error != nil {
+                        print("There was an error getting the URL")
+                    }
+                    
+                    if let url = url {
+                        let app = UIApplication.shared
+                        app.open(url, options: [:], completionHandler: nil)
+                    }
                 }
             }
         }
@@ -183,7 +186,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func viewHeight(_ locationName: String) -> CGFloat {
         
-        let locationName = tappedLocation[0].name
+        var locationName = String()
+        
+        if let tappedLocation = tappedLocation {
+            locationName = tappedLocation.name
+        }
         
         var size = CGSize()
         
@@ -212,13 +219,13 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     @objc func handleSingleTap(sender: UIGestureRecognizer) {
-        tappedLocation.removeAll()
+        tappedLocation = nil
         singleTap.numberOfTapsRequired = 1
         locationView.isHidden = true
     }
     
     func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
-        tappedLocation.removeAll()
+        tappedLocation = nil
         horizontalStackViewHeightConstraint.constant = 96
         thumbnailImageView.image = nil
         nameLabel.text = ""
@@ -270,67 +277,67 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
         
-        tappedLocation.removeAll()
         let annotation = view.annotation as? CustomAnnotation
         
         // Add the tapped location to the tappedLocation array
         for location in Location.sharedInstance {
             if location.latitude == annotation?.coordinate.latitude && location.longitude == annotation?.coordinate.longitude {
-                tappedLocation.append(location)
+                tappedLocation = location
                 print("Added location: \(location) \n")
-                print("tappedLocation count: \(tappedLocation.count)")
             }
         }
         
-        YelpClient.sharedInstance().getOpeningHoursFromID(id: tappedLocation[0].id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+        if let tappedLocation = tappedLocation {
             
-            if error != nil {
-                print("There was an error getting business hours: \(String(describing: error))")
-            }
-            
-            performUIUpdatesOnMain {
-                if isOpenNow == true {
-                    self.openLabel.text = "Open"
-                    self.openLabel.textColor = UIColor.white
-                } else {
-                    self.openLabel.text = "Closed"
-                    let rating = self.tappedLocation[0].rating
-                    if rating <= 1.5 {
-                        self.openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
-                    } else if rating > 1.5 && rating <= 2.5 {
-                        self.openLabel.textColor = UIColor(red: 254/255.0, green: 192/255.0, blue: 15/255.0, alpha: 1)
-                    } else if rating > 2.5 && rating <= 3.5 {
-                        self.openLabel.textColor = UIColor(red: 255/255.0, green: 146/255.0, blue: 65/255.0, alpha: 1)
-                    } else if rating > 3.5 && rating <= 4.5 {
-                        self.openLabel.textColor = UIColor(red: 241/255.0, green: 92/255.0, blue: 79/255.0, alpha: 1)
-                    } else if rating > 4.5 {
-                        self.openLabel.textColor = UIColor(red: 211/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1)
-                    }
-                    self.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
+            YelpClient.sharedInstance().getOpeningHoursFromID(id: tappedLocation.id, completionHandlerForOpeningHours: { (isOpenNow, error) in
+                
+                if error != nil {
+                    print("There was an error getting business hours: \(String(describing: error))")
                 }
-                self.locationView.isHidden = false
-            }
-        })
+                
+                performUIUpdatesOnMain {
+                    if isOpenNow == true {
+                        self.openLabel.text = "Open"
+                        self.openLabel.textColor = UIColor.white
+                    } else {
+                        self.openLabel.text = "Closed"
+                        let rating = tappedLocation.rating
+                        if rating <= 1.5 {
+                            self.openLabel.textColor = UIColor(red: 242/255.0, green: 189/255.0, blue: 121/255.0, alpha: 1)
+                        } else if rating > 1.5 && rating <= 2.5 {
+                            self.openLabel.textColor = UIColor(red: 254/255.0, green: 192/255.0, blue: 15/255.0, alpha: 1)
+                        } else if rating > 2.5 && rating <= 3.5 {
+                            self.openLabel.textColor = UIColor(red: 255/255.0, green: 146/255.0, blue: 65/255.0, alpha: 1)
+                        } else if rating > 3.5 && rating <= 4.5 {
+                            self.openLabel.textColor = UIColor(red: 241/255.0, green: 92/255.0, blue: 79/255.0, alpha: 1)
+                        } else if rating > 4.5 {
+                            self.openLabel.textColor = UIColor(red: 211/255.0, green: 36/255.0, blue: 34/255.0, alpha: 1)
+                        }
+                        self.openLabel.font = UIFont.systemFont(ofSize: 17.0, weight: .semibold)
+                    }
+                    self.locationView.isHidden = false
+                }
+            })
         
         // Remove non-breaking space in attempt to have nameLabel word wrap correctly
-        let locationNameStripped = self.tappedLocation[0].name.replacingOccurrences(of: " ", with: "")
+        let locationNameStripped = tappedLocation.name.replacingOccurrences(of: " ", with: "")
         self.nameLabel.text = locationNameStripped //self.tappedLocation[0].name
         self.nameLabel.textColor = UIColor.white
         
-        self.priceLabel.text = self.tappedLocation[0].price
+        self.priceLabel.text = tappedLocation.price
         self.priceLabel.textColor = UIColor.white
         
-        self.displayRating(location: self.tappedLocation[0])
+        self.displayRating(location: tappedLocation)
         
-        self.thumbnailImageView.image = self.tappedLocation[0].image
+        self.thumbnailImageView.image = tappedLocation.image
         
         self.horizontalStackView.addBackground(color: UIColor.black)
-        self.horizontalStackViewHeightConstraint.constant = self.viewHeight(self.tappedLocation[0].name)
+        self.horizontalStackViewHeightConstraint.constant = self.viewHeight(tappedLocation.name)
         
-        let distance = Double(tappedLocation[0].distance/1609).rounded(toPlaces: 1)
+        let distance = Double(tappedLocation.distance/1609).rounded(toPlaces: 1)
         self.distanceLabel.text = String("\(distance) miles")
         self.distanceLabel.textColor = UIColor.white
-
+        }
     }
     
     func setMapRegion() {
