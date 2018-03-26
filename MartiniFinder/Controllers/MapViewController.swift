@@ -381,7 +381,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                     Location.sharedInstance = locations
                     
                     for i in 0..<Location.sharedInstance.count {
-                        print("\(Location.sharedInstance[i].reviewCount) reviews")
                         YelpClient.sharedInstance().loadImage(Location.sharedInstance[i].imageUrl, completionHandler: { (image) in
                             
                             Location.sharedInstance[i].image = image

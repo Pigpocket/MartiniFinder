@@ -46,8 +46,9 @@ extension YelpClient {
         }
     }
     
-    func getOpeningHoursFromID(id: String, completionHandlerForOpeningHours: @escaping (_ openNow: Bool, _ errorString: String?) -> Void) {
+    func getOpeningHoursFromID(id: String, completionHandlerForOpeningHours: @escaping (_ openNow: Bool?, _ errorString: String?) -> Void) {
         
+        print("ID sent to opening hours: \(id)")
         let methods = Methods.businesses + id
         
             self.taskForGetYelpSearchResults(method: methods, parameters: [:]) { (results, error) in
@@ -57,11 +58,12 @@ extension YelpClient {
             } else {
                 if let results = results {
                     if let hours = results["hours"] as? [[String:AnyObject]] {
-                        if let isOpenDict = hours[0] as? [String:AnyObject] {
-                            if (isOpenDict["is_open_now"] as? Bool) != nil {
-                                completionHandlerForOpeningHours(true, nil)
+                        if let isOpenDict = hours[0] as [String:AnyObject]? {
+                            print("isOpenDict: \(isOpenDict)")
+                            if let isOpenNow = isOpenDict["is_open_now"] as? Bool {
+                                completionHandlerForOpeningHours(isOpenNow, nil)
                             } else {
-                                completionHandlerForOpeningHours(false, "Could not find opening hours: \(String(describing: error))")
+                                completionHandlerForOpeningHours(nil, "Could not find opening hours: \(String(describing: error))")
                             }
                         }
                     }
