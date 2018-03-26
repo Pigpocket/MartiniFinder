@@ -14,9 +14,8 @@ class YelpClient {
     func taskForGetYelpSearchResults(method: String, parameters: [String:Any], completionHandlerForGET: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
         
         let session = URLSession.shared
-        let urlString = YelpClient.Constants.yelpBaseURL + method + escapedParameters(parameters as [String : AnyObject])
-        print("This is the urlString: \(urlString)")
-        let url = URL(string: urlString)!
+        let urlString = (YelpClient.Constants.yelpBaseURL + method + escapedParameters(parameters as [String : AnyObject])).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let url = URL(string: urlString!)!
         let request = NSMutableURLRequest(url: url)
         request.httpMethod = "GET"
         request.addValue(YelpClient.Constants.apiKey, forHTTPHeaderField: YelpClient.Constants.authorization)
@@ -95,8 +94,8 @@ class YelpClient {
     
     func taskForGetBusinessInfo(method: String, completionHandlerForGETBusinessInfo: @escaping (_ url: URL, _ error: NSError?) -> Void) {
         
-        let urlString = YelpClient.Constants.yelpWebURL + method
-        let url = URL(string: urlString)!
+        let urlString = (YelpClient.Constants.yelpWebURL + method).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
+        let url = URL(string: urlString!)!
         completionHandlerForGETBusinessInfo(url, nil)
     }
     
