@@ -106,21 +106,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationView.addGestureRecognizer(viewTap)
         
         // Request location access
-        self.locationManager.requestAlwaysAuthorization()
         self.locationManager.requestWhenInUseAuthorization()
         
         if (CLLocationManager.locationServicesEnabled()) {
             locationManager.delegate = self
             locationManager.desiredAccuracy = kCLLocationAccuracyBest
+            locationManager.distanceFilter = 200
             locationManager.startUpdatingLocation()
         }
-        
-        // Get user position
-        MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
-        MapCenter.shared.longitude = (locationManager.location?.coordinate.longitude)!
-        
-        getLocations()
-        setMapRegion()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -128,10 +121,23 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.stopUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation])
-    {
-        let locValue:CLLocationCoordinate2D = manager.location!.coordinate
-        print("locations = \(locValue.latitude) \(locValue.longitude)")
+    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .authorizedWhenInUse {
+            
+            // Get user position
+            MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
+            MapCenter.shared.longitude = (locationManager.location?.coordinate.longitude)!
+            
+            getLocations()
+            setMapRegion()
+        }
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    }
+    
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
+        print("There was an error getting your location")
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
