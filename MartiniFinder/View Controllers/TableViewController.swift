@@ -49,8 +49,8 @@ extension TableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "LocationCell") as! TableViewCell
         let location = Location.sharedInstance[indexPath.row]
         
-        print("Cell name: \(location.name)")
-        print("Cell height is: \(cell.frame.height)")
+//        print("Cell name: \(location.name)")
+//        print("Cell height is: \(cell.frame.height)")
         cell.nameLabel.text = location.name
         cell.nameLabel.textColor = UIColor.white
         
@@ -124,14 +124,14 @@ extension TableViewController {
         let infoStackViewWidth = ceil(cell.infoStackView.frame.width - 20)
         
         if textWidth > infoStackViewWidth {
-            print("\n\(nameText)")
-            print("stackView width: \(infoStackViewWidth)")
-            print("Text width: \(textWidth)")
+//            print("\n\(nameText)")
+//            print("stackView width: \(infoStackViewWidth)")
+//            print("Text width: \(textWidth)")
             return extraLargeCellHeight
         } else {
-            print("\n\(nameText)")
-            print("stackView width: \(infoStackViewWidth)")
-            print("Text width: \(textWidth)")
+//            print("\n\(nameText)")
+//            print("stackView width: \(infoStackViewWidth)")
+//            print("Text width: \(textWidth)")
             return normalCellHeight
         }
     }
@@ -174,14 +174,14 @@ extension TableViewController {
     }
 }
 
-extension String {
-    
-    func widthOfString(usingFont font: UIFont) -> CGFloat {
-        let fontAttributes = [NSAttributedStringKey.font: font]
-        let size = self.size(withAttributes: fontAttributes)
-        return size.width
-    }
-}
+//extension String {
+//
+//    func widthOfString(usingFont font: UIFont) -> CGFloat {
+//        let fontAttributes = [NSAttributedStringKey.font: font]
+//        let size = self.size(withAttributes: fontAttributes)
+//        return size.width
+//    }
+//}
 
 extension Double {
     /// Rounds the double to decimal places value
