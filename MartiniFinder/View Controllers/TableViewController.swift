@@ -136,26 +136,48 @@ extension TableViewController {
         }
     }
     
+    func checkContextForExistingEntry() {
+
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let location = Location.sharedInstance[indexPath.row]
         
-        // Initialize NSManagedObject 'Location' with properties
-        favoriteLocation = Favorites(context: CoreDataStack.sharedInstance.context)
-        favoriteLocation?.name = location.name
-        favoriteLocation?.isFavorite = true
-        favoriteLocation?.id = location.id
-        favoriteLocation?.latitude = location.latitude
-        favoriteLocation?.longitude = location.longitude
-        favoriteLocation?.price = location.price
-        favoriteLocation?.rating = location.rating
-        favoriteLocation?.imageUrl = location.imageUrl
-        favoriteLocation?.reviewCount = Int16(location.reviewCount)
-        favoriteLocation?.image = UIImagePNGRepresentation(location.image!)! as NSData
+        let request = NSFetchRequest<NSFetchRequestResult>(entityName: "Favorites")
+        let predicate = NSPredicate(format: "id == %@", location.id)
+        request.predicate = predicate
+        request.fetchLimit = 1
         
-        CoreDataStack.sharedInstance.saveContext()
-        CoreDataStack.sharedInstance.save()
-
+        do {
+            let count = try CoreDataStack.sharedInstance.context.count(for: request)
+            if (count == 0) {
+                
+                // Initialize NSManagedObject 'Location' with properties
+                favoriteLocation = Favorites(context: CoreDataStack.sharedInstance.context)
+                
+                favoriteLocation?.name = location.name
+                favoriteLocation?.isFavorite = true
+                favoriteLocation?.id = location.id
+                favoriteLocation?.latitude = location.latitude
+                favoriteLocation?.longitude = location.longitude
+                favoriteLocation?.price = location.price
+                favoriteLocation?.rating = location.rating
+                favoriteLocation?.imageUrl = location.imageUrl
+                favoriteLocation?.reviewCount = Int16(location.reviewCount)
+                favoriteLocation?.image = UIImagePNGRepresentation(location.image!)! as NSData
+                
+                CoreDataStack.sharedInstance.saveContext()
+                CoreDataStack.sharedInstance.save()
+                
+            } else {
+                showAlert(title: "Not added to favorites", msg: "This location already exists in your favorites")
+            }
+        }
+        catch let error as NSError {
+            print("Could not fetch \(error), \(error.userInfo)")
+        }
+        
         // Get the Yelp URL of the location and segue to that in browser
         YelpClient.sharedInstance().getUrlFromLocationName(id: location.id) { (url, error) in
 
