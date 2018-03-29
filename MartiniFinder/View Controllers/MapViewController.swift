@@ -139,7 +139,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         if status == .denied {
             let alertController = UIAlertController(title: NSLocalizedString("Location Services Disabled", comment: ""), message: NSLocalizedString("This application requires location services to be enabled", comment: ""), preferredStyle: .alert)
             
-            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: { _ in self.backToLogin() })
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: { _ in self.backToHome() })
             let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .default) { (UIAlertAction) in
                 UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
             }
@@ -148,11 +148,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             alertController.addAction(settingsAction)
             self.present(alertController, animated: true, completion: nil)
             
-            //showRetryAlert(title: "Location services denied", message: "It's hard to find martinis if we don't know where you are. \u{1F644}")
         }
     }
     
-    func backToLogin() {
+    func backToHome() {
         self.navigationController?.popViewController(animated: true)
     }
 
@@ -235,14 +234,14 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         let cellWidth = ceil(nameLabel.frame.width)
         
         if textWidth > cellWidth {
-            print("***\(locationName)***")
-            print("XL cell. Width: \(nameLabel.frame.width)")
-            print("Text width: \(textWidth)")
+//            print("***\(locationName)***")
+//            print("XL cell. Width: \(nameLabel.frame.width)")
+//            print("Text width: \(textWidth)")
             return extraLargeCellHeight
         } else {
-            print("***\(locationName)***")
-            print("Normal cell. Width: \(nameLabel.frame.width)")
-            print("Text width: \(textWidth)")
+//            print("***\(locationName)***")
+//            print("Normal cell. Width: \(nameLabel.frame.width)")
+//            print("Text width: \(textWidth)")
             return normalCellHeight
         }
     }

@@ -120,7 +120,7 @@ extension TableViewController {
         let extraLargeCellHeight = CGFloat(normalCellHeight + 20.33)
         
         let textWidth = ceil(size.width)
-        let cellWidth = ceil(cell.nameLabel.frame.width)
+        //let cellWidth = ceil(cell.nameLabel.frame.width)
         let infoStackViewWidth = ceil(cell.infoStackView.frame.width - 20)
         
         if textWidth > infoStackViewWidth {

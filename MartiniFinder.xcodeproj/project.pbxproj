@@ -83,7 +83,7 @@
 			path = Structs;
 			sourceTree = "<group>";
 		};
-		370F183F2047B5C100EA0ADA /* Controllers */ = {
+		370F183F2047B5C100EA0ADA /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
 				37D3E2BF1FFF35DC0058CE97 /* HomeViewController.swift */,
@@ -95,7 +95,7 @@
 				370F18412049E55900EA0ADA /* CustomAnnotationView.swift */,
 				37D76956206C687600FF513C /* AlertViewController.swift */,
 			);
-			path = Controllers;
+			path = "View Controllers";
 			sourceTree = "<group>";
 		};
 		3771FE9C20127CC40001E075 /* Client */ = {
@@ -144,7 +144,7 @@
 				370F183E2047B5A200EA0ADA /* Structs */,
 				37B52155201AC51A004393ED /* Model */,
 				3771FE9C20127CC40001E075 /* Client */,
-				370F183F2047B5C100EA0ADA /* Controllers */,
+				370F183F2047B5C100EA0ADA /* View Controllers */,
 				37D3E2C41FFF35DC0058CE97 /* Assets.xcassets */,
 				37D3E2C61FFF35DC0058CE97 /* LaunchScreen.storyboard */,
 				37D3E2C91FFF35DC0058CE97 /* Info.plist */,
