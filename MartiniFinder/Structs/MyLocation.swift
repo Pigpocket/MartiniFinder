@@ -13,14 +13,19 @@ struct MyLocation {
     
     static var shared = MyLocation()
     
-    var coordinates = CLLocation(latitude: 0.0, longitude: 0.0)
+    //var coordinates = CLLocation(latitude: 0.0, longitude: 0.0)
     var myLocation = CLLocation(latitude: 0.0, longitude: 0.0)
     
-    func getDistance() -> Double {
+    func getDistance(latitude: Double, longitude: Double) -> String {
 
-        let distanceInMeters = myLocation.distance(from: coordinates)
-        let distance = (distanceInMeters/1609).rounded(toPlaces: 1)
+        let distanceInMeters = CLLocation(latitude: latitude, longitude: longitude).distance(from: myLocation)
+        var distance = ""
         
+        if distanceInMeters < 16093.4 {
+            distance = String((distanceInMeters/1609).rounded(toPlaces: 1))
+        } else {
+            distance = String(format: "%.0f", (distanceInMeters/1609))
+        }
         return distance
     }
 }

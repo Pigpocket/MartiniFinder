@@ -290,7 +290,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         for location in Location.sharedInstance {
             if location.latitude == annotation?.coordinate.latitude && location.longitude == annotation?.coordinate.longitude {
                 tappedLocation = location
-                MyLocation.shared.coordinates = CLLocation(latitude: location.latitude, longitude: location.longitude)
+                //MyLocation.shared.myLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
                 print("Added location: \(location) \n")
             }
         }
@@ -342,8 +342,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.horizontalStackView.addBackground(color: UIColor.black)
         self.horizontalStackViewHeightConstraint.constant = self.viewHeight(tappedLocation.name)
         
-        let distance = MyLocation.shared.getDistance() //Double(tappedLocation.distance/1609).rounded(toPlaces: 1)
-        self.distanceLabel.text = String("\(distance) miles")
+        let distance = MyLocation.shared.getDistance(latitude: tappedLocation.latitude, longitude: tappedLocation.longitude)
+        self.distanceLabel.text = "\(distance) miles"
         self.distanceLabel.textColor = UIColor.white
         }
     }

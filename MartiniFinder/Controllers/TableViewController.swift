@@ -70,8 +70,8 @@ extension TableViewController {
             cell.priceLabel.text = location.price
             cell.priceLabel.textColor = UIColor.white
             
-            let distance = Double(location.distance/1609).rounded(toPlaces: 1)
-            cell.distanceLabel.text = String("\(distance) miles")
+            let distance = MyLocation.shared.getDistance(latitude: location.latitude, longitude: location.longitude)
+            cell.distanceLabel.text = "\(distance) miles"
             cell.distanceLabel.textColor = UIColor.white
             
             cell.displayRating(location: location)
