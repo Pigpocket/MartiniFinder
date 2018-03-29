@@ -101,11 +101,6 @@
 				3704503D2026E6B7004FECBD /* TableViewCell.swift */,
 				37E82338203273E40054A75D /* FavoritesViewController.swift */,
 				37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */,
-				37D76956206C687600FF513C /* AlertViewController.swift */,
-				37D76958206CAC5100FF513C /* StackViewColor.swift */,
-				37D7695A206CAD1B00FF513C /* NavBarItem.swift */,
-				37D7695C206CAE1000FF513C /* StringWidth.swift */,
-				37D7695E206CAEBC00FF513C /* DoubleRounding.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -157,11 +152,24 @@
 				37B52155201AC51A004393ED /* Model */,
 				3771FE9C20127CC40001E075 /* Client */,
 				370F183F2047B5C100EA0ADA /* View Controllers */,
+				37D76960206CAFCE00FF513C /* Extensions */,
 				37D3E2C41FFF35DC0058CE97 /* Assets.xcassets */,
 				37D3E2C61FFF35DC0058CE97 /* LaunchScreen.storyboard */,
 				37D3E2C91FFF35DC0058CE97 /* Info.plist */,
 			);
 			path = MartiniFinder;
+			sourceTree = "<group>";
+		};
+		37D76960206CAFCE00FF513C /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				37D7695C206CAE1000FF513C /* StringWidth.swift */,
+				37D7695E206CAEBC00FF513C /* DoubleRounding.swift */,
+				37D7695A206CAD1B00FF513C /* NavBarItem.swift */,
+				37D76958206CAC5100FF513C /* StackViewColor.swift */,
+				37D76956206C687600FF513C /* AlertViewController.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
