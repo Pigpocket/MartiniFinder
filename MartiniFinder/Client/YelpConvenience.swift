@@ -23,11 +23,6 @@ extension YelpClient {
             ParameterKeys.term: term
             ] as [String : Any]
         
-        print("latitude: \(latitude)")
-        print("longitude: \(longitude)")
-        print("price: \(price)")
-        print("term: \(term)")
-        
         taskForGetYelpSearchResults(method: methods, parameters: methodParameters as [String : AnyObject]) { (results, error) in
             
             if let error = error {
@@ -47,8 +42,7 @@ extension YelpClient {
     }
     
     func getOpeningHoursFromID(id: String, completionHandlerForOpeningHours: @escaping (_ openNow: Bool?, _ errorString: String?) -> Void) {
-        
-        print("ID sent to opening hours: \(id)")
+
         let methods = Methods.businesses + id
         
             self.taskForGetYelpSearchResults(method: methods, parameters: [:]) { (results, error) in
