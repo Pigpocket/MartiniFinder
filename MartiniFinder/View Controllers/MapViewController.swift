@@ -466,11 +466,3 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
 }
 
-extension UIViewController {
-    func setNavigationItem() {
-        let imageView = UIImageView(image: UIImage(named: "yelp"))
-        imageView.contentMode = .scaleAspectFit
-        let item = UIBarButtonItem(customView: imageView)
-        self.navigationItem.rightBarButtonItem = item
-    }
-}
