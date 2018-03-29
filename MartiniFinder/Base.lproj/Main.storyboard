@@ -366,6 +366,10 @@
                                     <action selector="resetLocation:" destination="SMO-Rv-JTJ" eventType="touchUpInside" id="tbU-sQ-wv5"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lTe-QS-gbU">
+                                <rect key="frame" x="177" y="323" width="20" height="20"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -388,6 +392,7 @@
                         <barButtonItem key="leftBarButtonItem" title="Item" id="b4g-ub-Otb"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="activityIndicator" destination="lTe-QS-gbU" id="9LA-pK-q4S"/>
                         <outlet property="blankView" destination="D0u-vp-DOf" id="Dgo-iX-DCO"/>
                         <outlet property="distanceLabel" destination="g09-3Y-Shf" id="QJp-Sv-cTN"/>
                         <outlet property="horizontalStackView" destination="fDM-m0-7bZ" id="C83-E5-BQI"/>

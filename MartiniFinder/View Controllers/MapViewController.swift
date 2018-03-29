@@ -38,6 +38,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     @IBOutlet weak var distanceLabel: UILabel!
     
     @IBOutlet weak var horizontalStackViewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     
     // MARK: Lifecycle
     
@@ -45,6 +46,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         super.viewDidLoad()
         
         navigationController?.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        activityIndicator.isHidden = true
         
         // Stylize tabBar
         self.tabBarController?.setNavigationItem()
@@ -398,6 +400,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
     func getLocations() {
         
+        activityIndicator.isHidden = false
+        activityIndicator.activityIndicatorViewStyle = .whiteLarge
+        activityIndicator.color = UIColor.black
+        activityIndicator.startAnimating()
+        
         // Get locations
         YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", MapCenter.shared.latitude, MapCenter.shared.longitude) { (locations, error) in
             
@@ -437,6 +444,8 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
                 self.mapView.removeAnnotations(self.annotationArray)
                 self.annotationArray = tempArray
                 self.mapView.addAnnotations(self.annotationArray)
+                self.activityIndicator.stopAnimating()
+                self.activityIndicator.isHidden = true
             }
         }
     }
