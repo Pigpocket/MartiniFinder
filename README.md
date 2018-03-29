@@ -17,9 +17,6 @@ Yelp's API places certain restrictions on its use by third parties. Relevant res
 
 **Note:** Ratings are for the establishment as a whole, not specifically martinis. If Yelp's API usage restrictions allow this in the future, we may update the app.
 
-## Known Bugs
-Yelp's server returns 429 and 502 errors when the map location is updated, a new search is initiated and the user taps on a pin annotation all in rapid succession. We have contacted Yelp about this as of February 28th and are awaiting a response. If you discover a bug, please open an issue in this repository.
-
 Enjoy your martinis!
 
 
