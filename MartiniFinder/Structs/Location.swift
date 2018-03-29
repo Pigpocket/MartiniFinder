@@ -22,7 +22,6 @@ struct Location {
     var price = ""
     var name = ""
     var rating = 0.0
-    var distance = 0.0
     var imageUrl = ""
     var image: UIImage? = nil
     var reviewCount: Int = 0
@@ -36,7 +35,6 @@ struct Location {
             let name = dictionary[YelpClient.ParameterValues.name] as? String,
             let rating = dictionary[YelpClient.ParameterValues.rating] as? Double,
             let price = dictionary[YelpClient.ParameterValues.price] as? String,
-            let distance = dictionary[YelpClient.ParameterValues.distance] as? Double,
             let coordinates = dictionary[YelpClient.ParameterKeys.coordinates] as? [String:Any],
             let latitude = coordinates[YelpClient.ParameterValues.latitude] as? Double,
             let longitude = coordinates[YelpClient.ParameterValues.longitude] as? Double,
@@ -51,7 +49,6 @@ struct Location {
             self.name = name
             self.rating = rating
             self.price = price
-            self.distance = distance
             self.latitude = latitude
             self.longitude = longitude
             self.imageUrl = imageUrl
