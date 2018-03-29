@@ -402,7 +402,7 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         YelpClient.sharedInstance().getYelpSearchResults("Martini", "1,2,3,4", MapCenter.shared.latitude, MapCenter.shared.longitude) { (locations, error) in
             
             if error != nil {
-                print("There was an error: \(String(describing: error))")
+                self.showAlert(title: "Network Error", msg: (error)!)
             }
             
             performUIUpdatesOnMain {

@@ -26,7 +26,7 @@ extension YelpClient {
         taskForGetYelpSearchResults(method: methods, parameters: methodParameters as [String : AnyObject]) { (results, error) in
             
             if let error = error {
-                completionHandlerForSearchResults(nil, "There was an error getting the images: \(error)")
+                completionHandlerForSearchResults(nil, error.localizedDescription)
             } else {
                 if let results = results {
                     if let businesses = results["businesses"] as? [[String:AnyObject]] {

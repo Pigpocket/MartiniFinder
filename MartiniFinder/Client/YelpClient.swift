@@ -11,7 +11,7 @@ import Foundation
 
 class YelpClient {
     
-    func taskForGetYelpSearchResults(method: String, parameters: [String:Any], completionHandlerForGET: @escaping (_ results: AnyObject?, _ error: NSError?) -> Void) {
+    func taskForGetYelpSearchResults(method: String, parameters: [String:Any], completionHandlerForGET: @escaping (_ results: AnyObject?, _ error: Error?) -> Void) {
         
         let session = URLSession.shared
         let urlString = (YelpClient.Constants.yelpBaseURL + method + escapedParameters(parameters as [String : AnyObject])).addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed)
@@ -23,8 +23,7 @@ class YelpClient {
             
             /* GUARD: There is no error */
             guard error == nil else {
-                let userInfo = [NSLocalizedDescriptionKey: "There was an error with your request: \(String(describing: error))"]
-                completionHandlerForGET(nil, NSError(domain: "taskForGetYelpSearchResults", code: 0, userInfo: userInfo))
+                completionHandlerForGET(nil, error)
                 return
             }
             
