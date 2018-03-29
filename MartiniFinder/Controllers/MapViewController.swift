@@ -122,6 +122,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     }
     
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+        if status == .notDetermined {
+            self.locationManager.requestWhenInUseAuthorization()
+        }
+        
         if status == .authorizedWhenInUse {
             
             // Get user position
@@ -132,8 +136,26 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
             getLocations()
             setMapRegion()
         }
+        if status == .denied {
+            let alertController = UIAlertController(title: NSLocalizedString("Location Services Disabled", comment: ""), message: NSLocalizedString("This application requires location services to be enabled", comment: ""), preferredStyle: .alert)
+            
+            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: { _ in self.backToLogin() })
+            let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .default) { (UIAlertAction) in
+                UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
+            }
+            
+            alertController.addAction(cancelAction)
+            alertController.addAction(settingsAction)
+            self.present(alertController, animated: true, completion: nil)
+            
+            //showRetryAlert(title: "Location services denied", message: "It's hard to find martinis if we don't know where you are. \u{1F644}")
+        }
     }
     
+    func backToLogin() {
+        self.navigationController?.popViewController(animated: true)
+    }
+
     func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
     }
     
@@ -290,8 +312,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         for location in Location.sharedInstance {
             if location.latitude == annotation?.coordinate.latitude && location.longitude == annotation?.coordinate.longitude {
                 tappedLocation = location
-                //MyLocation.shared.myLocation = CLLocation(latitude: location.latitude, longitude: location.longitude)
-                print("Added location: \(location) \n")
             }
         }
         
