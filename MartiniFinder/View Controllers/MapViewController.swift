@@ -466,17 +466,6 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     
 }
 
-extension UIStackView {
-    
-    func addBackground(color: UIColor) {
-        let subView = UIView(frame: bounds)
-        subView.backgroundColor = color
-        subView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        subView.layer.cornerRadius = 10
-        insertSubview(subView, at: 0)
-    }
-}
-
 extension UIViewController {
     func setNavigationItem() {
         let imageView = UIImageView(image: UIImage(named: "yelp"))
