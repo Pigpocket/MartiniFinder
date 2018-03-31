@@ -2,7 +2,7 @@
 This app searches for bars and restaurants that serve martinis near the user's location.
 
 ## Build
-This app was written in Swift 4.0 in XCode 9.2 with an iOS 11.1 deployment target.  
+This app was written in Swift 4.0 in XCode 9.2 with an iOS 11.1 deployment target. To build, download the project as a zip file and open in XCode or clone this repo from GitHub.
 
 ## About the API
 MartiniFinder uses Yelp's search and business APIs. You can find the documentation for these APIs at Yelp Fusion on Github [here](https://www.yelp.com/developers/documentation/v3/business_search).
