@@ -53,43 +53,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         self.tabBarController?.tabBar.tintColor = UIColor.white
         self.tabBarController?.tabBar.barTintColor = UIColor.black
         self.tabBarController?.tabBar.isTranslucent = false
-        
-        // Configure locationView
-        locationView.isHidden = true
-        locationView.layer.cornerRadius = 10
-        locationView.layer.borderColor = UIColor.black.cgColor
-        locationView.layer.borderWidth = 1
-        locationView.layer.shadowRadius = 1.5
-        locationView.layer.shadowColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0).cgColor
-        locationView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        locationView.layer.shadowOpacity = 0.9
-        locationView.layer.masksToBounds = false
-        locationView.isUserInteractionEnabled = true
-        thumbnailImageView.layer.cornerRadius = 10
-        thumbnailImageView.clipsToBounds = true
-        thumbnailImageView.contentMode = .scaleAspectFill
-        thumbnailImageView.layer.borderColor = UIColor.white.cgColor
-        thumbnailImageView.layer.borderWidth = 1
-        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width * 2
-        
-        // Configure resetLocationButton
-        resetLocationButton.isHidden = true
-        resetLocationButton.contentHorizontalAlignment = .fill
-        resetLocationButton.contentVerticalAlignment = .fill
-        resetLocationButton.contentMode = .scaleAspectFit
-        
-        // Configure redoSearchButton
-        redoSearchButton.isHidden = true
-        redoSearchButton.layer.cornerRadius = 10
-        redoSearchButton.layer.cornerRadius = 10
-        redoSearchButton.layer.borderColor = UIColor.black.cgColor
-        redoSearchButton.layer.borderWidth = 1
-        redoSearchButton.layer.shadowRadius = 1.5
-        redoSearchButton.layer.shadowColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0).cgColor
-        redoSearchButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        redoSearchButton.layer.shadowOpacity = 0.9
-        redoSearchButton.layer.masksToBounds = false
-        
+
+        configureLocationView()
+        configureResetLocationButton()
+        configureRedoSearchButton()
+
         // Declare gesture recognizers
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(sender:)))
         let didPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
@@ -397,6 +365,47 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
 
         getLocations()
     }
+    
+    func configureResetLocationButton() {
+        resetLocationButton.isHidden = true
+        resetLocationButton.contentHorizontalAlignment = .fill
+        resetLocationButton.contentVerticalAlignment = .fill
+        resetLocationButton.contentMode = .scaleAspectFit
+    }
+    
+    func configureRedoSearchButton() {
+        redoSearchButton.isHidden = true
+        redoSearchButton.layer.cornerRadius = 10
+        redoSearchButton.layer.cornerRadius = 10
+        redoSearchButton.layer.borderColor = UIColor.black.cgColor
+        redoSearchButton.layer.borderWidth = 1
+        redoSearchButton.layer.shadowRadius = 1.5
+        redoSearchButton.layer.shadowColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0).cgColor
+        redoSearchButton.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        redoSearchButton.layer.shadowOpacity = 0.9
+        redoSearchButton.layer.masksToBounds = false
+    }
+    
+    func configureLocationView() {
+        locationView.isHidden = true
+        locationView.layer.cornerRadius = 10
+        locationView.layer.borderColor = UIColor.black.cgColor
+        locationView.layer.borderWidth = 1
+        locationView.layer.shadowRadius = 1.5
+        locationView.layer.shadowColor = UIColor(red: 195/255, green: 89/255, blue: 75/255, alpha: 1.0).cgColor
+        locationView.layer.shadowOffset = CGSize(width: 0.0, height: 0.0)
+        locationView.layer.shadowOpacity = 0.9
+        locationView.layer.masksToBounds = false
+        locationView.isUserInteractionEnabled = true
+        thumbnailImageView.layer.cornerRadius = 10
+        thumbnailImageView.clipsToBounds = true
+        thumbnailImageView.contentMode = .scaleAspectFill
+        thumbnailImageView.layer.borderColor = UIColor.white.cgColor
+        thumbnailImageView.layer.borderWidth = 1
+        nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width * 2
+    }
+    
+
     
     func getLocations() {
         
