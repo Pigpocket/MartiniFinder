@@ -94,19 +94,28 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
         if status == .notDetermined {
             self.locationManager.requestWhenInUseAuthorization()
-        }
-        
-        if status == .authorizedWhenInUse {
+        } else if status == .authorizedWhenInUse {
             
-            // Get user position
+            guard locationManager.location != nil else {
+            
+                let alertController = UIAlertController(title: NSLocalizedString("Geolocation Error", comment: ""), message: NSLocalizedString("We were unable to find your location. Please try again", comment: ""), preferredStyle: .alert)
+                
+                let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in self.backToHome() })
+
+                alertController.addAction(okAction)
+                self.present(alertController, animated: true, completion: nil)
+                
+                return
+            }
+                
             MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
             MapCenter.shared.longitude = (locationManager.location?.coordinate.longitude)!
             MyLocation.shared.myLocation = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
             
             getLocations()
             setMapRegion()
-        }
-        if status == .denied {
+
+        } else if status == .denied {
             let alertController = UIAlertController(title: NSLocalizedString("Location Services Disabled", comment: ""), message: NSLocalizedString("This application requires location services to be enabled", comment: ""), preferredStyle: .alert)
             
             let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: { _ in self.backToHome() })
