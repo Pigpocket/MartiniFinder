@@ -41,6 +41,8 @@ class FavoritesViewController: UITableViewController, NSFetchedResultsController
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        navigationController?.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 0, 0, 0)
+        
         self.view.backgroundColor = UIColor.black
         self.setNavigationItem()
     }
