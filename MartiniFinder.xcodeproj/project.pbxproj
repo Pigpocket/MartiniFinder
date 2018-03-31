@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		3704503C2026D54B004FECBD /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3704503B2026D54B004FECBD /* TableViewController.swift */; };
 		3704503E2026E6B7004FECBD /* TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3704503D2026E6B7004FECBD /* TableViewCell.swift */; };
+		370DB95120701A6600DCBB5A /* LocationManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370DB95020701A6600DCBB5A /* LocationManagerDelegate.swift */; };
 		370F18422049E55900EA0ADA /* CustomAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 370F18412049E55900EA0ADA /* CustomAnnotationView.swift */; };
 		372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E21F7201420FC0084C3B2 /* CoreDataStack.swift */; };
 		37566D2E20689CC70045436E /* Favorites+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37566D2C20689CC60045436E /* Favorites+CoreDataClass.swift */; };
@@ -40,6 +41,7 @@
 /* Begin PBXFileReference section */
 		3704503B2026D54B004FECBD /* TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
 		3704503D2026E6B7004FECBD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
+		370DB95020701A6600DCBB5A /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		370F183920479B4900EA0ADA /* Model_02-28-18.Image.IsOpenNow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_02-28-18.Image.IsOpenNow.xcdatamodel"; sourceTree = "<group>"; };
 		370F18412049E55900EA0ADA /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		372E21F7201420FC0084C3B2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				3704503D2026E6B7004FECBD /* TableViewCell.swift */,
 				37E82338203273E40054A75D /* FavoritesViewController.swift */,
 				37E8233A203276F90054A75D /* FavoritesTableViewCell.swift */,
+				370DB95020701A6600DCBB5A /* LocationManagerDelegate.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -264,6 +267,7 @@
 				37566D2F20689CC70045436E /* Favorites+CoreDataProperties.swift in Sources */,
 				37D3E2D020006A930058CE97 /* GCDSwift.swift in Sources */,
 				37D7695D206CAE1000FF513C /* StringWidth.swift in Sources */,
+				370DB95120701A6600DCBB5A /* LocationManagerDelegate.swift in Sources */,
 				37E82339203273E40054A75D /* FavoritesViewController.swift in Sources */,
 				37D3E2D620015BAF0058CE97 /* YelpConstants.swift in Sources */,
 				37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */,

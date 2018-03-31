@@ -48,32 +48,11 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         navigationController?.additionalSafeAreaInsets = UIEdgeInsetsMake(0, 0, 0, 0)
         activityIndicator.isHidden = true
         
-        // Stylize tabBar
-        self.tabBarController?.setNavigationItem()
-        self.tabBarController?.tabBar.tintColor = UIColor.white
-        self.tabBarController?.tabBar.barTintColor = UIColor.black
-        self.tabBarController?.tabBar.isTranslucent = false
-
+        configureTabBar()
         configureLocationView()
         configureResetLocationButton()
         configureRedoSearchButton()
-
-        // Declare gesture recognizers
-        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(sender:)))
-        let didPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
-        let willPanGesture = UIPanGestureRecognizer(target: self, action: #selector(willDragMap(_:)))
-        let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTap(_:)))
-        
-        // Assign delegates
-        didPanGesture.delegate = self
-        willPanGesture.delegate = self
-        mapView.delegate = self
-        
-        // Add gesture recognizers to view
-        mapView.addGestureRecognizer(tapGesture)
-        mapView.addGestureRecognizer(didPanGesture)
-        mapView.addGestureRecognizer(willPanGesture)
-        locationView.addGestureRecognizer(viewTap)
+        configureGestureRecognizers()
         
         // Request location access
         self.locationManager.requestWhenInUseAuthorization()
@@ -91,54 +70,10 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         locationManager.stopUpdatingLocation()
     }
     
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
-        if status == .notDetermined {
-            self.locationManager.requestWhenInUseAuthorization()
-        } else if status == .authorizedWhenInUse {
-            
-            guard locationManager.location != nil else {
-            
-                let alertController = UIAlertController(title: NSLocalizedString("Geolocation Error", comment: ""), message: NSLocalizedString("We were unable to find your location. Please try again", comment: ""), preferredStyle: .alert)
-                
-                let okAction = UIAlertAction(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { _ in self.backToHome() })
 
-                alertController.addAction(okAction)
-                self.present(alertController, animated: true, completion: nil)
-                
-                return
-            }
-                
-            MapCenter.shared.latitude = (locationManager.location?.coordinate.latitude)!
-            MapCenter.shared.longitude = (locationManager.location?.coordinate.longitude)!
-            MyLocation.shared.myLocation = CLLocation(latitude: (locationManager.location?.coordinate.latitude)!, longitude: (locationManager.location?.coordinate.longitude)!)
-            
-            getLocations()
-            setMapRegion()
-
-        } else if status == .denied {
-            let alertController = UIAlertController(title: NSLocalizedString("Location Services Disabled", comment: ""), message: NSLocalizedString("This application requires location services to be enabled", comment: ""), preferredStyle: .alert)
-            
-            let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .default, handler: { _ in self.backToHome() })
-            let settingsAction = UIAlertAction(title: NSLocalizedString("Settings", comment: ""), style: .default) { (UIAlertAction) in
-                UIApplication.shared.open(URL(string: UIApplicationOpenSettingsURLString)!, options: [:], completionHandler: nil)
-            }
-            
-            alertController.addAction(cancelAction)
-            alertController.addAction(settingsAction)
-            self.present(alertController, animated: true, completion: nil)
-            
-        }
-    }
     
     func backToHome() {
         self.navigationController?.popViewController(animated: true)
-    }
-
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-    }
-    
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-        print("There was an error getting your location")
     }
     
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldReceive touch: UITouch) -> Bool {
@@ -414,6 +349,32 @@ class MapViewController: UIViewController, MKMapViewDelegate, CLLocationManagerD
         nameLabel.preferredMaxLayoutWidth = nameLabel.frame.width * 2
     }
     
+    func configureTabBar() {
+        self.tabBarController?.setNavigationItem()
+        self.tabBarController?.tabBar.tintColor = UIColor.white
+        self.tabBarController?.tabBar.barTintColor = UIColor.black
+        self.tabBarController?.tabBar.isTranslucent = false
+    }
+    
+    func configureGestureRecognizers() {
+    
+        // Declare gesture recognizers
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleSingleTap(sender:)))
+        let didPanGesture = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
+        let willPanGesture = UIPanGestureRecognizer(target: self, action: #selector(willDragMap(_:)))
+        let viewTap = UITapGestureRecognizer(target: self, action: #selector(viewTap(_:)))
+    
+        // Assign delegates
+        didPanGesture.delegate = self
+        willPanGesture.delegate = self
+        mapView.delegate = self
+    
+        // Add gesture recognizers to view
+        mapView.addGestureRecognizer(tapGesture)
+        mapView.addGestureRecognizer(didPanGesture)
+        mapView.addGestureRecognizer(willPanGesture)
+        locationView.addGestureRecognizer(viewTap)
+    }
 
     
     func getLocations() {
