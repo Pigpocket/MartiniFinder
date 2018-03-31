@@ -57,4 +57,9 @@ extension MapViewController {
             
         }
     }
+    
+    func backToHome() {
+        self.navigationController?.popViewController(animated: true)
+    }
+    
 }
