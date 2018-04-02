@@ -139,7 +139,7 @@
                                                         <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1Pl-X0-c5c">
                                                             <rect key="frame" x="8" y="67.5" width="216" height="20.5"/>
                                                             <subviews>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" ambiguous="YES" text="Review Count Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AT-FJ-ynf">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="252" verticalHuggingPriority="252" text="Review Count Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1AT-FJ-ynf">
                                                                     <rect key="frame" x="0.0" y="0.0" width="151" height="20.5"/>
                                                                     <constraints>
                                                                         <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="87.5" id="YEF-Qu-ecs"/>
@@ -148,7 +148,7 @@
                                                                     <nil key="textColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
-                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nf8-T6-upm">
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" horizontalCompressionResistancePriority="749" text="Distance" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="nf8-T6-upm">
                                                                     <rect key="frame" x="151" y="0.0" width="65" height="20.5"/>
                                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                                     <nil key="textColor"/>
@@ -225,9 +225,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="justified" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MDZ-5u-ecv" userLabel="Yelp Label">
-                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="498"/>
                                 <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -252,7 +252,7 @@
                             <constraint firstItem="6au-He-OTk" firstAttribute="bottom" secondItem="rMK-Sf-pEb" secondAttribute="bottom" constant="20" id="FOK-vc-IlD"/>
                             <constraint firstItem="6au-He-OTk" firstAttribute="top" secondItem="MDZ-5u-ecv" secondAttribute="top" constant="20" id="Nvx-PE-C1d"/>
                             <constraint firstItem="6au-He-OTk" firstAttribute="trailing" secondItem="MDZ-5u-ecv" secondAttribute="trailing" id="d9p-fw-REP"/>
-                            <constraint firstItem="6au-He-OTk" firstAttribute="bottom" secondItem="MDZ-5u-ecv" secondAttribute="bottom" id="t5T-DS-GZ7"/>
+                            <constraint firstItem="rMK-Sf-pEb" firstAttribute="top" secondItem="MDZ-5u-ecv" secondAttribute="bottom" constant="20" id="jAM-Px-hmh"/>
                             <constraint firstItem="MDZ-5u-ecv" firstAttribute="leading" secondItem="6au-He-OTk" secondAttribute="leading" id="uxB-qx-ece"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6au-He-OTk"/>

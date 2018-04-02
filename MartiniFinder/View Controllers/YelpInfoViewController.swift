@@ -19,6 +19,8 @@ class YelpInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.layer.backgroundColor = UIColor.black.cgColor
+        
         okButton.layer.backgroundColor = YelpColor.shared.medHighColor.cgColor
         okButton.layer.cornerRadius = 10
         okButton.layer.borderColor = UIColor.white.cgColor
