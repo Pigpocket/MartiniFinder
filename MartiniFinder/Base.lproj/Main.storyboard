@@ -407,9 +407,8 @@
                                     <action selector="resetLocation:" destination="SMO-Rv-JTJ" eventType="touchUpInside" id="tbU-sQ-wv5"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lTe-QS-gbU">
-                                <rect key="frame" x="177" y="323" width="20" height="20"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="lTe-QS-gbU">
+                                <rect key="frame" x="150" y="281" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -421,9 +420,11 @@
                             <constraint firstItem="j9w-lr-GPF" firstAttribute="centerX" secondItem="CYF-nt-46s" secondAttribute="centerX" constant="-18.5" id="RRf-xi-LiT"/>
                             <constraint firstItem="9Sz-g2-H7d" firstAttribute="bottom" secondItem="Rxk-mg-thC" secondAttribute="bottom" constant="16" id="RpL-2Z-6A5"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="leading" secondItem="9Sz-g2-H7d" secondAttribute="leading" id="Sn3-zO-cj5"/>
+                            <constraint firstItem="lTe-QS-gbU" firstAttribute="centerX" secondItem="9Sz-g2-H7d" secondAttribute="centerX" id="app-yD-uEb"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="bottom" secondItem="9Sz-g2-H7d" secondAttribute="bottom" id="bGx-pO-INT"/>
                             <constraint firstItem="Rxk-mg-thC" firstAttribute="centerX" secondItem="CYF-nt-46s" secondAttribute="centerX" id="pTQ-ag-FjY" userLabel="Location View.centerX = centerX + 20"/>
                             <constraint firstItem="j9w-lr-GPF" firstAttribute="top" secondItem="9Sz-g2-H7d" secondAttribute="top" constant="19" id="s3t-jT-3cn"/>
+                            <constraint firstItem="lTe-QS-gbU" firstAttribute="centerY" secondItem="9Sz-g2-H7d" secondAttribute="centerY" id="tVP-nU-L4O"/>
                             <constraint firstItem="7ma-dw-MQD" firstAttribute="trailing" secondItem="9Sz-g2-H7d" secondAttribute="trailing" id="v7H-nS-Li9"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="9Sz-g2-H7d"/>
