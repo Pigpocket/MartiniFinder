@@ -21,7 +21,6 @@ extension MapViewController {
     func configureRedoSearchButton() {
         redoSearchButton.isHidden = true
         redoSearchButton.layer.cornerRadius = 10
-        redoSearchButton.layer.cornerRadius = 10
         redoSearchButton.layer.borderColor = UIColor.black.cgColor
         redoSearchButton.layer.borderWidth = 1
         redoSearchButton.layer.shadowRadius = 1.5
