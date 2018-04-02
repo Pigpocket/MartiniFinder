@@ -15,7 +15,6 @@ class TableViewController: UITableViewController, CLLocationManagerDelegate {
     
     // MARK: Properties
 
-    var favoriteLocation: Favorites?
     var locationManager = CLLocationManager()
     
     // MARK: Outlets

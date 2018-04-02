@@ -17,9 +17,6 @@
 		3728866D207040BE009AF7D2 /* GetLocations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3728866C207040BE009AF7D2 /* GetLocations.swift */; };
 		3728866F2070429C009AF7D2 /* TableViewDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3728866E2070429C009AF7D2 /* TableViewDelegate.swift */; };
 		372886732071E0F6009AF7D2 /* YelpInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372886722071E0F6009AF7D2 /* YelpInfoViewController.swift */; };
-		372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */ = {isa = PBXBuildFile; fileRef = 372E21F7201420FC0084C3B2 /* CoreDataStack.swift */; };
-		37566D2E20689CC70045436E /* Favorites+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37566D2C20689CC60045436E /* Favorites+CoreDataClass.swift */; };
-		37566D2F20689CC70045436E /* Favorites+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37566D2D20689CC70045436E /* Favorites+CoreDataProperties.swift */; };
 		3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3771FE9A20127CBF0001E075 /* YelpConvenience.swift */; };
 		37B5215F201AF836004393ED /* Location.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37B5215E201AF836004393ED /* Location.swift */; };
 		37D3E2BE1FFF35DC0058CE97 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */; };
@@ -39,7 +36,6 @@
 		37D7695F206CAEBC00FF513C /* DoubleRounding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D7695E206CAEBC00FF513C /* DoubleRounding.swift */; };
 		37D76964206CBAFE00FF513C /* YelpColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37D76963206CBAFE00FF513C /* YelpColor.swift */; };
 		37E8231F202FAA880054A75D /* MapCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 37E8231E202FAA880054A75D /* MapCenter.swift */; };
-		37E8234E2032AB6C0054A75D /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 37E8234C2032AB6C0054A75D /* Model.xcdatamodeld */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -47,17 +43,12 @@
 		3704503D2026E6B7004FECBD /* TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewCell.swift; sourceTree = "<group>"; };
 		370DB95020701A6600DCBB5A /* LocationManagerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManagerDelegate.swift; sourceTree = "<group>"; };
 		370DB9522070350A00DCBB5A /* GestureRecognizerDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GestureRecognizerDelegate.swift; sourceTree = "<group>"; };
-		370F183920479B4900EA0ADA /* Model_02-28-18.Image.IsOpenNow.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_02-28-18.Image.IsOpenNow.xcdatamodel"; sourceTree = "<group>"; };
 		370F18412049E55900EA0ADA /* CustomAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomAnnotationView.swift; sourceTree = "<group>"; };
 		3728866820703881009AF7D2 /* MapViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewDelegate.swift; sourceTree = "<group>"; };
 		3728866A20703E0C009AF7D2 /* MapViewViewConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapViewViewConfiguration.swift; sourceTree = "<group>"; };
 		3728866C207040BE009AF7D2 /* GetLocations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetLocations.swift; sourceTree = "<group>"; };
 		3728866E2070429C009AF7D2 /* TableViewDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewDelegate.swift; sourceTree = "<group>"; };
 		372886722071E0F6009AF7D2 /* YelpInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpInfoViewController.swift; sourceTree = "<group>"; };
-		372E21F7201420FC0084C3B2 /* CoreDataStack.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataStack.swift; sourceTree = "<group>"; };
-		37566D27206899130045436E /* Model_03-23-18.remove.isOpenNow.3.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = "Model_03-23-18.remove.isOpenNow.3.xcdatamodel"; sourceTree = "<group>"; };
-		37566D2C20689CC60045436E /* Favorites+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorites+CoreDataClass.swift"; path = "../../Favorites+CoreDataClass.swift"; sourceTree = "<group>"; };
-		37566D2D20689CC70045436E /* Favorites+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = "Favorites+CoreDataProperties.swift"; path = "../../Favorites+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		3771FE9A20127CBF0001E075 /* YelpConvenience.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpConvenience.swift; sourceTree = "<group>"; };
 		37B5215E201AF836004393ED /* Location.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Location.swift; sourceTree = "<group>"; };
 		37D3E2BA1FFF35DC0058CE97 /* MartiniFinder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MartiniFinder.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,7 +70,6 @@
 		37D7695E206CAEBC00FF513C /* DoubleRounding.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoubleRounding.swift; sourceTree = "<group>"; };
 		37D76963206CBAFE00FF513C /* YelpColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YelpColor.swift; sourceTree = "<group>"; };
 		37E8231E202FAA880054A75D /* MapCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapCenter.swift; sourceTree = "<group>"; };
-		37E8234D2032AB6C0054A75D /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -133,17 +123,6 @@
 			path = Client;
 			sourceTree = "<group>";
 		};
-		37B52155201AC51A004393ED /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				372E21F7201420FC0084C3B2 /* CoreDataStack.swift */,
-				37E8234C2032AB6C0054A75D /* Model.xcdatamodeld */,
-				37566D2C20689CC60045436E /* Favorites+CoreDataClass.swift */,
-				37566D2D20689CC70045436E /* Favorites+CoreDataProperties.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
 		37D3E2B11FFF35DC0058CE97 = {
 			isa = PBXGroup;
 			children = (
@@ -167,7 +146,6 @@
 				37D3E2BD1FFF35DC0058CE97 /* AppDelegate.swift */,
 				37D3E2CF20006A930058CE97 /* GCDSwift.swift */,
 				370F183E2047B5A200EA0ADA /* Structs */,
-				37B52155201AC51A004393ED /* Model */,
 				3771FE9C20127CC40001E075 /* Client */,
 				370F183F2047B5C100EA0ADA /* View Controllers */,
 				37D76960206CAFCE00FF513C /* Extensions */,
@@ -266,20 +244,16 @@
 				37D3E2D42000A0EE0058CE97 /* YelpClient.swift in Sources */,
 				3704503C2026D54B004FECBD /* TableViewController.swift in Sources */,
 				3728866D207040BE009AF7D2 /* GetLocations.swift in Sources */,
-				37E8234E2032AB6C0054A75D /* Model.xcdatamodeld in Sources */,
 				37D76957206C687600FF513C /* AlertViewController.swift in Sources */,
 				372886732071E0F6009AF7D2 /* YelpInfoViewController.swift in Sources */,
-				37566D2E20689CC70045436E /* Favorites+CoreDataClass.swift in Sources */,
 				37D3E2C01FFF35DC0058CE97 /* HomeViewController.swift in Sources */,
 				37D76964206CBAFE00FF513C /* YelpColor.swift in Sources */,
 				37E8231F202FAA880054A75D /* MapCenter.swift in Sources */,
-				372E21F8201420FC0084C3B2 /* CoreDataStack.swift in Sources */,
 				37D7695B206CAD1B00FF513C /* NavBarItem.swift in Sources */,
 				3704503E2026E6B7004FECBD /* TableViewCell.swift in Sources */,
 				3771FE9B20127CBF0001E075 /* YelpConvenience.swift in Sources */,
 				37D76959206CAC5100FF513C /* StackViewColor.swift in Sources */,
 				3728866B20703E0C009AF7D2 /* MapViewViewConfiguration.swift in Sources */,
-				37566D2F20689CC70045436E /* Favorites+CoreDataProperties.swift in Sources */,
 				37D3E2D020006A930058CE97 /* GCDSwift.swift in Sources */,
 				37D7695D206CAE1000FF513C /* StringWidth.swift in Sources */,
 				370DB95120701A6600DCBB5A /* LocationManagerDelegate.swift in Sources */,
@@ -480,21 +454,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		37E8234C2032AB6C0054A75D /* Model.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				37566D27206899130045436E /* Model_03-23-18.remove.isOpenNow.3.xcdatamodel */,
-				370F183920479B4900EA0ADA /* Model_02-28-18.Image.IsOpenNow.xcdatamodel */,
-				37E8234D2032AB6C0054A75D /* Model.xcdatamodel */,
-			);
-			currentVersion = 37566D27206899130045436E /* Model_03-23-18.remove.isOpenNow.3.xcdatamodel */;
-			path = Model.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 37D3E2B21FFF35DC0058CE97 /* Project object */;
 }
