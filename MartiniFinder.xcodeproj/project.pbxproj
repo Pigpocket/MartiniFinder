@@ -407,7 +407,7 @@
 				DEVELOPMENT_TEAM = 7Q9W2X5558;
 				INFOPLIST_FILE = MartiniFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Com.hogotron.MartiniFinder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pigpocket.MartiniFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
@@ -424,7 +424,7 @@
 				DEVELOPMENT_TEAM = 7Q9W2X5558;
 				INFOPLIST_FILE = MartiniFinder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = Com.hogotron.MartiniFinder;
+				PRODUCT_BUNDLE_IDENTIFIER = com.pigpocket.MartiniFinder;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 4.0;
