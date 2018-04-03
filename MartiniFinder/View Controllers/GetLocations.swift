@@ -32,12 +32,17 @@ extension MapViewController {
                 if let locations = locations {
                     Location.sharedInstance = locations
                     
-                    for i in 0..<Location.sharedInstance.count {
-                        YelpClient.sharedInstance().loadImage(Location.sharedInstance[i].imageUrl, completionHandler: { (image) in
-                            
-                            Location.sharedInstance[i].image = image
-                            
-                        })
+                    if Location.sharedInstance.count != 0 {
+                    
+                        for i in 0..<Location.sharedInstance.count {
+                            YelpClient.sharedInstance().loadImage(Location.sharedInstance[i].imageUrl, completionHandler: { (image) in
+                                
+                                Location.sharedInstance[i].image = image
+                                
+                            })
+                        }
+                    } else {
+                        self.showAlert(title: "No Results Found", msg: "This unfortunate area is a martini desert, or Yelp is not supported in this location")
                     }
                 }
                 
